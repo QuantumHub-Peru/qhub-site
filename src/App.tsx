@@ -4,6 +4,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Nosotros from "./pages/Nosotros";
+import Curso from "./pages/Curso";
+import Equipo from "./pages/Equipo";
+import Noticias from "./pages/Noticias";
+import PlataformaPage from "./pages/PlataformaPage";
+import DepartmentPage from "./pages/DepartmentPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,7 +22,16 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/curso" element={<Curso />} />
+          <Route path="/equipo" element={<Equipo />} />
+          <Route path="/noticias" element={<Noticias />} />
+          <Route path="/plataforma" element={<PlataformaPage />} />
+          <Route path="/investigacion" element={<DepartmentPage deptId="investigacion" />} />
+          <Route path="/academico" element={<DepartmentPage deptId="academico" />} />
+          <Route path="/innovacion" element={<DepartmentPage deptId="innovacion" />} />
+          <Route path="/relaciones-publicas" element={<DepartmentPage deptId="relaciones-publicas" />} />
+          <Route path="/comunidad" element={<DepartmentPage deptId="comunidad" />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
