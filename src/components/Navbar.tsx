@@ -1,11 +1,19 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Atom, BookOpen, Lightbulb, Megaphone, Users, ChevronDown } from "lucide-react";
+
+const departments = [
+  { label: "Investigación", path: "/investigacion", icon: Atom, color: "text-dept-research" },
+  { label: "Académico", path: "/academico", icon: BookOpen, color: "text-dept-academic" },
+  { label: "Innovación", path: "/innovacion", icon: Lightbulb, color: "text-dept-innovation" },
+  { label: "Relaciones Públicas", path: "/relaciones-publicas", icon: Megaphone, color: "text-dept-relations" },
+  { label: "Comunidad", path: "/comunidad", icon: Users, color: "text-dept-community" },
+];
 
 const navItems = [
   { label: "Inicio", path: "/" },
-  { label: "Nosotros", path: "/nosotros" },
+  { label: "Nosotros", path: "/nosotros", hasDropdown: true },
   { label: "Curso", path: "/curso" },
   { label: "Equipo", path: "/equipo" },
   { label: "Noticias", path: "/noticias" },
@@ -14,6 +22,8 @@ const navItems = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [deptOpen, setDeptOpen] = useState(false);
+  const [mobileDeptOpen, setMobileDeptOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -44,27 +54,59 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
-            <Link
+            <div
               key={item.path}
-              to={item.path}
-              className="relative px-4 py-2 text-sm font-body font-medium tracking-wide transition-colors group"
+              className="relative"
+              onMouseEnter={() => item.hasDropdown && setDeptOpen(true)}
+              onMouseLeave={() => item.hasDropdown && setDeptOpen(false)}
             >
-              <span className={location.pathname === item.path ? "text-foreground" : "text-muted-foreground group-hover:text-foreground"}>
-                {item.label}
-              </span>
-              {location.pathname === item.path && (
-                <motion.div
-                  layoutId="nav-underline"
-                  className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full"
-                  style={{ background: "linear-gradient(90deg, hsl(270 80% 60%), hsl(330 80% 60%))" }}
-                />
-              )}
-            </Link>
+              <Link
+                to={item.path}
+                className="relative px-4 py-2 text-sm font-body font-medium tracking-wide transition-colors group flex items-center gap-1"
+              >
+                <span className={location.pathname === item.path || (item.hasDropdown && location.pathname.match(/^\/(investigacion|academico|innovacion|relaciones-publicas|comunidad)/)) ? "text-foreground" : "text-muted-foreground group-hover:text-foreground"}>
+                  {item.label}
+                </span>
+                {item.hasDropdown && <ChevronDown className={`w-3 h-3 text-muted-foreground transition-transform ${deptOpen ? "rotate-180" : ""}`} />}
+                {(location.pathname === item.path || (item.hasDropdown && location.pathname.match(/^\/(investigacion|academico|innovacion|relaciones-publicas|comunidad)/))) && (
+                  <motion.div
+                    layoutId="nav-underline"
+                    className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full"
+                    style={{ background: "linear-gradient(90deg, hsl(270 80% 60%), hsl(330 80% 60%))" }}
+                  />
+                )}
+              </Link>
+
+              {/* Dropdown */}
+              <AnimatePresence>
+                {item.hasDropdown && deptOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 pt-2 w-64"
+                  >
+                    <div className="glass-strong rounded-xl p-2 shadow-xl shadow-primary/10">
+                      {departments.map((dept) => (
+                        <Link
+                          key={dept.path}
+                          to={dept.path}
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all hover:bg-primary/10 group/dept"
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-secondary/60 flex items-center justify-center group-hover/dept:bg-primary/20 transition-colors">
+                            <dept.icon className={`w-4 h-4 ${dept.color}`} />
+                          </div>
+                          <span className="font-body text-sm text-muted-foreground group-hover/dept:text-foreground transition-colors">{dept.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ))}
-          <Link
-            to="/plataforma"
-            className="ml-4 btn-accent-cta text-xs py-2 px-5"
-          >
+          <Link to="/plataforma" className="ml-4 btn-accent-cta text-xs py-2 px-5">
             Plataforma
           </Link>
         </div>
@@ -83,18 +125,41 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden glass-strong border-t border-border/30"
           >
-            <div className="flex flex-col px-6 py-4 gap-3">
+            <div className="flex flex-col px-6 py-4 gap-1">
               {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setMobileOpen(false)}
-                  className={`text-sm font-body py-2 ${
-                    location.pathname === item.path ? "text-foreground" : "text-muted-foreground"
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                <div key={item.path}>
+                  <div className="flex items-center">
+                    <Link
+                      to={item.path}
+                      onClick={() => !item.hasDropdown && setMobileOpen(false)}
+                      className={`flex-1 text-sm font-body py-2 ${
+                        location.pathname === item.path ? "text-foreground" : "text-muted-foreground"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                    {item.hasDropdown && (
+                      <button onClick={() => setMobileDeptOpen(!mobileDeptOpen)} className="p-2 text-muted-foreground">
+                        <ChevronDown className={`w-4 h-4 transition-transform ${mobileDeptOpen ? "rotate-180" : ""}`} />
+                      </button>
+                    )}
+                  </div>
+                  {item.hasDropdown && mobileDeptOpen && (
+                    <div className="pl-4 pb-2 space-y-1">
+                      {departments.map((dept) => (
+                        <Link
+                          key={dept.path}
+                          to={dept.path}
+                          onClick={() => setMobileOpen(false)}
+                          className="flex items-center gap-2 py-1.5 text-xs font-body text-muted-foreground hover:text-foreground"
+                        >
+                          <dept.icon className={`w-3 h-3 ${dept.color}`} />
+                          {dept.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <Link to="/plataforma" onClick={() => setMobileOpen(false)} className="btn-accent-cta text-xs py-2 px-5 text-center mt-2">
                 Plataforma
