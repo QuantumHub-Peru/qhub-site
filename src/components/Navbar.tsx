@@ -17,6 +17,7 @@ const navItems = [
   { label: "Curso", path: "/curso" },
   { label: "Equipo", path: "/equipo" },
   { label: "Noticias", path: "/noticias" },
+  { label: "Blog", path: "/blog" },
 ];
 
 const Navbar = () => {
