@@ -1,10 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DepartmentsSection from "@/components/DepartmentsSection";
+import QuantumStates from "@/components/QuantumStates";
+import QuantumMeasurement from "@/components/QuantumMeasurement";
+import BlochSphere from "@/components/BlochSphere";
 import { motion } from "framer-motion";
 import { Target, Eye, Rocket } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Nosotros = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -42,10 +48,37 @@ const Nosotros = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Bloch Sphere */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mb-8"
+          >
+            <div className="text-center mb-8">
+              <p className="font-heading text-xs tracking-[0.3em] text-primary uppercase mb-3">Navegación Cuántica</p>
+              <h2 className="font-heading text-xl md:text-2xl font-bold mb-2">
+                Esfera de <span className="text-gradient-quantum">Bloch</span>
+              </h2>
+              <p className="font-body text-sm text-muted-foreground max-w-md mx-auto">
+                Rota la esfera para explorar los departamentos en el espacio de estados cuántico.
+              </p>
+            </div>
+            <BlochSphere onNavigate={(path) => navigate(path)} />
+          </motion.div>
         </div>
       </section>
 
+      {/* Quantum States */}
+      <QuantumStates />
+
+      {/* Orbital Departments */}
       <DepartmentsSection />
+
+      {/* Quantum Measurement Game */}
+      <QuantumMeasurement />
+
       <Footer />
     </div>
   );
