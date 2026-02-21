@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
-import { Atom, BookOpen, Lightbulb, Megaphone, Users, Cpu, Code, GraduationCap, Microscope, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Atom, BookOpen, Lightbulb, Megaphone, Users, Cpu, Code, GraduationCap, Microscope, ArrowRight, ChevronDown, Zap } from "lucide-react";
 
 interface Track {
   title: string;
@@ -17,6 +18,7 @@ interface DeptPageData {
   borderColor: string;
   glowClass: string;
   bgAccent: string;
+  hslColor: string;
   description: string;
   mission: string;
   tracks: Track[];
@@ -33,6 +35,7 @@ const deptData: Record<string, DeptPageData> = {
     borderColor: "border-dept-research/30",
     glowClass: "shadow-[0_0_30px_hsl(210,100%,60%,0.2)]",
     bgAccent: "from-dept-research/10 to-transparent",
+    hslColor: "210 100% 60%",
     description: "El Departamento de Investigación impulsa proyectos técnicos en tecnologías cuánticas con enfoque aplicado. Estamos integrados por egresados del curso de Computación Cuántica e Información Cuántica 2025 que continúan su formación científica con nosotros mediante investigación formal.",
     mission: "Producir investigación de impacto en computación cuántica y posicionar a Latinoamérica en el mapa cuántico global.",
     tracks: [
@@ -52,6 +55,7 @@ const deptData: Record<string, DeptPageData> = {
     borderColor: "border-dept-academic/30",
     glowClass: "shadow-[0_0_30px_hsl(270,70%,55%,0.2)]",
     bgAccent: "from-dept-academic/10 to-transparent",
+    hslColor: "270 70% 55%",
     description: "El Departamento Académico diseña y ejecuta programas educativos que hacen accesible la computación cuántica para todos los niveles, desde principiantes hasta investigadores avanzados.",
     mission: "Democratizar la educación cuántica en toda Latinoamérica, eliminando barreras de acceso.",
     tracks: [
@@ -70,12 +74,13 @@ const deptData: Record<string, DeptPageData> = {
     borderColor: "border-dept-innovation/30",
     glowClass: "shadow-[0_0_30px_hsl(175,80%,50%,0.2)]",
     bgAccent: "from-dept-innovation/10 to-transparent",
+    hslColor: "175 80% 50%",
     description: "El Departamento de Innovación explora las aplicaciones prácticas de la computación cuántica en problemas reales de la región, conectando investigación con industria.",
     mission: "Conectar la investigación cuántica con soluciones que impacten a la sociedad latinoamericana.",
     tracks: [
-      { title: "Quantum Startups", icon: Lightbulb, description: "Incubamos ideas y proyectos que aplican computación cuántica a problemas reales: optimización logística, descubrimiento de fármacos, finanzas cuánticas y más. Apoyamos a emprendedores con mentoría técnica y conexiones con la industria." },
-      { title: "Hackathons Cuánticos", icon: Code, description: "Organizamos competencias intensivas donde equipos multidisciplinarios resuelven desafíos reales usando herramientas cuánticas. Nuestros hackathons conectan talento emergente con empresas y organizaciones interesadas en el potencial cuántico." },
-      { title: "Alianzas con Industria", icon: Cpu, description: "Construimos puentes entre la academia cuántica y el sector empresarial, identificando casos de uso donde la ventaja cuántica puede generar impacto medible en industrias clave de Latinoamérica." },
+      { title: "Quantum Startups", icon: Lightbulb, description: "Incubamos ideas y proyectos que aplican computación cuántica a problemas reales: optimización logística, descubrimiento de fármacos, finanzas cuánticas y más." },
+      { title: "Hackathons Cuánticos", icon: Code, description: "Organizamos competencias intensivas donde equipos multidisciplinarios resuelven desafíos reales usando herramientas cuánticas." },
+      { title: "Alianzas con Industria", icon: Cpu, description: "Construimos puentes entre la academia cuántica y el sector empresarial, identificando casos de uso donde la ventaja cuántica puede generar impacto medible." },
     ],
     projects: ["Hackathon Qiskit LATAM", "Quantum Finance Lab", "Optimización cuántica para logística", "Challenge de QML"],
     howToJoin: "Si tienes una idea que podría beneficiarse de computación cuántica o quieres participar en nuestros hackathons, únete a nuestra comunidad de innovadores."
@@ -88,12 +93,13 @@ const deptData: Record<string, DeptPageData> = {
     borderColor: "border-dept-relations/30",
     glowClass: "shadow-[0_0_30px_hsl(45,100%,55%,0.2)]",
     bgAccent: "from-dept-relations/10 to-transparent",
+    hslColor: "45 100% 55%",
     description: "Amplificamos la voz de la computación cuántica en LATAM y construimos alianzas estratégicas con instituciones, empresas y medios internacionales.",
     mission: "Posicionar a QuantumHub Peru como el referente cuántico de Latinoamérica.",
     tracks: [
-      { title: "Comunicación Estratégica", icon: Megaphone, description: "Desarrollamos narrativas poderosas que conectan la computación cuántica con audiencias diversas. Desde comunicados de prensa hasta campañas en redes sociales, cada mensaje refuerza la visión de un ecosistema cuántico latinoamericano." },
-      { title: "Alianzas Institucionales", icon: Users, description: "Negociamos y gestionamos alianzas con universidades, centros de investigación, empresas tecnológicas y organismos gubernamentales para fortalecer el ecosistema cuántico regional." },
-      { title: "Eventos y Conferencias", icon: GraduationCap, description: "Organizamos y participamos en eventos que visibilizan el trabajo de QuantumHub, desde el Quantum AI Summit hasta charlas en conferencias internacionales de computación cuántica." },
+      { title: "Comunicación Estratégica", icon: Megaphone, description: "Desarrollamos narrativas poderosas que conectan la computación cuántica con audiencias diversas." },
+      { title: "Alianzas Institucionales", icon: Users, description: "Negociamos y gestionamos alianzas con universidades, centros de investigación, empresas tecnológicas y organismos gubernamentales." },
+      { title: "Eventos y Conferencias", icon: GraduationCap, description: "Organizamos y participamos en eventos que visibilizan el trabajo de QuantumHub." },
     ],
     projects: ["Quantum AI Summit 2025", "Campaña LATAM Cuántico", "Newsletter mensual", "Podcast QuantumVoices"],
     howToJoin: "Si tienes habilidades en comunicación, marketing digital o relaciones públicas y quieres contribuir a la difusión de la tecnología cuántica, contáctanos."
@@ -106,93 +112,173 @@ const deptData: Record<string, DeptPageData> = {
     borderColor: "border-dept-community/30",
     glowClass: "shadow-[0_0_30px_hsl(330,70%,60%,0.2)]",
     bgAccent: "from-dept-community/10 to-transparent",
+    hslColor: "330 70% 60%",
     description: "Construimos la red más grande de entusiastas y profesionales cuánticos de Latinoamérica, creando espacios de conexión y crecimiento mutuo.",
     mission: "Crear una comunidad vibrante donde el conocimiento cuántico se comparte libremente y todos pueden crecer.",
     tracks: [
-      { title: "Meetups y Networking", icon: Users, description: "Organizamos encuentros mensuales presenciales y virtuales donde miembros de la comunidad comparten conocimientos, presentan proyectos y construyen relaciones profesionales en el espacio cuántico." },
-      { title: "Mentorías Peer-to-Peer", icon: GraduationCap, description: "Conectamos estudiantes con profesionales experimentados en programas de mentoría estructurados que aceleran el aprendizaje y abren puertas a oportunidades en el ecosistema cuántico global." },
-      { title: "Proyectos Comunitarios", icon: Code, description: "Facilitamos proyectos colaborativos donde miembros de distintos niveles contribuyen a iniciativas open-source, tutoriales y recursos educativos que benefician a toda la comunidad." },
+      { title: "Meetups y Networking", icon: Users, description: "Organizamos encuentros mensuales presenciales y virtuales donde miembros de la comunidad comparten conocimientos y construyen relaciones profesionales." },
+      { title: "Mentorías Peer-to-Peer", icon: GraduationCap, description: "Conectamos estudiantes con profesionales experimentados en programas de mentoría estructurados." },
+      { title: "Proyectos Comunitarios", icon: Code, description: "Facilitamos proyectos colaborativos donde miembros de distintos niveles contribuyen a iniciativas open-source." },
     ],
     projects: ["Discord activo (500+ miembros)", "Meetup Lima mensual", "Programa de mentorías", "Wiki cuántica colaborativa"],
-    howToJoin: "Únete a nuestro Discord y participa en los meetups mensuales. La comunidad está abierta a todos los niveles, desde curiosos hasta expertos en computación cuántica."
+    howToJoin: "Únete a nuestro Discord y participa en los meetups mensuales. La comunidad está abierta a todos los niveles."
   },
 };
 
 const DepartmentPage = ({ deptId }: { deptId: string }) => {
   const dept = deptData[deptId];
+  const [expandedTrack, setExpandedTrack] = useState<number | null>(null);
+
   if (!dept) return null;
   const Icon = dept.icon;
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+
       {/* Hero */}
       <section className="relative pt-32 pb-16 overflow-hidden">
         <div className={`absolute inset-0 bg-gradient-to-b ${dept.bgAccent}`} />
-        <div className="absolute inset-0 quantum-grid opacity-10" />
+        <div className="absolute inset-0 quantum-grid opacity-10 animate-grid-flow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[120px]"
+          style={{ background: `radial-gradient(circle, hsl(${dept.hslColor} / 0.1), transparent 70%)` }}
+        />
+
         <div className="relative z-10 container mx-auto px-6 max-w-5xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
-            <div className={`w-20 h-20 rounded-2xl glass mx-auto mb-6 flex items-center justify-center ${dept.glowClass}`}>
-              <Icon className={`w-10 h-10 ${dept.colorClass}`} />
-            </div>
+            <motion.div
+              className="w-24 h-24 rounded-2xl glass mx-auto mb-6 flex items-center justify-center"
+              style={{ boxShadow: `0 0 40px hsl(${dept.hslColor} / 0.3)` }}
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ repeat: Infinity, duration: 3 }}
+            >
+              <Icon className={`w-12 h-12 ${dept.colorClass}`} />
+            </motion.div>
             <h1 className="font-heading text-2xl md:text-4xl font-bold mb-3">{dept.name}</h1>
             <p className="font-body text-muted-foreground max-w-2xl mx-auto">{dept.subtitle}</p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="glass rounded-2xl p-8 mb-8 text-center">
-            <p className="font-body text-foreground/80 leading-relaxed max-w-3xl mx-auto">{dept.description}</p>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="glass rounded-2xl p-8 mb-8 text-center max-w-3xl mx-auto">
+            <p className="font-body text-foreground/80 leading-relaxed">{dept.description}</p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className={`glass rounded-2xl p-6 mb-16 ${dept.borderColor} border`}>
-            <h3 className="font-heading text-xs uppercase tracking-wider text-muted-foreground mb-2">Misión</h3>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className={`glass rounded-2xl p-6 mb-16 ${dept.borderColor} border max-w-3xl mx-auto`}>
+            <h3 className="font-heading text-xs uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-2">
+              <Zap className="w-3 h-3 text-primary" /> Misión
+            </h3>
             <p className="font-body text-foreground/90 leading-relaxed">{dept.mission}</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Tracks - creative layout like reference */}
-      <section className="py-16 section-darker">
-        <div className="container mx-auto px-6 max-w-5xl">
+      {/* Tracks — Quantum Timeline */}
+      <section className="py-20 section-darker relative overflow-hidden">
+        <div className="absolute inset-0 quantum-grid opacity-5" />
+
+        <div className="container mx-auto px-6 max-w-4xl relative z-10">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="font-heading text-xl md:text-2xl font-bold text-center mb-12"
+            className="font-heading text-xl md:text-2xl font-bold text-center mb-4"
           >
             Líneas de <span className="text-gradient-quantum">Acción</span>
           </motion.h2>
+          <p className="font-body text-sm text-muted-foreground text-center mb-14 max-w-md mx-auto">
+            Cada línea de acción es un estado activo del departamento. Haz clic para colapsar y observar.
+          </p>
 
+          {/* Vertical energy line */}
           <div className="relative">
-            {/* Center line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent hidden md:block" />
+            <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5">
+              <div className="w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
+              {/* Animated pulse */}
+              <motion.div
+                className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-primary/60 to-transparent rounded-full"
+                animate={{ top: ["0%", "100%"] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+              />
+            </div>
 
-            {dept.tracks.map((track, i) => {
-              const isLeft = i % 2 === 0;
-              const TrackIcon = track.icon;
-              return (
-                <motion.div
-                  key={track.title}
-                  initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`relative md:w-[45%] mb-10 ${isLeft ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"}`}
-                >
-                  {/* Connector dot */}
-                  <div className={`hidden md:block absolute top-6 w-3 h-3 rounded-full bg-primary ${isLeft ? "-right-1.5" : "-left-1.5"}`} />
+            <div className="space-y-6">
+              {dept.tracks.map((track, i) => {
+                const isLeft = i % 2 === 0;
+                const isExpanded = expandedTrack === i;
+                const TrackIcon = track.icon;
 
-                  <div className={`glass rounded-2xl p-6 group hover:${dept.glowClass.replace("shadow-", "shadow-")} transition-all duration-300 ${dept.borderColor} border hover:border-opacity-60`}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        <TrackIcon className={`w-5 h-5 ${dept.colorClass}`} />
-                      </div>
-                      <h3 className="font-heading text-sm font-bold text-accent">{track.title}</h3>
+                return (
+                  <motion.div
+                    key={track.title}
+                    initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className={`relative pl-16 md:pl-0 ${isLeft ? "md:pr-[calc(50%+2rem)] md:text-right" : "md:pl-[calc(50%+2rem)]"}`}
+                  >
+                    {/* Node on the timeline */}
+                    <div className={`absolute left-4 md:left-1/2 md:-translate-x-1/2 top-4 z-10`}>
+                      <motion.div
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-500 ${
+                          isExpanded ? "border-primary bg-primary" : "border-border/50 bg-secondary"
+                        }`}
+                        animate={isExpanded ? { scale: [1, 1.3, 1] } : {}}
+                        transition={{ repeat: isExpanded ? Infinity : 0, duration: 2 }}
+                      >
+                        <div className={`w-1.5 h-1.5 rounded-full ${isExpanded ? "bg-primary-foreground" : "bg-primary/50"}`} />
+                      </motion.div>
                     </div>
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed">{track.description}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
+
+                    {/* Card */}
+                    <button
+                      onClick={() => setExpandedTrack(isExpanded ? null : i)}
+                      className={`w-full text-left glass rounded-xl transition-all duration-500 group overflow-hidden ${
+                        isExpanded ? `border ${dept.borderColor}` : "border border-transparent hover:border-border/30"
+                      }`}
+                      style={{
+                        boxShadow: isExpanded ? `0 0 30px hsl(${dept.hslColor} / 0.15)` : "none",
+                      }}
+                    >
+                      {/* Header — always visible */}
+                      <div className={`p-5 flex items-center gap-4 ${isLeft ? "md:flex-row-reverse md:text-right" : ""}`}>
+                        <div
+                          className="w-10 h-10 rounded-xl glass flex items-center justify-center shrink-0 transition-all duration-300"
+                          style={{
+                            boxShadow: isExpanded ? `0 0 15px hsl(${dept.hslColor} / 0.3)` : "none",
+                          }}
+                        >
+                          <TrackIcon className={`w-5 h-5 ${dept.colorClass}`} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-heading text-sm font-bold text-accent leading-tight">{track.title}</h3>
+                        </div>
+                        <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-300 shrink-0 ${isExpanded ? "rotate-180" : ""}`} />
+                      </div>
+
+                      {/* Expanded content */}
+                      <AnimatePresence>
+                        {isExpanded && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="overflow-hidden"
+                          >
+                            <div className={`px-5 pb-5 border-t border-border/20 pt-4 ${isLeft ? "md:text-right" : ""}`}>
+                              <div className="flex items-center gap-2 mb-2 justify-start">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                                <span className="font-heading text-[10px] uppercase tracking-wider text-muted-foreground">Estado activo</span>
+                              </div>
+                              <p className="font-body text-sm text-muted-foreground leading-relaxed text-left">{track.description}</p>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </button>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -207,13 +293,27 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
               viewport={{ once: true }}
               className="glass rounded-2xl p-8"
             >
-              <h3 className="font-heading text-sm font-bold mb-4">Proyectos Activos</h3>
-              <ul className="space-y-3">
-                {dept.projects.map((p) => (
-                  <li key={p} className="flex items-center gap-3 group">
-                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
+              <h3 className="font-heading text-sm font-bold mb-6 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Proyectos Activos
+              </h3>
+              <ul className="space-y-4">
+                {dept.projects.map((p, i) => (
+                  <motion.li
+                    key={p}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center gap-3 group"
+                  >
+                    <div
+                      className="w-8 h-8 rounded-lg glass flex items-center justify-center shrink-0 group-hover:border-primary/30 transition-all"
+                      style={{ boxShadow: `0 0 10px hsl(${dept.hslColor} / 0.1)` }}
+                    >
+                      <Zap className={`w-3.5 h-3.5 ${dept.colorClass}`} />
+                    </div>
                     <span className="font-body text-sm text-muted-foreground group-hover:text-foreground transition-colors">{p}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>
