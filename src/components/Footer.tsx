@@ -27,9 +27,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center glow-purple">
-                <span className="font-heading text-primary text-xs font-bold">Q</span>
-              </div>
+              <img src="/src/assets/img/logo.png" alt="QuantumHub Peru Logo" className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] object-contain" />
               <span className="font-heading text-sm font-bold tracking-widest">QUANTUMHUB PERU</span>
             </div>
             <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6 max-w-sm">

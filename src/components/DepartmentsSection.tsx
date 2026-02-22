@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Atom, BookOpen, Lightbulb, Megaphone, Users, ArrowRight, X, Zap, Globe, Target } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Line, Billboard, Text } from "@react-three/drei";
+import * as THREE from "three";
 
 interface Department {
   id: string;
@@ -65,11 +68,118 @@ const departments: Department[] = [
   },
 ];
 
+const Sphere = ({ color }: { color: string }) => {
+  return (
+    <mesh rotation={[Math.PI / 2, 0, 0]}>
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial color={color} transparent opacity={0.2} wireframe />
+    </mesh>
+  );
+};
+
+const Lines = ({ theta, phi }: { theta: number, phi: number }) => {
+  const pointsMeridian = [];
+  const pointsParallel = [];
+
+  for (let i = 0; i <= 100; i++) {
+    const angle = (i / 100) * 2 * Math.PI;
+    pointsMeridian.push(
+      new THREE.Vector3(
+        Math.sin(angle) * Math.cos(phi),
+        Math.sin(angle) * Math.sin(phi),
+        Math.cos(angle)
+      )
+    );
+  }
+
+  for (let i = 0; i <= 100; i++) {
+    const angle = (i / 100) * 2 * Math.PI;
+    pointsParallel.push(
+      new THREE.Vector3(
+        Math.sin(theta) * Math.cos(angle),
+        Math.sin(theta) * Math.sin(angle),
+        Math.cos(theta)
+      )
+    );
+  }
+
+  const intersectionPoint = new THREE.Vector3(
+    Math.sin(theta) * Math.cos(phi),
+    Math.sin(theta) * Math.sin(phi),
+    Math.cos(theta)
+  );
+
+  const intersectionLinePoints = [
+    new THREE.Vector3(0, 0, 0),
+    intersectionPoint,
+  ];
+
+  return (
+    <>
+      {/* Quantum Blue */}
+      <Line points={pointsMeridian} color="#00A4EF" lineWidth={4} />
+      {/* Quantum Pink */}
+      <Line points={pointsParallel} color="#FF0080" lineWidth={4} />
+      {/* Primary Purple */}
+      <Line points={intersectionLinePoints} color="#856BFF" lineWidth={7} />
+    </>
+  );
+};
+
+const Axes = () => {
+  const axisLength = 1.5;
+
+  return (
+    <>
+      <Line points={[new THREE.Vector3(0, 0, 0), new THREE.Vector3(axisLength, 0, 0)]} color="#FF0080" lineWidth={2} />
+      <Billboard position={[axisLength + 0.1, 0, 0]}>
+        <Text fontSize={0.25} color="white">X</Text>
+      </Billboard>
+
+      <Line points={[new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, axisLength, 0)]} color="#10B981" lineWidth={2} />
+      <Billboard position={[0, axisLength + 0.1, 0]}>
+        <Text fontSize={0.25} color="white">Y</Text>
+      </Billboard>
+
+      <Line points={[new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, axisLength)]} color="#00A4EF" lineWidth={2} />
+      <Billboard position={[0, 0, axisLength + 0.1]}>
+        <Text fontSize={0.25} color="white">Z</Text>
+      </Billboard>
+    </>
+  );
+};
+
 const DepartmentsSection = () => {
   const [selected, setSelected] = useState<Department | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
 
-  const radius = 200;
+  // Responsive radius for departments layout
+  const [radius, setRadius] = useState(220);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Scale down radius smoothly across breakpoints
+      if (window.innerWidth < 480) {
+        setRadius(130);
+      } else if (window.innerWidth < 640) {
+        setRadius(160);
+      } else if (window.innerWidth < 1024) {
+        setRadius(200);
+      } else {
+        setRadius(220);
+      }
+    };
+
+    // Initial call
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Hardcode a dynamic-looking state for the Bloch vector pointing vaguely at one of the top categories
+  const theta = (Math.PI * 3) / 10;
+  const phi = (Math.PI * 7) / 12;
 
   return (
     <section className="relative py-32 section-dark overflow-hidden">
@@ -97,94 +207,115 @@ const DepartmentsSection = () => {
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
 
           {/* Orbital visualization */}
-          <div className="relative w-full max-w-lg mx-auto aspect-square flex items-center justify-center shrink-0">
-            {/* Orbit rings */}
-            <div className="absolute w-[400px] h-[400px] rounded-full border border-border/15" />
-            <div className="absolute w-[300px] h-[300px] rounded-full border border-border/10" />
-            <div className="absolute w-[200px] h-[200px] rounded-full border border-border/5" />
+          <div className="relative w-full max-w-lg mx-auto aspect-square flex items-center justify-center shrink-0 min-h-[350px] lg:min-h-0">
 
-            {/* Animated glow ring */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-              className="absolute w-[400px] h-[400px] rounded-full"
-              style={{
-                background: "conic-gradient(from 0deg, transparent 0%, hsl(270 80% 60% / 0.15) 25%, transparent 50%, hsl(330 80% 60% / 0.1) 75%, transparent 100%)",
-              }}
-            />
+            {/* Starry Particles Background */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none rounded-full flex items-center justify-center">
+              {[...Array(40)].map((_, i) => (
+                <motion.div
+                  key={`star-${i}`}
+                  className="absolute rounded-full bg-white"
+                  style={{
+                    width: Math.random() * 3 + 1 + "px",
+                    height: Math.random() * 3 + 1 + "px",
+                    left: Math.random() * 100 + "%",
+                    top: Math.random() * 100 + "%",
+                    opacity: Math.random() * 0.5 + 0.3,
+                  }}
+                  animate={{
+                    y: [0, Math.random() * -50 - 20],
+                    x: [0, Math.random() * 40 - 20],
+                    opacity: [Math.random() * 0.5 + 0.3, 0, Math.random() * 0.5 + 0.3],
+                    scale: [1, Math.random() * 1.5 + 0.5, 1],
+                  }}
+                  transition={{
+                    duration: Math.random() * 10 + 10,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                />
+              ))}
+            </div>
 
-            {/* Core */}
-            <motion.div
-              animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-quantum-pink flex items-center justify-center glow-purple z-10 relative"
-            >
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-quantum-pink opacity-50 blur-xl" />
-              <span className="font-heading text-sm font-bold text-primary-foreground tracking-wider relative z-10">QH</span>
-            </motion.div>
+            {/* The React Three Fiber Bloch Sphere */}
+            <div className="absolute inset-0 z-10 p-4">
+              <Canvas camera={{ position: [2, 0, 4], up: [1, 0, 0] }}>
+                <group rotation={[0, Math.PI / 2, 0]}>
+                  <group rotation={[0, 0, 145 * (Math.PI / 180)]}>
+                    <ambientLight intensity={1} />
+                    <spotLight position={[15, 20, 5]} angle={0.9} />
+                    <Sphere color="lightblue" />
+                    <Lines theta={theta} phi={phi} />
+                    <Axes />
+                    <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1.5} />
+                  </group>
+                </group>
+              </Canvas>
+            </div>
 
-            {/* Department nodes */}
-            {departments.map((dept) => {
-              const rad = (dept.angle * Math.PI) / 180;
-              const x = Math.cos(rad) * radius;
-              const y = Math.sin(rad) * radius;
-              const isHovered = hovered === dept.id;
-              const isSelected = selected?.id === dept.id;
+            {/* Department nodes (floating above) */}
+            <div className="absolute inset-0 z-20 pointer-events-none">
+              {departments.map((dept) => {
+                const rad = (dept.angle * Math.PI) / 180;
+                const x = Math.cos(rad) * radius;
+                const y = Math.sin(rad) * radius;
+                const isHovered = hovered === dept.id;
+                const isSelected = selected?.id === dept.id;
 
-              return (
-                <motion.button
-                  key={dept.id}
-                  className="absolute z-20"
-                  style={{ left: `calc(50% + ${x}px - 32px)`, top: `calc(50% + ${y}px - 32px)` }}
-                  onMouseEnter={() => setHovered(dept.id)}
-                  onMouseLeave={() => setHovered(null)}
-                  onClick={() => setSelected(dept)}
-                  whileHover={{ scale: 1.25 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {/* Connection line */}
-                  <svg className="absolute pointer-events-none" style={{ width: "400px", height: "400px", left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}>
-                    <line
-                      x1="200" y1="200"
-                      x2={200 - x} y2={200 - y}
-                      stroke={isHovered || isSelected ? `hsl(${dept.hslColor})` : "hsl(222 30% 18%)"}
-                      strokeWidth={isHovered || isSelected ? "2" : "1"}
-                      opacity={isHovered || isSelected ? 0.7 : 0.2}
-                      className="transition-all duration-500"
-                    />
-                    {/* Energy pulse along line */}
-                    {(isHovered || isSelected) && (
-                      <circle r="3" fill={`hsl(${dept.hslColor})`} opacity="0.8">
-                        <animateMotion
-                          dur="1.5s"
-                          repeatCount="indefinite"
-                          path={`M200,200 L${200 - x},${200 - y}`}
-                        />
-                      </circle>
-                    )}
-                  </svg>
-
-                  {/* Node */}
-                  <div
-                    className={`relative w-16 h-16 rounded-2xl glass flex items-center justify-center transition-all duration-500 ${
-                      isHovered || isSelected ? "border-primary/40" : ""
-                    }`}
-                    style={{
-                      boxShadow: isHovered || isSelected ? `0 0 30px hsl(${dept.hslColor} / 0.4), 0 0 60px hsl(${dept.hslColor} / 0.15)` : "none",
-                    }}
+                return (
+                  <motion.button
+                    key={dept.id}
+                    className="absolute z-20 pointer-events-auto"
+                    style={{ left: `calc(50% + ${x}px - 32px)`, top: `calc(50% + ${y}px - 32px)` }}
+                    onMouseEnter={() => setHovered(dept.id)}
+                    onMouseLeave={() => setHovered(null)}
+                    onClick={() => setSelected(dept)}
+                    whileHover={{ scale: 1.25 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <dept.icon className={`w-7 h-7 ${dept.color} transition-all duration-300 ${isHovered ? "scale-110" : ""}`} />
-                  </div>
+                    {/* Connection line */}
+                    <svg className="absolute pointer-events-none" style={{ width: "400px", height: "400px", left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}>
+                      <line
+                        x1="200" y1="200"
+                        x2={200 - x} y2={200 - y}
+                        stroke={isHovered || isSelected ? `hsl(${dept.hslColor})` : "hsl(222 30% 18%)"}
+                        strokeWidth={isHovered || isSelected ? "2" : "1"}
+                        opacity={isHovered || isSelected ? 0.7 : 0.2}
+                        className="transition-all duration-500"
+                      />
+                      {/* Energy pulse along line */}
+                      {(isHovered || isSelected) && (
+                        <circle r="3" fill={`hsl(${dept.hslColor})`} opacity="0.8">
+                          <animateMotion
+                            dur="1.5s"
+                            repeatCount="indefinite"
+                            path={`M200,200 L${200 - x},${200 - y}`}
+                          />
+                        </circle>
+                      )}
+                    </svg>
 
-                  {/* Label */}
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center">
-                    <p className={`font-heading text-[10px] font-bold transition-colors duration-300 ${isHovered || isSelected ? "text-foreground" : "text-muted-foreground"}`}>
-                      {dept.name}
-                    </p>
-                  </div>
-                </motion.button>
-              );
-            })}
+                    {/* Node */}
+                    <div
+                      className={`relative w-16 h-16 rounded-2xl glass flex items-center justify-center transition-all duration-500 ${isHovered || isSelected ? "border-primary/40" : ""
+                        }`}
+                      style={{
+                        boxShadow: isHovered || isSelected ? `0 0 30px hsl(${dept.hslColor} / 0.4), 0 0 60px hsl(${dept.hslColor} / 0.15)` : "none",
+                      }}
+                    >
+                      <dept.icon className={`w-7 h-7 ${dept.color} transition-all duration-300 ${isHovered ? "scale-110" : ""}`} />
+                    </div>
+
+                    {/* Label */}
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center">
+                      <p className={`font-heading text-[10px] font-bold transition-colors duration-300 ${isHovered || isSelected ? "text-foreground" : "text-muted-foreground"}`}>
+                        {dept.name}
+                      </p>
+                    </div>
+                  </motion.button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Info panel (right side on desktop) */}
@@ -321,7 +452,7 @@ const DepartmentsSection = () => {
           )}
         </AnimatePresence>
       </div>
-    </section>
+    </section >
   );
 };
 

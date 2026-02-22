@@ -1,23 +1,24 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import countriesData from "../assets/mapData.json";
+import WorldMapBackground from "./WorldMapBackground";
 
 interface CountryData {
   name: string;
-  flag: string;
+  code: string;
   x: number;
   y: number;
   level: "high" | "medium" | "low" | "peru";
   info: string[];
 }
 
-const countries: CountryData[] = [
-  { name: "Estados Unidos", flag: "🇺🇸", x: 22, y: 38, level: "high", info: ["USD 3.7B invertidos", "50+ centros de investigación", "Programas en Stanford, MIT, Caltech"] },
-  { name: "China", flag: "🇨🇳", x: 75, y: 40, level: "high", info: ["Inversión estatal masiva", "Infraestructura nacional cuántica", "Satélite cuántico Micius"] },
-  { name: "Alemania", flag: "🇩🇪", x: 50, y: 32, level: "medium", info: ["€2B en programa nacional", "Colaboración europea", "Quantum hubs regionales"] },
-  { name: "Canadá", flag: "🇨🇦", x: 20, y: 28, level: "medium", info: ["Hogar de D-Wave", "Instituto Perimeter", "Programa nacional activo"] },
-  { name: "Japón", flag: "🇯🇵", x: 83, y: 38, level: "medium", info: ["Riken Institute", "Inversión creciente", "Alianzas con IBM y Google"] },
-  { name: "Perú", flag: "🇵🇪", x: 24, y: 62, level: "peru", info: ["Inversión pública: mínima", "Infraestructura especializada: inexistente", "Programas formales: escasos"] },
-];
+const flagModules = import.meta.glob('../assets/svg-flags/*.svg', { eager: true, as: 'url' }) as Record<string, string>;
+
+const getFlagUrl = (code: string) => {
+  return flagModules[`../assets/svg-flags/${code.toLowerCase()}.svg`] || '';
+};
+
+const countries = countriesData as CountryData[];
 
 const levelColors = {
   high: "bg-quantum-blue shadow-[0_0_15px_hsl(220,90%,56%,0.5)]",
@@ -46,26 +47,31 @@ const WorldMapSection = () => {
         </motion.div>
 
         {/* Map area */}
-        <div className="relative w-full max-w-5xl mx-auto aspect-[2/1] rounded-2xl glass overflow-hidden">
-          {/* Simplified world shape using dots pattern */}
-          <div className="absolute inset-0 quantum-grid opacity-30" />
+        <div className="relative w-full max-w-5xl mx-auto aspect-[2/1] rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(70,188,174,0.3)]">
+          {/* SVG Map Background */}
+          <WorldMapBackground />
 
           {/* Country dots */}
           {countries.map((c) => (
-            <motion.button
-              key={c.name}
-              className={`absolute w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${levelColors[c.level]} ${
-                active?.name === c.name ? "scale-150 z-20" : "hover:scale-125"
-              }`}
-              style={{ left: `${c.x}%`, top: `${c.y}%`, transform: "translate(-50%, -50%)" }}
+            <motion.div
+              key={c.code}
+              className={`absolute w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 lg:w-8 lg:h-8 rounded-full cursor-pointer transition-all duration-300 border-[1px] md:border-[1.5px] overflow-hidden shadow-sm md:shadow-md bg-white ${active?.code === c.code ? "scale-[2.5] md:scale-150 z-20 border-white shadow-xl" : "border-white/70 hover:scale-150 md:hover:scale-125 hover:border-white"
+                }`}
+              style={{
+                left: `${c.x}%`,
+                top: `${c.y}%`,
+                transform: "translate(-50%, -50%)",
+                backgroundImage: `url(${getFlagUrl(c.code)})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                boxShadow: c.level === 'peru' ? '0 0 15px hsl(45,100%,55%,0.5)' : undefined
+              }}
               onMouseEnter={() => setActive(c)}
               onMouseLeave={() => setActive(null)}
               whileHover={{ scale: 1.4 }}
-              animate={c.level === "peru" ? { scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] } : {}}
+              animate={c.level === "peru" ? { scale: [1, 1.25, 1], borderColor: ["rgba(255,255,255,0.7)", "rgba(255,255,255,1)", "rgba(255,255,255,0.7)"] } : {}}
               transition={c.level === "peru" ? { repeat: Infinity, duration: 2 } : {}}
-            >
-              <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-lg">{c.flag}</span>
-            </motion.button>
+            />
           ))}
 
           {/* Tooltip */}
@@ -83,7 +89,8 @@ const WorldMapSection = () => {
                 }}
               >
                 <p className="font-heading text-sm font-bold mb-2 flex items-center gap-2">
-                  <span className="text-xl">{active.flag}</span> {active.name}
+                  <img src={getFlagUrl(active.code)} alt={active.name} className="w-6 h-4 object-cover rounded shadow-sm" />
+                  <span>{active.name}</span>
                 </p>
                 <ul className="space-y-1">
                   {active.info.map((line, i) => (
@@ -98,13 +105,6 @@ const WorldMapSection = () => {
               </motion.div>
             )}
           </AnimatePresence>
-
-          {/* Legend */}
-          <div className="absolute bottom-4 right-4 flex gap-4 text-xs font-body text-muted-foreground">
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-quantum-blue" /> Alta inversión</span>
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-quantum-purple" /> Media</span>
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-quantum-yellow" /> Perú</span>
-          </div>
         </div>
       </div>
     </section>

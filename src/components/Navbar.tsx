@@ -38,15 +38,12 @@ const Navbar = () => {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-strong shadow-lg shadow-primary/5" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass-strong shadow-lg shadow-primary/5" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center glow-purple group-hover:scale-110 transition-transform">
-            <span className="font-heading text-primary text-xs font-bold">Q</span>
-          </div>
+          <img src="/src/assets/img/logo.png" alt="QuantumHub Peru Logo" className="w-[28px] h-[28px] md:w-[35px] md:h-[35px] object-contain group-hover:scale-110 transition-transform" />
           <span className="font-heading text-sm font-bold tracking-widest text-foreground">
             QUANTUMHUB <span className="text-muted-foreground font-normal">PERU</span>
           </span>
@@ -133,9 +130,8 @@ const Navbar = () => {
                     <Link
                       to={item.path}
                       onClick={() => !item.hasDropdown && setMobileOpen(false)}
-                      className={`flex-1 text-sm font-body py-2 ${
-                        location.pathname === item.path ? "text-foreground" : "text-muted-foreground"
-                      }`}
+                      className={`flex-1 text-sm font-body py-2 ${location.pathname === item.path ? "text-foreground" : "text-muted-foreground"
+                        }`}
                     >
                       {item.label}
                     </Link>
