@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Line, Billboard, Text } from "@react-three/drei";
 import * as THREE from "three";
+import { createPortal } from "react-dom";
 
 interface Department {
   id: string;
@@ -319,7 +320,7 @@ const DepartmentsSection = () => {
           </div>
 
           {/* Info panel (right side on desktop) */}
-          <div className="w-full lg:w-96 min-h-[280px] flex items-center justify-center">
+          <div className="w-full lg:w-96 min-h-[280px] flex items-center justify-center relative z-20">
             <AnimatePresence mode="wait">
               {hovered && !selected ? (
                 <motion.div
@@ -327,28 +328,28 @@ const DepartmentsSection = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  className="glass rounded-2xl p-6 w-full"
+                  className="glass-strong bg-background/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 w-full shadow-[0_8px_32px_rgba(0,0,0,0.5)] transform transition-transform"
                 >
                   {(() => {
                     const dept = departments.find((d) => d.id === hovered)!;
                     return (
                       <>
-                        <div className="flex items-center gap-3 mb-4">
+                        <div className="flex items-center gap-4 mb-5">
                           <div
-                            className="w-10 h-10 rounded-xl glass flex items-center justify-center"
-                            style={{ boxShadow: `0 0 20px hsl(${dept.hslColor} / 0.3)` }}
+                            className="w-14 h-14 rounded-2xl bg-black/40 flex items-center justify-center border border-white/5"
+                            style={{ boxShadow: `0 0 20px hsl(${dept.hslColor} / 0.4)` }}
                           >
-                            <dept.icon className={`w-5 h-5 ${dept.color}`} />
+                            <dept.icon className={`w-7 h-7 ${dept.color}`} />
                           </div>
                           <div>
-                            <h4 className="font-heading text-sm font-bold">{dept.name}</h4>
-                            <p className="font-body text-[10px] text-muted-foreground">{dept.subtitle}</p>
+                            <h4 className="font-heading text-lg font-bold text-white tracking-wide">{dept.name}</h4>
+                            <p className="font-body text-xs text-muted-foreground">{dept.subtitle}</p>
                           </div>
                         </div>
-                        <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">{dept.description}</p>
-                        <div className="flex flex-wrap gap-1.5">
+                        <p className="font-body text-sm text-foreground/80 leading-relaxed mb-6">{dept.description}</p>
+                        <div className="flex flex-wrap gap-2">
                           {dept.highlights.map((h) => (
-                            <span key={h} className="px-2 py-0.5 rounded-full text-[10px] font-body bg-primary/10 text-primary/70">{h}</span>
+                            <span key={h} className="px-3 py-1 rounded-full text-[10px] font-body bg-primary/10 text-primary border border-primary/20">{h}</span>
                           ))}
                         </div>
                       </>
@@ -374,83 +375,166 @@ const DepartmentsSection = () => {
               ) : null}
             </AnimatePresence>
           </div>
+
         </div>
 
-        {/* Expanded modal */}
-        <AnimatePresence>
-          {selected && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
-            >
-              <div className="absolute inset-0 bg-background/85 backdrop-blur-md" onClick={() => setSelected(null)} />
+        {/* Expanded modal (Fixed z-index and redesigned) */}
+        {createPortal(
+          <AnimatePresence>
+            {selected && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 30 }}
-                transition={{ type: "spring", damping: 25 }}
-                className="relative glass-strong rounded-2xl p-8 max-w-lg w-full z-10"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
               >
-                <button onClick={() => setSelected(null)} className="absolute top-4 right-4 w-8 h-8 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
-                  <X className="w-4 h-4" />
-                </button>
-
-                {/* Header */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div
-                    className="w-16 h-16 rounded-2xl glass flex items-center justify-center"
-                    style={{ boxShadow: `0 0 30px hsl(${selected.hslColor} / 0.4)` }}
-                  >
-                    <selected.icon className={`w-8 h-8 ${selected.color}`} />
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-lg font-bold">{selected.name}</h3>
-                    <p className="font-body text-xs text-muted-foreground">{selected.subtitle}</p>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="space-y-5 mb-6">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Globe className="w-3.5 h-3.5 text-primary" />
-                      <h4 className="font-heading text-xs uppercase tracking-wider text-muted-foreground">Descripción</h4>
-                    </div>
-                    <p className="font-body text-sm text-foreground/80 leading-relaxed">{selected.description}</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Target className="w-3.5 h-3.5 text-primary" />
-                      <h4 className="font-heading text-xs uppercase tracking-wider text-muted-foreground">Misión</h4>
-                    </div>
-                    <p className="font-body text-sm text-foreground/80 leading-relaxed">{selected.mission}</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="w-3.5 h-3.5 text-primary" />
-                      <h4 className="font-heading text-xs uppercase tracking-wider text-muted-foreground">Highlights</h4>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {selected.highlights.map((h) => (
-                        <span key={h} className="px-3 py-1 rounded-full text-xs font-body bg-primary/10 text-primary/80 border border-primary/20">{h}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <Link
-                  to={selected.path}
-                  className="btn-quantum inline-flex items-center gap-2 text-xs w-full justify-center"
+                {/* Full screen backdrop blur */}
+                <div
+                  className="absolute inset-0 bg-background/60 backdrop-blur-2xl transition-all duration-300"
                   onClick={() => setSelected(null)}
+                />
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 30 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                  className="relative bg-[#080B14]/90 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-8 sm:p-10 max-w-lg w-full z-10 overflow-hidden"
+                  style={{
+                    boxShadow: `0 0 0 1px hsl(${selected.hslColor} / 0.2), 0 30px 60px -15px rgba(0,0,0,0.8), 0 0 80px -20px hsl(${selected.hslColor} / 0.15)`
+                  }}
                 >
-                  Ver Departamento <ArrowRight className="w-4 h-4" />
-                </Link>
+                  {/* Decorative Glowing Orbs behind the card */}
+                  <div
+                    className="absolute -top-32 -right-32 w-64 h-64 rounded-full blur-[80px] opacity-30 pointer-events-none"
+                    style={{ backgroundColor: `hsl(${selected.hslColor})` }}
+                  />
+                  <div
+                    className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full blur-[80px] opacity-20 pointer-events-none"
+                    style={{ backgroundColor: `hsl(${selected.hslColor})` }}
+                  />
+
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setSelected(null)}
+                    className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 hover:bg-white/15 border border-white/5 flex items-center justify-center text-white/50 hover:text-white transition-all duration-300 z-20 group"
+                  >
+                    <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
+                  </button>
+
+                  {/* Header Section */}
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-10 relative z-10 text-center sm:text-left">
+                    <div
+                      className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-[1.5rem] bg-gradient-to-br from-black/80 to-black/40 flex items-center justify-center border border-white/10 relative group"
+                    >
+                      <div
+                        className="absolute inset-0 rounded-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        style={{ boxShadow: `inset 0 0 20px hsl(${selected.hslColor} / 0.3)` }}
+                      />
+                      <selected.icon
+                        className="w-10 h-10 sm:w-12 sm:h-12 relative z-10 filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-transform duration-500 group-hover:scale-110"
+                        style={{ color: `hsl(${selected.hslColor})` }}
+                      />
+                    </div>
+                    <div className="pt-2">
+                      <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-wide mb-1">
+                        {selected.name}
+                      </h3>
+                      <div
+                        className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border"
+                        style={{
+                          backgroundColor: `hsl(${selected.hslColor} / 0.1)`,
+                          color: `hsl(${selected.hslColor})`,
+                          borderColor: `hsl(${selected.hslColor} / 0.2)`
+                        }}
+                      >
+                        {selected.subtitle}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Vertical Divider */}
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+
+                  {/* Content Sections */}
+                  <div className="space-y-8 mb-10 relative z-10">
+                    {/* Descripción */}
+                    <div className="group">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Globe className="w-4 h-4" style={{ color: `hsl(${selected.hslColor})` }} />
+                        <h4 className="font-heading text-xs uppercase tracking-[0.2em] font-bold text-white/70">Descripción</h4>
+                      </div>
+                      <p className="font-body text-[15px] sm:text-base text-white/60 leading-relaxed font-light group-hover:text-white/80 transition-colors">
+                        {selected.description}
+                      </p>
+                    </div>
+
+                    {/* Misión */}
+                    <div className="group">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Target className="w-4 h-4" style={{ color: `hsl(${selected.hslColor})` }} />
+                        <h4 className="font-heading text-xs uppercase tracking-[0.2em] font-bold text-white/70">Misión</h4>
+                      </div>
+                      <div className="pl-4 border-l-2" style={{ borderColor: `hsl(${selected.hslColor} / 0.4)` }}>
+                        <p className="font-body text-[15px] sm:text-base text-white/80 font-medium leading-relaxed italic">
+                          "{selected.mission}"
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Highlights */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-4">
+                        <Zap className="w-4 h-4" style={{ color: `hsl(${selected.hslColor})` }} />
+                        <h4 className="font-heading text-xs uppercase tracking-[0.2em] font-bold text-white/70">Highlights</h4>
+                      </div>
+                      <div className="flex flex-wrap gap-2.5">
+                        {selected.highlights.map((h, i) => (
+                          <span
+                            key={h}
+                            className="px-4 py-2 rounded-xl text-xs font-body font-medium flex items-center gap-2 transition-all hover:scale-105"
+                            style={{
+                              backgroundColor: `hsl(${selected.hslColor} / 0.05)`,
+                              color: `hsl(${selected.hslColor})`,
+                              border: `1px solid hsl(${selected.hslColor} / 0.2)`,
+                              boxShadow: `0 4px 12px hsl(${selected.hslColor} / 0.05)`
+                            }}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: `hsl(${selected.hslColor})` }} />
+                            {h}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Action Button */}
+                  <Link
+                    to={selected.path}
+                    className="relative w-full group overflow-hidden rounded-2xl p-[1px] inline-block z-10"
+                    onClick={() => setSelected(null)}
+                  >
+                    <span
+                      className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{ background: `linear-gradient(90deg, transparent, hsl(${selected.hslColor} / 0.8), transparent)` }}
+                    />
+                    <div
+                      className="relative px-8 py-4 bg-[#080B14] group-hover:bg-opacity-0 transition-colors duration-500 rounded-2xl flex items-center justify-center gap-3"
+                      style={{ border: `1px solid hsl(${selected.hslColor} / 0.3)` }}
+                    >
+                      <span className="font-heading text-sm font-bold tracking-widest uppercase text-white">
+                        Ver Departamento
+                      </span>
+                      <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+
+                </motion.div>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
       </div>
     </section >
   );
