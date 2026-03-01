@@ -471,40 +471,85 @@ const Postulacion = () => {
             </section>
 
             {/* Nuestros Colaboradores */}
-            <section className="py-16 relative">
-                <div className="container mx-auto px-6 max-w-5xl text-center">
-                    <h2 className="font-heading text-2xl font-bold mb-2">Nuestros Colaboradores</h2>
-                    <p className="text-sm text-muted-foreground mb-12">Trabajamos con las mejores instituciones para ofrecer una educación de calidad.</p>
+            <section className="py-24 relative overflow-hidden">
+                <div className="absolute inset-0 bg-background/50 z-0" />
+                <div className="container mx-auto px-6 max-w-6xl text-center relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-quantum-blue/30 text-quantum-blue mb-6"
+                    >
+                        <Users className="w-4 h-4" />
+                        <span className="text-sm font-medium">Alianzas Estratégicas</span>
+                    </motion.div>
 
-                    <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+                    <h2 className="font-heading text-4xl font-bold mb-4">Nuestros <span className="text-gradient-quantum">Colaboradores</span></h2>
+                    <p className="text-lg text-muted-foreground mb-16 max-w-2xl mx-auto">
+                        Trabajamos de la mano con las mejores instituciones para ofrecer una experiencia educativa de primer nivel en ciencia y tecnología.
+                    </p>
+
+                    <div className="flex flex-col md:flex-row justify-center items-center gap-16 md:gap-32">
+                        {/* Clubes de Ciencia Perú */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="flex flex-col items-center gap-4 group"
+                            className="flex flex-col items-center gap-6 group"
                         >
-                            <div className="w-40 h-20 relative bg-white/5 rounded-xl flex items-center justify-center p-4 border border-white/10 group-hover:border-primary/30 transition-colors">
-                                <img src={clubLogo} alt="Clubes de Ciencia Perú" className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
+                            <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-full flex items-center justify-center p-8 border-2 border-white/5 bg-background shadow-[0_0_30px_rgba(139,92,246,0.1)] group-hover:shadow-[0_0_50px_rgba(139,92,246,0.4)] transition-all duration-700">
+                                {/* Circular animated particle background */}
+                                <div className="absolute inset-0 rounded-full overflow-hidden opacity-30 group-hover:opacity-100 transition-opacity duration-700">
+                                    <ParticleNetwork particleCount={20} connectionDistance={100} speed={0.4} />
+                                </div>
+                                {/* Inner glow */}
+                                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
+
+                                <div className="relative z-10 w-40 h-40 md:w-48 md:h-48 rounded-full bg-white flex items-center justify-center p-6 shadow-xl group-hover:scale-105 transition-transform duration-500">
+                                    <img
+                                        src={clubLogo}
+                                        alt="Clubes de Ciencia Perú"
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
                             </div>
-                            <div className="text-sm">
-                                <p className="font-medium text-foreground">Clubes de Ciencia Perú</p>
-                                <p className="text-muted-foreground text-xs">Comunidad educativa</p>
+                            <div className="text-center">
+                                <h3 className="font-heading text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors">Clubes de Ciencia Perú</h3>
+                                <div className="inline-block px-3 py-1 bg-white/5 rounded-full text-muted-foreground text-xs font-medium border border-white/10 group-hover:border-primary/20 transition-colors">
+                                    Comunidad Educativa
+                                </div>
                             </div>
                         </motion.div>
 
+                        {/* Universidad de Ingeniería y Tecnología */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="flex flex-col items-center gap-4 group"
+                            transition={{ delay: 0.2 }}
+                            className="flex flex-col items-center gap-6 group"
                         >
-                            <div className="w-40 h-20 relative bg-white/5 rounded-xl flex items-center justify-center p-4 border border-white/10 group-hover:border-quantum-blue/30 transition-colors">
-                                <img src={utecLogo} alt="Universidad de Ingeniería y Tecnología" className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
+                            <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-full flex items-center justify-center p-8 border-2 border-white/5 bg-background shadow-[0_0_30px_rgba(59,130,246,0.1)] group-hover:shadow-[0_0_50px_rgba(59,130,246,0.4)] transition-all duration-700">
+                                {/* Circular animated particle background */}
+                                <div className="absolute inset-0 rounded-full overflow-hidden opacity-30 group-hover:opacity-100 transition-opacity duration-700">
+                                    <ParticleNetwork particleCount={20} connectionDistance={100} speed={0.4} />
+                                </div>
+                                {/* Inner glow */}
+                                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-quantum-blue/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700" />
+
+                                <div className="relative z-10 w-40 h-40 md:w-48 md:h-48 rounded-full bg-white flex items-center justify-center p-6 shadow-xl group-hover:scale-105 transition-transform duration-500">
+                                    <img
+                                        src={utecLogo}
+                                        alt="Universidad de Ingeniería y Tecnología"
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
                             </div>
-                            <div className="text-sm">
-                                <p className="font-medium text-foreground">Universidad de Ingeniería y Tecnología</p>
-                                <p className="text-muted-foreground text-xs">Apoyo institucional</p>
+                            <div className="text-center">
+                                <h3 className="font-heading text-xl font-bold text-foreground mb-1 group-hover:text-quantum-blue transition-colors">Universidad de Ingeniería y Tecnología</h3>
+                                <div className="inline-block px-3 py-1 bg-white/5 rounded-full text-muted-foreground text-xs font-medium border border-white/10 group-hover:border-quantum-blue/20 transition-colors">
+                                    Apoyo Institucional
+                                </div>
                             </div>
                         </motion.div>
                     </div>
