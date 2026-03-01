@@ -2,12 +2,10 @@ import { motion } from "framer-motion";
 import { Clock, Users, BookOpen, ArrowRight } from "lucide-react";
 
 const modules = [
-  "Fundamentos de Mecánica Cuántica",
-  "Qubits y Puertas Lógicas",
-  "Algoritmos Cuánticos",
-  "Circuitos con Qiskit",
-  "Aplicaciones Reales",
-  "Proyecto Final",
+  "Módulo 1: Álgebra Lineal y Pensamiento Computacional",
+  "Módulo 2: Fundamentos de Computación Cuántica",
+  "Módulo 3: Circuitos, Protocolos y Algoritmos",
+  "Winter School: Investigación en Tecnologías Cuánticas (*Por confirmar)"
 ];
 
 const CourseSection = () => {
@@ -22,7 +20,7 @@ const CourseSection = () => {
             viewport={{ once: true }}
             className="font-heading text-xs tracking-[0.3em] text-accent uppercase mb-4"
           >
-            Próximo Curso
+            Próximo Curso - Periodo 2026-I
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -39,15 +37,15 @@ const CourseSection = () => {
             transition={{ delay: 0.2 }}
             className="font-body text-muted-foreground max-w-xl mx-auto"
           >
-            Un programa diseñado para llevar los fundamentos de la computación cuántica a toda Latinoamérica, sin requisitos previos avanzados.
+            Un programa estructurado en computación cuántica, matemáticas y programación. Abierto a estudiantes de secundaria, preuniversitarios y universitarios de cualquier ciclo.
           </motion.p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {[
-            { icon: Clock, label: "Duración", value: "12 semanas" },
-            { icon: Users, label: "Modalidad", value: "100% Online" },
-            { icon: BookOpen, label: "Módulos", value: "6 módulos" },
+            { icon: Clock, label: "Duración", value: "74 horas totales" },
+            { icon: Users, label: "Modalidad", value: "Virtual + 1 Presencial" },
+            { icon: BookOpen, label: "Estructura", value: "3 Módulos + Winter School" },
           ].map((item, i) => (
             <motion.div
               key={item.label}
