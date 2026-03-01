@@ -13,6 +13,7 @@ import BlogPost from "./pages/BlogPost";
 import PlataformaPage from "./pages/PlataformaPage";
 import DepartmentPage from "./pages/DepartmentPage";
 import NotFound from "./pages/NotFound";
+import Postulacion from "./pages/Postulacion";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/curso" element={<Curso />} />
+          <Route path="/postulacion" element={<Postulacion />} />
           <Route path="/equipo" element={<Equipo />} />
           <Route path="/noticias" element={<Noticias />} />
           <Route path="/blog" element={<Blog />} />
