@@ -152,6 +152,12 @@
   .animate-grid-flow {
     animation: grid-flow 20s linear infinite;
   }
+  .animate-map-glow {
+    animation: map-glow 2s ease-in-out infinite alternate;
+  }
+  .animate-map-glow-white {
+    animation: map-glow-white 2s ease-in-out infinite alternate;
+  }
 }
 
 @keyframes float {
@@ -174,6 +180,16 @@
 @keyframes grid-flow {
   0% { background-position: 0 0; }
   100% { background-position: 60px 60px; }
+}
+
+@keyframes map-glow {
+  0% { filter: drop-shadow(0 0 1px hsl(270 80% 60% / 0.5)); }
+  100% { filter: drop-shadow(0 0 12px hsl(270 80% 60% / 1)); }
+}
+
+@keyframes map-glow-white {
+  0% { filter: drop-shadow(0 0 1px hsla(0, 0%, 100%, 0.5)); }
+  100% { filter: drop-shadow(0 0 12px hsla(0, 0%, 100%, 1)); }
 }
 
 /* Scrollbar */
