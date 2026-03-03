@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import ParticleNetwork from "@/components/ParticleNetwork";
 import { motion, AnimatePresence } from "framer-motion";
 import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award, CheckCircle, ChevronRight, ChevronLeft, PlayCircle, CalendarPlus } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import aprendiendoImg from "@/gato/aprendiendo.png";
 import LatamGlobe from "@/components/LatamGlobe";
 import QuantumMolecule from '@/components/QuantumMolecule'; // Ajusta la ruta según dónde guardaste el archivo
@@ -146,6 +146,35 @@ const Curso = () => {
   const [activeModule, setActiveModule] = useState(modules[0].id);
   const [activeHighlight, setActiveHighlight] = useState<"examen" | "admision">("examen");
 
+  const navRef = useRef<HTMLElement>(null);
+  const modulesRef = useRef<HTMLDivElement>(null);
+  const activeModuleRef = useRef<HTMLButtonElement>(null);
+
+  const scrollNav = (direction: 'left' | 'right') => {
+    if (navRef.current) {
+      navRef.current.scrollBy({ left: direction === 'left' ? -200 : 200, behavior: 'smooth' });
+    }
+  };
+
+  const scrollModules = (direction: 'left' | 'right') => {
+    if (modulesRef.current) {
+      modulesRef.current.scrollBy({ left: direction === 'left' ? -200 : 200, behavior: 'smooth' });
+    }
+  };
+
+  const handleModuleClick = (moduleId: string) => {
+    setActiveModule(moduleId);
+    // Auto-scroll to center the clicked module
+    setTimeout(() => {
+      if (activeModuleRef.current && modulesRef.current) {
+        const container = modulesRef.current;
+        const element = activeModuleRef.current;
+        const scrollLeft = element.offsetLeft - (container.offsetWidth / 2) + (element.offsetWidth / 2);
+        container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+      }
+    }, 50);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col overflow-hidden">
       <Navbar />
@@ -235,22 +264,38 @@ const Curso = () => {
             </div>
 
             {/* Sidebar - Navegación Principal */}
-            <aside className="lg:w-[220px] xl:w-[260px] shrink-0 flex flex-col z-10">
-              <div className="glass h-full rounded-2xl p-2 border border-border/50 bg-background/60 backdrop-blur-xl">
-                <nav className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-x-hidden">
+            <aside className="w-full lg:w-[220px] xl:w-[260px] shrink-0 flex flex-col z-10 mb-2 lg:mb-0">
+              <div className="glass h-full rounded-2xl p-1.5 border border-border/50 bg-background/60 backdrop-blur-xl relative">
+                <button
+                  onClick={() => scrollNav('left')}
+                  className="lg:hidden absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur border border-white/20 rounded-full p-1.5 shadow-lg text-foreground/80 hover:text-foreground"
+                  aria-label="Scroll left"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+
+                <nav ref={navRef} className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-x-hidden scroll-smooth px-8 lg:px-0 [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                   {tabs.map((tab) => (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-500 group relative overflow-hidden ${activeTab === tab.id ? "text-black font-bold bg-accent shadow-[0_0_20px_rgba(255,215,0,0.5)]" : "text-muted-foreground hover:bg-white/5"
+                      className={`flex shrink-0 items-center justify-center lg:justify-start gap-2.5 px-4 py-2.5 lg:py-3 rounded-xl transition-all duration-300 group relative overflow-hidden ${activeTab === tab.id ? "text-black font-bold bg-accent shadow-[0_0_15px_rgba(255,215,0,0.4)]" : "text-muted-foreground hover:bg-white/5"
                         }`}
                     >
                       <span className="shrink-0">{tab.icon}</span>
-                      <span className="text-sm xl:text-base tracking-tight">{tab.label}</span>
+                      <span className="text-sm tracking-tight whitespace-nowrap">{tab.label}</span>
                       {activeTab === tab.id && <ChevronRight className="ml-auto w-4 h-4 hidden lg:block" />}
                     </button>
                   ))}
                 </nav>
+
+                <button
+                  onClick={() => scrollNav('right')}
+                  className="lg:hidden absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-accent/90 backdrop-blur border border-accent rounded-full p-1.5 shadow-[0_0_15px_rgba(255,215,0,0.5)] text-black hover:bg-accent animate-pulse"
+                  aria-label="Scroll right"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
             </aside>
 
@@ -398,60 +443,92 @@ const Curso = () => {
                   {/* 2. PLAN ACADÉMICO - Módulos */}
                   {activeTab === "modulos" && (
                     <motion.div key="modulos" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col gap-6">
-                      <div className="flex gap-2 overflow-x-auto pb-2 shrink-0">
-                        {modules.map((mod) => (
-                          <button
-                            key={mod.id}
-                            onClick={() => setActiveModule(mod.id)}
-                            className={`px-6 py-2 rounded-full text-xs font-bold transition-all border shrink-0 ${activeModule === mod.id ? "bg-accent text-black border-accent" : "bg-white/5 text-muted-foreground border-white/10"
-                              }`}
-                          >
-                            {mod.id}
-                          </button>
-                        ))}
-                      </div>
-                      {modules.map((mod) => mod.id === activeModule && (
-                        <div key={mod.id} className="grid xl:grid-cols-2 gap-8 items-start h-full">
-                          <div className="space-y-4">
-                            <span className="text-primary font-bold text-xs tracking-widest uppercase">{mod.period}</span>
-                            <h3 className="text-2xl xl:text-4xl font-bold leading-tight">{mod.title}</h3>
-                            <p className="text-accent text-sm font-medium italic border-l-2 border-accent pl-4">{mod.target}</p>
-                            <p className="text-muted-foreground text-sm xl:text-base leading-relaxed">{mod.description}</p>
-                            <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
-                              <h5 className="font-bold text-xs mb-1 text-primary uppercase tracking-tighter">Prerrequisitos</h5>
-                              <p className="text-xs text-muted-foreground">{mod.prerrequisitos}</p>
-                            </div>
-                          </div>
-                          <div className="flex flex-col gap-3 lg:gap-4 h-full min-h-0">
-                            {mod.image && (
-                              <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="w-full flex items-center justify-center shrink-0"
-                              >
-                                <img
-                                  src={mod.image}
-                                  alt={mod.title}
-                                  className="w-full h-28 md:h-32 xl:h-40 object-contain drop-shadow-[0_0_25px_rgba(138,43,226,0.65)] hover:scale-105 transition-transform duration-500"
-                                />
-                              </motion.div>
-                            )}
-                            <div className="p-3 md:p-4 lg:p-5 rounded-2xl bg-black/40 border border-white/5 shadow-inner flex-1 overflow-y-auto custom-scrollbar">
-                              <h5 className="font-bold text-xs lg:text-sm mb-2 lg:mb-3 flex items-center gap-2 text-foreground/90 uppercase tracking-widest sticky top-0 bg-black/40 backdrop-blur-md pb-2 -mx-2 px-2 z-10">
-                                <CheckCircle className="w-4 h-4 text-accent" /> Temas a cubrir
-                              </h5>
-                              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 xl:gap-3">
-                                {mod.temas.map((tema, idx) => (
-                                  <li key={idx} className="flex gap-2 text-xs lg:text-sm text-muted-foreground leading-snug items-start">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                                    <span>{tema}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
+                      <div className="relative flex items-center -mx-2 px-2 lg:mx-0 lg:px-0 mb-1 lg:mb-0 mt-1 lg:mt-0">
+                        <button
+                          onClick={() => scrollModules('left')}
+                          className="lg:hidden absolute left-0 z-20 bg-background/90 backdrop-blur border border-white/20 rounded-full p-1 shadow-lg text-foreground/80 hover:text-foreground"
+                          aria-label="Scroll left"
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+
+                        <div ref={modulesRef} className="flex gap-2.5 overflow-x-auto pb-2 shrink-0 scroll-smooth px-8 lg:px-0 w-full [&::-webkit-scrollbar]:hidden snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                          {modules.map((mod) => (
+                            <button
+                              key={mod.id}
+                              ref={activeModule === mod.id ? activeModuleRef : null}
+                              onClick={() => handleModuleClick(mod.id)}
+                              className={`px-6 py-2 rounded-full text-xs font-bold transition-all duration-300 border shrink-0 shadow-sm snap-center ${activeModule === mod.id ? "bg-accent text-black border-accent shadow-[0_0_15px_rgba(255,215,0,0.5)] scale-105" : "bg-white/5 text-muted-foreground border-white/10 hover:bg-white/10"
+                                }`}
+                            >
+                              {mod.id}
+                            </button>
+                          ))}
                         </div>
-                      ))}
+
+                        <button
+                          onClick={() => scrollModules('right')}
+                          className="lg:hidden absolute right-0 z-20 bg-accent/90 backdrop-blur border border-accent rounded-full p-1 shadow-[0_0_10px_rgba(255,215,0,0.4)] text-black hover:bg-accent animate-pulse"
+                          aria-label="Scroll right"
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      <AnimatePresence mode="wait">
+                        {modules.map((mod) => {
+                          if (mod.id !== activeModule) return null;
+                          return (
+                            <motion.div
+                              key={mod.id}
+                              initial={{ opacity: 0, x: 20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -20 }}
+                              transition={{ duration: 0.3 }}
+                              className="grid xl:grid-cols-2 gap-8 items-start h-full"
+                            >
+                              <div className="space-y-4">
+                                <span className="text-primary font-bold text-xs tracking-widest uppercase">{mod.period}</span>
+                                <h3 className="text-2xl xl:text-4xl font-bold leading-tight">{mod.title}</h3>
+                                <p className="text-accent text-sm font-medium italic border-l-2 border-accent pl-4">{mod.target}</p>
+                                <p className="text-muted-foreground text-sm xl:text-base leading-relaxed">{mod.description}</p>
+                                <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
+                                  <h5 className="font-bold text-xs mb-1 text-primary uppercase tracking-tighter">Prerrequisitos</h5>
+                                  <p className="text-xs text-muted-foreground">{mod.prerrequisitos}</p>
+                                </div>
+                              </div>
+                              <div className="flex flex-col gap-3 lg:gap-4 h-full min-h-0">
+                                {mod.image && (
+                                  <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="w-full flex items-center justify-center shrink-0"
+                                  >
+                                    <img
+                                      src={mod.image}
+                                      alt={mod.title}
+                                      className="w-full h-28 md:h-32 xl:h-40 object-contain drop-shadow-[0_0_25px_rgba(138,43,226,0.65)] hover:scale-105 transition-transform duration-500"
+                                    />
+                                  </motion.div>
+                                )}
+                                <div className="p-3 md:p-4 lg:p-5 rounded-2xl bg-black/40 border border-white/5 shadow-inner flex-1 overflow-y-auto custom-scrollbar">
+                                  <h5 className="font-bold text-xs lg:text-sm mb-2 lg:mb-3 flex items-center gap-2 text-foreground/90 uppercase tracking-widest sticky top-0 bg-black/40 backdrop-blur-md pb-2 -mx-2 px-2 z-10">
+                                    <CheckCircle className="w-4 h-4 text-accent" /> Temas a cubrir
+                                  </h5>
+                                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 xl:gap-3">
+                                    {mod.temas.map((tema, idx) => (
+                                      <li key={idx} className="flex gap-2 text-xs lg:text-sm text-muted-foreground leading-snug items-start">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                                        <span>{tema}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </motion.div>
+                          );
+                        })}
+                      </AnimatePresence>
                     </motion.div>
                   )}
 
@@ -501,19 +578,7 @@ const Curso = () => {
                                 Así se calcula tu nota final
                               </h3>
                             </div>
-                            <motion.div
-                              className="relative flex items-center justify-center shrink-0"
-                              animate={{ rotate: [0, 6, -6, 0] }}
-                              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                            >
-                              <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-amber-300/70 via-accent/80 to-primary/70 flex items-center justify-center shadow-[0_0_40px_rgba(250,204,21,0.85)]">
-                                <div className="w-20 h-20 rounded-full border-2 border-dashed border-black/40 bg-black/10 flex items-center justify-center">
-                                  <span className="text-[10px] font-semibold text-black/80 uppercase tracking-[0.22em] text-center leading-tight">
-                                    100%<br />Esfuerzo
-                                  </span>
-                                </div>
-                              </div>
-                            </motion.div>
+
                           </div>
 
                           {/* contenido principal: tarjetas + gato */}
@@ -738,8 +803,8 @@ const Curso = () => {
               </div>
             </div>
           </div>
-        </section>
-      </main>
+        </section >
+      </main >
     </div >
   );
 };
