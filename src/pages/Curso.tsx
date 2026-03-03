@@ -1,7 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
-import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award, CheckCircle } from "lucide-react";
+import ParticleNetwork from "@/components/ParticleNetwork";
+import { motion, AnimatePresence } from "framer-motion";
+import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award, CheckCircle, ChevronRight, PlayCircle } from "lucide-react";
+import { useState } from "react";
+import aprendiendoImg from "@/gato/aprendiendo.png";
 
 // Modules Data
 const modules = [
@@ -83,388 +86,295 @@ const modules = [
   }
 ];
 
+const tabs = [
+  { id: "intro", label: "El Programa", icon: <Target className="w-5 h-5" /> },
+  { id: "modulos", label: "Plan Académico", icon: <Book className="w-5 h-5" /> },
+  { id: "evaluacion", label: "Evaluación", icon: <Award className="w-5 h-5" /> },
+  { id: "modalidad", label: "Modalidad", icon: <Clock className="w-5 h-5" /> },
+];
+
 const Curso = () => {
+  const [activeTab, setActiveTab] = useState("intro");
+  const [activeModule, setActiveModule] = useState(modules[0].id);
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground flex flex-col overflow-hidden">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 quantum-grid opacity-20" />
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
-
-        <div className="container relative z-10 mx-auto px-6 max-w-5xl text-center">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="font-heading text-xs tracking-[0.3em] text-accent uppercase mb-4"
-          >
-            2026 - 1 <span className="mx-2 text-muted-foreground">|</span> @quantumhub.pe
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-heading text-4xl md:text-6xl font-bold mb-6"
-          >
-            Curso de <br className="hidden md:block" /> <span className="text-gradient-quantum uppercase">Introducción a la <br /> Computación Cuántica</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-muted-foreground font-body max-w-4xl mx-auto mb-10 leading-relaxed"
-          >
-            Formación estructurada en computación cuántica para estudiantes de secundaria, preuniversitarios y universitarios de cualquier ciclo. Desarrolla competencias en física, matemáticas y programación con un equipo internacional.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <a href="https://forms.gle/9EhQgzZmTXJRtp4Q6" target="_blank" rel="noopener noreferrer" className="btn-accent-cta inline-flex items-center justify-center gap-2 px-8 py-4">
-              ¡Inscríbete Ahora! <ArrowRight className="w-5 h-5" />
-            </a>
-            <a href="https://drive.google.com/drive/folders/1nx3Z5mxqG4li_buFuObRSXhdvqdSpmLo" target="_blank" rel="noopener noreferrer" className="btn-outline-quantum inline-flex items-center justify-center gap-2 px-8 py-4">
-              Descargar Brochure <Download className="w-5 h-5" />
-            </a>
-          </motion.div>
+      <main className="flex-1 w-full h-screen pt-20 lg:pt-24 snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth">
+        <div className="fixed inset-0 pointer-events-none z-0 opacity-30 mt-20 lg:mt-24">
+          <ParticleNetwork />
         </div>
-      </section>
+        
+        {/* Section 1: Hero Section - Ajuste de altura y paddings */}
+<section className="w-full min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)] snap-start flex items-center justify-center relative z-10 px-4 sm:px-6 lg:px-8 py-4">
+  <motion.div 
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="w-full max-w-7xl min-h-[500px] h-full max-h-[750px] glass-strong rounded-3xl p-6 md:p-8 lg:p-10 relative overflow-hidden border border-primary/20 bg-card/60 backdrop-blur-xl shadow-[0_0_50px_rgba(138,43,226,0.15)] flex flex-col justify-center"
+  >
+    {/* ... (Blobs de fondo se mantienen igual) ... */}
 
-      {/* Estructura del Programa */}
-      <section className="py-20 bg-card/50 relative">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16 text-center"
-          >
-            <h2 className="font-heading text-3xl font-bold mb-4">Estructura del Programa</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Nuestro programa está dividido en 4 módulos especializados, diseñados para diferentes niveles de conocimiento y experiencia académica.
-            </p>
-          </motion.div>
+    <div className="flex flex-col md:flex-row gap-4 lg:gap-10 items-center justify-between relative z-10 flex-1">
+      <div className="md:w-1/2 lg:w-3/5 space-y-3 lg:space-y-5">
+        <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[12px] font-medium mb-1">
+          Edición 2026 - I
+        </div>
+        <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
+          Curso de <span className="text-gradient-quantum">Introducción a la Computación Cuántica</span>
+        </h1>
+        
+        <p className="text-xs md:text-sm lg:text-base text-muted-foreground leading-relaxed max-w-xl">
+          Formación en computación cuántica para estudiantes de secundaria y universitarios. Desarrolla competencias en física, matemáticas y programación.
+        </p>
 
-          {/* 1. Descripción */}
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="glass p-8 rounded-2xl border border-primary/30 h-full"
-            >
-              <h3 className="font-heading text-2xl font-bold mb-4 text-primary w-fit border-b-2 border-primary/50 pb-2">Descripción</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                En América Latina, el acceso a una formación formal en computación cuántica está limitado a niveles superiores del posgrado. Este programa representa una oportunidad única para introducir este campo a estudiantes en etapas tempranas de su trayectoria académica, con un equipo internacional comprometido.
-              </p>
-            </motion.div>
-
-            {/* 2. Público Objetivo */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="glass p-8 rounded-2xl border border-quantum-blue/30 h-full"
-            >
-              <h3 className="font-heading text-2xl font-bold mb-4 text-quantum-blue w-fit border-b-2 border-quantum-blue/50 pb-2">Público Objetivo</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                El curso fue inicialmente diseñado para estudiantes avanzados de últimos años de secundaria y universitarios de primeros ciclos. Sin embargo, esta edición es abierta a <strong>estudiantes de secundaria, preuniversitarios y universitarios de cualquier ciclo</strong>. Aunque no se requiera experiencia previa, el perfil ideal demanda una base matemática preuniversitaria establecida, constancia y curiosidad científica.
-              </p>
-            </motion.div>
+        {/* Stats reducidos ligeramente para ahorrar espacio vertical */}
+        <div className="flex items-center gap-4 py-2 lg:py-3 border-y border-border/50">
+          <div className="flex flex-col">
+            <span className="text-lg lg:text-xl font-bold text-foreground">16+</span>
+            <span className="text-[9px] lg:text-[10px] text-muted-foreground uppercase tracking-wider">Semanas</span>
           </div>
-
-          {/* 3. Requisitos y Admisión */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass p-8 rounded-2xl border border-accent/20 mb-8"
-          >
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="font-heading text-xl font-bold mb-4 flex items-center gap-2 text-accent">
-                  <Target className="w-5 h-5" /> Requisitos y Admisión
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  La inscripción al Módulo 1 es virtual y basada en un ensayo de motivación. No se exige experiencia previa para este módulo.
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Se recomienda el Módulo 1 como preparación. Quienes tengan la base necesaria pueden tomar directamente el examen de ingreso al Módulo 2.
-                </p>
-              </div>
-              <div className="flex flex-col justify-center gap-4">
-                 <div className="bg-accent/5 p-4 rounded-lg border border-accent/10">
-                  <p className="text-xs font-bold text-accent mb-1 uppercase">Examen Universal (Módulo 2):</p>
-                  <p className="text-sm text-foreground/80">Presencial en la PUCP el <strong>25 de abril de 2026</strong>. Obligatorio para pasar al Módulo 2.</p>
-                </div>
-                <div className="bg-primary/5 p-4 rounded-lg border border-primary/10">
-                   <p className="text-xs font-bold text-primary mb-1 uppercase">Selección:</p>
-                   <p className="text-sm text-foreground/80">Basada únicamente en la motivación del postulante.</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-heading text-3xl font-bold mb-4">Plan Académico</h2>
-        </motion.div>
-
-        {/* Modules List */}
-        <div className="space-y-12">
-          {modules.map((mod, i) => (
-            <motion.div
-              key={mod.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="glass rounded-2xl p-8 border hover:border-primary/50 transition-colors relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-quantum-pink" />
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="md:w-1/3">
-                  <h4 className="text-primary font-heading font-bold text-sm tracking-wider uppercase mb-2">{mod.period}</h4>
-                  <h3 className="font-heading text-2xl font-bold mb-4">{mod.id}: {mod.title}</h3>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {mod.tags.map((tag, i) => (
-                      <span key={i} className={`text-xs px-3 py-1 rounded-full border font-medium ${tag.color}`}>
-                        {tag.text}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="md:w-2/3">
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    {mod.description}
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-8">
-                    <div>
-                      <h5 className="font-heading text-sm font-semibold mb-3 flex items-center gap-2">
-                        <Book className="w-4 h-4 text-primary" /> Temas a cubrir:
-                      </h5>
-                      <ul className="space-y-2">
-                        {mod.temas.map((tema, idx) => (
-                          <li key={idx} className="flex gap-2 text-sm text-foreground/80">
-                            <CheckCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                            <span>{tema}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h5 className="font-heading text-sm font-semibold mb-3 flex items-center gap-2">
-                        <Target className="w-4 h-4 text-quantum-pink" /> Prerrequisitos:
-                      </h5>
-                      <div className="bg-background/50 rounded-lg p-4 border border-border/50">
-                        <p className="text-sm font-medium text-foreground/90">{mod.prerrequisitos}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          <div className="w-px h-6 lg:h-8 bg-border/50" />
+          <div className="flex flex-col">
+            <span className="text-lg lg:text-xl font-bold text-foreground">74</span>
+            <span className="text-[9px] lg:text-[10px] text-muted-foreground uppercase tracking-wider">Horas clase</span>
+          </div>
+          <div className="w-px h-6 lg:h-8 bg-border/50" />
+          <div className="flex flex-col">
+            <span className="text-lg lg:text-xl font-bold text-foreground">4</span>
+            <span className="text-[9px] lg:text-[10px] text-muted-foreground uppercase tracking-wider">Módulos</span>
+          </div>
         </div>
-{/* 👇 AGREGA ESTAS DOS ETIQUETAS DE CIERRE AQUÍ 👇 */}
-      </div>
-    </section>
-      {/* Metodología y Evaluación */}
-      <section className="py-20 bg-background relative overflow-hidden">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="font-heading text-3xl font-bold mb-4">Metodología y Sistema de Evaluación</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-              El curso comprende 24 clases teóricas y 12 sesiones de laboratorio, sumando un total de 74 horas.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto mt-8">
-              <div className="glass p-6 rounded-xl border border-white/5">
-                <h4 className="font-bold text-primary mb-2 flex items-center gap-2"><Book className="w-4 h-4" /> Clases Teóricas</h4>
-                <p className="text-sm text-muted-foreground">Desde el módulo 2 se abordarán conceptos de computación cuántica, matemáticas y física cuántica. En el módulo 1 se establecen las bases y conexiones.</p>
-              </div>
-              <div className="glass p-6 rounded-xl border border-white/5">
-                <h4 className="font-bold text-quantum-blue mb-2 flex items-center gap-2"><Target className="w-4 h-4" /> Laboratorios</h4>
-                <p className="text-sm text-muted-foreground">Aplicación práctica de los conceptos desarrollados en las clases teóricas, utilizando Python y Qiskit.</p>
-              </div>
-              <div className="glass p-6 rounded-xl border border-white/5">
-                <h4 className="font-bold text-amber-500 mb-2 flex items-center gap-2"><CheckCircle className="w-4 h-4" /> Tareas Semanales</h4>
-                <p className="text-sm text-muted-foreground">Ejercicios individuales orientados a reforzar contenidos. Incluyen problemas "challenge" demostrativos de nivel superior y mayor ponderación.</p>
-              </div>
-              <div className="glass p-6 rounded-xl border border-white/5">
-                <h4 className="font-bold text-quantum-pink mb-2 flex items-center gap-2"><Award className="w-4 h-4" /> Exámenes Mensuales</h4>
-                <p className="text-sm text-muted-foreground">3 evaluaciones al cierre de cada módulo para medir el progreso y comprensión. Su realización es obligatoria.</p>
-              </div>
-            </div>
-          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <a href="https://forms.gle/9EhQgzZmTXJRtp4Q6" target="_blank" className="btn-accent-cta inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-7 lg:py-3.5 text-xs lg:text-sm font-bold shadow-lg uppercase tracking-wide">
+            ¡Inscríbete Ahora! <ArrowRight className="w-4 h-4" />
+          </a>
+          <a href="https://drive.google.com/drive/folders/1nx3Z5mxqG4li_buFuObRSXhdvqdSpmLo" target="_blank" className="btn-outline-quantum inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-7 lg:py-3.5 text-xs lg:text-sm font-medium uppercase tracking-wider">
+            Brochure <Download className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      {/* Imagen con tamaño más controlado */}
+      <div className="md:w-1/2 lg:w-2/5 p-2 rounded-2xl bg-gradient-to-br from-primary/20 to-quantum-pink/20 border border-white/10 shadow-xl overflow-hidden group relative flex items-center justify-center">
+        <img 
+          src={aprendiendoImg} 
+          alt="Aprendiendo Computación Cuántica" 
+          className="w-full max-h-[25vh] md:max-h-[40vh] h-auto rounded-xl object-cover transform group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+    </div>
+    
+    {/* Indicador de scroll - bajado para que no choque */}
+    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center opacity-50">
+       <div className="w-4 h-6 rounded-full border border-primary/50 flex justify-center p-0.5">
+          <div className="w-0.5 h-1.5 bg-primary rounded-full animate-bounce" />
+       </div>
+    </div>
+  </motion.div>
+</section>
+{/* Section 2: OMNI KINETIC Engine - Versión Final Corregida con Evaluación */}
+<section className="w-full min-h-screen lg:h-[calc(100vh-6rem)] snap-start flex items-center justify-center relative z-10 px-2 sm:px-4 lg:px-6 py-4">
+  <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 w-full max-w-[98%] 2xl:max-w-[1700px] h-full lg:max-h-[85vh] rounded-3xl overflow-hidden glass-strong border border-primary/20 bg-card/40 backdrop-blur-3xl p-4 lg:p-6 shadow-2xl relative">
+    
+    {/* Fondo Animado Quantum */}
+    <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl opacity-20 pointer-events-none">
+      <motion.div animate={{ rotate: 360, scale: [1, 1.4, 1] }} transition={{ duration: 30, repeat: Infinity }} className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/20 blur-[120px]" />
+      <motion.div animate={{ rotate: -360, scale: [1, 1.2, 1] }} transition={{ duration: 35, repeat: Infinity }} className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-quantum-blue/20 blur-[120px]" />
+    </div>
+
+    {/* Sidebar - Navegación Principal */}
+    <aside className="lg:w-[220px] xl:w-[260px] shrink-0 flex flex-col z-10">
+      <div className="glass h-full rounded-2xl p-2 border border-border/50 bg-background/60 backdrop-blur-xl">
+        <nav className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-x-hidden">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-500 group relative overflow-hidden ${
+                activeTab === tab.id ? "text-black font-bold bg-accent shadow-[0_0_20px_rgba(255,215,0,0.5)]" : "text-muted-foreground hover:bg-white/5"
+              }`}
             >
-              <h3 className="font-heading text-2xl font-bold mb-6 flex items-center gap-3">
-                <Clock className="w-6 h-6 text-primary" /> Modalidad y Frecuencia
-              </h3>
-              <div className="glass rounded-xl overflow-hidden border border-white/10">
-                <table className="w-full text-sm text-left">
-                  <thead className="bg-primary/10 border-b border-primary/20">
-                    <tr>
-                      <th className="px-4 py-3 font-heading text-primary">Semanas</th>
-                      <th className="px-4 py-3 font-heading text-primary">Teóricas (h)</th>
-                      <th className="px-4 py-3 font-heading text-primary">Lab (h)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/10">
-                    <tr className="hover:bg-white/5 transition-colors">
-                      <td className="px-4 py-3">1 - 4</td>
-                      <td className="px-4 py-3">16 h</td>
-                      <td className="px-4 py-3">10 h</td>
-                    </tr>
-                    <tr className="hover:bg-white/5 transition-colors">
-                      <td className="px-4 py-3">5 - 8</td>
-                      <td className="px-4 py-3">16 h</td>
-                      <td className="px-4 py-3">8 h</td>
-                    </tr>
-                    <tr className="hover:bg-white/5 transition-colors">
-                      <td className="px-4 py-3">9 - 12</td>
-                      <td className="px-4 py-3">16 h</td>
-                      <td className="px-4 py-3">8 h</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <span className="shrink-0">{tab.icon}</span>
+              <span className="text-sm xl:text-base tracking-tight">{tab.label}</span>
+              {activeTab === tab.id && <ChevronRight className="ml-auto w-4 h-4 hidden lg:block" />}
+            </button>
+          ))}
+        </nav>
+      </div>
+    </aside>
+
+    {/* Área de Contenido Principal */}
+    <div className="flex-1 z-10 glass rounded-2xl border border-border/50 bg-background/30 backdrop-blur-md overflow-hidden">
+      <div className="h-full p-6 lg:p-10 relative overflow-y-auto lg:overflow-y-hidden custom-scrollbar">
+        <AnimatePresence mode="wait">
+          
+          {/* 1. EL PROGRAMA - Intro con Mapa Latam */}
+          {activeTab === "intro" && (
+            <motion.div key="intro" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.02 }} className="h-full flex flex-col lg:flex-row gap-10 items-center">
+              <div className="lg:w-1/2 space-y-6">
+                <h2 className="text-3xl xl:text-5xl font-bold tracking-tighter text-gradient-quantum">Impacto en América Latina</h2>
+                <p className="text-muted-foreground text-base xl:text-lg leading-relaxed">
+                  Este programa democratiza el acceso a tecnologías de frontera para estudiantes de secundaria y universitarios, replicando modelos de éxito internacional.
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 backdrop-blur-sm">
+                    <p className="text-xs font-bold text-primary mb-2 uppercase tracking-widest text-center">Examen PUCP</p>
+                    <p className="text-sm text-foreground/80 leading-snug text-center">25 de abril de 2026.</p>
+                  </div>
+                  <div className="p-5 rounded-2xl bg-accent/10 border border-accent/20 backdrop-blur-sm">
+                    <p className="text-xs font-bold text-accent mb-2 uppercase tracking-widest text-center">Admisión</p>
+                    <p className="text-sm text-foreground/80 leading-snug text-center">Basada en motivación.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:w-1/2 flex justify-center">
+                {/* Mapa Latam Resaltado */}
+                <div className="relative w-72 h-72">
+                  <div className="absolute inset-0 rounded-full bg-primary/10 border border-primary/20 animate-pulse" />
+                  <Users className="w-full h-full text-accent opacity-30 drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]" />
+                  <div className="absolute inset-0 flex items-center justify-center font-black text-accent text-sm tracking-widest">LATAM FOCUS</div>
+                </div>
               </div>
             </motion.div>
+          )}
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="font-heading text-2xl font-bold mb-6 flex items-center gap-3">
-                <Target className="w-6 h-6 text-quantum-pink" /> Sistema de Evaluación
-              </h3>
-              <div className="space-y-4">
-                {[
-                  { label: "Asistencia", desc: "Máximo de 3 inasistencias por módulo.", weight: "15%", color: "bg-blue-500/10 text-blue-400" },
-                  { label: "Participación Académica", desc: "Cuestionarios breves al final de cada clase.", weight: "20%", color: "bg-emerald-500/10 text-emerald-400" },
-                  { label: "Tareas", desc: "Actividades semanales y problemas 'challenge'.", weight: "25%", color: "bg-amber-500/10 text-amber-400" },
-                  { label: "Exámenes", desc: "Evaluaciones al cierre de cada módulo.", weight: "40%", color: "bg-quantum-pink/10 text-quantum-pink" },
-                ].map((item, i) => (
-                  <div key={item.label} className="flex items-center justify-between glass p-4 rounded-xl hover:bg-white/5 transition-colors">
-                    <div>
-                      <h4 className="font-heading font-bold text-foreground">{item.label}</h4>
-                      <p className="text-xs text-muted-foreground">{item.desc}</p>
+          {/* 2. PLAN ACADÉMICO - Módulos */}
+          {activeTab === "modulos" && (
+            <motion.div key="modulos" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col gap-6">
+              <div className="flex gap-2 overflow-x-auto pb-2 shrink-0">
+                {modules.map((mod) => (
+                  <button
+                    key={mod.id}
+                    onClick={() => setActiveModule(mod.id)}
+                    className={`px-6 py-2 rounded-full text-xs font-bold transition-all border shrink-0 ${
+                      activeModule === mod.id ? "bg-accent text-black border-accent" : "bg-white/5 text-muted-foreground border-white/10"
+                    }`}
+                  >
+                    {mod.id}
+                  </button>
+                ))}
+              </div>
+              {modules.map((mod) => mod.id === activeModule && (
+                <div key={mod.id} className="grid xl:grid-cols-2 gap-8 items-start h-full">
+                  <div className="space-y-4">
+                    <span className="text-primary font-bold text-xs tracking-widest uppercase">{mod.period}</span>
+                    <h3 className="text-2xl xl:text-4xl font-bold leading-tight">{mod.title}</h3>
+                    <p className="text-accent text-sm font-medium italic border-l-2 border-accent pl-4">{mod.target}</p>
+                    <p className="text-muted-foreground text-sm xl:text-base leading-relaxed">{mod.description}</p>
+                    <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
+                      <h5 className="font-bold text-xs mb-1 text-primary uppercase tracking-tighter">Prerrequisitos</h5>
+                      <p className="text-xs text-muted-foreground">{mod.prerrequisitos}</p>
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${item.color}`}>
-                      {item.weight}
-                    </span>
+                  </div>
+                  <div className="p-6 rounded-2xl bg-black/40 border border-white/5 shadow-inner">
+                    <h5 className="font-bold text-sm mb-4 flex items-center gap-2 text-foreground/90 uppercase tracking-widest">
+                      <CheckCircle className="w-4 h-4 text-accent" /> Temas a cubrir
+                    </h5>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {mod.temas.map((tema, idx) => (
+                        <li key={idx} className="flex gap-3 text-sm text-muted-foreground">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                          {tema}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          )}
+
+          {/* 3. EVALUACIÓN - Sistema de Calificación y Certificados */}
+          {activeTab === "evaluacion" && (
+            <motion.div key="evaluacion" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="h-full flex flex-col justify-center space-y-8">
+              <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+                {[
+                  { label: "Exámenes", val: "40%", desc: "Evaluaciones modulares", color: "text-primary" },
+                  { label: "Tareas", val: "25%", desc: "Entregas semanales", color: "text-accent" },
+                  { label: "Participación", val: "20%", desc: "Cuestionarios en clase", color: "text-emerald-400" },
+                  { label: "Asistencia", val: "15%", desc: "Máx. 3 inasistencias", color: "text-amber-500" }
+                ].map((item, i) => (
+                  <div key={i} className="glass p-6 rounded-2xl text-center border border-white/5 bg-white/5 hover:border-primary/30 transition-all">
+                    <p className={`text-3xl font-black ${item.color}`}>{item.val}</p>
+                    <p className="text-xs font-bold uppercase mt-1">{item.label}</p>
+                    <p className="text-[10px] text-muted-foreground mt-1">{item.desc}</p>
                   </div>
                 ))}
               </div>
+
+              <div className="grid xl:grid-cols-2 gap-6">
+                <div className="glass p-6 rounded-2xl border border-primary/20 bg-primary/5 flex items-center gap-6">
+                  <Award className="w-12 h-12 text-primary shrink-0" />
+                  <div>
+                    <h5 className="font-bold text-lg">C1 - Certificado del Curso</h5>
+                    <p className="text-sm text-muted-foreground">Otorgado con calificación final ≥ 70%.</p>
+                  </div>
+                </div>
+                <div className="glass p-6 rounded-2xl border border-accent/20 bg-accent/5 flex items-center gap-6 shadow-[0_0_30px_rgba(255,215,0,0.1)]">
+                  <Award className="w-12 h-12 text-accent shrink-0" />
+                  <div>
+                    <h5 className="font-bold text-accent text-lg">C2 - Certificado de Honor</h5>
+                    <p className="text-sm text-muted-foreground">Otorgado con calificación final ≥ 90%.</p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          </div>
+          )}
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass p-8 rounded-2xl border-l-[4px] border-l-primary"
-            >
-              <h3 className="font-heading text-xl font-bold mb-3 flex items-center gap-2">
-                <Award className="w-5 h-5 text-primary" /> Certificación
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                Al finalizar el curso, se otorgarán dos tipos de certificación:
-              </p>
-              <ul className="space-y-3 text-sm">
-                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0" /> <strong>C1 - Certificado del Curso:</strong> Nota final {'>='} 70%.</li>
-                <li className="flex gap-2"><CheckCircle className="w-4 h-4 text-accent shrink-0" /> <strong>C2 - Certificado de Honor:</strong> Nota final {'>='} 90%.</li>
-              </ul>
+          {/* 4. MODALIDAD - Frecuencia y Tabla */}
+          {activeTab === "modalidad" && (
+            <motion.div key="modalidad" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col justify-center space-y-8">
+              <div className="grid grid-cols-3 gap-6">
+                {[
+                  { icon: <Book />, l: "Teoría", v: "24 ses.", c: "text-primary" },
+                  { icon: <Target />, l: "Labs", v: "12 ses.", c: "text-quantum-blue" },
+                  { icon: <Clock />, l: "Total", v: "74 hrs", c: "text-accent" }
+                ].map((s, i) => (
+                  <div key={i} className="glass p-6 rounded-2xl text-center border border-white/5">
+                    <div className="w-10 h-10 mx-auto bg-white/5 rounded-full flex items-center justify-center mb-3 text-xl">{s.icon}</div>
+                    <p className={`text-2xl font-black ${s.c}`}>{s.v}</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{s.l}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="glass rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[500px] text-left">
+                    <thead className="bg-white/5 text-muted-foreground text-[10px] uppercase tracking-[0.2em]">
+                      <tr>
+                        <th className="px-8 py-5">Fase Académica</th>
+                        <th className="px-8 py-5">Horas Teóricas</th>
+                        <th className="px-8 py-5">Horas Lab</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/5">
+                      {[
+                        { p: "Módulo 1 (Semanas 1-4)", t: "16 h", l: "10 h" },
+                        { p: "Módulo 2 (Semanas 5-8)", t: "16 h", l: "08 h" },
+                        { p: "Módulo 3 (Semanas 9-12)", t: "16 h", l: "08 h" }
+                      ].map((row, i) => (
+                        <tr key={i} className="hover:bg-white/5 transition-colors group">
+                          <td className="px-8 py-5 font-bold text-primary">{row.p}</td>
+                          <td className="px-8 py-5 text-foreground/80">{row.t}</td>
+                          <td className="px-8 py-5 text-foreground/80">{row.l}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </motion.div>
+          )}
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="glass p-8 rounded-2xl border-l-[4px] border-l-quantum-blue"
-            >
-              <h3 className="font-heading text-xl font-bold mb-3 flex items-center gap-2">
-                <Users className="w-5 h-5 text-quantum-blue" /> Docentes
-              </h3>
-              <p className="text-sm text-foreground/90 leading-relaxed mb-3">
-                Impartido por un equipo internacional de instructores compuesto por estudiantes de maestría y doctorado en física y computación cuántica.
-              </p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                El Módulo 1 está a cargo íntegramente de egresados destacados de la edición 2025, evidenciando el pipeline de talento y sostenibilidad de QuantumHub Perú.
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass p-8 rounded-2xl border border-white/10 max-w-4xl mx-auto"
-          >
-            <h3 className="font-heading text-xl font-bold mb-6 text-center text-white">Resumen</h3>
-            <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-center">
-              <li><span className="block font-bold text-primary mb-1">Público:</span> <span className="text-muted-foreground">Escolares (4° y 5°), preuniversitarios y universitarios</span></li>
-              <li><span className="block font-bold text-quantum-blue mb-1">Modalidad:</span> <span className="text-muted-foreground">Virtual (Zoom)</span></li>
-              <li><span className="block font-bold text-quantum-pink mb-1">Compromiso:</span> <span className="text-muted-foreground">8 - 10 horas semanales</span></li>
-              <li><span className="block font-bold text-accent mb-1">Certificados:</span> <span className="text-muted-foreground">2 Opciones oficiales</span></li>
-            </ul>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section id="inscripcion" className="py-24 relative overflow-hidden bg-card/80">
-        <div className="absolute inset-0 circuit-lines opacity-10" />
-        <div className="container relative z-10 mx-auto px-6 max-w-4xl text-center">
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            className="glass-strong p-12 rounded-3xl border-primary/30 glow-purple"
-          >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-              ¿Listo para comenzar tu aventura cuántica?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Inscríbete ahora y forma parte de la próxima generación de expertos. Las vacantes son limitadas y se asignarán en base a tu ensayo de motivación.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="https://forms.gle/9EhQgzZmTXJRtp4Q6" target="_blank" rel="noopener noreferrer" className="btn-accent-cta w-full sm:w-auto inline-flex items-center justify-center gap-2 text-lg px-10 py-4">
-                ¡Inscríbete Ahora! <ArrowRight className="w-5 h-5" />
-              </a>
-              <a href="/equipo" className="btn-outline-quantum w-full sm:w-auto inline-flex items-center justify-center gap-2 text-lg px-10 py-4">
-                Conoce a nuestro equipo
-              </a>
-            </div>
-            <div className="mt-6">
-              <a href="https://drive.google.com/drive/folders/1nx3Z5mxqG4li_buFuObRSXhdvqdSpmLo" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-2 underline underline-offset-4">
-                Descargar Brochure <Download className="w-4 h-4" />
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <Footer />
+        </AnimatePresence>
+      </div>
+    </div>
+  </div>
+</section>
+      </main>
     </div>
   );
 };
