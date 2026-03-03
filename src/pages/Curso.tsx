@@ -6,6 +6,10 @@ import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award,
 import { useState } from "react";
 import aprendiendoImg from "@/gato/aprendiendo.png";
 import LatamGlobe from "@/components/LatamGlobe";
+import QuantumMolecule from '@/components/QuantumMolecule'; // Ajusta la ruta según dónde guardaste el archivo
+import modulo1Img from "@/gato/modelo1.png";
+import modulo2Img from "@/gato/modulo2.png";
+import modulo3Img from "@/gato/modulo3.png";
 
 // Modules Data
 const modules = [
@@ -26,7 +30,8 @@ const modules = [
       "Autovalores, autovectores y diagonalización",
       "Pseudocódigo, estructura de datos y algoritmos en Python"
     ],
-    prerrequisitos: "Ninguno específico. Disposición para aprender matemáticas."
+    prerrequisitos: "Ninguno específico. Disposición para aprender matemáticas.",
+    image: modulo1Img
   },
   {
     id: "Módulo 2",
@@ -41,12 +46,13 @@ const modules = [
     ],
     temas: [
       "Qubits, superposición y representación en la esfera de Bloch",
-      "Puertas cuánticas (X, Y, Z, H, CNOT, Fase) y operadores unitarios",
+      "Puertas cuánticas y operadores unitarios",
       "Postulado de medida, regla de Born, efectos de la medición",
       "Sistemas de dos qubits, productos tensoriales y entrelazamiento",
       "Prácticas con Qiskit en circuitos básicos"
     ],
-    prerrequisitos: "Aprobar el Modulo 1 o el Examen de Ingreso del 25 de abril."
+    prerrequisitos: "Aprobar el Modulo 1 o el Examen de Ingreso del 25 de abril.",
+    image: modulo2Img
   },
   {
     id: "Módulo 3",
@@ -65,7 +71,8 @@ const modules = [
       "Algoritmos de Deutsch y Grover: comparación clásica",
       "Transformada de Fourier Cuántica (QFT) y algoritmo de Shor"
     ],
-    prerrequisitos: "Módulo 2 aprobado de forma satisfactoria."
+    prerrequisitos: "Módulo 2 aprobado de forma satisfactoria.",
+    image: modulo3Img
   },
   {
     id: "Winter School",
@@ -248,8 +255,18 @@ const Curso = () => {
             </aside>
 
             {/* Área de Contenido Principal */}
-            <div className="flex-1 z-10 glass rounded-2xl border border-border/50 bg-background/30 backdrop-blur-md overflow-hidden">
-              <div className="h-full p-6 lg:p-10 relative overflow-y-auto custom-scrollbar">
+            <div
+              className={`flex-1 z-10 overflow-hidden ${activeTab === "evaluacion"
+                ? "rounded-3xl"
+                : "glass rounded-2xl border border-border/50 bg-background/30 backdrop-blur-md"
+                }`}
+            >
+              <div
+                className={`h-full relative ${activeTab === "evaluacion"
+                  ? "overflow-hidden p-0"
+                  : "overflow-y-auto custom-scrollbar p-6 lg:p-10"
+                  }`}
+              >
                 <AnimatePresence mode="wait">
 
                   {/* 1. EL PROGRAMA - Intro con Mapa Latam */}
@@ -300,22 +317,20 @@ const Curso = () => {
                             <button
                               type="button"
                               onClick={() => setActiveHighlight("examen")}
-                              className={`px-3 py-1 rounded-full transition-all ${
-                                activeHighlight === "examen"
-                                  ? "bg-accent text-black shadow-[0_0_18px_rgba(255,215,0,0.55)]"
-                                  : "text-muted-foreground hover:text-foreground"
-                              }`}
+                              className={`px-3 py-1 rounded-full transition-all ${activeHighlight === "examen"
+                                ? "bg-accent text-black shadow-[0_0_18px_rgba(255,215,0,0.55)]"
+                                : "text-muted-foreground hover:text-foreground"
+                                }`}
                             >
                               Examen
                             </button>
                             <button
                               type="button"
                               onClick={() => setActiveHighlight("admision")}
-                              className={`px-3 py-1 rounded-full transition-all ${
-                                activeHighlight === "admision"
-                                  ? "bg-accent text-black shadow-[0_0_18px_rgba(255,215,0,0.55)]"
-                                  : "text-muted-foreground hover:text-foreground"
-                              }`}
+                              className={`px-3 py-1 rounded-full transition-all ${activeHighlight === "admision"
+                                ? "bg-accent text-black shadow-[0_0_18px_rgba(255,215,0,0.55)]"
+                                : "text-muted-foreground hover:text-foreground"
+                                }`}
                             >
                               Admisión
                             </button>
@@ -407,213 +422,325 @@ const Curso = () => {
                               <p className="text-xs text-muted-foreground">{mod.prerrequisitos}</p>
                             </div>
                           </div>
-                          <div className="p-6 rounded-2xl bg-black/40 border border-white/5 shadow-inner">
-                            <h5 className="font-bold text-sm mb-4 flex items-center gap-2 text-foreground/90 uppercase tracking-widest">
-                              <CheckCircle className="w-4 h-4 text-accent" /> Temas a cubrir
-                            </h5>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                              {mod.temas.map((tema, idx) => (
-                                <li key={idx} className="flex gap-3 text-sm text-muted-foreground">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                                  {tema}
-                                </li>
-                              ))}
-                            </ul>
+                          <div className="flex flex-col gap-3 lg:gap-4 h-full min-h-0">
+                            {mod.image && (
+                              <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="w-full flex items-center justify-center shrink-0"
+                              >
+                                <img
+                                  src={mod.image}
+                                  alt={mod.title}
+                                  className="w-full h-28 md:h-32 xl:h-40 object-contain drop-shadow-[0_0_25px_rgba(138,43,226,0.65)] hover:scale-105 transition-transform duration-500"
+                                />
+                              </motion.div>
+                            )}
+                            <div className="p-3 md:p-4 lg:p-5 rounded-2xl bg-black/40 border border-white/5 shadow-inner flex-1 overflow-y-auto custom-scrollbar">
+                              <h5 className="font-bold text-xs lg:text-sm mb-2 lg:mb-3 flex items-center gap-2 text-foreground/90 uppercase tracking-widest sticky top-0 bg-black/40 backdrop-blur-md pb-2 -mx-2 px-2 z-10">
+                                <CheckCircle className="w-4 h-4 text-accent" /> Temas a cubrir
+                              </h5>
+                              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 xl:gap-3">
+                                {mod.temas.map((tema, idx) => (
+                                  <li key={idx} className="flex gap-2 text-xs lg:text-sm text-muted-foreground leading-snug items-start">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                                    <span>{tema}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       ))}
                     </motion.div>
                   )}
 
-{/* 3. EVALUACIÓN - Sistema de Calificación y Certificados (layout tipo mockup) */}
-{activeTab === "evaluacion" && (
-  <motion.div
-    key="evaluacion"
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{ duration: 0.5, ease: "easeOut" }}
-    className="h-full flex flex-col relative overflow-hidden pr-2"
-  >
-    {/* Halo suave de fondo */}
-    <motion.div
-      aria-hidden
-      className="pointer-events-none absolute -top-40 -right-16 w-80 h-80 rounded-full bg-gradient-to-br from-accent/10 via-quantum-blue/25 to-transparent blur-3xl"
-      animate={{ scale: [1, 1.1, 1], rotate: [0, 10, -6, 0] }}
-      transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-    />
-    <motion.div
-      aria-hidden
-      className="pointer-events-none absolute -bottom-40 -left-24 w-72 h-72 rounded-full bg-gradient-to-tr from-primary/25 via-quantum-pink/30 to-transparent blur-3xl"
-      animate={{ scale: [1, 1.18, 1], rotate: [0, -8, 4, 0] }}
-      transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-    />
+                  {/* 3. EVALUACIÓN - Sistema de Calificación y Certificados (layout tipo mockup) */}
+                  {activeTab === "evaluacion" && (
+                    <motion.div
+                      key="evaluacion"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      className="h-full flex flex-col relative overflow-hidden pr-0"
+                    >
+                      {/* Halo suave de fondo */}
+                      <motion.div
+                        aria-hidden
+                        className="pointer-events-none absolute -top-40 -right-16 w-80 h-80 rounded-full bg-gradient-to-br from-accent/10 via-quantum-blue/25 to-transparent blur-3xl"
+                        animate={{ scale: [1, 1.1, 1], rotate: [0, 10, -6, 0] }}
+                        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      <motion.div
+                        aria-hidden
+                        className="pointer-events-none absolute -bottom-40 -left-24 w-72 h-72 rounded-full bg-gradient-to-tr from-primary/25 via-quantum-pink/30 to-transparent blur-3xl"
+                        animate={{ scale: [1, 1.18, 1], rotate: [0, -8, 4, 0] }}
+                        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+                      />
 
-    <motion.div
-      whileHover={{ scale: 1.005 }}
-      transition={{ type: "spring", stiffness: 120, damping: 18 }}
-      className="relative z-10 w-full rounded-3xl border border-white/10 bg-gradient-to-br from-[#050816] via-[#020015] to-[#020617] px-6 py-6 md:px-8 md:py-8 lg:px-10 lg:py-10 shadow-[0_0_35px_rgba(15,23,42,0.85)] overflow-hidden flex flex-col"
-    >
-      {/* Brillos internos */}
-      <div className="pointer-events-none absolute inset-0 opacity-30">
-        <div className="absolute -top-24 left-8 w-56 h-56 bg-gradient-to-br from-primary/35 via-quantum-blue/25 to-transparent blur-3xl" />
-        <div className="absolute -bottom-24 right-8 w-64 h-64 bg-gradient-to-tl from-quantum-pink/35 via-amber-300/45 to-transparent blur-3xl" />
-      </div>
-
-      <div className="relative z-10 flex flex-col gap-6 h-full">
-        {/* encabezado */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.2em] text-primary/80">
-              Sistema de evaluación
-            </p>
-            <h3 className="mt-1 text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-foreground">
-              Así se calcula tu nota final
-            </h3>
-          </div>
-          <motion.div
-            className="relative flex items-center justify-center shrink-0"
-            animate={{ rotate: [0, 6, -6, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-amber-300/70 via-accent/80 to-primary/70 flex items-center justify-center shadow-[0_0_40px_rgba(250,204,21,0.85)]">
-              <div className="w-16 h-16 rounded-full border-2 border-dashed border-black/40 bg-black/10 flex items-center justify-center">
-                <span className="text-[9px] font-semibold text-black/80 uppercase tracking-[0.22em] text-center leading-tight">
-                  100%<br />Esfuerzo
-                </span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* contenido principal: tarjetas + gato */}
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] items-stretch flex-1 min-h-[320px] md:min-h-[360px]">
-          {/* lado izquierdo: porcentajes + texto + certificados */}
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              {[
-                { label: "Exámenes", val: "40%", desc: "Evaluaciones modulares", color: "from-primary/70 via-primary/30 to-transparent" },
-                { label: "Tareas", val: "25%", desc: "Entregas semanales", color: "from-accent/80 via-accent/40 to-transparent" },
-                { label: "Participación", val: "20%", desc: "Cuestionarios en clase", color: "from-primary/70 via-primary/30 to-transparent" },
-                { label: "Asistencia", val: "15%", desc: "Máx. 3 inasistencias", color: "from-accent/70 via-accent/35 to-transparent" },
-              ].map((item) => (
-                <motion.div
-                  key={item.label}
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 18 }}
-                  className="relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 px-3 py-3 text-left"
-                >
-                  <div className={`pointer-events-none absolute inset-0 opacity-35 bg-gradient-to-br ${item.color}`} />
-                  <div className="relative z-10">
-                    <p className="text-[10px] uppercase tracking-[0.18em] text-white/70 font-semibold">{item.label}</p>
-                    <p className="mt-1 text-xl md:text-2xl font-black text-white">{item.val}</p>
-                    <p className="mt-0.5 text-[11px] text-white/80 leading-snug">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <p className="text-[11px] md:text-xs text-muted-foreground/85 leading-relaxed">
-              Todos los componentes se suman para tu calificación final. Mantén un buen ritmo semanal y evita acumular
-              tareas para potenciar tu desempeño en el examen presencial.
-            </p>
-
-            <div className="grid sm:grid-cols-2 gap-3 text-[11px] md:text-xs">
-              <div className="rounded-2xl border border-primary/40 bg-primary/10 px-4 py-3 flex gap-3 items-start">
-                <Award className="w-4 h-4 text-primary mt-0.5" />
-                <div>
-                  <p className="font-semibold text-foreground">C1 - Certificado del Curso</p>
-                  <p className="text-muted-foreground mt-0.5 leading-snug">
-                    Se otorga con nota final <span className="font-semibold text-primary">≥ 70%</span> y asistencia mínima.
-                  </p>
-                </div>
-              </div>
-              <div className="rounded-2xl border border-accent/60 bg-accent/10 px-4 py-3 flex gap-3 items-start shadow-[0_0_18px_rgba(250,204,21,0.3)]">
-                <Award className="w-4 h-4 text-accent mt-0.5" />
-                <div>
-                  <p className="font-semibold text-accent">C2 - Certificado de Honor</p>
-                  <p className="text-muted-foreground mt-0.5 leading-snug">
-                    Para desempeño sobresaliente con nota <span className="font-semibold text-accent">≥ 90%</span>.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* lado derecho: gato con certificado dentro de la tarjeta */}
-          <div className="relative flex items-center justify-center">
-            <motion.div
-              aria-hidden
-              className="absolute -top-6 -left-6 w-40 h-40 rounded-full bg-gradient-to-tr from-quantum-pink/35 via-primary/35 to-amber-300/65 blur-3xl"
-              animate={{ scale: [1, 1.06, 1], y: [0, -4, 0] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.img
-              src="/certificado.png"
-              alt="Gato Quantum sosteniendo certificado"
-              className="relative z-10 w-full max-w-[340px] lg:max-w-[380px] object-contain drop-shadow-[0_0_40px_rgba(0,0,0,0.9)]"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  </motion.div>
-)}
-
-                  {/* 4. MODALIDAD - Frecuencia y Tabla */}
-                  {activeTab === "modalidad" && (
-                    <motion.div key="modalidad" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col justify-center space-y-8">
-                      <div className="grid grid-cols-3 gap-6">
-                        {[
-                          { icon: <Book />, l: "Teoría", v: "24 ses.", c: "text-primary" },
-                          { icon: <Target />, l: "Labs", v: "12 ses.", c: "text-quantum-blue" },
-                          { icon: <Clock />, l: "Total", v: "74 hrs", c: "text-accent" }
-                        ].map((s, i) => (
-                          <div key={i} className="glass p-6 rounded-2xl text-center border border-white/5">
-                            <div className="w-10 h-10 mx-auto bg-white/5 rounded-full flex items-center justify-center mb-3 text-xl">{s.icon}</div>
-                            <p className={`text-2xl font-black ${s.c}`}>{s.v}</p>
-                            <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{s.l}</p>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="glass rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
-                        <div className="overflow-x-auto">
-                          <table className="w-full min-w-[500px] text-left">
-                            <thead className="bg-white/5 text-muted-foreground text-[10px] uppercase tracking-[0.2em]">
-                              <tr>
-                                <th className="px-8 py-5">Fase Académica</th>
-                                <th className="px-8 py-5">Horas Teóricas</th>
-                                <th className="px-8 py-5">Horas Lab</th>
-                              </tr>
-                            </thead>
-                            <tbody className="divide-y divide-white/5">
-                              {[
-                                { p: "Módulo 1 (Semanas 1-4)", t: "16 h", l: "10 h" },
-                                { p: "Módulo 2 (Semanas 5-8)", t: "16 h", l: "08 h" },
-                                { p: "Módulo 3 (Semanas 9-12)", t: "16 h", l: "08 h" }
-                              ].map((row, i) => (
-                                <tr key={i} className="hover:bg-white/5 transition-colors group">
-                                  <td className="px-8 py-5 font-bold text-primary">{row.p}</td>
-                                  <td className="px-8 py-5 text-foreground/80">{row.t}</td>
-                                  <td className="px-8 py-5 text-foreground/80">{row.l}</td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
+                      <motion.div
+                        whileHover={{ scale: 1.005 }}
+                        transition={{ type: "spring", stiffness: 120, damping: 18 }}
+                        className="relative z-10 w-full h-full rounded-3xl border border-border/40 bg-background/40 px-6 py-6 md:px-10 md:py-8 lg:px-14 lg:py-10 shadow-[0_0_40px_rgba(15,23,42,0.75)] overflow-hidden flex flex-col"
+                      >
+                        {/* Brillos internos */}
+                        <div className="pointer-events-none absolute inset-0 opacity-35">
+                          <div className="absolute -top-24 left-8 w-56 h-56 bg-gradient-to-br from-primary/40 via-quantum-blue/30 to-transparent blur-3xl" />
+                          <div className="absolute -bottom-24 right-8 w-64 h-64 bg-gradient-to-tl from-quantum-pink/40 via-accent/40 to-transparent blur-3xl" />
                         </div>
-                      </div>
+
+                        <div className="relative z-10 flex flex-col gap-6 h-full">
+                          {/* encabezado */}
+                          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                            <div>
+                              <p className="text-[12px] md:text-xs uppercase tracking-[0.24em] text-primary/80">
+                                Sistema de evaluación
+                              </p>
+                              <h3 className="mt-1 text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground">
+                                Así se calcula tu nota final
+                              </h3>
+                            </div>
+                            <motion.div
+                              className="relative flex items-center justify-center shrink-0"
+                              animate={{ rotate: [0, 6, -6, 0] }}
+                              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                              <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-amber-300/70 via-accent/80 to-primary/70 flex items-center justify-center shadow-[0_0_40px_rgba(250,204,21,0.85)]">
+                                <div className="w-20 h-20 rounded-full border-2 border-dashed border-black/40 bg-black/10 flex items-center justify-center">
+                                  <span className="text-[10px] font-semibold text-black/80 uppercase tracking-[0.22em] text-center leading-tight">
+                                    100%<br />Esfuerzo
+                                  </span>
+                                </div>
+                              </div>
+                            </motion.div>
+                          </div>
+
+                          {/* contenido principal: tarjetas + gato */}
+                          <div className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] items-stretch flex-1 min-h-[320px] md:min-h-[360px]">
+                            {/* lado izquierdo: porcentajes + texto + certificados */}
+                            <div className="space-y-4">
+                              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                                {[
+                                  { label: "Exámenes", val: "40%", desc: "Evaluaciones modulares", color: "from-primary/70 via-primary/30 to-transparent" },
+                                  { label: "Tareas", val: "25%", desc: "Entregas semanales", color: "from-accent/80 via-accent/40 to-transparent" },
+                                  { label: "Participación", val: "20%", desc: "Cuestionarios en clase", color: "from-primary/70 via-primary/30 to-transparent" },
+                                  { label: "Asistencia", val: "15%", desc: "Máx. 3 inasistencias", color: "from-accent/70 via-accent/35 to-transparent" },
+                                ].map((item) => (
+                                  <motion.div
+                                    key={item.label}
+                                    whileHover={{ y: -3, scale: 1.02 }}
+                                    transition={{ type: "spring", stiffness: 200, damping: 18 }}
+                                    className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#27145c] via-[#1b1043] to-[#110825] border border-primary/40 px-4 py-4 text-left"
+                                  >
+                                    <div className={`pointer-events-none absolute inset-0 opacity-40 bg-gradient-to-br ${item.color}`} />
+                                    <div className="relative z-10">
+                                      <p className="text-[11px] md:text-xs uppercase tracking-[0.18em] text-white/70 font-semibold">{item.label}</p>
+                                      <p className="mt-1 text-2xl md:text-3xl font-black text-white">{item.val}</p>
+                                      <p className="mt-1 text-xs text-white/85 leading-snug">{item.desc}</p>
+                                    </div>
+                                  </motion.div>
+                                ))}
+                              </div>
+
+                              <p className="text-xs md:text-sm text-muted-foreground/85 leading-relaxed">
+                                Todos los componentes se suman para tu calificación final. Mantén un buen ritmo semanal y evita acumular
+                                tareas para potenciar tu desempeño en el examen presencial.
+                              </p>
+
+                              <div className="grid sm:grid-cols-2 gap-4 text-xs md:text-sm">
+                                <div className="rounded-2xl border border-primary/40 bg-primary/10 px-5 py-4 flex gap-3 items-start">
+                                  <Award className="w-5 h-5 text-primary mt-0.5" />
+                                  <div>
+                                    <p className="font-semibold text-foreground">C1 - Certificado del Curso</p>
+                                    <p className="text-muted-foreground mt-1 leading-snug">
+                                      Se otorga con nota final <span className="font-semibold text-primary">≥ 70%</span> y asistencia mínima.
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="rounded-2xl border border-accent/60 bg-accent/10 px-5 py-4 flex gap-3 items-start shadow-[0_0_18px_rgba(250,204,21,0.3)]">
+                                  <Award className="w-5 h-5 text-accent mt-0.5" />
+                                  <div>
+                                    <p className="font-semibold text-accent">C2 - Certificado de Honor</p>
+                                    <p className="text-muted-foreground mt-1 leading-snug">
+                                      Para desempeño sobresaliente con nota <span className="font-semibold text-accent">≥ 90%</span>.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* lado derecho: gato con certificado dentro de la tarjeta */}
+                            <div className="relative flex items-center justify-center">
+                              <motion.div
+                                aria-hidden
+                                className="absolute -top-6 -left-6 w-40 h-40 rounded-full bg-gradient-to-tr from-quantum-pink/35 via-primary/35 to-amber-300/65 blur-3xl"
+                                animate={{ scale: [1, 1.06, 1], y: [0, -4, 0] }}
+                                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                              />
+                              <motion.img
+                                src="/certificado.png"
+                                alt="Gato Quantum sosteniendo certificado"
+                                className="relative z-10 w-full max-w-[340px] lg:max-w-[380px] object-contain drop-shadow-[0_0_40px_rgba(0,0,0,0.9)]"
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
                     </motion.div>
                   )}
 
+                  {activeTab === "modalidad" && (
+                    <motion.div
+                      key="modalidad"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="h-full flex flex-col justify-center relative overflow-hidden rounded-3xl"
+                    >
+                      {/* Fondo con partículas para esta sección */}
+                      <div className="absolute inset-0 pointer-events-none z-0 opacity-40 mix-blend-screen">
+                        <ParticleNetwork />
+                      </div>
+
+                      {/* Halo suave de fondo para complementar las partículas */}
+                      <motion.div
+                        aria-hidden
+                        className="pointer-events-none absolute -top-40 -right-16 w-96 h-96 rounded-full bg-gradient-to-br from-accent/10 via-quantum-blue/10 to-transparent blur-3xl opacity-50"
+                        animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -6, 0] }}
+                        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+                      />
+
+                      <div className="flex flex-col gap-6 lg:gap-8 w-full max-w-5xl mx-auto relative z-10 px-4 md:px-0">
+
+                        {/* HEADER */}
+                        <div className="text-center space-y-2 md:space-y-4">
+                          <p className="text-xs uppercase tracking-[0.25em] text-primary/80">
+                            Modalidad del Programa
+                          </p>
+
+                          <h3 className="text-2xl md:text-3xl xl:text-4xl font-black tracking-tighter text-gradient-quantum">
+                            Modalidad y Frecuencia
+                          </h3>
+
+                          <p className="text-muted-foreground text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
+                            Programa virtual de <span className="text-foreground font-semibold">12 semanas</span>
+                            {' '}organizado en <span className="text-foreground font-semibold">3 módulos</span>
+                            {' '}con sesiones teóricas y laboratorio aplicado.
+                          </p>
+                        </div>
+
+                        {/* RESUMEN NUMÉRICO - Estilo Amarillo Iluminado */}
+                        <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
+
+                          {[
+                            { value: "24", label: "Clases Teóricas", delay: 0.1 },
+                            { value: "12", label: "Sesiones de Laboratorio", delay: 0.2 },
+                            { value: "74h", label: "Carga Total", delay: 0.3 }
+                          ].map((item) => (
+                            <motion.div
+                              key={item.label}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: item.delay, duration: 0.4 }}
+                              whileHover={{ y: -4, scale: 1.02 }}
+                              className="relative overflow-hidden rounded-2xl border border-accent/40 bg-accent/10 px-4 py-6 md:py-8 text-center shadow-[0_0_30px_rgba(255,215,0,0.2)] group"
+                            >
+                              <div className="pointer-events-none absolute inset-0 opacity-40 bg-gradient-to-br from-accent/20 via-transparent to-transparent group-hover:opacity-60 transition-opacity" />
+                              <div className="relative z-10">
+                                <p className="text-4xl md:text-5xl font-black text-accent drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">
+                                  {item.value}
+                                </p>
+                                <p className="mt-2 text-xs uppercase tracking-[0.2em] font-bold text-foreground/90">
+                                  {item.label}
+                                </p>
+                              </div>
+                            </motion.div>
+                          ))}
+
+                        </div>
+
+                        {/* MÓDULOS */}
+                        <div className="grid lg:grid-cols-3 gap-4 lg:gap-6">
+
+                          {[
+                            {
+                              title: "Módulo 1",
+                              weeks: "Semanas 1–4",
+                              theory: "16h Teoría",
+                              lab: "10h Lab",
+                              delay: 0.4
+                            },
+                            {
+                              title: "Módulo 2",
+                              weeks: "Semanas 5–8",
+                              theory: "16h Teoría",
+                              lab: "8h Lab",
+                              delay: 0.5
+                            },
+                            {
+                              title: "Módulo 3",
+                              weeks: "Semanas 9–12",
+                              theory: "16h Teoría",
+                              lab: "8h Lab",
+                              delay: 0.6
+                            }
+                          ].map((mod) => (
+                            <motion.div
+                              key={mod.title}
+                              initial={{ opacity: 0, scale: 0.95 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: mod.delay, duration: 0.4 }}
+                              whileHover={{ y: -3 }}
+                              className="rounded-2xl border border-primary/40 bg-gradient-to-br from-[#20105a]/90 via-[#170b43]/85 to-[#11111f]/90 p-5 md:p-6 flex flex-col justify-between shadow-[0_0_30px_rgba(138,43,226,0.15)] relative overflow-hidden group"
+                            >
+                              <div className="pointer-events-none absolute inset-0 opacity-20 bg-gradient-to-br from-primary/30 via-transparent to-transparent group-hover:opacity-40 transition-opacity" />
+                              <div className="relative z-10">
+                                <h4 className="text-lg font-black uppercase tracking-wide text-foreground">
+                                  {mod.title}
+                                </h4>
+
+                                <p className="text-xs uppercase tracking-wider text-muted-foreground mt-2">
+                                  {mod.weeks}
+                                </p>
+                              </div>
+
+                              <div className="flex justify-between mt-5 md:mt-6 text-sm font-semibold relative z-10">
+                                <span className="text-primary">
+                                  {mod.theory}
+                                </span>
+                                <span className="text-accent">
+                                  {mod.lab}
+                                </span>
+                              </div>
+                            </motion.div>
+                          ))}
+
+                        </div>
+
+                        {/* FOOTER TOTAL */}
+                        <div className="text-center pt-2">
+                          <p className="text-xs md:text-sm text-foreground/80 font-medium tracking-wide">
+                            48h Teoría + 26h Laboratorio ={" "}
+                            <span className="text-accent font-bold drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]">
+                              74 horas totales
+                            </span>
+                          </p>
+                        </div>
+
+                      </div>
+                    </motion.div>
+                  )}
                 </AnimatePresence>
               </div>
             </div>
           </div>
         </section>
       </main>
-    </div>
+    </div >
   );
 };
 

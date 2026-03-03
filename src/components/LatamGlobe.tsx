@@ -198,7 +198,7 @@ const LatamGlobe = () => {
                             <div className="flex flex-col relative z-10 pr-2">
                                 <div className="text-[8px] sm:text-[10px] text-muted-foreground uppercase mb-1 flex items-center gap-2 font-mono tracking-widest">
                                     <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: currentCountry.color, boxShadow: `0 0 10px ${currentCountry.color}` }} />
-                                    <span className="text-white/70">Enlace Activo</span>
+                                    <span className="text-white/70"></span>
                                 </div>
                                 <span
                                     className="font-heading font-black text-xl sm:text-2xl tracking-[0.25em] uppercase text-white leading-none"
