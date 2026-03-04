@@ -1,16 +1,18 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ParticleNetwork from "@/components/ParticleNetwork";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { motion, AnimatePresence } from "framer-motion";
-import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award, CheckCircle, ChevronRight, ChevronLeft, PlayCircle, CalendarPlus } from "lucide-react";
-import { useState, useRef } from "react";
+import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award, CheckCircle, ChevronRight, ChevronLeft, PlayCircle, CalendarPlus, MapPin } from "lucide-react"; import { useState, useRef } from "react";
 import aprendiendoImg from "@/gato/aprendiendo.png";
 import LatamGlobe from "@/components/LatamGlobe";
 import QuantumMolecule from '@/components/QuantumMolecule'; // Ajusta la ruta según dónde guardaste el archivo
 import modulo1Img from "@/gato/modelo1.png";
 import modulo2Img from "@/gato/modulo2.png";
 import modulo3Img from "@/gato/modulo3.png";
-
+import teoriaImg from "@/gato/teoria.png";
+import laboratorioImg from "@/gato/laboratorio.png";
+import horasImg from "@/gato/74.png";
 // Modules Data
 const modules = [
   {
@@ -73,32 +75,14 @@ const modules = [
     ],
     prerrequisitos: "Módulo 2 aprobado de forma satisfactoria.",
     image: modulo3Img
-  },
-  {
-    id: "Winter School",
-    title: "Investigación en Tecnologías Cuánticas",
-    period: "13 de julio - 18 de julio",
-    target: "Basado en desempeño.",
-    description: "Introducción a líneas de investigación en tecnologías cuánticas. Etapa final de inmersión.",
-    tags: [
-      { text: "Investigación", color: "bg-zinc-500/10 text-zinc-400 border-zinc-500/20" },
-      { text: "1 Semana", color: "bg-blue-500/10 text-blue-400 border-blue-500/20" },
-      { text: "Por Confirmar", color: "bg-quantum-pink/10 text-quantum-pink border-quantum-pink/20" }
-    ],
-    temas: [
-      "Líneas de investigación actuales",
-      "Oportunidades académicas",
-      "*Contenido por confirmar"
-    ],
-    prerrequisitos: "Selección basada en desempeño y motivación."
   }
 ];
 
 const tabs = [
   { id: "intro", label: "El Programa", icon: <Target className="w-5 h-5" /> },
   { id: "modulos", label: "Plan Académico", icon: <Book className="w-5 h-5" /> },
-  { id: "evaluacion", label: "Evaluación", icon: <Award className="w-5 h-5" /> },
   { id: "modalidad", label: "Modalidad", icon: <Clock className="w-5 h-5" /> },
+  { id: "evaluacion", label: "Evaluación", icon: <Award className="w-5 h-5" /> },
 ];
 
 const createGoogleCalendarUrl = ({
@@ -126,8 +110,8 @@ const createGoogleCalendarUrl = ({
 };
 
 const examCalendarUrl = createGoogleCalendarUrl({
-  title: "Examen Presencial PUCP | Quantum Nexus",
-  details: "Examen presencial que sirve como evaluación final del Módulo 1 y vía de ingreso directo al Módulo 2.",
+  title: "Examen Presencial PUCP | Quantum Hub Peru",
+  details: "Examen presencial que sirve como evaluación final del Módulo 1 o vía de ingreso directo al Módulo 2.",
   location: "PUCP, Lima, Perú",
   startDate: "20260425",
   endDate: "20260426",
@@ -135,17 +119,15 @@ const examCalendarUrl = createGoogleCalendarUrl({
 
 const admissionCalendarUrl = createGoogleCalendarUrl({
   title: "Recordatorio de Admisión | Curso de Computación Cuántica",
-  details: "Recordatorio para completar la admisión del curso. Admisión basada en motivación y revisión del perfil del postulante.",
+  details: "Recordatorio para completar la admisión del curso. Admisión basada en carta de motivación y revisión del perfil del postulante.",
   location: "Virtual",
-  startDate: "20260420",
-  endDate: "20260421",
+  startDate: "20260303",
+  endDate: "20260323",
 });
 
 const Curso = () => {
   const [activeTab, setActiveTab] = useState("intro");
   const [activeModule, setActiveModule] = useState(modules[0].id);
-  const [activeHighlight, setActiveHighlight] = useState<"examen" | "admision">("examen");
-
   const navRef = useRef<HTMLElement>(null);
   const modulesRef = useRef<HTMLDivElement>(null);
   const activeModuleRef = useRef<HTMLButtonElement>(null);
@@ -184,7 +166,7 @@ const Curso = () => {
           <ParticleNetwork />
         </div>
 
-        {/* Section 1: Hero Section - Ajuste de altura y paddings */}
+        {/* Section 1: Hero Section */}
         <section className="w-full min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)] snap-start flex items-center justify-center relative z-10 px-4 sm:px-6 lg:px-8 py-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -192,8 +174,6 @@ const Curso = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full max-w-7xl min-h-[500px] h-full max-h-[750px] glass-strong rounded-3xl p-6 md:p-8 lg:p-10 relative overflow-hidden border border-primary/20 bg-card/60 backdrop-blur-xl shadow-[0_0_50px_rgba(138,43,226,0.15)] flex flex-col justify-center"
           >
-            {/* ... (Blobs de fondo se mantienen igual) ... */}
-
             <div className="flex flex-col md:flex-row gap-4 lg:gap-10 items-center justify-between relative z-10 flex-1">
               <div className="md:w-1/2 lg:w-3/5 space-y-3 lg:space-y-5">
                 <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[12px] font-medium mb-1">
@@ -207,7 +187,7 @@ const Curso = () => {
                   Formación en computación cuántica para estudiantes de secundaria y universitarios. Desarrolla competencias en física, matemáticas y programación.
                 </p>
 
-                {/* Stats reducidos ligeramente para ahorrar espacio vertical */}
+                {/* Stats */}
                 <div className="flex items-center gap-4 py-2 lg:py-3 border-y border-border/50">
                   <div className="flex flex-col">
                     <span className="text-lg lg:text-xl font-bold text-foreground">16+</span>
@@ -229,14 +209,13 @@ const Curso = () => {
                   <a href="https://forms.gle/9EhQgzZmTXJRtp4Q6" target="_blank" className="btn-accent-cta inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-7 lg:py-3.5 text-xs lg:text-sm font-bold shadow-lg uppercase tracking-wide">
                     ¡Inscríbete Ahora! <ArrowRight className="w-4 h-4" />
                   </a>
-                  <a href="https://drive.google.com/drive/folders/1nx3Z5mxqG4li_buFuObRSXhdvqdSpmLo" target="_blank" className="btn-outline-quantum inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-7 lg:py-3.5 text-xs lg:text-sm font-medium uppercase tracking-wider">
-                    Brochure <Download className="w-4 h-4" />
+                  <a href="https://drive.google.com/file/d/1pfsNJQas2XYNtcwhCoyVu_QeqmXK_aWq/view?usp=sharing" target="_blank" className="btn-outline-quantum inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-7 lg:py-3.5 text-xs lg:text-sm font-medium uppercase tracking-wider">
+                    Más Info <Download className="w-4 h-4" />
                   </a>
                 </div>
               </div>
 
-              {/* Imagen con tamaño más controlado */}
-              <div className="md:w-1/2 lg:w-2/5 p-2 rounded-2xl bg-gradient-to-br from-primary/20 to-quantum-pink/20 border border-white/10 shadow-xl overflow-hidden group relative flex items-center justify-center">
+              <div className="hidden md:flex md:w-1/2 lg:w-2/5 p-2 rounded-2xl bg-gradient-to-br from-primary/20 to-quantum-pink/20 border border-white/10 shadow-xl overflow-hidden group relative items-center justify-center">
                 <img
                   src={aprendiendoImg}
                   alt="Aprendiendo Computación Cuántica"
@@ -245,7 +224,6 @@ const Curso = () => {
               </div>
             </div>
 
-            {/* Indicador de scroll - bajado para que no choque */}
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center opacity-50">
               <div className="w-4 h-6 rounded-full border border-primary/50 flex justify-center p-0.5">
                 <div className="w-0.5 h-1.5 bg-primary rounded-full animate-bounce" />
@@ -253,17 +231,16 @@ const Curso = () => {
             </div>
           </motion.div>
         </section>
-        {/* Section 2: OMNI KINETIC Engine - Versión Final Corregida con Evaluación */}
+
+        {/* Section 2: OMNI KINETIC Engine */}
         <section className="w-full min-h-screen lg:h-[calc(100vh-6rem)] snap-start flex items-center justify-center relative z-10 px-2 sm:px-4 lg:px-6 py-4">
           <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 w-full max-w-[98%] 2xl:max-w-[1700px] h-full lg:max-h-[85vh] rounded-3xl overflow-hidden glass-strong border border-primary/20 bg-card/40 backdrop-blur-3xl p-4 lg:p-6 shadow-2xl relative">
 
-            {/* Fondo Animado Quantum */}
             <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl opacity-20 pointer-events-none">
               <motion.div animate={{ rotate: 360, scale: [1, 1.4, 1] }} transition={{ duration: 30, repeat: Infinity }} className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/20 blur-[120px]" />
               <motion.div animate={{ rotate: -360, scale: [1, 1.2, 1] }} transition={{ duration: 35, repeat: Infinity }} className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-quantum-blue/20 blur-[120px]" />
             </div>
 
-            {/* Sidebar - Navegación Principal */}
             <aside className="w-full lg:w-[220px] xl:w-[260px] shrink-0 flex flex-col z-10 mb-2 lg:mb-0">
               <div className="glass h-full rounded-2xl p-1.5 border border-border/50 bg-background/60 backdrop-blur-xl relative">
                 <button
@@ -299,7 +276,6 @@ const Curso = () => {
               </div>
             </aside>
 
-            {/* Área de Contenido Principal */}
             <div
               className={`flex-1 z-10 overflow-hidden ${activeTab === "evaluacion"
                 ? "rounded-3xl"
@@ -309,132 +285,138 @@ const Curso = () => {
               <div
                 className={`h-full relative ${activeTab === "evaluacion"
                   ? "overflow-hidden p-0"
-                  : "overflow-y-auto custom-scrollbar p-6 lg:p-10"
-                  }`}
+                  : activeTab === "modalidad"
+                    ? "overflow-hidden"
+                    : "overflow-y-auto custom-scrollbar"
+                  } ${activeTab === "modalidad" ? "p-4 lg:p-6" : activeTab !== "evaluacion" ? "p-6 lg:p-10" : ""}`}
               >
                 <AnimatePresence mode="wait">
 
-                  {/* 1. EL PROGRAMA - Intro con Mapa Latam */}
+                  {/* 1. EL PROGRAMA - Intro rediseñada */}
                   {activeTab === "intro" && (
                     <motion.div
                       key="intro"
                       initial={{ opacity: 0, scale: 0.98 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 1.02 }}
-                      className="min-h-full flex flex-col lg:flex-row gap-6 lg:gap-10 pt-2 lg:items-center"
+                      className="min-h-full flex flex-col lg:flex-row gap-8 lg:gap-12 pt-1"
                     >
-                      <div className="lg:w-1/2 space-y-4 md:space-y-5">
-                        <h2 className="text-2xl md:text-3xl xl:text-4xl font-bold tracking-tighter text-gradient-quantum">
-                          Impacto en América Latina
-                        </h2>
-                        <p className="text-muted-foreground text-sm xl:text-base leading-relaxed">
-                          Este programa democratiza el acceso a tecnologías de frontera para estudiantes de secundaria y universitarios, replicando modelos de éxito internacional.
-                        </p>
+                      {/* Columna Izquierda: Impacto y Mapa */}
+                      <div className="lg:w-1/2 flex flex-col gap-6">
+                        <div>
+                          <h2 className="text-xl md:text-2xl xl:text-3xl font-bold tracking-tighter text-gradient-quantum">
+                            Curso: Introducción a la Computación Cuántica
+                          </h2>
+                          <p className="text-muted-foreground text-xs xl:text-sm leading-relaxed mt-2">
+                            Este programa democratiza el acceso a tecnologías de frontera para estudiantes de secundaria y universitarios, replicando modelos de éxito internacional.
+                          </p>
+                        </div>
 
-                        <div className="space-y-3 mt-2">
-                          <div className="flex items-center justify-between gap-3">
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70">
-                              Explora hitos clave
-                            </p>
-                            <div className="flex items-center gap-1">
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  setActiveHighlight((prev) => (prev === "examen" ? "admision" : "examen"))
-                                }
-                                className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-white/10 bg-black/40 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors"
-                              >
-                                <ChevronLeft className="w-3 h-3" />
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  setActiveHighlight((prev) => (prev === "examen" ? "admision" : "examen"))
-                                }
-                                className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-white/10 bg-black/40 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors"
-                              >
-                                <ChevronRight className="w-3 h-3" />
-                              </button>
-                            </div>
+                        <div className="flex justify-center flex-1 items-center py-4">
+                          <div className="relative w-48 h-48 md:w-64 md:h-64 drop-shadow-[0_0_40px_rgba(138,43,226,0.4)]">
+                            <LatamGlobe />
                           </div>
-
-                          <div className="inline-flex items-center gap-1 rounded-full bg-black/50 border border-white/10 p-1 text-[11px] font-semibold uppercase tracking-wide">
-                            <button
-                              type="button"
-                              onClick={() => setActiveHighlight("examen")}
-                              className={`px-3 py-1 rounded-full transition-all ${activeHighlight === "examen"
-                                ? "bg-accent text-black shadow-[0_0_18px_rgba(255,215,0,0.55)]"
-                                : "text-muted-foreground hover:text-foreground"
-                                }`}
-                            >
-                              Examen
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => setActiveHighlight("admision")}
-                              className={`px-3 py-1 rounded-full transition-all ${activeHighlight === "admision"
-                                ? "bg-accent text-black shadow-[0_0_18px_rgba(255,215,0,0.55)]"
-                                : "text-muted-foreground hover:text-foreground"
-                                }`}
-                            >
-                              Admisión
-                            </button>
-                          </div>
-
-                          {activeHighlight === "examen" ? (
-                            <div className="relative overflow-hidden rounded-2xl border border-primary/40 bg-gradient-to-br from-[#20105a]/90 via-[#170b43]/85 to-[#11111f]/90 p-4 md:p-5 shadow-[0_0_30px_rgba(138,43,226,0.25)] flex flex-col">
-                              <h3 className="text-lg md:text-xl font-black uppercase leading-tight tracking-wide text-foreground">
-                                Examen Presencial PUCP
-                              </h3>
-                              <div className="mt-2 inline-flex self-start items-center gap-2 rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-accent font-bold text-sm md:text-base">
-                                <CalendarPlus className="w-4 h-4 md:w-5 md:h-5" />
-                                25 de abril de 2026
-                              </div>
-                              <p className="mt-2.5 text-xs md:text-sm text-foreground/85 leading-snug">
-                                ¡Ponte a prueba! Este examen presencial sirve como evaluación final del Módulo 1 y como vía de ingreso directo para el Módulo 2.
-                              </p>
-                              <div className="mt-auto pt-4">
-                                <a
-                                  href={examCalendarUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-accent px-4 py-2.5 text-black font-extrabold text-sm uppercase tracking-wide shadow-[0_0_20px_rgba(255,215,0,0.4)] hover:brightness-105 transition-all"
-                                >
-                                  <CalendarPlus className="w-4 h-4" />
-                                  Agregar al calendario
-                                </a>
-                              </div>
-                            </div>
-                          ) : (
-                            <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-background/70 to-background/80 p-4 md:p-5 flex flex-col">
-                              <h3 className="text-lg md:text-xl font-black uppercase tracking-wide text-foreground">
-                                Admisión
-                              </h3>
-                              <div className="mt-2 inline-flex self-start items-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-3 py-1.5 text-accent font-bold text-xs uppercase">
-                                Basada en Carta de Motivación
-                              </div>
-                              <p className="mt-2.5 text-xs md:text-sm text-foreground/80 leading-snug">
-                                Programa un recordatorio para no perder el proceso de postulación y presentar tu perfil a tiempo.
-                              </p>
-                              <div className="mt-auto pt-4">
-                                <a
-                                  href={admissionCalendarUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-accent/40 bg-accent/90 px-4 py-2.5 text-black font-bold text-sm uppercase tracking-wide hover:bg-accent transition-colors"
-                                >
-                                  <CalendarPlus className="w-4 h-4" />
-                                  Agendar admisión
-                                </a>
-                              </div>
-                            </div>
-                          )}
                         </div>
                       </div>
-                      <div className="lg:w-1/2 flex justify-center py-6 lg:py-2">
-                        {/* Latam Globe 3D */}
-                        <div className="relative w-64 h-64 md:w-80 md:h-80 drop-shadow-[0_0_40px_rgba(138,43,226,0.4)]">
-                          <LatamGlobe />
+
+                      {/* Columna Derecha: Público, Rutas y Calendario */}
+                      <div className="lg:w-1/2 flex flex-col gap-8">
+                        {/* Público Objetivo */}
+                        <div>
+                          <h3 className="text-lg md:text-xl font-bold tracking-tighter text-foreground flex items-center gap-2 mb-4">
+                            <Users className="w-5 h-5 text-accent" /> Público Objetivo
+                          </h3>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div className="flex items-center gap-3 p-3 rounded-xl border border-primary/30 bg-primary/10 hover:border-primary/50 transition-colors shadow-inner">
+                              <div className="bg-primary/20 p-2 rounded-lg text-primary">
+                                <Book className="w-5 h-5" />
+                              </div>
+                              <span className="text-sm font-bold text-foreground">Estudiantes de Secundaria</span>
+                            </div>
+                            <div className="flex items-center gap-3 p-3 rounded-xl border border-accent/30 bg-accent/10 hover:border-accent/50 transition-colors shadow-inner">
+                              <div className="bg-accent/20 p-2 rounded-lg text-accent">
+                                <GraduationCap className="w-5 h-5" />
+                              </div>
+                              <span className="text-sm font-bold text-foreground">Estudiantes Universitarios</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Rutas de Admisión */}
+                        <div className="pt-2">
+                          <h3 className="text-lg md:text-xl font-bold tracking-tighter text-foreground flex items-center gap-2 mb-4">
+                            <Target className="w-5 h-5 text-primary" /> Rutas de Admisión
+                          </h3>
+                          <div className="flex flex-col gap-4 relative">
+                            {/* Línea conectora */}
+                            <div className="absolute left-[16px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-accent/60 to-primary/60 hidden sm:block" />
+
+                            {/* Paso 1 */}
+                            <div className="relative flex gap-3">
+                              <div className="hidden sm:flex flex-col items-center mt-1 z-10 shrink-0">
+                                <div className="w-8 h-8 rounded-full border-2 border-accent bg-background/90 flex items-center justify-center text-accent font-bold text-sm shadow-[0_0_15px_rgba(255,215,0,0.5)]">
+                                  1
+                                </div>
+                              </div>
+                              <div className="flex-1 relative overflow-hidden rounded-xl border border-accent/40 bg-gradient-to-br from-[#20105a]/90 via-[#170b43]/85 to-[#11111f]/90 p-4 shadow-[0_0_20px_rgba(255,215,0,0.15)] hover:border-accent/60 transition-colors">
+                                <h4 className="text-sm md:text-base font-black uppercase tracking-wide text-foreground flex flex-wrap gap-x-2 items-center">
+                                  Admisión al Módulo 1 <span className="text-accent/90 text-[10px] md:text-xs tracking-normal mt-0.5">(Opcional)</span>
+                                </h4>
+                                <p className="mt-1.5 text-xs text-foreground/80 leading-snug">
+                                  Envía tu <strong className="text-foreground">carta de motivación</strong> para iniciar desde cero.
+                                </p>
+
+                                <div className="mt-4 flex flex-wrap items-center gap-3">
+                                  <div className="text-[11px] md:text-xs inline-flex items-center gap-1.5 rounded-md border border-accent/60 bg-accent/20 px-2.5 py-1 text-accent font-extrabold shadow-[0_0_15px_rgba(255,215,0,0.4)]">
+                                    <Clock className="w-3.5 h-3.5" />
+                                    <span>Deadline: <span className="underline decoration-2 underline-offset-2">23 de marzo</span></span>
+                                  </div>
+
+                                  {/* Botón Calendario 1 */}
+                                  <a href={admissionCalendarUrl} target="_blank" rel="noreferrer" className="text-[11px] md:text-xs inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-white/5 hover:bg-white/10 px-2.5 py-1 text-foreground transition-all duration-300 hover:shadow-md">
+                                    <CalendarPlus className="w-3.5 h-3.5" /> Agregar a mi calendario
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Paso 2 */}
+                            <div className="relative flex gap-3">
+                              <div className="hidden sm:flex flex-col items-center mt-1 z-10 shrink-0">
+                                <div className="w-8 h-8 rounded-full border-2 border-primary bg-background/90 flex items-center justify-center text-primary font-bold text-sm shadow-[0_0_15px_rgba(138,43,226,0.5)]">
+                                  2
+                                </div>
+                              </div>
+                              <div className="flex-1 relative overflow-hidden rounded-xl border border-primary/40 bg-gradient-to-br from-primary/10 via-background/70 to-background/80 p-4 hover:border-primary/60 transition-colors">
+                                <h4 className="text-sm md:text-base font-black uppercase tracking-wide text-foreground">
+                                  Examen Presencial PUCP <span className="text-accent/90 text-[10px] md:text-xs tracking-normal mt-0.5">(Obligatorio)</span>
+                                </h4>
+                                <ul className="mt-1.5 space-y-1.5 text-xs text-foreground/85 leading-snug">
+                                  <li className="flex gap-1.5 items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1 shrink-0" />
+                                    <span><strong className="text-foreground">Si llevaste el Módulo 1:</strong> Esta es la evaluación final.</span>
+                                  </li>
+                                  <li className="flex gap-1.5 items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1 shrink-0" />
+                                    <span><strong className="text-foreground">Si NO llevaste el Módulo 1:</strong> Admisión directa al Módulo 2.</span>
+                                  </li>
+                                </ul>
+
+                                <div className="mt-4 flex flex-wrap items-center gap-3">
+                                  <div className="text-[11px] md:text-xs inline-flex items-center gap-1.5 text-primary/90 font-bold border border-primary/40 px-2.5 py-1 rounded-md bg-primary/10 shadow-[0_0_10px_rgba(138,43,226,0.2)]">
+                                    <Clock className="w-3.5 h-3.5" />
+                                    25 de abril de 2026
+                                  </div>
+
+                                  {/* Botón Calendario 2 */}
+                                  <a href={examCalendarUrl} target="_blank" rel="noreferrer" className="text-[11px] md:text-xs inline-flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/20 hover:bg-primary/30 px-2.5 py-1 text-white font-medium transition-all duration-300 hover:shadow-[0_0_15px_rgba(138,43,226,0.4)]">
+                                    <CalendarPlus className="w-3.5 h-3.5" /> Agregar a mi calendario
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
                         </div>
                       </div>
                     </motion.div>
@@ -532,7 +514,161 @@ const Curso = () => {
                     </motion.div>
                   )}
 
-                  {/* 3. EVALUACIÓN - Sistema de Calificación y Certificados (layout tipo mockup) */}
+                  {/* 4. MODALIDAD */}
+                  {activeTab === "modalidad" && (
+                    <motion.div
+                      key="modalidad"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="h-full min-h-0 flex flex-col justify-start md:justify-center relative overflow-hidden rounded-3xl"
+                    >
+                      {/* Background particles */}
+                      <div className="absolute inset-0 pointer-events-none z-0 opacity-40 mix-blend-screen">
+                        <ParticleNetwork />
+                      </div>
+
+                      {/* Glow decorativo */}
+                      <motion.div
+                        aria-hidden
+                        className="pointer-events-none absolute -top-40 -right-16 w-96 h-96 rounded-full bg-gradient-to-br from-accent/10 via-quantum-blue/10 to-transparent blur-3xl opacity-50"
+                        animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -6, 0] }}
+                        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+                      />
+
+                      {/* CONTENIDO */}
+                      <div className="flex flex-col gap-3 md:gap-4 lg:gap-4 w-full max-w-5xl mx-auto relative z-10 px-2 md:px-0 pt-2 pb-1 md:pt-4 md:pb-2 lg:pb-3">
+
+                        {/* HEADER */}
+                        <div className="text-center space-y-1.5 md:space-y-2">
+                          <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-primary/80">
+                            Modalidad del Programa
+                          </p>
+
+                          <h3 className="text-xl md:text-2xl xl:text-3xl font-black tracking-tighter text-gradient-quantum">
+                            Modalidad y Frecuencia
+                          </h3>
+                        </div>
+
+                        {/* TARJETAS PRINCIPALES */}
+                        <div className="grid sm:grid-cols-2 gap-3 lg:gap-4 w-full">
+
+                          {/* Clases Virtuales */}
+                          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-primary/40 bg-gradient-to-br from-primary/10 via-background/60 to-background/80 p-3 md:p-4 flex flex-col items-center text-center shadow-[0_0_25px_rgba(138,43,226,0.15)] group hover:border-primary/60 transition-colors">
+                            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/20 flex items-center justify-center mb-2.5 md:mb-3 border border-primary/30 text-primary shadow-inner">
+                              <PlayCircle className="w-5 h-5 md:w-6 md:h-6" />
+                            </div>
+
+                            <h4 className="text-lg md:text-xl font-black text-foreground mb-1.5 md:mb-2">
+                              Clases Virtuales
+                            </h4>
+
+                            <p className="text-[11px] md:text-xs text-foreground/80 leading-relaxed">
+                              Todo el desarrollo del programa de 12 semanas, con clases teóricas y sesiones prácticas de laboratorio,
+                              se imparte 100% de manera remota y en vivo.
+                            </p>
+                          </div>
+
+                          {/* Exámenes Presenciales */}
+                          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-accent/40 bg-gradient-to-br from-accent/10 via-background/60 to-background/80 p-3 md:p-4 flex flex-col items-center text-center shadow-[0_0_25px_rgba(255,215,0,0.15)] group hover:border-accent/60 transition-colors">
+                            <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/20 flex items-center justify-center mb-2.5 md:mb-3 border border-accent/30 text-accent shadow-inner">
+                              <MapPin className="w-5 h-5 md:w-6 md:h-6" />
+                            </div>
+
+                            <h4 className="text-lg md:text-xl font-black text-foreground mb-1.5 md:mb-2">
+                              Exámenes Presenciales
+                            </h4>
+
+                            <p className="text-[11px] md:text-xs text-foreground/80 leading-relaxed">
+                              Al finalizar cada módulo, asistirás a rendir tu examen presencialmente en el campus,
+                              para evaluar rigurosamente tus logros.
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* MÉTRICAS */}
+                        <div className="flex justify-center items-start gap-5 sm:gap-8 md:gap-14 my-1.5">
+
+                          {[
+                            { img: teoriaImg, value: "24", label: "Clases Teóricas", delay: 0.1, color: "text-primary" },
+                            { img: laboratorioImg, value: "12", label: "Sesiones Lab", delay: 0.2, color: "text-accent" },
+                            { img: horasImg, value: "74h", label: "Carga Total", delay: 0.3, color: "text-quantum-pink" }
+                          ].map((item, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 15 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: item.delay, duration: 0.4 }}
+                              whileHover={{ y: -5, scale: 1.05 }}
+                              className="flex flex-col items-center group cursor-default"
+                            >
+                              <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-2 md:mb-2.5 flex justify-center items-center">
+                                <div className="absolute inset-0 bg-accent/30 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <img
+                                  src={item.img}
+                                  alt={item.label}
+                                  className="w-full h-full object-contain relative z-10 drop-shadow-[0_0_15px_rgba(255,215,0,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(255,215,0,0.6)] transition-all duration-300"
+                                />
+                              </div>
+
+                              <div className="text-center max-w-[90px] sm:max-w-[100px] md:max-w-[110px]">
+                                <p className={`font-heading text-xs md:text-sm font-black ${item.color}`}>
+                                  {item.value}
+                                </p>
+                                <p className="text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-[0.18em] font-semibold text-foreground/80">
+                                  {item.label}
+                                </p>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+
+                        {/* MÓDULOS */}
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-2.5 lg:gap-3.5">
+
+                          {[
+                            { title: "Módulo 1", weeks: "Semanas 1–4", theory: "16h Teoría", lab: "10h Lab", delay: 0.4 },
+                            { title: "Módulo 2", weeks: "Semanas 5–8", theory: "16h Teoría", lab: "8h Lab", delay: 0.5 },
+                            { title: "Módulo 3", weeks: "Semanas 9–12", theory: "16h Teoría", lab: "8h Lab", delay: 0.6 }
+                          ].map((mod) => (
+                            <motion.div
+                              key={mod.title}
+                              initial={{ opacity: 0, scale: 0.95 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: mod.delay, duration: 0.4 }}
+                              whileHover={{ y: -2 }}
+                              className="rounded-xl border border-primary/40 bg-gradient-to-br from-[#20105a]/90 via-[#170b43]/85 to-[#11111f]/90 p-2.5 md:p-3.5 flex flex-col justify-between shadow-[0_0_20px_rgba(138,43,226,0.15)] relative overflow-hidden group"
+                            >
+                              <div className="pointer-events-none absolute inset-0 opacity-20 bg-gradient-to-br from-primary/30 via-transparent to-transparent group-hover:opacity-40 transition-opacity" />
+
+                              <div className="relative z-10 flex items-center justify-between mb-2">
+                                <h4 className="text-sm md:text-base font-black uppercase tracking-wide text-foreground">
+                                  {mod.title}
+                                </h4>
+                                <p className="text-[9px] md:text-[10px] uppercase tracking-wider text-muted-foreground">
+                                  {mod.weeks}
+                                </p>
+                              </div>
+
+                              <div className="flex justify-between text-[11px] md:text-xs font-semibold relative z-10 pt-1 border-t border-white/5">
+                                <span className="text-primary">{mod.theory}</span>
+                                <span className="text-accent">{mod.lab}</span>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* 3. EVALUACIÓN */}
                   {activeTab === "evaluacion" && (
                     <motion.div
                       key="evaluacion"
@@ -542,7 +678,6 @@ const Curso = () => {
                       transition={{ duration: 0.5, ease: "easeOut" }}
                       className="h-full flex flex-col relative overflow-hidden pr-0"
                     >
-                      {/* Halo suave de fondo */}
                       <motion.div
                         aria-hidden
                         className="pointer-events-none absolute -top-40 -right-16 w-80 h-80 rounded-full bg-gradient-to-br from-accent/10 via-quantum-blue/25 to-transparent blur-3xl"
@@ -561,14 +696,12 @@ const Curso = () => {
                         transition={{ type: "spring", stiffness: 120, damping: 18 }}
                         className="relative z-10 w-full h-full rounded-3xl border border-border/40 bg-background/40 px-6 py-6 md:px-10 md:py-8 lg:px-14 lg:py-10 shadow-[0_0_40px_rgba(15,23,42,0.75)] overflow-hidden flex flex-col"
                       >
-                        {/* Brillos internos */}
                         <div className="pointer-events-none absolute inset-0 opacity-35">
                           <div className="absolute -top-24 left-8 w-56 h-56 bg-gradient-to-br from-primary/40 via-quantum-blue/30 to-transparent blur-3xl" />
                           <div className="absolute -bottom-24 right-8 w-64 h-64 bg-gradient-to-tl from-quantum-pink/40 via-accent/40 to-transparent blur-3xl" />
                         </div>
 
                         <div className="relative z-10 flex flex-col gap-6 h-full">
-                          {/* encabezado */}
                           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                             <div>
                               <p className="text-[12px] md:text-xs uppercase tracking-[0.24em] text-primary/80">
@@ -578,12 +711,9 @@ const Curso = () => {
                                 Así se calcula tu nota final
                               </h3>
                             </div>
-
                           </div>
 
-                          {/* contenido principal: tarjetas + gato */}
                           <div className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] items-stretch flex-1 min-h-[320px] md:min-h-[360px]">
-                            {/* lado izquierdo: porcentajes + texto + certificados */}
                             <div className="space-y-4">
                               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                                 {[
@@ -608,11 +738,24 @@ const Curso = () => {
                                 ))}
                               </div>
 
+
+
                               <p className="text-xs md:text-sm text-muted-foreground/85 leading-relaxed">
                                 Todos los componentes se suman para tu calificación final. Mantén un buen ritmo semanal y evita acumular
                                 tareas para potenciar tu desempeño en el examen presencial.
                               </p>
 
+
+                              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                <div>
+                                  <p className="text-[12px] md:text-xs uppercase tracking-[0.24em] text-primary/80">
+                                    Certificados
+                                  </p>
+                                  <h3 className="mt-1 text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground">
+                                    Obtén tu certificado
+                                  </h3>
+                                </div>
+                              </div>
                               <div className="grid sm:grid-cols-2 gap-4 text-xs md:text-sm">
                                 <div className="rounded-2xl border border-primary/40 bg-primary/10 px-5 py-4 flex gap-3 items-start">
                                   <Award className="w-5 h-5 text-primary mt-0.5" />
@@ -635,7 +778,6 @@ const Curso = () => {
                               </div>
                             </div>
 
-                            {/* lado derecho: gato con certificado dentro de la tarjeta */}
                             <div className="relative flex items-center justify-center">
                               <motion.div
                                 aria-hidden
@@ -657,148 +799,7 @@ const Curso = () => {
                     </motion.div>
                   )}
 
-                  {activeTab === "modalidad" && (
-                    <motion.div
-                      key="modalidad"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="h-full flex flex-col justify-center relative overflow-hidden rounded-3xl"
-                    >
-                      {/* Fondo con partículas para esta sección */}
-                      <div className="absolute inset-0 pointer-events-none z-0 opacity-40 mix-blend-screen">
-                        <ParticleNetwork />
-                      </div>
 
-                      {/* Halo suave de fondo para complementar las partículas */}
-                      <motion.div
-                        aria-hidden
-                        className="pointer-events-none absolute -top-40 -right-16 w-96 h-96 rounded-full bg-gradient-to-br from-accent/10 via-quantum-blue/10 to-transparent blur-3xl opacity-50"
-                        animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -6, 0] }}
-                        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-                      />
-
-                      <div className="flex flex-col gap-6 lg:gap-8 w-full max-w-5xl mx-auto relative z-10 px-4 md:px-0">
-
-                        {/* HEADER */}
-                        <div className="text-center space-y-2 md:space-y-4">
-                          <p className="text-xs uppercase tracking-[0.25em] text-primary/80">
-                            Modalidad del Programa
-                          </p>
-
-                          <h3 className="text-2xl md:text-3xl xl:text-4xl font-black tracking-tighter text-gradient-quantum">
-                            Modalidad y Frecuencia
-                          </h3>
-
-                          <p className="text-muted-foreground text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-                            Programa virtual de <span className="text-foreground font-semibold">12 semanas</span>
-                            {' '}organizado en <span className="text-foreground font-semibold">3 módulos</span>
-                            {' '}con sesiones teóricas y laboratorio aplicado.
-                          </p>
-                        </div>
-
-                        {/* RESUMEN NUMÉRICO - Estilo Amarillo Iluminado */}
-                        <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
-
-                          {[
-                            { value: "24", label: "Clases Teóricas", delay: 0.1 },
-                            { value: "12", label: "Sesiones de Laboratorio", delay: 0.2 },
-                            { value: "74h", label: "Carga Total", delay: 0.3 }
-                          ].map((item) => (
-                            <motion.div
-                              key={item.label}
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: item.delay, duration: 0.4 }}
-                              whileHover={{ y: -4, scale: 1.02 }}
-                              className="relative overflow-hidden rounded-2xl border border-accent/40 bg-accent/10 px-4 py-6 md:py-8 text-center shadow-[0_0_30px_rgba(255,215,0,0.2)] group"
-                            >
-                              <div className="pointer-events-none absolute inset-0 opacity-40 bg-gradient-to-br from-accent/20 via-transparent to-transparent group-hover:opacity-60 transition-opacity" />
-                              <div className="relative z-10">
-                                <p className="text-4xl md:text-5xl font-black text-accent drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">
-                                  {item.value}
-                                </p>
-                                <p className="mt-2 text-xs uppercase tracking-[0.2em] font-bold text-foreground/90">
-                                  {item.label}
-                                </p>
-                              </div>
-                            </motion.div>
-                          ))}
-
-                        </div>
-
-                        {/* MÓDULOS */}
-                        <div className="grid lg:grid-cols-3 gap-4 lg:gap-6">
-
-                          {[
-                            {
-                              title: "Módulo 1",
-                              weeks: "Semanas 1–4",
-                              theory: "16h Teoría",
-                              lab: "10h Lab",
-                              delay: 0.4
-                            },
-                            {
-                              title: "Módulo 2",
-                              weeks: "Semanas 5–8",
-                              theory: "16h Teoría",
-                              lab: "8h Lab",
-                              delay: 0.5
-                            },
-                            {
-                              title: "Módulo 3",
-                              weeks: "Semanas 9–12",
-                              theory: "16h Teoría",
-                              lab: "8h Lab",
-                              delay: 0.6
-                            }
-                          ].map((mod) => (
-                            <motion.div
-                              key={mod.title}
-                              initial={{ opacity: 0, scale: 0.95 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: mod.delay, duration: 0.4 }}
-                              whileHover={{ y: -3 }}
-                              className="rounded-2xl border border-primary/40 bg-gradient-to-br from-[#20105a]/90 via-[#170b43]/85 to-[#11111f]/90 p-5 md:p-6 flex flex-col justify-between shadow-[0_0_30px_rgba(138,43,226,0.15)] relative overflow-hidden group"
-                            >
-                              <div className="pointer-events-none absolute inset-0 opacity-20 bg-gradient-to-br from-primary/30 via-transparent to-transparent group-hover:opacity-40 transition-opacity" />
-                              <div className="relative z-10">
-                                <h4 className="text-lg font-black uppercase tracking-wide text-foreground">
-                                  {mod.title}
-                                </h4>
-
-                                <p className="text-xs uppercase tracking-wider text-muted-foreground mt-2">
-                                  {mod.weeks}
-                                </p>
-                              </div>
-
-                              <div className="flex justify-between mt-5 md:mt-6 text-sm font-semibold relative z-10">
-                                <span className="text-primary">
-                                  {mod.theory}
-                                </span>
-                                <span className="text-accent">
-                                  {mod.lab}
-                                </span>
-                              </div>
-                            </motion.div>
-                          ))}
-
-                        </div>
-
-                        {/* FOOTER TOTAL */}
-                        <div className="text-center pt-2">
-                          <p className="text-xs md:text-sm text-foreground/80 font-medium tracking-wide">
-                            48h Teoría + 26h Laboratorio ={" "}
-                            <span className="text-accent font-bold drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]">
-                              74 horas totales
-                            </span>
-                          </p>
-                        </div>
-
-                      </div>
-                    </motion.div>
-                  )}
                 </AnimatePresence>
               </div>
             </div>

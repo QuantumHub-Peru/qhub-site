@@ -25,15 +25,15 @@ const LatamGlobe = () => {
     const latamViews = useMemo(
         () => [
             { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" },
-            { name: "Colombia", icon: flagCO, lat: 4.57, lng: -74.29, altitude: 0.35, color: "#ffea00" },
-            { name: "México", icon: flagMX, lat: 23.63, lng: -102.55, altitude: 0.4, color: "#006847" },
-            { name: "Brasil", icon: flagBR, lat: -14.23, lng: -51.92, altitude: 0.5, color: "#009b3a" },
-            { name: "Argentina", icon: flagAR, lat: -38.41, lng: -63.61, altitude: 0.45, color: "#74acdf" },
-            { name: "Chile", icon: flagCL, lat: -35.67, lng: -71.54, altitude: 0.45, color: "#0039a6" },
-            { name: "Ecuador", icon: flagEC, lat: -1.83, lng: -78.18, altitude: 0.35, color: "#ffdd00" },
-            { name: "Bolivia", icon: flagBO, lat: -16.29, lng: -63.58, altitude: 0.4, color: "#007a33" },
-            { name: "Uruguay", icon: flagUY, lat: -32.52, lng: -55.76, altitude: 0.35, color: "#0038a8" },
-            { name: "Venezuela", icon: flagVE, lat: 6.42, lng: -66.58, altitude: 0.4, color: "#cf142b" }
+            { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" },
+            { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" },
+            { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" },
+            { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" },
+            { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" },
+            { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" },
+            { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" },
+            { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" },
+            { name: "Perú", icon: flagPE, lat: -9.19, lng: -75.01, altitude: 0.35, color: "#ff0000" }
         ],
         []
     );
@@ -109,7 +109,7 @@ const LatamGlobe = () => {
     return (
         <div
             ref={containerRef}
-            className="w-full h-full relative flex justify-center items-center overflow-hidden"
+            className="w-full h-full relative flex justify-center items-center overflow-visible"
         >
             <div className="absolute inset-0 overflow-hidden rounded-full">
                 <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(0,0,0,0.5)] rounded-full z-10 pointer-events-none" />
@@ -151,7 +151,7 @@ const LatamGlobe = () => {
             </div>
 
             {/* Cartel País estilo HUD Futurista */}
-            <div className="absolute bottom-[3%] sm:bottom-[8%] left-1/2 -translate-x-1/2 z-40 pointer-events-none">
+            <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 z-40 pointer-events-none w-full flex justify-center">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={countryIdx}
