@@ -7,13 +7,14 @@ import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award,
 import { useState, useRef } from "react";
 import aprendiendoImg from "@/gato/aprendiendo.png";
 import LatamGlobe from "@/components/LatamGlobe";
-import QuantumMolecule from '@/components/QuantumMolecule'; // Ajusta la ruta según dónde guardaste el archivo
+import QuantumMolecule from '@/components/QuantumMolecule';
 import modulo1Img from "@/gato/modelo1.png";
 import modulo2Img from "@/gato/modulo2.png";
 import modulo3Img from "@/gato/modulo3.png";
 import teoriaImg from "@/gato/teoria.png";
 import laboratorioImg from "@/gato/laboratorio.png";
 import horasImg from "@/gato/74.png";
+import teacherImg from "@/gato/teacher.png";
 
 // Modules Data
 const modules = [
@@ -84,6 +85,7 @@ const tabs = [
   { id: "intro", label: "El Programa", icon: <Target className="w-5 h-5" /> },
   { id: "modulos", label: "Plan Académico", icon: <Book className="w-5 h-5" /> },
   { id: "modalidad", label: "Modalidad", icon: <Clock className="w-5 h-5" /> },
+  { id: "docentes", label: "Docentes", icon: <Users className="w-5 h-5" /> },
   { id: "evaluacion", label: "Evaluación", icon: <Award className="w-5 h-5" /> },
 ];
 
@@ -126,7 +128,87 @@ const admissionCalendarUrl = createGoogleCalendarUrl({
   endDate: "20260323",
 });
 
-// --- COMPONENTES AUXILIARES EXTRAÍDOS PARA REUTILIZACIÓN (Móvil/Desktop) ---
+// --- DOCENTES CORREGIDO ---
+const DocentesContent = () => (
+  <div className="w-full h-full flex flex-col justify-center overflow-hidden pb-4 lg:pb-0">
+
+    {/* Título Grande y Llamativo */}
+    <div className="w-full mb-4 lg:mb-5 shrink-0 mt-2">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-black text-foreground tracking-tighter text-center lg:text-left">
+        Nuestro <span className="text-gradient-quantum block md:inline">Equipo Docente</span>
+      </h2>
+    </div>
+
+    {/* Contenedor Principal (Izquierda / Derecha) */}
+    <div className="flex flex-col lg:flex-row flex-1 min-h-0 items-center justify-between gap-6 lg:gap-8">
+
+      {/* Columna Izquierda: Texto Resumido + Anuncio */}
+      <div className="w-full lg:w-1/2 flex flex-col h-full justify-center gap-4 lg:gap-5">
+
+        {/* Texto con viñetas */}
+        <div className="space-y-3 text-sm lg:text-[15px] text-muted-foreground leading-snug lg:leading-normal">
+          <p className="font-medium text-foreground/90">
+            Aprende con un equipo internacional apasionado por la docencia y comprometido con el ecosistema cuántico de América Latina:
+          </p>
+          <ul className="space-y-2.5">
+            <li className="flex gap-3 items-start">
+              <span className="text-primary mt-1 shrink-0"><CheckCircle className="w-4 h-4 md:w-5 md:h-5 lg:w-4 lg:h-4" /></span>
+              <span><strong className="text-foreground">Especialistas globales:</strong> Módulos avanzados dictados por estudiantes de posgrado en física y computación cuántica.</span>
+            </li>
+            <li className="flex gap-3 items-start">
+              <span className="text-primary mt-1 shrink-0"><CheckCircle className="w-4 h-4 md:w-5 md:h-5 lg:w-4 lg:h-4" /></span>
+              <span><strong className="text-foreground">Pipeline de talento:</strong> El Módulo 1 está a cargo de egresados destacados, evidenciando un modelo formativo sostenible.</span>
+            </li>
+            <li className="flex gap-3 items-start">
+              <span className="text-primary mt-1 shrink-0"><CheckCircle className="w-4 h-4 md:w-5 md:h-5 lg:w-4 lg:h-4" /></span>
+              <span><strong className="text-foreground">Autonomía y respaldo:</strong> Cada instructor tiene libertad pedagógica, respaldado por una sólida coordinación académica.</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Anuncio "Próximamente" */}
+        <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-accent/40 bg-gradient-to-br from-accent/10 via-background/60 to-background p-4 md:p-5 shadow-[0_0_30px_rgba(255,215,0,0.15)] group shrink-0 mt-1 lg:mt-2">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-[40px] opacity-60 pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col space-y-1.5 md:space-y-2 text-center lg:text-left items-center lg:items-start">
+            <div className="inline-flex items-center space-x-2 bg-accent/20 border border-accent/30 px-3 py-0.5 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-accent drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
+                Anuncio Oficial
+              </span>
+            </div>
+            <h4 className="text-lg md:text-xl lg:text-2xl font-black text-foreground tracking-tight">
+              Próximamente <span className="text-gradient-quantum">Plana Docente</span>
+            </h4>
+            <p className="text-muted-foreground text-xs md:text-[13px] font-medium max-w-md leading-tight md:leading-snug">
+              Estamos afinando los últimos detalles para presentarte a los expertos que te acompañarán en este viaje de aprendizaje.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Columna Derecha: El Gato Flotando */}
+      <div className="w-full lg:w-1/2 flex justify-center items-center h-40 md:h-56 lg:h-full shrink-0 relative">
+        {/* Glow de fondo para destacar más al gato */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-accent/10 blur-[80px] rounded-full opacity-60 pointer-events-none" />
+
+        <motion.div
+          className="relative w-40 h-40 md:w-56 md:h-56 lg:w-[280px] lg:h-[280px] xl:w-[320px] xl:h-[320px] drop-shadow-[0_0_35px_rgba(255,215,0,0.4)] z-10"
+          animate={{ y: [-10, 10, -10] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <img
+            src={teacherImg}
+            alt="Profesor Cuántico"
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+      </div>
+
+    </div>
+  </div>
+);
 
 const IntroContent = () => (
   <div className="min-h-full flex flex-col lg:flex-row gap-8 lg:gap-12 pt-1">
@@ -473,7 +555,6 @@ const Curso = () => {
                   <motion.span
                     className="inline-block bg-clip-text text-transparent pb-1"
                     style={{
-                      // Usamos los colores de tu tema y agregamos un turquesa/cian brillante en el medio
                       backgroundImage: "linear-gradient(90deg, hsl(270 80% 60%), hsl(330 80% 60%), hsl(175 80% 70%), hsl(330 80% 60%), hsl(270 80% 60%))",
                       backgroundSize: "200% auto",
                     }}
@@ -547,7 +628,7 @@ const Curso = () => {
               <motion.div animate={{ rotate: -360, scale: [1, 1.2, 1] }} transition={{ duration: 35, repeat: Infinity }} className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-quantum-blue/20 blur-[120px]" />
             </div>
 
-            {/* TAB NAV PARA ESCRITORIO (Oculto en móvil con hidden lg:flex) */}
+            {/* TAB NAV PARA ESCRITORIO */}
             <aside className="hidden lg:flex w-[220px] xl:w-[260px] shrink-0 flex-col z-10 mb-2 lg:mb-0">
               <div className="glass h-full rounded-2xl p-1.5 border border-border/50 bg-background/60 backdrop-blur-xl relative">
                 <button onClick={() => scrollNav('left')} className="lg:hidden absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur border border-white/20 rounded-full p-1.5 shadow-lg text-foreground/80 hover:text-foreground" aria-label="Scroll left">
@@ -629,6 +710,12 @@ const Curso = () => {
                       <EvaluacionContent />
                     </motion.div>
                   )}
+
+                  {activeTab === "docentes" && (
+                    <motion.div key="docentes" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.02 }} className="h-full w-full">
+                      <DocentesContent />
+                    </motion.div>
+                  )}
                 </AnimatePresence>
               </div>
 
@@ -677,6 +764,15 @@ const Curso = () => {
 
                 <div className="w-full h-px bg-border/40" />
 
+                {/* 5. Docentes */}
+                <section className="flex flex-col gap-4">
+                  <div className="flex items-center gap-2 border-b border-accent/20 pb-2">
+                    <Users className="w-5 h-5 text-accent" />
+                    <h2 className="text-xl font-black text-gradient-quantum">Docentes</h2>
+                  </div>
+                  <DocentesContent />
+                </section>
+
                 {/* 4. Evaluación */}
                 <section className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 border-b border-primary/20 pb-2">
@@ -685,6 +781,10 @@ const Curso = () => {
                   </div>
                   <EvaluacionContent />
                 </section>
+
+                <div className="w-full h-px bg-border/40" />
+
+
 
               </div>
 
@@ -695,7 +795,6 @@ const Curso = () => {
         {/* Section 3: Final CTA */}
         <section className="w-full min-h-[50vh] flex flex-col items-center justify-center relative z-10 px-4 py-20 lg:py-32 overflow-hidden snap-start">
 
-          {/* --- NUEVO: Video de Fondo --- */}
           <div className="absolute inset-0 z-0 overflow-hidden">
             <video
               autoPlay
@@ -707,11 +806,9 @@ const Curso = () => {
               <source src="/video-bg.mp4" type="video/mp4" />
               Tu navegador no soporta videos HTML5.
             </video>
-            {/* Capa de superposición para asegurar que el texto sea siempre legible */}
             <div className="absolute inset-0 bg-background/60" />
           </div>
 
-          {/* Animated Background Elements (Los mantuve con opacidad reducida para que se mezclen con el video, si no te gustan puedes borrar este div) */}
           <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0 mix-blend-screen opacity-50">
             <motion.div
               animate={{ rotate: 360, scale: [1, 1.2, 1] }}
@@ -747,19 +844,18 @@ const Curso = () => {
             >
               ¿Listo para dar el <br className="hidden sm:block" />
 
-              {/* --- ANIMACIÓN MÁS RÁPIDA --- */}
               <motion.span
                 className="text-gradient-quantum inline-block mt-2 origin-bottom"
                 animate={{
-                  y: [0, -20, 0], // Sube un poquito más (de -18 a -20) para compensar la velocidad
+                  y: [0, -20, 0],
                   scale: [1, 1.1, 1],
                   filter: ["hue-rotate(0deg)", "hue-rotate(60deg)", "hue-rotate(0deg)"]
                 }}
                 transition={{
-                  duration: 0.35, // Salto más ágil
+                  duration: 0.35,
                   ease: "easeInOut",
                   repeat: Infinity,
-                  repeatDelay: 1.5 // Menos pausa entre saltos
+                  repeatDelay: 1.5
                 }}
               >
                 salto cuántico
