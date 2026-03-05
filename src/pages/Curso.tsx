@@ -181,9 +181,7 @@ const DocentesContent = () => (
             <h4 className="text-lg md:text-xl lg:text-2xl font-black text-foreground tracking-tight">
               Próximamente <span className="text-gradient-quantum">Plana Docente</span>
             </h4>
-            <p className="text-muted-foreground text-xs md:text-[13px] font-medium max-w-md leading-tight md:leading-snug">
-              Estamos afinando los últimos detalles para presentarte a los expertos que te acompañarán en este viaje de aprendizaje.
-            </p>
+
           </div>
         </div>
       </div>
@@ -228,23 +226,15 @@ const IntroContent = () => (
       </div>
     </div>
     <div className="lg:w-1/2 flex flex-col gap-8">
-      <div>
-        <h3 className="text-lg md:text-xl font-bold tracking-tighter text-foreground flex items-center gap-2 mb-4">
-          <Users className="w-5 h-5 text-accent" /> Público Objetivo
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div className="flex items-center gap-3 p-3 rounded-xl border border-primary/30 bg-primary/10 hover:border-primary/50 transition-colors shadow-inner">
-            <div className="bg-primary/20 p-2 rounded-lg text-primary">
-              <Book className="w-5 h-5" />
-            </div>
-            <span className="text-sm font-bold text-foreground">Estudiantes de Secundaria</span>
-          </div>
-          <div className="flex items-center gap-3 p-3 rounded-xl border border-accent/30 bg-accent/10 hover:border-accent/50 transition-colors shadow-inner">
-            <div className="bg-accent/20 p-2 rounded-lg text-accent">
-              <GraduationCap className="w-5 h-5" />
-            </div>
-            <span className="text-sm font-bold text-foreground">Estudiantes Universitarios</span>
-          </div>
+      <div className="w-full flex flex-col sm:flex-row rounded-xl overflow-hidden shadow-[0_0_20px_rgba(138,43,226,0.15)] border border-primary/30 mt-2">
+        <div className="bg-primary/20 backdrop-blur-md text-primary flex items-center justify-center p-4 sm:p-5 sm:w-2/5 shrink-0 gap-2 sm:gap-3 border-b sm:border-b-0 sm:border-r border-primary/30">
+          <Users className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
+          <span className="text-lg sm:text-xl font-black tracking-tighter uppercase text-center leading-tight">Público Objetivo</span>
+        </div>
+        <div className="bg-black/40 backdrop-blur-md p-4 sm:p-5 flex-1 flex flex-col justify-center">
+          <p className="text-sm md:text-[15px] text-foreground/90 leading-relaxed">
+            Estudiantes peruanos: <strong className="text-white">Escolares</strong> (4° y 5° de secundaria), <strong className="text-white">preuniversitarios, institutos técnicos y universitarios</strong>
+          </p>
         </div>
       </div>
       <div className="pt-2">
