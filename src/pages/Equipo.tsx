@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Linkedin, X, Users } from "lucide-react";
 
 interface TeamMember {
@@ -10,28 +10,23 @@ interface TeamMember {
   dept: string;
   bio: string;
   linkedin: string;
+  foto?: string;
 }
-
-const teamMembers: TeamMember[] = [
-  { name: "Freddy Herrera Cueva", role: "CEO & Co-Fundador", dept: "Ejecutivo", bio: "Líder visionario en computación cuántica con experiencia en física teórica y emprendimiento tecnológico. Freddy fundó QuantumHub Peru con la misión de construir el primer ecosistema cuántico de Latinoamérica, conectando educación, investigación e industria para cerrar la brecha tecnológica regional.", linkedin: "#" },
-  { name: "Adriana Alvarado León", role: "Co-Fundadora", dept: "Ejecutivo", bio: "Experta en gestión de proyectos tecnológicos y desarrollo organizacional. Adriana lidera la estrategia operativa de QuantumHub Peru, asegurando que cada iniciativa se ejecute con excelencia y contribuya al crecimiento sostenible del ecosistema cuántico latinoamericano.", linkedin: "#" },
-  { name: "Vania Pachas Acuña", role: "Co-Fundadora", dept: "Ejecutivo", bio: "Investigadora en computación cuántica con formación en matemáticas aplicadas. Vania aporta rigor académico y visión científica al liderazgo de QuantumHub, impulsando programas de investigación y alianzas con instituciones internacionales.", linkedin: "#" },
-  { name: "Claudia Zendejas-Morales", role: "Profesora Internacional", dept: "Académico", bio: "Docente e investigadora internacional especializada en mecánica cuántica y sistemas de información cuántica. Claudia diseña contenido curricular de clase mundial y facilita la transferencia de conocimiento entre universidades globales y QuantumHub Peru.", linkedin: "#" },
-  { name: "Carlos Mendoza", role: "Dir. Investigación", dept: "Investigación", bio: "Físico con doctorado en óptica cuántica, Carlos lidera los proyectos de investigación en hardware y software cuántico. Su trabajo en fotónica cuántica integrada está posicionando a QuantumHub como referente en investigación aplicada en la región.", linkedin: "#" },
-  { name: "María García", role: "Dir. Innovación", dept: "Innovación", bio: "Ingeniera en ciencias de la computación con maestría en machine learning cuántico. María conecta la investigación teórica con aplicaciones prácticas, organizando hackathons y programas de incubación para startups quantum-native en Latinoamérica.", linkedin: "#" },
-  { name: "José Rivera", role: "Dir. Relaciones Públicas", dept: "Relaciones Públicas", bio: "Comunicador estratégico con experiencia en marketing tecnológico y relaciones institucionales. José amplifica la voz de QuantumHub Peru en medios internacionales y construye alianzas con universidades, empresas y gobiernos comprometidos con el futuro cuántico.", linkedin: "#" },
-  { name: "Ana Torres", role: "Dir. Comunidad", dept: "Comunidad", bio: "Community builder apasionada por la tecnología inclusiva. Ana gestiona la comunidad de más de 500 entusiastas cuánticos, organiza meetups mensuales y programas de mentoría que conectan a estudiantes con profesionales del ecosistema cuántico global.", linkedin: "#" },
-  { name: "Luis Fernández", role: "Investigador Senior", dept: "Investigación", bio: "Especialista en algoritmos cuánticos variacionales y quantum machine learning. Luis contribuye activamente a publicaciones científicas y guía a nuevos investigadores en el desarrollo de proyectos que exploran las fronteras de la computación cuántica.", linkedin: "#" },
-  { name: "Sofía Ramírez", role: "Coordinadora Académica", dept: "Académico", bio: "Educadora con experiencia en diseño instruccional para tecnologías emergentes. Sofía coordina el desarrollo de cursos, talleres y programas de certificación que hacen accesible la computación cuántica a estudiantes de toda Latinoamérica.", linkedin: "#" },
-  { name: "Diego Castillo", role: "Quantum Intern", dept: "Quantum Interns", bio: "Estudiante de física en la Universidad Nacional de Ingeniería, Diego participa en el programa de investigación en quantum hardware track, explorando circuitos ópticos y sistemas de fotónica cuántica bajo la mentoría del equipo senior.", linkedin: "#" },
-  { name: "Valentina Cruz", role: "Quantum Intern", dept: "Quantum Interns", bio: "Estudiante de ingeniería de sistemas apasionada por quantum machine learning. Valentina desarrolla modelos híbridos clásico-cuánticos y contribuye al quantum software track con implementaciones en Qiskit y Pennylane.", linkedin: "#" },
-];
 
 const deptFilters = ["Todos", "Ejecutivo", "Académico", "Investigación", "Relaciones Públicas", "Innovación", "Comunidad", "Quantum Interns"];
 
 const Equipo = () => {
   const [filter, setFilter] = useState("Todos");
   const [selected, setSelected] = useState<TeamMember | null>(null);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+
+  useEffect(() => {
+    fetch("/data/equipo.json")
+      .then(res => res.json())
+      .then(data => setTeamMembers(data))
+      .catch(err => console.error("Error loading team data:", err));
+  }, []);
+
   const filtered = filter === "Todos" ? teamMembers : teamMembers.filter((m) => m.dept === filter);
 
   return (
@@ -79,11 +74,15 @@ const Equipo = () => {
                 >
                   {/* Avatar placeholder */}
                   <div className="aspect-[3/4] bg-gradient-to-br from-secondary to-muted relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Users className="w-10 h-10 text-primary/40" />
+                    {m.foto ? (
+                      <img src={m.foto} alt={m.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Users className="w-10 h-10 text-primary/40" />
+                        </div>
                       </div>
-                    </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
@@ -171,7 +170,11 @@ const Equipo = () => {
 
                   {/* Avatar Container */}
                   <div className="relative w-full h-full rounded-full border-2 border-white/10 bg-[#0A0B10] flex items-center justify-center overflow-hidden shadow-2xl z-10 group">
-                    <Users className="w-24 h-24 sm:w-32 sm:h-32 text-primary/40 group-hover:scale-110 group-hover:text-primary/60 transition-all duration-500" />
+                    {selected.foto ? (
+                      <img src={selected.foto} alt={selected.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <Users className="w-24 h-24 sm:w-32 sm:h-32 text-primary/40 group-hover:scale-110 group-hover:text-primary/60 transition-all duration-500" />
+                    )}
                   </div>
                 </div>
               </div>
