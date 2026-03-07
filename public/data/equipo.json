@@ -99,7 +99,8 @@
     "name": "Dessiree Montenegro Arrasco",
     "role": "",
     "dept": [
-      "Investigación"
+      "Investigación",
+      "Relaciones Públicas"
     ],
     "bio": "Es una estudiante peruana y líder en iniciativas STEM, reconocida por su excelencia académica y compromiso con el impacto social. Bajo este enfoque, ha liderado investigaciones en ciencia espacial presentadas en congresos internacionales (IAC & CATE). En 2023 fue ganadora nacional del concurso de ensayos de CONCYTEC y Cometa Camper 2025. En 2024 fundó Upcoming Generation, una iniciativa tech-for-good que desarrolla soluciones tecnológicas a problemáticas sociales y educativas impactando a +10 comunidades. Actualmente es Researcher y Public Relations Director en Quantum Hub Peru, donde impulsa estrategias para democratizar la computación cuántica.\nFue Valedictorian (1/295) de su generación en CMSPP - COAR Lima y próximamente Iniciará sus estudios en University of Chicago con enfoque en Computer Science y Physics.",
     "linkedin": "https://www.linkedin.com/in/dessiree-anghely-montenegro-arrasco-4089352b6?trk=contact-info",
@@ -162,7 +163,7 @@
     "dept": [
       "Investigación"
     ],
-    "bio": "Aspirante a Ingeniería Aeroespacial (major) e Ingeniería Eléctrica (minor), enfocado en investigación en física AMO aplicada a fotónica cuántica integrada, aviónica y aerotermodinámica. Medallista de oro en la Open World Astronomy Olympiad y Global Nominee en el NASA International Space Apps Challenge; además, participante y finalista en competencias como Eureka (CONCYTEC), SAMMAT, IAAC, Copernicus, IPhR, etc. Rinde como Co-director de Operaciones del Departamento de Investigación de Quantum Hub Peru y miembro del equipo de Integrated Quantum Photonics. Investigador asociado en Intinauta Research Center, con manuscritos presentados en el International Astronautical Congress (IAC), GLEX y CATE sobre microgravedad y emulación de entornos espaciales, y autor publicado en la RCA (ASPAST), e integrante del subsistema Electrical Power System (EPS) del CubeSat Educacional (2U) Chasqui II.",
+    "bio": "Aspirante a Ingeniería Aeroespacial (major) e Ingeniería Eléctrica (minor), enfocado en investigación en física AMO aplicada a fotónica cuántica integrada, aviónica y aerotermodinámica. Medallista de oro en la Open World Astronomy Olympiad y Global Nominee en el NASA International Space Apps Challenge; además, participante y finalista en competencias como Eureka (CONCYTEC), SAMMAT, IAAC, Copernicus, IPhR, etc. Rinde como Co-director de Operaciones del Departamento de Investigación de Quantum Hub Peru e miembro del equipo de Integrated Quantum Photonics. Investigador asociado en Intinauta Research Center, con manuscritos presentados en el International Astronautical Congress (IAC), GLEX y CATE sobre microgravedad y emulación de entornos espaciales, y autor publicado en la RCA (ASPAST), e integrante del subsistema Electrical Power System (EPS) del CubeSat Educacional (2U) Chasqui II.",
     "linkedin": "https://www.linkedin.com/in/jharold-alvarez-808534262/",
     "foto": "/images/equipo/JHAROLD_CONIDA - Jharold Axel Alvarez Quichca.jpg"
   },
@@ -180,7 +181,8 @@
     "name": "Ariana Lopez Julcarima",
     "role": "",
     "dept": [
-      "Investigación"
+      "Investigación",
+      "Innovación"
     ],
     "bio": "Miembro del área de Innovación, donde se desempeña como desarrolladora full stack y forma parte del equipo de investigación en proyectos de Quantum Machine Learning. Actualmente cursa el cuarto año de Ciencias de la Computación en la Universidad Nacional de Ingeniería. Su perfil se centra en computación cuántica y ciberseguridad, áreas en las que orienta su desarrollo profesional. Destaca su participación en la Quantum Hackathon LATAM, donde ideó soluciones basadas en tecnologías cuánticas con impacto social. Además, cuenta con amplia experiencia en hackathons internacionales y certificaciones en computación cuántica, como QWorld Bronze y Nickel, que respaldan su sólida formación técnica.",
     "linkedin": "https://www.linkedin.com/in/arianalopezj",
@@ -198,9 +200,9 @@
   },
   {
     "name": "Gabriela Granados Santos",
-    "role": "Miembro",
+    "role": "Directora R.R.H.H",
     "dept": [
-      "Quantum Interns"
+      "Relaciones Públicas"
     ],
     "bio": "Psicóloga Organizacional por la Universidad Nacional Mayor de San Marcos. Actualmente lidera el área de Recursos Humanos dentro del equipo de Relaciones Públicas de QuantumHub, donde trabaja en potenciar el talento de los miembros de la organización en alianza con destacados profesionales e instituciones. Cuenta con una especialización en Gestión de Recursos Humanos en Centrum PUCP y con formación en Coaching en la Universidad ESAN, lo que respalda su desarrollo en liderazgo, gestión de equipos y acompañamiento profesional.",
     "linkedin": "https://www.linkedin.com/in/gabriela-fernanda-granados-santos?utm_source=share_via&utm_content=profile&utm_medium=member_android",
@@ -223,7 +225,7 @@
       "Investigación",
       "Relaciones Públicas"
     ],
-    "bio": "Es estudiante de 5° año de secundaria en el Colegio San Agustín Elite – Huánuco. Le gustan las ciencias naturales y las tecnologías emergentes, especialmente la programación y la computación cuántica. Ha participado en el Campamento de Robótica Misión Tech, el Selectivo Peruano de Física (SPF), la Olimpiada Peruana de Biología y el NASA Space Apps Challenge, entre otros espacios académicos. Además, completó con éxito el curso de Introducción a la Computación Cuántica de QuantumHub Perú. Actualmente continúa fortaleciendo su perfil académico-científico mediante nuevos retos formativos orientados a la investigación y la innovación tecnológica.",
+    "bio": "Es estudiante de 5° año de secundaria en el Colegio San Agustín Elite – Huánuco. Le gustan las ciencias naturales y las tecnologías emergentes, especialmente la programación y la computación cuántica. Ha participado en el Campamento de Robótica Misión Tech, el Selectivo Peruano de Física (SPF), la Olimpiada Peruana de Biología y el NASA Space Apps Challenge, entre otros espacios académicos. Además, completó con éxito el curso de Introducción a la Computación Cuántica de QuantumHub Perú. Actualmente continúa fortaleciendo su perfil académico-científico mediante nuevos retos formativos orientados a la investigación e innovación tecnológica.",
     "linkedin": "https://www.linkedin.com/in/javier-jara-fermin-449816394?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "foto": "/images/equipo/Retrato profesional de hombre joven (1) (1) - Quantum Hub Peru.png"
   },
@@ -239,9 +241,9 @@
   },
   {
     "name": "María Antezana De La Cruz",
-    "role": "Miembro",
+    "role": "Coordinadora de Comunicaciones",
     "dept": [
-      "Quantum Interns"
+      "Relaciones Públicas"
     ],
     "bio": "Estudiante de Ingeniería Industrial en la Universidad Peruana Cayetano Heredia (UPCH), con interés en integrar su formación con el campo de la computación y la tecnología. Desde pequeña ha sentido un profundo amor por la ciencia y las áreas STEM, participando en concursos de matemáticas a nivel nacional e internacional. Cuenta con experiencia en liderazgo y trabajo colaborativo en iniciativas educativas y proyectos de voluntariado orientados a ampliar el acceso a la ciencia y promover la educación matemática en el país. Su perfil técnico incluye formación en tecnologías emergentes, especialmente en ciencia de datos y computación cuántica. Ha completado satisfactoriamente todos los módulos formativos ofrecidos por Quantum Hub, consolidando bases en conceptos cuánticos y su proyección en aplicaciones tecnológicas.",
     "linkedin": "https://www.linkedin.com/in/maría-antezana-a20292332",
@@ -272,7 +274,8 @@
     "name": "Dayana Gomez Rodriguez",
     "role": "",
     "dept": [
-      "Investigación"
+      "Investigación",
+      "Innovación"
     ],
     "bio": "Dayana Gomez es estudiante de Ingeniería de Ciencias de la Computación y actualmente se desempeña como Technical Head Lead en QuantumHub Peru. En este rol, lidera la arquitectura de una plataforma educativa escalable orientada a la democratización de la computación cuántica. Su perfil destaca por una sólida especialización en Inteligencia Artificial y Machine Learning, habiendo diseñado sistemas multi-agente avanzados y pipelines de RAG multimodal. Con experiencia previa como AI Software Engineer y Desarrolladora Backend, Dayana integra tecnologías como GenAI y sistemas de alto rendimiento para fortalecer el ecosistema cuántico regional. Su enfoque une la rigurosidad técnica con el propósito de hacer accesible el conocimiento cuántico a través de soluciones de software innovadoras y de alto impacto.",
     "linkedin": "https://www.linkedin.com/in/dayana-gomez-rd/",
@@ -330,9 +333,9 @@
   },
   {
     "name": "Manuel Cáceres Maldonado",
-    "role": "Miembro",
+    "role": "Director Logístico",
     "dept": [
-      "Quantum Interns"
+      "Relaciones Públicas"
     ],
     "bio": "Bachiller en Ingeniería Industrial de la Universidad de Ciencias y Humanidades perteneciente al décimo superior de su promoción. Fue seleccionado como uno de los representantes de su universidad en CADE Universitario, evento que reúne a jóvenes líderes de todo el país, lo que respalda su destacado desempeño académico, habilidades blandas, y nivel avanzado de inglés. Asimismo, destacó por su habilidades en investigación al haber publicado un artículo científico en IEEE, y por haber ganado un concurso de creatividad en su universidad. Con experiencia en logística de e-commerce y mejora de procesos, se desempeña como Director Logístico en Quantum Hub, además de sus labores en la empresa logística Dinet.",
     "linkedin": "https://www.linkedin.com/in/manuelcáceresmaldonado",
@@ -340,9 +343,9 @@
   },
   {
     "name": "Sebastián Villanueva Flores",
-    "role": "Miembro",
+    "role": "Director General",
     "dept": [
-      "Quantum Interns"
+      "Relaciones Públicas"
     ],
     "bio": "Sebastian Villanueva es Director de Relaciones Públicas en QuantumHub Perú y estudiante de Ciencia de la Computación en UTEC, donde cuenta con una beca académica. Su trayectoria destaca por liderar la organización del Quantum AI Summit, el evento principal de la organización, y por impulsar Future Minds, una campaña de divulgación científica en colegios. Además, se desempeña como Software Lead en proyectos de tecnología aeroespacial como CubeSat. Sus intereses técnicos se centran en la intersección de la computación cuántica, el Machine Learning y el desarrollo de sistemas embebidos. Sebastian busca integrar su formación técnica con la gestión estratégica y el dinámico ecosistema de startups globales para potenciar soluciones",
     "linkedin": "https://www.linkedin.com/in/sebastian-villanueva-flores-43369a2a0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",

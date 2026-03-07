@@ -212,7 +212,7 @@ const Equipo = () => {
 
               {/* Bio area with toggle */}
               <div className="w-full relative mt-4 sm:px-4">
-                <div className={`relative transition-all duration-300 font-body text-base sm:text-lg text-white/75 leading-relaxed text-center sm:text-left ${!bioExpanded ? "line-clamp-4" : ""}`}>
+                <div className={`relative transition-all duration-300 font-body text-base sm:text-lg text-white/75 leading-relaxed text-justify ${!bioExpanded ? "line-clamp-4" : ""}`}>
                   {selected.bio}
                 </div>
                 {!bioExpanded && selected.bio && selected.bio.length > 200 && (
