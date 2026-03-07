@@ -1,5 +1,29 @@
 [
   {
+    "name": "Adriana Alvarado León",
+    "role": "Co-Fundadora",
+    "dept": "Ejecutivo",
+    "bio": "Fundadora de QuantumHub Perú, directora del Departamento Académico y miembro de Investigación...",
+    "linkedin": "https://www.linkedin.com/in/adriana-alvarado-leon/",
+    "foto": "/images/equipo/foto - Adriana Alvarado León.png"
+  },
+  {
+    "name": "Vania Pachas Acuña",
+    "role": "Co-Fundadora",
+    "dept": "Ejecutivo",
+    "bio": "Líder STEM y aspirante a ingeniera eléctrica y computacional, apasionada por la robótica, la ingeniería e iniciativas educativas. Becaria del curso de Computación Cuántica por The Coding School (Qubit by Qubit & Google AI), donde desarrolló el capstone “Optimizing Satellite Placement with QAOA”, nominado a Mejor Comunicación. Representó al Perú en la World Robot Olympiad (WRO) International Final 2025 en Singapur y obtuvo el Premio Nacional de la International Astronomy and Astrophysics Competition (IAAC) 2025. Fundadora y directora de Tech Para Mí, capacitando gratuitamente a 300+ estudiantes en 8 países en robótica, electrónica y programación. Organizó Misión Tech, primer campamento de robótica peruano, con auspicio del MIMP y UTEC. En QuantumHub, desarrolla la QHub Learning Platform dirigiendo el Departamento de Innovación.",
+    "linkedin": "https://www.linkedin.com/in/vania-pachas/",
+    "foto": "/images/equipo/vania_headshot - Vania Pachas.png"
+  },
+  {
+    "name": "Freddy Herrera Cueva",
+    "role": "CEO & Co-Fundador",
+    "dept": "Ejecutivo",
+    "bio": "Físico y matemático peruano graduado de Amherst College (EE. UU.), especializándose en la intersección entre la fotónica integrada, información cuántica y nanofabricación. Actualmente es Investigador Asociado en el Center for Quantum Networks (CQN) en la University of Maryland, donde diseña y modela arquitecturas fotónicas integradas para la ingeniería de estados cuánticos de luz en redes escalables. Su formación incluyó pasantías de investigación en UC Santa Barbara y Northwestern University, explorando fuentes de luz cuántica ultrabrillante, dispositivos ópticos no lineales y comunicaciones cuánticas sobre fibra óptica de larga distancia. En 2024, su trabajo recibió el Best Poster Award en la conferencia Quantum Noir de Harvard University. Su labor integra investigación de frontera con el desarrollo del ecosistema cuántico en América Latina.",
+    "linkedin": "https://www.linkedin.com/in/fredyhc2001/",
+    "foto": "/images/equipo/Headshot (Edited) - Freddy Herrera Cueva.jpeg"
+  },
+  {
     "name": "Rosario Morales Orvezo",
     "role": "",
     "dept": "Investigación",
@@ -256,28 +280,12 @@
     "foto": "/images/equipo/imagen de linkd steffi - Steffi Yurivilca.jpeg"
   },
   {
-    "name": "Freddy Herrera Cueva",
-    "role": "Director",
-    "dept": "Investigación",
-    "bio": "Físico y matemático peruano graduado de Amherst College (EE. UU.), especializándose en la intersección entre la fotónica integrada, información cuántica y nanofabricación. Actualmente es Investigador Asociado en el Center for Quantum Networks (CQN) en la University of Maryland, donde diseña y modela arquitecturas fotónicas integradas para la ingeniería de estados cuánticos de luz en redes escalables. Su formación incluyó pasantías de investigación en UC Santa Barbara y Northwestern University, explorando fuentes de luz cuántica ultrabrillante, dispositivos ópticos no lineales y comunicaciones cuánticas sobre fibra óptica de larga distancia. En 2024, su trabajo recibió el Best Poster Award en la conferencia Quantum Noir de Harvard University. Su labor integra investigación de frontera con el desarrollo del ecosistema cuántico en América Latina.",
-    "linkedin": "https://www.linkedin.com/in/fredyhc2001/",
-    "foto": "/images/equipo/Headshot (Edited) - Freddy Herrera Cueva.jpeg"
-  },
-  {
     "name": "Osmar Herrera Cueva",
     "role": "",
     "dept": "Investigación",
     "bio": "Estudiante de 5.º UNI en el Colegio Trilce Los Olivos, articula su interés por la economía y las matemáticas con una curiosidad creciente por la computación cuántica. En el Quantum Education Track, es coautor del primer estudio regional sobre quantum readiness en América Latina y realiza análisis cuantitativos de estudiantes de secundaria y universidad aplicando técnicas de machine learning y procesamiento de lenguaje natural. Su trabajo examina cómo la formación STEM y el contexto familiar socioeconómico y geográfico se asocian con la comprensión de conceptos cuánticos y el rendimiento académico, aportando una perspectiva macroeconómica al diseño e interpretación de métricas educativas. Fuera del ámbito académico, disfruta del fútbol, el cine y el estudio de la historia y geopolítica del Perú.",
     "linkedin": "https://Not available yet.",
     "foto": "/images/equipo/IMG_8643 - Freddy Herrera Cueva.JPG"
-  },
-  {
-    "name": "Vania Pachas Acuña",
-    "role": "Directora & Frontend UI Developer",
-    "dept": "Innovación",
-    "bio": "Líder STEM y aspirante a ingeniera eléctrica y computacional, apasionada por la robótica, la ingeniería e iniciativas educativas. Becaria del curso de Computación Cuántica por The Coding School (Qubit by Qubit & Google AI), donde desarrolló el capstone “Optimizing Satellite Placement with QAOA”, nominado a Mejor Comunicación. Representó al Perú en la World Robot Olympiad (WRO) International Final 2025 en Singapur y obtuvo el Premio Nacional de la International Astronomy and Astrophysics Competition (IAAC) 2025. Fundadora y directora de Tech Para Mí, capacitando gratuitamente a 300+ estudiantes en 8 países en robótica, electrónica y programación. Organizó Misión Tech, primer campamento de robótica peruano, con auspicio del MIMP y UTEC. En QuantumHub, desarrolla la QHub Learning Platform dirigiendo el Departamento de Innovación.",
-    "linkedin": "https://www.linkedin.com/in/vania-pachas/",
-    "foto": "/images/equipo/vania_headshot - Vania Pachas.png"
   },
   {
     "name": "Camila Gutiérrez Andrade",
