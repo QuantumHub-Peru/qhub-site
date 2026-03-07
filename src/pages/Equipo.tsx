@@ -7,7 +7,7 @@ import { Linkedin, X, Users } from "lucide-react";
 interface TeamMember {
   name: string;
   role: string;
-  dept: string;
+  dept: string[];
   bio: string;
   linkedin: string;
   foto?: string;
@@ -50,10 +50,13 @@ const Equipo = () => {
     return 4; // Miembros, interns, etc.
   };
 
-  const filtered = filter === "Todos" ? teamMembers : teamMembers.filter((m) => m.dept === filter);
+  const filtered = filter === "Todos" ? teamMembers : teamMembers.filter((m) => m.dept && m.dept.includes(filter));
   const sortedMembers = [...filtered].sort((a, b) => {
-    if (a.dept !== b.dept) {
-      return getDeptWeight(a.dept) - getDeptWeight(b.dept);
+    const highestDeptA = a.dept && a.dept.length > 0 ? Math.min(...a.dept.map(getDeptWeight)) : 99;
+    const highestDeptB = b.dept && b.dept.length > 0 ? Math.min(...b.dept.map(getDeptWeight)) : 99;
+
+    if (highestDeptA !== highestDeptB) {
+      return highestDeptA - highestDeptB;
     }
     const roleWeightA = getRoleWeight(a.role);
     const roleWeightB = getRoleWeight(b.role);
@@ -92,7 +95,13 @@ const Equipo = () => {
       <div className="p-4 text-center">
         <h3 className="font-heading text-xs font-bold tracking-wide">{m.name}</h3>
         {m.role && <p className="font-body text-xs text-primary mt-1">{m.role}</p>}
-        {m.dept && <p className="font-body text-[10px] text-muted-foreground mt-0.5">{m.dept}</p>}
+        {m.dept && m.dept.length > 0 && (
+          <div className="mt-1.5 flex flex-wrap justify-center gap-1.5">
+            {m.dept.filter(d => d && d !== "Ejecutivo").map(d => (
+              <span key={d} className="font-body text-[9px] px-2 py-0.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/20 rounded-full text-white/80 shadow-sm">{d}</span>
+            ))}
+          </div>
+        )}
       </div>
     </motion.div>
   );
@@ -129,22 +138,7 @@ const Equipo = () => {
           {/* Grid */}
           <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <AnimatePresence mode="popLayout">
-              {filter === "Todos"
-                ? deptFilters.filter(d => d !== "Todos").flatMap(dept => {
-                  const deptMembers = sortedMembers.filter(m => m.dept === dept);
-                  if (deptMembers.length === 0) return [];
-                  return [
-                    <motion.div key={`header-${dept}`} layout className="col-span-full mt-8 mb-4">
-                      <h2 className="font-heading text-2xl font-bold text-white flex items-center gap-4">
-                        {dept}
-                        <div className="h-[1px] flex-1 bg-gradient-to-r from-primary/50 to-transparent"></div>
-                      </h2>
-                    </motion.div>,
-                    ...deptMembers.map((m, i) => renderCard(m, i))
-                  ];
-                })
-                : sortedMembers.map((m, i) => renderCard(m, i))
-              }
+              {sortedMembers.map((m, i) => renderCard(m, i))}
             </AnimatePresence>
           </motion.div>
         </div>
@@ -202,11 +196,15 @@ const Equipo = () => {
                       {selected.role}
                     </p>
                   )}
-                  {selected.dept && (
-                    <div className="inline-flex px-4 py-1.5 bg-white/5 border border-white/10 rounded-full items-center justify-center">
-                      <p className="font-body text-[10px] sm:text-xs text-white/70 uppercase tracking-widest font-medium">
-                        {selected.dept}
-                      </p>
+                  {selected.dept && selected.dept.length > 0 && (
+                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
+                      {selected.dept.filter(d => d && d !== "Ejecutivo").map(d => (
+                        <div key={d} className="inline-flex px-4 py-1.5 bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/30 rounded-full items-center justify-center shadow-sm shadow-primary/10">
+                          <p className="font-body text-[10px] sm:text-xs text-primary/90 uppercase tracking-[0.15em] font-semibold">
+                            {d}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
