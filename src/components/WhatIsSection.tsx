@@ -54,13 +54,15 @@ const WhatIsSection = () => {
             </p>
 
             {/* Optional profile/founder plug (as seen in user's image) */}
-            <div className="flex items-center gap-4 border-t border-border/40 pt-6 sm:pt-8 w-max">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-primary/20 border-2 border-[#f4a2d8]">
-                <img src={elisaImg} alt="Founder" className="w-full h-full object-cover" />
+            <div className="flex items-center gap-4 border-t border-border/40 pt-6 sm:pt-8 w-max max-w-lg">
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-primary/20 border-2 border-[#f4a2d8] shrink-0">
+                <img src={elisaImg} alt="Richard Feynman" className="w-full h-full object-cover" />
               </div>
-              <div>
-                <p className="font-heading font-bold text-foreground text-sm sm:text-base">Mascota Oficial</p>
-                <p className="font-body text-[10px] sm:text-xs text-muted-foreground font-medium uppercase tracking-wider">Mascota & Símbolo</p>
+              <div className="flex-1">
+                <p className="font-heading font-medium italic text-foreground text-xs sm:text-sm leading-tight text-white/90">
+                  "Si crees que entiendes la mecánica cuántica, es que no la entiendes en absoluto."
+                </p>
+                <p className="font-body text-[10px] mt-1 text-[#48bcae] font-bold uppercase tracking-widest">— Richard Feynman</p>
               </div>
             </div>
           </motion.div>
