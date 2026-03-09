@@ -815,6 +815,20 @@ const Curso = () => {
               transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
               className="absolute w-[200px] h-[200px] md:w-[400px] md:h-[400px] bg-accent/10 blur-[80px] rounded-full"
             />
+
+            {/* Vector Waves (Efectos de onda del fondo) */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-40">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full border border-primary/20"
+                  style={{ width: i * 200, height: i * 200 }}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.4, 0.1] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
+                />
+              ))}
+            </div>
           </div>
 
           <motion.div

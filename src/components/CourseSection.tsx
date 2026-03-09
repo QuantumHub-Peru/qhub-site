@@ -71,8 +71,8 @@ const CourseSection = () => {
                   <a href="/curso" className="btn-accent-cta flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 lg:px-8 lg:py-3.5 text-sm lg:text-sm font-black shadow-xl uppercase tracking-widest hover:scale-105 transition-transform">
                     Ir al Curso <ArrowRight className="w-5 h-5" />
                   </a>
-                  <a href="/curso" className="btn-outline-quantum flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 lg:px-8 lg:py-3.5 text-sm lg:text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-colors">
-                    Ver más <ArrowRight className="w-5 h-5 opacity-70" />
+                  <a href="https://drive.google.com/file/d/1pfsNJQas2XYNtcwhCoyVu_QeqmXK_aWq/view?usp=sharing" target="_blank" className="btn-outline-quantum flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 lg:px-8 lg:py-3.5 text-sm lg:text-sm font-bold uppercase tracking-widest hover:bg-white/5 transition-colors">
+                    Ver más <Download className="w-5 h-5 opacity-70" />
                   </a>
                 </div>
               </div>
@@ -90,6 +90,22 @@ const CourseSection = () => {
 
       {/* Container 2: CTA */}
       <section className="w-full min-h-[50vh] flex flex-col items-center justify-center relative z-10 px-4 py-20 lg:py-32 overflow-hidden section-darker border-t border-border/10">
+
+        {/* Background Video (Matching Curso.tsx) */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen"
+          >
+            <source src="/video-bg.mp4" type="video/mp4" />
+            Tu navegador no soporta videos HTML5.
+          </video>
+          <div className="absolute inset-0 bg-background/60" />
+        </div>
+
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0 mix-blend-screen opacity-50">
           <motion.div
             animate={{ rotate: 360, scale: [1, 1.2, 1] }}
@@ -106,6 +122,20 @@ const CourseSection = () => {
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
             className="absolute w-[200px] h-[200px] md:w-[400px] md:h-[400px] bg-accent/10 blur-[80px] rounded-full"
           />
+
+          {/* Vector Waves (Efectos de onda del fondo) */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-40">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full border border-primary/20"
+                style={{ width: i * 200, height: i * 200 }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.4, 0.1] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
+              />
+            ))}
+          </div>
         </div>
 
         <motion.div
