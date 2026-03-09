@@ -18,16 +18,16 @@ const collaborators = [
 const CollaboratorsSection = () => {
   // We separate the array render to duplicate it easily for an infinite marquee
   const Group = () => (
-    <div className="flex items-center gap-10 md:gap-16 lg:gap-24 pr-10 md:pr-16 lg:pr-24">
+    <div className="flex items-center gap-16 md:gap-24 lg:gap-32 pr-16 md:pr-24 lg:pr-32">
       {collaborators.map((c, i) => (
         <div
           key={`${c.name}-${i}`}
-          className="flex items-center justify-center shrink-0 h-10 md:h-12 lg:h-14 hover:scale-105 transition-transform duration-300 rounded overflow-hidden"
+          className="flex items-center justify-center shrink-0 h-16 md:h-20 lg:h-24 hover:scale-105 transition-transform duration-300 rounded overflow-hidden"
         >
           <img
             src={c.img}
             alt={c.name}
-            className="h-full w-auto max-w-[140px] md:max-w-[180px] object-contain"
+            className="h-full w-auto max-w-[200px] md:max-w-[250px] lg:max-w-[300px] object-contain"
           />
         </div>
       ))}
