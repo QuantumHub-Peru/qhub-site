@@ -4,7 +4,10 @@ import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Bullet {
     title: string;
+    shortTitle?: string;
     description: string;
+    keyPoints?: string[];
+    images?: string[];
 }
 
 interface BulletCarouselProps {

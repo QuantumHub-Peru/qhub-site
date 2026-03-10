@@ -29,7 +29,7 @@ interface DeptPageData {
   initiatives: Initiative[];
   projects: string[];
   howToJoin: string;
-  bullets: { title: string; description: string; extended?: string }[];
+  bullets: { title: string; shortTitle?: string; description: string; keyPoints?: string[]; images?: string[] }[];
   achievements: { title: string; description?: string; photo?: string }[];
   alliances: { name: string; logo?: string; isUpcoming?: boolean }[];
 }
@@ -55,10 +55,34 @@ const deptData: Record<string, DeptPageData> = {
     projects: ["Fotónica cuántica integrada", "Quantum Machine Learning para medicina", "Análisis educativo con NLP", "Simulación de circuitos cuánticos"],
     howToJoin: "Para unirte al departamento de investigación, completa el curso introductorio y postula a uno de nuestros proyectos activos presentando tu perfil en Discord.",
     bullets: [
-      { title: "Publicaciones Científicas", description: "Fomentamos la publicación de artículos en revistas indexadas y arXiv.", extended: "Nuestro objetivo es que cada proyecto de investigación culmine en un paper o pre-print. Te brindamos asesoría constante en la redacción científica y revisión por pares." },
-      { title: "Hardware Cuántico", description: "Acceso y experimentación con procesadores cuánticos reales.", extended: "Mediante nuestras alianzas educacionales, tendrás la oportunidad de correr tus scripts sobre hardware real de IBM Q, en lugar de depender únicamente de simuladores." },
-      { title: "Algoritmos Variacionales", description: "Desarrollo de VQEs y QAOA aplicados a problemas.", extended: "Profundizamos en el estado del arte del Quantum Machine Learning, diseñando algoritmos híbridos que aprovechan recursos cuánticos a corto plazo (NISQ)." },
-      { title: "Colaboración Global", description: "Alianzas con centros de investigación de todo el mundo.", extended: "Participarás activamente en discusiones abiertas con investigadores asociados, nutriendo tus investigaciones con perspectiva internacional." }
+      {
+        title: "Quantum Hardware Track",
+        shortTitle: "Hardware Track",
+        description: "Desde la nanofotónica integrada hasta las comunicaciones cuánticas, exploramos cómo las propiedades de la luz pueden encodificar y transmitir información. Diseñamos plataformas fotónicas para metrología, computación y redes cuánticas.",
+        keyPoints: ["Integrated Quantum Photonics (CIO, Mexico)", "Diamond Quantum Memories (ULB, Belgium)", "Nonlinear Optical Device Engineering (ULB, Belgium)"],
+        images: ["/images/q_publications.png"]
+      },
+      {
+        title: "Quantum Software Track",
+        shortTitle: "Software Track",
+        description: "Explotamos recursos híbridos en supercomputadoras de punta y utilizamos QML para procesar datos complejos. Aplicaciones desde medicina con resonancia magnética hasta la industria petrolera y música cuántica.",
+        keyPoints: ["Sonification & Visualization of Quantum Algorithms", "Brain Matter Classification with Quantum ML", "Deep-Water Image Segmentation with Quantum ML"],
+        images: ["/images/q_hardware.png"]
+      },
+      {
+        title: "Quantum Education Track",
+        shortTitle: "Education Track",
+        description: "Analizamos el rendimiento académico de nuestros cursos mediante ML y NLP. Correlacionamos variables socioeconómicas y de género para generar evidencia cuantitativa sobre la formación cuántica en LATAM.",
+        keyPoints: ["Ecosistema cuántico en LATAM: Gobierno, Academia e Industria", "Integración curricular de computación cuántica", "QuantumHub Perú: Capital humano sostenible"],
+        images: ["/images/q_algorithms.png"]
+      },
+      {
+        title: "Directed Reading Programs (DRPs)",
+        shortTitle: "DRPs",
+        description: "Espacio de formación técnica intensiva previa a la investigación. Cada DRP profundiza en áreas específicas de hardware o software, preparando a los estudiantes para colaboraciones activas del Departamento.",
+        keyPoints: ["Quantum Mechanics & Quantum Optics", "Nonlinear Optics & Digital Signal Processing", "Quantum Machine Learning & Visualization with Fractals"],
+        images: ["/images/q_collaboration.png"]
+      }
     ],
     achievements: [{ title: "Mención Honrosa Q-Hack 2024" }, { title: "Paper Publicado en ArXiv" }, { title: "Patrocinio QBrazil" }],
     alliances: [
@@ -86,10 +110,30 @@ const deptData: Record<string, DeptPageData> = {
     projects: ["Curso Introductorio QC 2026", "Talleres Presenciales", "Programa de certificación", "Libro de texto colaborativo"],
     howToJoin: "Buscamos constantemente profesores, mentores y creadores de contenido técnico. Envíanos un correo a academico@quantumhub.pe.",
     bullets: [
-      { title: "Curriculum Abierto", description: "Material educativo de libre acceso y actualizado.", extended: "Todo nuestro sylabus y materiales interactivos están en repositorios públicos. Creemos fielmente en el movimiento open-source para la academia." },
-      { title: "Clases Interactivas", description: "Sesiones en vivo con expertos enfocadas en la participación.", extended: "No solo te brindamos pre-grabados, cada semana contamos con sesiones síncronas para resolver dudas algorítmicas de manera conversacional." },
-      { title: "Certificación Rigurosa", description: "Validación de conocimientos para el mercado.", extended: "Al culminar nuestros programas, serás acreedor de un reconocimiento avalado que demuestra un entendimiento matemático sólido respaldado por nuestra red." },
-      { title: "Mentoría 1:1", description: "Acompañamiento personalizado para cada estudiante.", extended: "Asignamos a cada alumno un Alumni del grupo de investigación que le guiará técnica y profesionalmente a través de sesiones cerradas dedicadas." }
+      {
+        title: "Curriculum Abierto",
+        description: "Todo nuestro syllabus y materiales interactivos están en repositorios públicos. Creemos fielmente en el movimiento open-source para acelerar el aprendizaje cuántico en la región.",
+        keyPoints: ["Material de libre acceso", "Actualizado con Qiskit 1.0/Pennylane", "Repositorios colaborativos"],
+        images: ["https://images.unsplash.com/photo-1544648105-0219ca708705?q=80&w=2670&auto=format&fit=crop"]
+      },
+      {
+        title: "Clases Interactivas",
+        description: "No solo te brindamos pre-grabados; cada semana contamos con sesiones síncronas para resolver dudas algorítmicas de manera conversacional y directa.",
+        keyPoints: ["Sesiones en vivo con expertos", "Resolución de dudas en tiempo real", "Dinámicas grupales de programación"],
+        images: ["https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop"]
+      },
+      {
+        title: "Certificación Rigurosa",
+        description: "Al culminar nuestros programas, obtendrás un reconocimiento avalado que demuestra un entendimiento matemático sólido y habilidades prácticas verificadas.",
+        keyPoints: ["Validación de conocimientos técnicos", "Proyectos finales supervisados", "Aval de nuestra red de partners"],
+        images: ["https://images.unsplash.com/photo-1589330694653-718227092305?q=80&w=2670&auto=format&fit=crop"]
+      },
+      {
+        title: "Mentoría 1:1",
+        description: "Asignamos a cada alumno un mentor Alumni del grupo de investigación que le guiará técnica y profesionalmente a través de sesiones cerradas dedicadas.",
+        keyPoints: ["Acompañamiento personalizado", "Guía técnica específica", "Networking con investigadores"],
+        images: ["https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=2670&auto=format&fit=crop"]
+      }
     ],
     achievements: [{ title: "+300 Graduados" }, { title: "Certificación Qiskit Global" }],
     alliances: [
@@ -119,23 +163,27 @@ const deptData: Record<string, DeptPageData> = {
     bullets: [
       {
         title: "Divulgación Científica Accesible",
-        description: "Transformamos conceptos técnicos en mensajes comprensibles para audiencias diversas, reduciendo barreras de acceso al conocimiento cuántico. Desarrollamos contenido divulgativo enfocado en explicar principios y aplicaciones de la computación cuántica de manera dinámica, visual y cercana, despertando curiosidad e interés incluso en personas sin formación previa en el área. ",
-        extended: "Desarrollamos tecnología educativa sin restricciones geográficas, económicas ni académicas. Este modelo es respaldado por el equipo pedagógico de QuantumHub, conformado por egresados, asegurando coherencia y claridad conceptual."
+        description: "Transformamos conceptos técnicos en mensajes comprensibles para audiencias diversas, reduciendo barreras de acceso al conocimiento cuántico de manera dinámica y visual.",
+        keyPoints: ["Contenido para audiencias no técnicas", "Narrativa visual pedagógica", "Reducción de brechas de lenguaje"],
+        images: ["https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=2574&auto=format&fit=crop"]
       },
       {
-        title: "Estrategia de Contenido y Presencia Digital",
-        description: "Actuamos como el puente que conecta a los miembros del ecosistema QuantumHub, promoviendo interacción, reconocimiento y sentido de pertenencia. A través de contenido que visibiliza logros, experiencias, actividades y procesos internos, fortalecemos la identidad colectiva y motivamos la participación activa dentro de la comunidad.",
-        extended: "Diseñamos y ejecutamos contenido para plataformas como LinkedIn e Instagram con una visión estratégica orientada a visibilidad, posicionamiento y engagement. Creamos publicaciones, reels, campañas y materiales visuales alineados con los objetivos institucionales, asegurando coherencia de marca y continuidad comunicacional. Cada contenido se planifica considerando impacto, audiencia y valor educativo."
+        title: "Estrategia de Contenido Digital",
+        description: "Diseñamos y ejecutamos contenido para LinkedIn e Instagram con visión estratégica, orientada a visibilidad, posicionamiento y engagement institucional.",
+        keyPoints: ["Gestión de presencia en redes", "Campañas de impacto educativo", "Posicionamiento de marca QHub"],
+        images: ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"]
       },
       {
-        title: "Conexión y Sentido de Comunidad",
-        description: "Actuamos como el puente que conecta a los miembros del ecosistema QuantumHub, promoviendo interacción, reconocimiento y sentido de pertenencia. A través de contenido que visibiliza logros, experiencias, actividades y procesos internos, fortalecemos la identidad colectiva y motivamos la participación activa dentro de la comunidad.",
-        extended: "Actuamos como el puente que conecta a los miembros del ecosistema QuantumHub, promoviendo interacción, reconocimiento y sentido de pertenencia. A través de contenido que visibiliza logros, experiencias, actividades y procesos internos, fortalecemos la identidad colectiva y motivamos la participación activa dentro de la comunidad."
+        title: "Conexión y Comunidad",
+        description: "Actuamos como el puente que conecta a los miembros del ecosistema QuantumHub, promoviendo interacción, reconocimiento y sentido de pertenencia.",
+        keyPoints: ["Visibilidad de logros internos", "Fomento de interacción peer-to-peer", "Identidad colectiva sólida"],
+        images: ["https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2684&auto=format&fit=crop"]
       },
       {
-        title: "Creación Colaborativa e Innovación Creativa",
-        description: "El contenido del departamento se desarrolla a partir del trabajo colaborativo del equipo de Comunidad, integrando creatividad, iniciativa y aprendizaje continuo en cada proyecto. Utilizamos herramientas digitales contemporáneas para crear contenido visual dinámico que combina diseño, comunicación y ciencia, con el objetivo de acercar la computación cuántica a más personas de manera clara y atractiva.",
-        extended: "Diseñamos una interfaz UX/UI intuitiva con simulaciones en tiempo real para manipular fases y circuitos cuánticos. Incluye rotaciones en la esfera de Bloch, el experimento de doble rendija y un constructor de circuitos drag-and-drop."
+        title: "Innovación Creativa",
+        description: "Integramos creatividad, iniciativa y aprendizaje continuo para acercar la computación cuántica a más personas a través de herramientas digitales contemporáneas.",
+        keyPoints: ["Diseño UX/UI para simuladores", "Desarrollo de herramientas interactivas", "Procesos de co-creación"],
+        images: ["https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2564&auto=format&fit=crop"]
       }
     ],
     achievements: [{
@@ -165,10 +213,30 @@ const deptData: Record<string, DeptPageData> = {
     projects: ["Quantum AI Summit 2025", "Plan de Branding Internacional", "Podcast Superposición", "Programa Ambassadors"],
     howToJoin: "Relacionistas públicos, marketers, abogados, diseñadores gráficos y comunicadores. ¡Ayúdanos a hacer que la cuántica sea pop y formal a la vez en LATAM!",
     bullets: [
-      { title: "Presencia en Medios", description: "Artículos, entrevistas y reportajes sobre ecosistema.", extended: "Redactamos piezas de divulgación y opinión que terminan siendo publicadas en medios locales y prensa de nicho para asegurar visibilidad constante." },
-      { title: "Alianzas Estratégicas", description: "Creación de lazos con empresas líderes mundiales.", extended: "Conversamos directamente con corporaciones clave y representantes globales para formalizar patrocinios y Memorándums de Entendimiento formales." },
-      { title: "Eventos Top", description: "Organización de conferencias de alto impacto.", extended: "Planeamos la logística macro, la marca y convocamos a exponentes internacionales para nuestras cumbres presenciales magnas." },
-      { title: "Contenido Audiovisual", description: "Producción de podcasts y material difusivo.", extended: "Coordinamos series de entrevistas, como 'Superposición', charlando con expertos que hoy impulsan tecnologías disruptivas para que la audiencia conecte directamente con ellos." }
+      {
+        title: "Presencia en Medios",
+        description: "Redactamos piezas de divulgación y opinión publicadas en medios locales y prensa especializada para asegurar visibilidad constante del ecosistema.",
+        keyPoints: ["Artículos en prensa local", "Reportajes en medios de nicho", "Piezas de opinión experta"],
+        images: ["https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2670&auto=format&fit=crop"]
+      },
+      {
+        title: "Alianzas Estratégicas",
+        description: "Conversamos directamente con corporaciones clave y representantes globales para formalizar patrocinios y Memorándums de Entendimiento (MoUs).",
+        keyPoints: ["Lazos con Big Tech (IBM, AWS)", "Gestión de patrocinios", "Acuerdos institucionales"],
+        images: ["https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2574&auto=format&fit=crop"]
+      },
+      {
+        title: "Eventos de Alto Impacto",
+        description: "Planeamos la logística, marca y convocamos a exponentes internacionales para nuestras cumbres presenciales y conferencias magnas.",
+        keyPoints: ["Organización de cumbres (Q-Summit)", "Networking internacional", "Gestión de marca de evento"],
+        images: ["https://images.unsplash.com/photo-1475721027785-f74dea327912?q=80&w=2670&auto=format&fit=crop"]
+      },
+      {
+        title: "Contenido Audiovisual",
+        description: "Coordinamos series de entrevistas y podcasts como 'Superposición', charlando con expertos que hoy impulsan tecnologías disruptivas globales.",
+        keyPoints: ["Podcast 'Superposición'", "Entrevistas con científicos", "Material difusivo variado"],
+        images: ["https://images.unsplash.com/photo-1590602847861-f350a9339567?q=80&w=2574&auto=format&fit=crop"]
+      }
     ],
     achievements: [{ title: "Cierre Sponsor IBM" }, { title: "Entrevista a VQE Creator" }],
     alliances: [{ name: "AWS Quantum", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" }]
@@ -194,24 +262,28 @@ const deptData: Record<string, DeptPageData> = {
     howToJoin: "Community Builders, moderadores de comunidades, gente muy empática y social. Ingresa al discord general, conócenos y pide acceso al squad organizador.",
     bullets: [
       {
-        title: "Divulgación Científica Accesible",
-        description: "Transformamos conceptos técnicos en mensajes comprensibles para audiencias diversas, reduciendo barreras de acceso al conocimiento cuántico. Desarrollamos contenido divulgativo enfocado en explicar principios y aplicaciones de la computación cuántica de manera dinámica, visual y cercana, despertando curiosidad e interés incluso en personas sin formación previa en el área.",
-        extended: "Nuestro enfoque combina claridad conceptual, narrativa visual y rigor científico para demostrar que estas tecnologías, aunque avanzadas, pueden entenderse más fácilmente de lo que se percibe cuando se presentan con las herramientas pedagógicas adecuadas. Esta labor permite acercar la computación cuántica a estudiantes en etapas tempranas y ampliar la participación en el ecosistema."
+        title: "Cultura y Comunidad",
+        description: "Mantenemos una red saludable, integradora y sinérgica donde el conocimiento se distribuye democráticamente mediante procesos peer-to-peer.",
+        keyPoints: ["Cultura de colaboración", "Distribución democrática del saber", "Sinergia entre miembros"],
+        images: ["https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop"]
       },
       {
-        title: "Estrategia de Contenido y Presencia Digital",
-        description: "Diseñamos y ejecutamos contenido para plataformas como LinkedIn e Instagram con una visión estratégica orientada a visibilidad, posicionamiento y engagement. Creamos publicaciones, reels, campañas y materiales visuales alineados con los objetivos institucionales.",
-        extended: "Cada contenido se planifica considerando impacto, audiencia y valor educativo. Además, desarrollamos contenido para apoyar al departamento académico en la difusión de cursos, eventos y actividades formativas, contribuyendo a ampliar el alcance y la participación de la comunidad. También compartimos logros de estudiantes, profesionales y de la organización, fortaleciendo el reconocimiento institucional."
+        title: "Gestión de Ecosistemas",
+        description: "Administramos plataformas como Discord, integrando gamificación y foros de discusión técnica para mantener el compromiso de más de 600 miembros.",
+        keyPoints: ["Moderación de Discord 2.0", "Gamificación (Puntos Q)", "Foros de discusión técnica"],
+        images: ["https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=2574&auto=format&fit=crop"]
       },
       {
-        title: "Conexión y Sentido de Comunidad",
-        description: "Actuamos como el puente que conecta a los miembros del ecosistema QuantumHub, promoviendo interacción, reconocimiento y sentido de pertenencia. A través de contenido que visibiliza logros, experiencias, actividades y procesos internos, fortalecemos la identidad colectiva.",
-        extended: "Nuestro enfoque busca no solo informar, sino también inspirar, mostrando el crecimiento de las personas, el impacto de las iniciativas y las oportunidades disponibles. Esto contribuye a construir una comunidad sostenible basada en colaboración, aprendizaje continuo y desarrollo compartido dentro del ecosistema de computación cuántica."
+        title: "Networking Offline",
+        description: "Organizamos meetups presenciales para fortalecer los vínculos humanos más allá de la pantalla, fomentando el networking de primer nivel.",
+        keyPoints: ["Meetups presenciales", "Networking presencial", "Cultura offline QHub"],
+        images: ["https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2670&auto=format&fit=crop"]
       },
       {
-        title: "Creación Colaborativa e Innovación Creativa",
-        description: "El contenido del departamento se desarrolla a partir del trabajo colaborativo del equipo de Comunidad, integrando creatividad, iniciativa y aprendizaje continuo en cada proyecto. Utilizamos herramientas digitales contemporáneas para crear contenido visual dinámico que combina diseño, comunicación y ciencia.",
-        extended: "Este proceso no solo fortalece la presencia institucional de QuantumHub, sino que también impulsa el desarrollo de habilidades en diseño, comunicación y divulgación científica dentro del equipo, promoviendo un entorno de crecimiento, experimentación e innovación constante."
+        title: "Programas de Mentoría",
+        description: "Emparejamos a nuevos miembros con egresados (Alumni) para asesoría técnica y emocional, asegurando una curva de aprendizaje óptima.",
+        keyPoints: ["Mentorías Alumni", "Soporte emocional y técnico", "Continuidad de aprendizaje"],
+        images: ["https://images.unsplash.com/photo-1521791136064-7986c295944b?q=80&w=2670&auto=format&fit=crop"]
       }
     ],
     achievements: [{ title: "+600 Miembros en Discord" }],

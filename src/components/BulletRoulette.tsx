@@ -4,8 +4,10 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 
 interface Bullet {
     title: string;
+    shortTitle?: string;
     description: string;
-    extended?: string;
+    keyPoints?: string[];
+    images?: string[];
 }
 
 interface BulletRouletteProps {
@@ -46,11 +48,11 @@ export default function BulletRoulette({ bullets, hslColor }: BulletRouletteProp
         setActiveIndex(clickedIndex);
     };
 
-    // Auto-rotate the roulette
+    // Auto-rotate the roulette slower to allow reading
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveIndex((prev) => (prev + 1) % bullets.length);
-        }, 4000);
+        }, 6000);
         return () => clearInterval(interval);
     }, [activeIndex, bullets.length]);
 
@@ -86,11 +88,11 @@ export default function BulletRoulette({ bullets, hslColor }: BulletRouletteProp
             <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 xl:gap-16 relative z-10 px-4 md:px-8">
 
                 {/* Roulette Container */}
-                <div className="relative w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] md:w-[600px] md:h-[600px] shrink-0 flex items-center justify-center">
+                <div className="relative w-[320px] h-[320px] sm:w-[420px] sm:h-[420px] md:w-[600px] md:h-[600px] shrink-0 flex items-center justify-center">
 
                     {/* Central Mascot */}
-                    <div className="absolute z-30 w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 flex flex-col items-center justify-center"
-                        style={{ transform: 'translateX(-110px)' /* offset further left to separate from wedges */ }}>
+                    <div className="absolute z-30 w-24 h-24 md:w-36 md:h-36 lg:w-48 lg:h-48 flex flex-col items-center justify-center"
+                        style={{ transform: 'translateX(-90px)' /* offset further left to separate from wedges */ }}>
                         <div className="relative w-full h-full flex items-center justify-center">
                             {/* Faint ambient glow behind mascot */}
                             <div className="absolute inset-0 rounded-full blur-2xl opacity-20" style={{ backgroundColor: `hsl(${hslColor})` }} />
@@ -186,13 +188,13 @@ export default function BulletRoulette({ bullets, hslColor }: BulletRouletteProp
                                             animate={{ scale: isActive ? 1.05 : 0.95, opacity: isActive ? 1 : 0.6 }}
                                         >
                                             <span
-                                                className={`text-[10.5px] sm:text-[11.5px] md:text-[13px] font-heading font-extrabold leading-tight drop-shadow-lg tracking-wide transition-all duration-300`}
+                                                className={`text-[10px] sm:text-[11px] md:text-[13px] font-heading font-extrabold leading-tight drop-shadow-lg tracking-wide transition-all duration-300`}
                                                 style={{
                                                     color: isActive ? `white` : `rgba(255,255,255,0.7)`,
                                                     textShadow: isActive ? `0 0 15px hsl(${hslColor})` : 'none'
                                                 }}
                                             >
-                                                {bullets[index].title}
+                                                {bullets[index].shortTitle || bullets[index].title}
                                             </span>
                                         </motion.div>
                                     </foreignObject>
@@ -203,7 +205,7 @@ export default function BulletRoulette({ bullets, hslColor }: BulletRouletteProp
                 </div>
 
                 {/* Active Item Description display area (Side on Desktop) */}
-                <div className="w-full flex-1 max-w-2xl lg:max-w-[500px] xl:max-w-[650px] shrink-0 relative z-40 flex lg:h-auto min-h-[350px]">
+                <div className="w-full flex-1 max-w-2xl lg:max-w-xl xl:max-w-2xl shrink-0 relative z-40 flex lg:h-auto min-h-[450px]">
                     <AnimatePresence mode="wait">
                         {(() => {
                             const activeBullet = bullets[activeIndex];
@@ -214,22 +216,66 @@ export default function BulletRoulette({ bullets, hslColor }: BulletRouletteProp
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: -20 }}
                                     transition={{ duration: 0.3 }}
-                                    className="p-6 sm:p-8 rounded-[2rem] lg:rounded-[2.5rem] glass backdrop-blur-xl border border-white/10 bg-[#0a0f1a]/80 text-left w-full h-full flex flex-col justify-center"
-                                    style={{ boxShadow: `0 20px 40px -10px hsl(${hslColor} / 0.15), inset 0 0 0 1px hsl(${hslColor} / 0.2)` }}
+                                    className="p-8 sm:p-10 rounded-[2.5rem] lg:rounded-[3rem] glass-strong backdrop-blur-2xl border border-white/10 bg-[#0a0f1a]/80 text-left w-full h-full flex flex-col justify-center"
+                                    style={{ boxShadow: `0 30px 60px -15px hsl(${hslColor} / 0.15), inset 0 0 0 1px hsl(${hslColor} / 0.2)` }}
                                 >
+                                    <div className="flex flex-col h-full">
+                                        <h3
+                                            className="font-heading text-3xl sm:text-4xl font-black mb-6 tracking-tight text-transparent bg-clip-text"
+                                            style={{ backgroundImage: `linear-gradient(to right, white, hsl(${hslColor}))` }}
+                                        >
+                                            {activeBullet?.title}
+                                        </h3>
 
+                                        <p className="font-body text-white/90 text-base sm:text-lg leading-relaxed mb-8 font-medium tracking-wide">
+                                            {activeBullet?.description}
+                                        </p>
 
-                                    <h3
-                                        className="font-heading text-2xl sm:text-3xl font-extrabold mb-4 tracking-tight text-transparent bg-clip-text"
-                                        style={{ backgroundImage: `linear-gradient(to right, white, hsl(${hslColor}))` }}
-                                    >
-                                        {activeBullet?.title}
-                                    </h3>
-                                    <p className="font-body text-white/90 text-[15px] sm:text-[17px] leading-[1.7] mb-6 font-medium tracking-wide">
-                                        {activeBullet?.description}
-                                    </p>
+                                        {activeBullet?.keyPoints && (
+                                            <div className="mb-10 space-y-4">
+                                                <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 mb-4">Proyectos</h4>
+                                                {activeBullet.keyPoints.map((point, i) => (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, x: -10 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        transition={{ delay: i * 0.1 }}
+                                                        key={i}
+                                                        className="flex items-start gap-3"
+                                                    >
+                                                        <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center bg-white/5 border border-white/10">
+                                                            <CheckCircle2 className="w-3 h-3" style={{ color: `hsl(${hslColor})` }} />
+                                                        </div>
+                                                        <span className="text-sm sm:text-base text-white/80 font-medium">{point}</span>
+                                                    </motion.div>
+                                                ))}
+                                            </div>
+                                        )}
 
+                                        {activeBullet?.images && activeBullet.images.length > 0 && (
+                                            <div className="mt-auto">
 
+                                                <div className="flex gap-4 h-32 sm:h-40 overflow-hidden">
+                                                    {activeBullet.images.map((img, i) => (
+                                                        <motion.div
+                                                            key={i}
+                                                            whileHover={{ scale: 1.02 }}
+                                                            className="flex-1 rounded-2xl overflow-hidden border border-white/10 relative group"
+                                                        >
+                                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                                            <img
+                                                                src={img}
+                                                                alt={`${activeBullet.title} visualization ${i + 1}`}
+                                                                className="w-full h-full object-cover"
+                                                                onError={(e: any) => {
+                                                                    e.currentTarget.src = "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2670&auto=format&fit=crop";
+                                                                }}
+                                                            />
+                                                        </motion.div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
                                 </motion.div>
                             );
                         })()}
