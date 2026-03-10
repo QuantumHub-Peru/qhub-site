@@ -6,6 +6,7 @@ interface Achievement {
     title: string;
     description?: string;
     photo?: string;
+    link?: string;
 }
 
 interface AchievementsCarouselProps {
@@ -81,7 +82,7 @@ export default function AchievementsCarousel({ achievements = [], hslColor }: Ac
                             return (
                                 <motion.div
                                     key={`${index}-${achievement.title}`}
-                                    className="absolute inset-0 m-auto flex flex-col items-center justify-center overflow-hidden rounded-3xl cursor-pointer"
+                                    className="absolute inset-0 m-auto flex flex-col items-center justify-center overflow-hidden rounded-3xl cursor-pointer w-[280px] h-[300px] md:w-[350px] md:h-[350px]"
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{
                                         x: xOffset,
@@ -89,8 +90,6 @@ export default function AchievementsCarousel({ achievements = [], hslColor }: Ac
                                         zIndex: zIndex,
                                         opacity: Math.max(0, opacity),
                                         rotateY: rotateY,
-                                        width: "350px", // Fixed square width
-                                        height: "350px", // Fixed square height
                                     }}
                                     transition={{
                                         type: "spring",
@@ -110,28 +109,61 @@ export default function AchievementsCarousel({ achievements = [], hslColor }: Ac
                                             : '0 10px 15px -3px rgba(0,0,0,0.3)',
                                     }}
                                 >
+                                    {/* Background Image (if exists) */}
+                                    {achievement.photo && (
+                                        <div className="absolute inset-0 z-0">
+                                            <img
+                                                src={achievement.photo}
+                                                alt=""
+                                                className="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700 group-hover:scale-110"
+                                            />
+                                        </div>
+                                    )}
+
+                                    {/* Glass Background / Gradient Overlay */}
                                     <div
-                                        className="absolute inset-0 transition-opacity duration-500"
+                                        className="absolute inset-0 transition-all duration-500 z-0"
                                         style={{
-                                            background: `linear-gradient(135deg, hsl(${hslColor} / 0.8) 0%, hsl(${hslColor} / 0.3) 100%)`
+                                            background: `linear-gradient(135deg, hsl(${hslColor} / 0.8) 0%, hsl(${hslColor} / 0.4) 100%)`,
+                                            backdropFilter: achievement.photo ? 'blur(4px)' : 'blur(16px)',
+                                            WebkitBackdropFilter: achievement.photo ? 'blur(4px)' : 'blur(16px)',
                                         }}
                                     />
 
+                                    {/* Inner Glow */}
                                     <div
-                                        className="absolute inset-0 opacity-50"
+                                        className="absolute inset-0 opacity-50 mix-blend-screen z-0"
                                         style={{
-                                            background: `radial-gradient(circle at center, hsl(${hslColor}) 0%, transparent 70%)`,
-                                            mixBlendMode: 'overlay'
+                                            background: `radial-gradient(circle at top right, hsl(${hslColor}) 0%, transparent 60%)`,
                                         }}
                                     />
 
-                                    <div className="absolute inset-0 glass-strong backdrop-blur-sm border border-white/20 rounded-3xl" />
+                                    {/* Thin Border */}
+                                    <div
+                                        className="absolute inset-0 rounded-[1.5rem] border transition-colors duration-500 z-10"
+                                        style={{
+                                            borderColor: isActive ? `hsl(${hslColor} / 0.6)` : 'rgba(255,255,255,0.1)'
+                                        }}
+                                    />
 
-                                    <div className="relative z-10 p-8 flex flex-col items-center justify-center text-center w-full h-full gap-4 group">
-                                        <h3
-                                            className="font-heading font-extrabold text-2xl md:text-3xl tracking-tight uppercase text-white"
+                                    {/* Content Area */}
+                                    <div className="relative z-20 p-6 md:p-8 flex flex-col items-center justify-center text-center w-full h-full gap-4 group">
+
+                                        {/* Floating Trophy Icon */}
+                                        <div
+                                            className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-2 transition-transform duration-500 group-hover:scale-110 bg-black/20 backdrop-blur-md"
                                             style={{
-                                                textShadow: isActive ? '0 0 20px rgba(255,255,255,0.8)' : 'none'
+                                                boxShadow: isActive ? `0 0 20px hsl(${hslColor} / 0.4)` : 'none',
+                                                border: `1px solid hsl(${hslColor} / 0.4)`
+                                            }}
+                                        >
+                                            <Trophy className="w-7 h-7 md:w-8 md:h-8" style={{ color: `white` }} />
+                                        </div>
+
+                                        <h3
+                                            className="font-heading font-bold text-xl md:text-2xl tracking-wide text-white leading-snug"
+                                            style={{
+                                                textShadow: isActive ? '0 0 15px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.8)' : '0 2px 4px rgba(0,0,0,0.8)'
                                             }}
                                         >
                                             {achievement.title}
@@ -139,9 +171,16 @@ export default function AchievementsCarousel({ achievements = [], hslColor }: Ac
 
                                         {/* Subtle hint that card is clickable */}
                                         {isActive && achievement.description && (
-                                            <div className="absolute bottom-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <span className="text-white/80 text-sm tracking-widest uppercase bg-black/40 border border-white/20 px-4 py-2 rounded-full">
-                                                    Ver Detalles
+                                            <div className="absolute bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <span
+                                                    className="font-body text-xs tracking-widest uppercase font-semibold px-4 py-1.5 rounded-full border bg-white/10 backdrop-blur-md"
+                                                    style={{
+                                                        borderColor: `hsl(${hslColor} / 0.5)`,
+                                                        color: `hsl(${hslColor})`,
+                                                        boxShadow: `0 0 15px hsl(${hslColor} / 0.2)`
+                                                    }}
+                                                >
+                                                    Conocer más
                                                 </span>
                                             </div>
                                         )}
@@ -221,8 +260,25 @@ export default function AchievementsCarousel({ achievements = [], hslColor }: Ac
                                     {selectedAchievement.title}
                                 </h3>
 
+                                {selectedAchievement.link && (
+                                    <a
+                                        href={selectedAchievement.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-6 py-3 mb-6 rounded-xl font-heading font-bold text-white transition-all hover:scale-105"
+                                        style={{
+                                            backgroundColor: `hsl(${hslColor} / 0.2)`,
+                                            border: `1px solid hsl(${hslColor} / 0.5)`,
+                                            boxShadow: `0 0 20px -5px hsl(${hslColor} / 0.4)`
+                                        }}
+                                    >
+                                        <span>Ver Publicación</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                    </a>
+                                )}
+
                                 {selectedAchievement.description && (
-                                    <p className="text-white/80 font-body text-base md:text-lg leading-relaxed whitespace-pre-line">
+                                    <p className="text-white/80 font-body text-sm md:text-base leading-relaxed whitespace-pre-line text-justify">
                                         {selectedAchievement.description}
                                     </p>
                                 )}

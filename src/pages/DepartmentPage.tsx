@@ -4,7 +4,7 @@ import BulletRoulette from "@/components/BulletRoulette";
 import AchievementsCarousel from "@/components/AchievementsCarousel";
 import AlliancesCarousel from "@/components/AlliancesCarousel";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Atom, BookOpen, Lightbulb, Megaphone, Users, Calendar, ArrowRight, Zap, Trophy, BrainCircuit, Rocket, Award } from "lucide-react";
 
 interface Initiative {
@@ -23,15 +23,15 @@ interface DeptPageData {
   glowClass: string;
   bgAccent: string;
   hslColor: string;
-  heroImage: string;
+  heroImages: string[];
   description: string;
   mission: string;
   initiatives: Initiative[];
   projects: string[];
   howToJoin: string;
   bullets: { title: string; shortTitle?: string; description: string; keyPoints?: string[]; images?: string[] }[];
-  achievements: { title: string; description?: string; photo?: string }[];
-  alliances: { name: string; logo?: string; isUpcoming?: boolean }[];
+  achievements: { title: string; description?: string; photo?: string; link?: string }[];
+  alliances: { name: string; logo?: string; isUpcoming?: boolean; country?: string }[];
 }
 
 const deptData: Record<string, DeptPageData> = {
@@ -44,7 +44,11 @@ const deptData: Record<string, DeptPageData> = {
     glowClass: "shadow-[0_0_30px_hsl(210,100%,60%,0.2)]",
     bgAccent: "from-[#3399FF]/10 to-transparent",
     hslColor: "210 100% 60%",
-    heroImage: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=2670&auto=format&fit=crop", // laboratory
+    heroImages: [
+      "/images/investigacion/hero1.jpg",
+      "/images/investigacion/hero2.jpg",
+      "/images/investigacion/hero3.jpg"
+    ],
     description: "El Departamento de Investigación impulsa proyectos técnicos en tecnologías cuánticas con enfoque aplicado. Estamos integrados por egresados del curso de Computación Cuántica e Información Cuántica 2025 que continúan su formación científica con nosotros mediante investigación formal.",
     mission: "Producir investigación de impacto en computación cuántica y posicionar a Latinoamérica en el mapa cuántico global.",
     initiatives: [
@@ -60,34 +64,49 @@ const deptData: Record<string, DeptPageData> = {
         shortTitle: "Hardware Track",
         description: "Desde la nanofotónica integrada hasta las comunicaciones cuánticas, exploramos cómo las propiedades de la luz pueden encodificar y transmitir información. Diseñamos plataformas fotónicas para metrología, computación y redes cuánticas.",
         keyPoints: ["Integrated Quantum Photonics (CIO, Mexico)", "Diamond Quantum Memories (ULB, Belgium)", "Nonlinear Optical Device Engineering (ULB, Belgium)"],
-        images: ["/images/q_publications.png"]
+        images: ["/images/investigacion/hardware01.png", "/images/investigacion/hardware02.png"]
       },
       {
         title: "Quantum Software Track",
         shortTitle: "Software Track",
         description: "Explotamos recursos híbridos en supercomputadoras de punta y utilizamos QML para procesar datos complejos. Aplicaciones desde medicina con resonancia magnética hasta la industria petrolera y música cuántica.",
         keyPoints: ["Sonification & Visualization of Quantum Algorithms", "Brain Matter Classification with Quantum ML", "Deep-Water Image Segmentation with Quantum ML"],
-        images: ["/images/q_hardware.png"]
+        images: ["/images/investigacion/software01.png", "/images/investigacion/software02.png"]
       },
       {
         title: "Quantum Education Track",
         shortTitle: "Education Track",
         description: "Analizamos el rendimiento académico de nuestros cursos mediante ML y NLP. Correlacionamos variables socioeconómicas y de género para generar evidencia cuantitativa sobre la formación cuántica en LATAM.",
         keyPoints: ["Ecosistema cuántico en LATAM: Gobierno, Academia e Industria", "Integración curricular de computación cuántica", "QuantumHub Perú: Capital humano sostenible"],
-        images: ["/images/q_algorithms.png"]
+        images: ["/images/investigacion/education01.jpg", "/images/investigacion/education02.png"]
       },
       {
         title: "Directed Reading Programs (DRPs)",
         shortTitle: "DRPs",
         description: "Espacio de formación técnica intensiva previa a la investigación. Cada DRP profundiza en áreas específicas de hardware o software, preparando a los estudiantes para colaboraciones activas del Departamento.",
         keyPoints: ["Quantum Mechanics & Quantum Optics", "Nonlinear Optics & Digital Signal Processing", "Quantum Machine Learning & Visualization with Fractals"],
-        images: ["/images/q_collaboration.png"]
+        images: ["/images/investigacion/drp01.png", "/images/investigacion/drp02.png"]
       }
     ],
-    achievements: [{ title: "Mención Honrosa Q-Hack 2024" }, { title: "Paper Publicado en ArXiv" }, { title: "Patrocinio QBrazil" }],
+    achievements: [
+      {
+        title: "IEEE Paper Publication",
+        description: "Publicación del paper “Curiosity Over Hype: Modeling Motivation Language to Understand Early Outcomes in a Selective Quantum Track” en IEEE Xplore (2025). El estudio analiza si las respuestas motivacionales escritas por estudiantes durante el proceso de admisión al curso de Computación Cuántica de QuantumHub Perú contienen señales latentes relacionadas con su compromiso y desempeño académico posterior. A partir de 241 aplicaciones revisadas, el trabajo aplica técnicas de procesamiento de lenguaje natural como Latent Dirichlet Allocation (LDA) y representaciones semánticas mediante small language models para identificar patrones entre distintos tipos de motivación, desde motivaciones intrínsecas basadas en curiosidad genuina hasta motivaciones instrumentales orientadas a intereses tecnológicos o profesionales. Los resultados muestran tendencias que asocian motivaciones intrínsecas con mayores niveles de asistencia y rendimiento académico, proponiendo además una metodología híbrida para analizar motivación estudiantil en programas emergentes de educación cuántica.",
+        photo: "/images/investigacion/logro1.png",
+        link: "https://ieeexplore.ieee.org/document/11355072"
+      },
+      {
+        title: "arXiv Research Publication",
+        description: "Publicación del paper “Quantum Readiness in Latin American High Schools: Curriculum Compatibility and Enabling Conditions” como preprint en arXiv (2025). Este trabajo introduce un marco comparativo para evaluar el nivel de preparación de los sistemas de educación secundaria en América Latina para incorporar contenidos de computación cuántica. El análisis examina la compatibilidad curricular en matemáticas, física y computación, junto con condiciones habilitantes como formación docente, infraestructura tecnológica e instituciones científicas en seis países: Perú, Bolivia, Chile, Argentina, Brasil y Colombia. Los resultados revelan importantes asimetrías regionales en términos de preparación institucional y ecosistemas educativos, identificando a Chile como el país con mayor nivel de preparación. A partir de este diagnóstico se propone una hoja de ruta regional para la integración progresiva de educación cuántica en el nivel secundario.",
+        photo: "/images/investigacion/logro2.png",
+        link: "https://arxiv.org/abs/2512.16257"
+      }
+    ],
     alliances: [
-      { name: "IBM Quantum", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
-      { name: "Qiskit", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Qiskit_Logo.svg" }
+      { name: "QuMatrix", logo: "/images/investigacion/alianza2.png", country: "Estados Unidos" },
+      { name: "Universidad Politécnica de Valencia", logo: "/images/investigacion/alianza4.png", country: "España" },
+      { name: "Université Libre de Bruxelle", logo: "/images/investigacion/alianza1.png", country: "Bélgica" },
+      { name: "Universidad Libre", logo: "/images/investigacion/alianza3.png", country: "Colombia" }
     ]
   },
   academico: {
@@ -99,7 +118,7 @@ const deptData: Record<string, DeptPageData> = {
     glowClass: "shadow-[0_0_30px_hsl(270,70%,55%,0.2)]",
     bgAccent: "from-[#AF52DE]/10 to-transparent",
     hslColor: "270 70% 55%",
-    heroImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2670&auto=format&fit=crop", // students/learning
+    heroImages: ["https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2670&auto=format&fit=crop"],
     description: "El Departamento Académico diseña y ejecuta programas educativos que hacen accesible la computación cuántica para todos los niveles, desde principiantes hasta investigadores avanzados.",
     mission: "Democratizar la educación cuántica en toda Latinoamérica, eliminando barreras de acceso técnico y de lenguaje.",
     initiatives: [
@@ -150,7 +169,7 @@ const deptData: Record<string, DeptPageData> = {
     glowClass: "shadow-[0_0_30px_hsl(175,80%,50%,0.2)]",
     bgAccent: "from-[#10E8D9]/10 to-transparent",
     hslColor: "175 80% 50%",
-    heroImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop", // tech/cyber space
+    heroImages: ["https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop"],
     description: "Nuestro producto principal es una plataforma web abierta y beginner-friendly para enseñar computación cuántica en español. A través de 4 módulos de aprendizaje, simulaciones como la esfera de Bloch y el experimento de la doble rendija y retos gamificados, estructuramos un aprendizaje dinámico y progresivo.",
     mission: "Traducir la ventaja cuántica teórica en soluciones tangibles para problemas industriales contemporáneos en Latinoamérica.",
     initiatives: [
@@ -202,7 +221,7 @@ const deptData: Record<string, DeptPageData> = {
     glowClass: "shadow-[0_0_30px_hsl(45,100%,55%,0.2)]",
     bgAccent: "from-[#FFCC00]/10 to-transparent",
     hslColor: "45 100% 55%",
-    heroImage: "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=2670&auto=format&fit=crop", // networking / people
+    heroImages: ["https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=2670&auto=format&fit=crop"],
     description: "Amplificamos la voz de la computación cuántica en LATAM mediante relaciones internacionales e institucionales. Construimos y mantenemos vínculos clave con universidades, patrocinadores y la prensa especializada.",
     mission: "Convertir a QuantumHub Peru en el representante principal del continente ante las grandes esferas cuánticas de IBM, Google, AWS y startups líderes mundiales.",
     initiatives: [
@@ -250,7 +269,7 @@ const deptData: Record<string, DeptPageData> = {
     glowClass: "shadow-[0_0_30px_hsl(330,70%,60%,0.2)]",
     bgAccent: "from-[#FF3399]/10 to-transparent",
     hslColor: "330 70% 60%",
-    heroImage: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2670&auto=format&fit=crop", // energetic group of people
+    heroImages: ["https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2670&auto=format&fit=crop"],
     description: "Nosotros somos los constructores de comunidad. Nos encargamos de que la red más grande de entusiastas cuánticos en Latinoamérica sea saludable, integradora y sinérgica. Mantenemos vivos los engranajes sociales de toda la organización.",
     mission: "Crear una comunidad vibrante asíncrona y presencial donde el conocimiento se distribuye democráticamente mediante pares (peer-to-peer).",
     initiatives: [
@@ -294,6 +313,17 @@ const deptData: Record<string, DeptPageData> = {
 const DepartmentPage = ({ deptId }: { deptId: string }) => {
   const dept = deptData[deptId];
   const [hoveredInit, setHoveredInit] = useState<number | null>(null);
+  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+
+  useEffect(() => {
+    if (!dept || dept.heroImages.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentHeroIndex((prev) => (prev + 1) % dept.heroImages.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [dept]);
 
   if (!dept) return null;
   const Icon = dept.icon;
@@ -304,13 +334,99 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
 
       <main className="flex-grow">
 
-        {/* OVERLAPPING HERO SECTION */}
-        <section className="relative pt-24 pb-8 lg:pt-32 lg:pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full min-h-[85vh] flex items-center">
+        {/* --- MOBILE HERO (Overlay Layout based on Reference) --- */}
+        <section className="lg:hidden relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-20 text-center overflow-hidden">
+          {/* Full-screen background carousel */}
+          <div className="absolute inset-0 z-0">
+            <AnimatePresence>
+              <motion.img
+                key={currentHeroIndex}
+                src={dept.heroImages[currentHeroIndex]}
+                alt={dept.name}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1.05 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </AnimatePresence>
+            {/* Blue-ish tint and dark overlay to make text readable */}
+            <div
+              className="absolute inset-0 z-10 mix-blend-color opacity-70"
+              style={{ backgroundColor: `hsl(${dept.hslColor})` }}
+            />
+            <div className="absolute inset-0 bg-black/60 z-20" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background z-30" />
+          </div>
 
-          <div className="flex flex-col lg:flex-row w-full gap-8 lg:gap-0 lg:items-stretch relative">
+          {/* Centered Content Container */}
+          <div className="relative z-30 flex flex-col items-center max-w-sm">
+            {/* Icon badge with glow */}
+            <div
+              className="w-20 h-20 rounded-2xl flex items-center justify-center mb-8 relative group"
+              style={{ backgroundColor: `hsl(${dept.hslColor} / 0.15)`, backdropFilter: 'blur(10px)' }}
+            >
+              <div
+                className="absolute inset-0 rounded-2xl opacity-40 blur-xl shadow-[0_0_30px_hsl(var(--primary))]"
+                style={{ backgroundColor: `hsl(${dept.hslColor})` }}
+              />
+              <Icon
+                className="w-10 h-10 relative z-10"
+                style={{ color: `hsl(${dept.hslColor})` }}
+              />
+            </div>
 
-            {/* The Image Side (Right side on desktop, top on mobile) */}
-            <div className="w-full lg:w-3/5 lg:absolute lg:top-0 lg:bottom-0 lg:right-0 h-64 sm:h-80 lg:h-auto rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl z-0">
+            {/* Subtitle Badge */}
+            <div
+              className="inline-flex items-center px-6 py-2 rounded-full text-[11px] font-bold tracking-widest uppercase mb-8 border"
+              style={{
+                backgroundColor: `hsl(${dept.hslColor} / 0.1)`,
+                color: `white`,
+                borderColor: `hsl(${dept.hslColor} / 0.4)`,
+                backdropFilter: 'blur(8px)'
+              }}
+            >
+              {dept.subtitle}
+            </div>
+
+            {/* Title */}
+            <h1 className="font-heading text-5xl font-bold leading-[1.1] text-white tracking-tight mb-8 drop-shadow-2xl uppercase">
+              {dept.name}
+            </h1>
+
+            {/* Description */}
+            <p className="font-body text-[17px] text-white/90 leading-relaxed font-light mb-10 text-justify">
+              {dept.description}
+            </p>
+
+            {/* Mission Section */}
+            <div className="w-full flex flex-col items-start text-left mt-2">
+              <span className="font-heading text-xs font-black tracking-[0.2em] text-white/60 mb-3 uppercase">
+                MISIÓN
+              </span>
+              <div
+                className="pl-5 border-l-2 py-1"
+                style={{ borderColor: `hsl(${dept.hslColor})` }}
+              >
+                <p className="font-body text-base text-white/90 font-medium italic leading-relaxed">
+                  "{dept.mission}"
+                </p>
+              </div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="mt-16 animate-bounce opacity-40">
+              <div className="w-6 h-6 border-b-2 border-r-2 border-white rotate-45" />
+            </div>
+          </div>
+        </section>
+
+        {/* --- DESKTOP HERO (Overlapping Layout) --- */}
+        <section className="hidden lg:flex relative pt-32 pb-12 px-8 max-w-7xl mx-auto w-full min-h-[85vh] items-center">
+          <div className="flex flex-row w-full lg:items-stretch relative">
+
+            {/* The Image Side (Right side on desktop) */}
+            <div className="w-full lg:w-3/5 lg:absolute lg:top-0 lg:bottom-0 lg:right-0 h-auto rounded-[3rem] overflow-hidden shadow-2xl z-0">
               <div
                 className="absolute inset-0 z-10 mix-blend-color"
                 style={{ backgroundColor: `hsl(${dept.hslColor} / 0.4)` }}
@@ -319,31 +435,37 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
                 className="absolute inset-0 z-20 opacity-60 mix-blend-multiply"
                 style={{ backgroundColor: `hsl(${dept.hslColor} / 0.3)` }}
               />
-              {/* Subtle dynamic overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-30 lg:bg-gradient-to-l" />
-              <img
-                src={dept.heroImage}
-                alt={dept.name}
-                className="w-full h-full object-cover transform scale-105 transition-transform duration-1000"
-              />
+              <div className="absolute inset-0 bg-gradient-to-l from-background to-transparent z-30" />
+              <AnimatePresence>
+                <motion.img
+                  key={currentHeroIndex}
+                  src={dept.heroImages[currentHeroIndex]}
+                  alt={dept.name}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1.05 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </AnimatePresence>
             </div>
 
-            {/* The Overlapping Info Card (Left side on desktop, bottoms on mobile) */}
+            {/* The Overlapping Info Card (Left side on desktop) */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full lg:w-[55%] relative z-40 mt-[-4rem] sm:mt-[-6rem] lg:mt-0 lg:py-12"
+              className="w-full lg:w-[55%] relative z-40 lg:py-12"
             >
               <div
-                className="glass-strong bg-background/60 backdrop-blur-2xl rounded-[2rem] lg:rounded-[3rem] p-8 sm:p-10 lg:p-14 border border-white/5"
+                className="glass-strong bg-background/60 backdrop-blur-2xl rounded-[3rem] p-14 border border-white/5"
                 style={{
                   boxShadow: `0 30px 60px -15px rgba(0,0,0,0.8), 0 0 100px -20px hsl(${dept.hslColor} / 0.2), inset 0 0 0 1px hsl(${dept.hslColor} / 0.15)`
                 }}
               >
                 {/* Icon badge */}
                 <div
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mb-8 relative group"
+                  className="w-20 h-20 rounded-2xl flex items-center justify-center mb-8 relative group"
                   style={{ backgroundColor: `hsl(${dept.hslColor} / 0.1)` }}
                 >
                   <div
@@ -351,7 +473,7 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
                     style={{ backgroundColor: `hsl(${dept.hslColor})` }}
                   />
                   <Icon
-                    className="w-8 h-8 sm:w-10 sm:h-10 relative z-10"
+                    className="w-10 h-10 relative z-10"
                     style={{ color: `hsl(${dept.hslColor})` }}
                   />
                 </div>
@@ -368,11 +490,11 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
                   {dept.subtitle}
                 </div>
 
-                <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-white tracking-tight mb-8">
+                <h1 className="font-heading text-6xl font-bold leading-[1.1] text-white tracking-tight mb-8">
                   {dept.name}
                 </h1>
 
-                <p className="font-body text-lg sm:text-xl text-white/70 leading-relaxed font-light mb-10">
+                <p className="font-body text-xl text-white/70 leading-relaxed font-light mb-10">
                   {dept.description}
                 </p>
 
@@ -387,10 +509,8 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
                     "{dept.mission}"
                   </p>
                 </div>
-
               </div>
             </motion.div>
-
           </div>
         </section>
 

@@ -27,7 +27,7 @@ export default function BulletCarousel({ bullets, hslColor }: BulletCarouselProp
     };
 
     return (
-        <div className="relative w-full max-w-5xl mx-auto py-8 lg:py-16 flex flex-col items-center justify-center overflow-hidden">
+        <div className="relative w-full max-w-[1400px] mx-auto py-8 lg:py-16 flex flex-col items-center justify-center overflow-hidden">
 
             {/* Visual Title / Context */}
             <motion.div

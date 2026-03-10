@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Users, Building2, Sparkles } from "lucide-react";
 
 interface AlliancesCarouselProps {
-    alliances?: { name: string, logo?: string, isUpcoming?: boolean }[];
+    alliances?: { name: string, logo?: string, isUpcoming?: boolean, country?: string }[];
     hslColor: string;
 }
 
@@ -109,9 +109,9 @@ export default function AlliancesCarousel({ alliances = [], hslColor }: Alliance
                                         }}
                                     >
                                         {alliance.logo ? (
-                                            <img src={alliance.logo} alt={alliance.name} className="w-14 h-14 md:w-16 md:h-16 object-contain filter drop-shadow-lg" />
+                                            <img src={alliance.logo} alt={alliance.name} className="w-[85%] h-[85%] object-contain filter drop-shadow-lg" />
                                         ) : (
-                                            <Building2 className={`w-10 h-10 ${isUpcoming ? 'text-white/30' : 'text-white/80'}`} />
+                                            <Building2 className={`w-12 h-12 ${isUpcoming ? 'text-white/30' : 'text-white/80'}`} />
                                         )}
                                     </div>
                                 </div>
@@ -129,6 +129,11 @@ export default function AlliancesCarousel({ alliances = [], hslColor }: Alliance
                                     >
                                         {alliance.name}
                                     </h3>
+                                    {alliance.country && !isUpcoming && (
+                                        <div className="text-white/60 text-sm font-body mt-1">
+                                            {alliance.country}
+                                        </div>
+                                    )}
                                     {isUpcoming && <div className="text-white/30 text-xs uppercase tracking-widest mt-2">(Próximamente)</div>}
                                 </div>
                             </motion.div>
