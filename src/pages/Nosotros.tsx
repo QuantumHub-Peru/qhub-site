@@ -4,12 +4,16 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import gatoImg from "@/gato/gato.png";
-import clubImg from "@/assets/team_example.jpg";
+import clubImg from "@/assets/r1.jpg";
 import logoImg from "@/assets/club.jpg";
-import quantumBg1 from "@/assets/neural-bg.jpg";
-import quantumBg2 from "@/assets/hero-bg.jpg";
-import quantumBg3 from "@/assets/team_example.jpg";
+import quantumBg0 from "@/assets/r1.jpg";
+import quantumBg1 from "@/assets/r2.jpg";
+import quantumBg2 from "@/assets/r5.jpg";
+import quantumBg3 from "@/assets/r3.jpg";
+import quantumBg4 from "@/assets/r4.jpg";
+import heroBgImage from "@/assets/hero-bg.png";
 import DepartmentsSection from "@/components/DepartmentsSection";
+import ParticleNetwork from "@/components/ParticleNetwork";
 
 /* ── data ── */
 const principiosData = [
@@ -21,7 +25,7 @@ const principiosData = [
   { id: 5, title: "Investigación e impacto", qh: "Estudio y análisis de datos socioeconómicos, geográficos y académicos para detectar brechas y optimizar el acceso equitativo a la educación cuántica.", otros: "Sin componente investigativo formal ni estudio del impacto educativo.", icon: Search },
 ];
 
-const galleryImages = [quantumBg1, quantumBg2, quantumBg3, quantumBg1, quantumBg2, quantumBg3];
+const galleryImages = [quantumBg0, quantumBg1, quantumBg2, quantumBg3, quantumBg4, quantumBg0, quantumBg1, quantumBg2, quantumBg3, quantumBg4];
 
 /* ── hooks ── */
 function useInView(threshold = 0.15) {
@@ -114,27 +118,32 @@ export default function SobreNosotros() {
       <main className="flex-1 w-full relative">
         {/* NEW HERO SECTION matching reference */}
         <section className="relative h-screen flex items-center px-4 md:px-12 lg:px-24 overflow-hidden pt-20 lg:pt-24">
-          {/* Background image mapped to the right side */}
+          {/* Background image mapped to the entire section */}
           <motion.div
             style={{ y: backgroundY, scale: imageScale }}
             className="absolute inset-0 w-full h-full z-0"
           >
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${clubImg})`, backgroundPosition: 'center right' }}
+              style={{ backgroundImage: `url(${heroBgImage})` }}
             />
-            {/* Dark gradient overlay that is solid on the left and fades to transparent on the right */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0F111A] via-[#0F111A]/90 to-transparent z-10" />
+            {/* Dark gradient overlay mostly at the bottom for readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F111A] via-[#0F111A]/40 to-transparent z-10" />
+
+            {/* Particle Network Overlay for "current" effect */}
+            <div className="absolute inset-0 z-10 opacity-60 mix-blend-screen pointer-events-none">
+              <ParticleNetwork />
+            </div>
 
             {/* Radial glow for subtle background texture */}
-            <div className="absolute -left-[20%] top-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] z-10 pointer-events-none" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] z-10 pointer-events-none" />
           </motion.div>
 
-          <div className="relative z-20 w-full max-w-7xl mx-auto flex flex-col md:flex-row h-full items-center">
-            {/* Left Content Area */}
+          <div className="relative z-20 w-full max-w-5xl mx-auto flex flex-col h-full items-center justify-center">
+            {/* Centered Content Area */}
             <motion.div
               style={{ y: textY, opacity: textOpacity }}
-              className="w-full md:w-3/5 lg:w-1/2 flex flex-col justify-center animate-[fadeSlideUp_1s_ease-out_both] pt-16 md:pt-0 relative"
+              className="w-full flex flex-col items-center justify-center text-center animate-[fadeSlideUp_1s_ease-out_both] pt-16 md:pt-0 relative"
             >
               {/* Quantum spark particles around title */}
               <div className="absolute -inset-10 pointer-events-none">
@@ -162,7 +171,7 @@ export default function SobreNosotros() {
                 ))}
               </div>
 
-              <h1 className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-[70px] font-black leading-[1.1] tracking-tight mb-10 md:mb-10 lg:mb-12 relative z-10 flex flex-col items-start px-2 md:px-0">
+              <h1 className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-[70px] font-black leading-[1.1] tracking-tight mb-10 md:mb-10 lg:mb-12 relative z-10 flex flex-col items-center px-2 md:px-0">
                 <span className="text-white">Impulsamos la</span>
                 <motion.span
                   className="inline-block bg-clip-text text-transparent pb-1"
@@ -187,14 +196,11 @@ export default function SobreNosotros() {
                 </motion.span>
               </h1>
 
-              <p className="text-lg sm:text-xl md:text-base lg:text-lg text-white/80 max-w-md leading-relaxed mb-16 md:mb-12 lg:mb-16 border-l-2 border-primary/50 pl-4 mx-2 md:mx-0">
+              <p className="text-lg sm:text-xl md:text-base lg:text-lg text-white/90 max-w-2xl leading-relaxed mb-16 md:mb-12 lg:mb-16 mx-2 md:mx-0 font-medium">
                 Desarrollamos competencias en tecnología cuántica con una propuesta pedagógica innovadora, accesible y rigurosa en colaboración con instituciones líderes.
               </p>
 
-
             </motion.div>
-
-            {/* Right side is intentionally empty to show the background image of the students collaborating */}
           </div>
 
           {/* Scroll Indicator */}
@@ -255,7 +261,7 @@ export default function SobreNosotros() {
             </ScrollReveal>
             <ScrollReveal delay={150}>
               <div className="rounded-2xl border border-border bg-card p-10 h-full group hover:border-accent/30 transition-colors duration-500">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent to-[#F69D0E] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F69D0E] to-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                   <Eye className="w-6 h-6 text-foreground" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-foreground">Visión</h3>
@@ -282,8 +288,8 @@ export default function SobreNosotros() {
           <div className="relative">
             <div className="flex gap-6 animate-[marquee_30s_linear_infinite] w-max select-none">
               {[...galleryImages, ...galleryImages].map((src, i) => (
-                <div key={i} className="flex-shrink-0 w-[320px] md:w-[420px] h-[220px] md:h-[280px] rounded-2xl overflow-hidden pointer-events-none">
-                  <img src={src} alt={`Galería ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                <div key={i} className="flex-shrink-0 w-[320px] md:w-[420px] h-[220px] md:h-[280px] rounded-2xl overflow-hidden">
+                  <img src={src} alt={`Galería ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                 </div>
               ))}
             </div>
