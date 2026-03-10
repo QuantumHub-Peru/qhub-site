@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Arimo:ital,wght@0,400..700;1,400..700&family=Staatliches&display=swap');
+@import url('./katex-fonts.css');
 
 @tailwind base;
 @tailwind components;
@@ -139,7 +140,7 @@
   }
 
   .btn-quantum {
-    @apply px-8 py-3 rounded-lg font-heading font-semibold text-sm tracking-wider uppercase transition-all duration-300;
+    @apply px-8 py-3 rounded-lg font-orbitron font-semibold text-sm tracking-wider uppercase transition-all duration-300;
     background: linear-gradient(135deg, hsl(270 80% 60%), hsl(330 80% 60%));
     color: white;
   }
@@ -150,7 +151,7 @@
   }
 
   .btn-accent-cta {
-    @apply px-8 py-3 rounded-lg font-heading font-semibold text-sm tracking-wider uppercase transition-all duration-300 bg-accent text-accent-foreground;
+    @apply px-8 py-3 rounded-lg font-orbitron font-semibold text-sm tracking-wider uppercase transition-all duration-300 bg-accent text-accent-foreground;
   }
 
   .btn-accent-cta:hover {
@@ -159,7 +160,7 @@
   }
 
   .btn-outline-quantum {
-    @apply px-8 py-3 rounded-lg font-heading font-semibold text-sm tracking-wider uppercase transition-all duration-300 border border-foreground/30 text-foreground;
+    @apply px-8 py-3 rounded-lg font-orbitron font-semibold text-sm tracking-wider uppercase transition-all duration-300 border border-foreground/30 text-foreground;
   }
 
   .btn-outline-quantum:hover {

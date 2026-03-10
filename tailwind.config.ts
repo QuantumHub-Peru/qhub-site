@@ -12,9 +12,19 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Orbitron", "sans-serif"],
-        body: ["Space Grotesk", "sans-serif"],
-        sans: ["Inter", "sans-serif"],
+        heading: ["Staatliches", "serif"],
+        body: ["Arimo", "Arial", "sans-serif"],
+        sans: ["Arimo", "Arial", "sans-serif"],
+        orbitron: ["Orbitron", "sans-serif"],
+        grotesk: ["Space Grotesk", "sans-serif"],
+        "katex-ams": ["KaTeX_AMS", "sans-serif"],
+        "katex-caligraphic": ["KaTeX_Caligraphic", "sans-serif"],
+        "katex-fraktur": ["KaTeX_Fraktur", "sans-serif"],
+        "katex-main": ["KaTeX_Main", "sans-serif"],
+        "katex-math": ["KaTeX_Math", "sans-serif"],
+        "katex-sans": ["KaTeX_SansSerif", "sans-serif"],
+        "katex-script": ["KaTeX_Script", "sans-serif"],
+        "katex-typewriter": ["KaTeX_Typewriter", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
