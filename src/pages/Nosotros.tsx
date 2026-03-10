@@ -9,6 +9,7 @@ import logoImg from "@/assets/club.jpg";
 import quantumBg1 from "@/assets/neural-bg.jpg";
 import quantumBg2 from "@/assets/hero-bg.jpg";
 import quantumBg3 from "@/assets/team_example.jpg";
+import DepartmentsSection from "@/components/DepartmentsSection";
 
 /* ── data ── */
 const principiosData = [
@@ -311,6 +312,8 @@ export default function SobreNosotros() {
             ))}
           </div>
         </section>
+
+        <DepartmentsSection />
 
         {/* ═══ CTA FOOTER — Enhanced with Mascot & Particles ═══ */}
         <section className="py-32 px-6 md:px-12 text-center relative overflow-hidden bg-slate-950/20">
