@@ -5,30 +5,16 @@ import AchievementsCarousel from "@/components/AchievementsCarousel";
 import AlliancesCarousel from "@/components/AlliancesCarousel";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Atom, BookOpen, Lightbulb, Megaphone, Users, Calendar, ArrowRight, Zap, Trophy, BrainCircuit, Rocket, Award } from "lucide-react";
-
-interface Initiative {
-  title: string;
-  description: string;
-  icon: React.ElementType;
-  date?: string;
-}
+import { Atom, BookOpen, Lightbulb, Megaphone, Users, Zap } from "lucide-react";
 
 interface DeptPageData {
   name: string;
   subtitle: string;
   icon: React.ElementType;
-  colorClass: string;
-  borderColor: string;
-  glowClass: string;
-  bgAccent: string;
   hslColor: string;
   heroImages: string[];
   description: string;
   mission: string;
-  initiatives: Initiative[];
-  projects: string[];
-  howToJoin: string;
   bullets: { title: string; shortTitle?: string; description: string; keyPoints?: string[]; images?: string[] }[];
   achievements: { title: string; description?: string; photo?: string; link?: string }[];
   alliances: { name: string; logo?: string; isUpcoming?: boolean; country?: string }[];
@@ -39,51 +25,40 @@ const deptData: Record<string, DeptPageData> = {
     name: "Departamento de Investigación",
     subtitle: "Proyectos técnicos en tecnologías cuánticas con enfoque aplicado",
     icon: Atom,
-    colorClass: "text-[#3399FF]", // dept-research
-    borderColor: "border-[#3399FF]/30",
-    glowClass: "shadow-[0_0_30px_hsl(210,100%,60%,0.2)]",
-    bgAccent: "from-[#3399FF]/10 to-transparent",
     hslColor: "210 100% 60%",
     heroImages: [
       "/images/investigacion/hero1.jpg",
       "/images/investigacion/hero2.jpg",
       "/images/investigacion/hero3.jpg"
     ],
-    description: "El Departamento de Investigación impulsa proyectos técnicos en tecnologías cuánticas con enfoque aplicado. Estamos integrados por egresados del curso de Computación Cuántica e Información Cuántica 2025 que continúan su formación científica con nosotros mediante investigación formal.",
+    description: "¿Completaste nuestro curso insignia de computación cuántica y buscas dar el primer paso en tu carrera científica? No busques más. El Departamento de Investigación es el lugar para ti. Bajo la dirección de investigadores formados en ecosistemas de élite, impulsamos proyectos técnicos, pioneros y publicables en colaboración con laboratorios, centros de investigación y empresas internacionales. La computación cuántica te trajo hasta aquí: nosotros te llevamos al siguiente nivel explorando todo el espectro de las ciencias y las tecnologías cuánticas.",
     mission: "Producir investigación de impacto en computación cuántica y posicionar a Latinoamérica en el mapa cuántico global.",
-    initiatives: [
-      { title: "Publicación en arXiv: Fotónica Integrada", date: "Q3 2025", icon: BrainCircuit, description: "Desarrollo y modelado de componentes para plataformas cuánticas de fotónica integrada, documentando hallazgos sobre la eficiencia de acoplamiento." },
-      { title: "Quantum Machine Learning aplicado a la Salud", date: "Activo", icon: Atom, description: "Despliegue de modelos híbridos cuánticos/clásicos enfocados en predicción de estructuras proteicas." },
-      { title: "Directed Reading Programs (DRP)", date: "Continuo", icon: BookOpen, description: "Espacios de formación técnica intensiva orientados a investigación. Profundizamos en fundamentos teóricos y herramientas antes de integrarnos a proyectos activos." },
-    ],
-    projects: ["Fotónica cuántica integrada", "Quantum Machine Learning para medicina", "Análisis educativo con NLP", "Simulación de circuitos cuánticos"],
-    howToJoin: "Para unirte al departamento de investigación, completa el curso introductorio y postula a uno de nuestros proyectos activos presentando tu perfil en Discord.",
     bullets: [
       {
         title: "Quantum Hardware Track",
         shortTitle: "Hardware Track",
-        description: "Desde la nanofotónica integrada hasta las comunicaciones cuánticas, exploramos cómo las propiedades de la luz pueden encodificar y transmitir información. Diseñamos plataformas fotónicas para metrología, computación y redes cuánticas.",
+        description: "Desde la nanofotónica integrada hasta las comunicaciones cuánticas en espacio libre, exploramos cómo propiedades fundamentales de la luz, como la polarización, la frecuencia y las correlaciones energía-tiempo, pueden encodificar, almacenar y transmitir información cuántica. Ingeniamos, diseñamos y simulamos plataformas fotónicas para aplicaciones que van desde la metrología cuántica hasta la computación y redes cuánticas. Nuestras materias fundamentales: mecánica cuántica, óptica no lineal y óptica cuántica, entre otras.",
         keyPoints: ["Integrated Quantum Photonics (CIO, Mexico)", "Diamond Quantum Memories (ULB, Belgium)", "Nonlinear Optical Device Engineering (ULB, Belgium)"],
         images: ["/images/investigacion/hardware01.png", "/images/investigacion/hardware02.png"]
       },
       {
         title: "Quantum Software Track",
         shortTitle: "Software Track",
-        description: "Explotamos recursos híbridos en supercomputadoras de punta y utilizamos QML para procesar datos complejos. Aplicaciones desde medicina con resonancia magnética hasta la industria petrolera y música cuántica.",
+        description: "Explotamos recursos de información clásica y cuántica para resolver problemas del mundo real. Mejoramos algoritmos cuánticos actuales, desplegamos modelos computacionales híbridos en supercomputadoras de punta y utilizamos quantum machine learning (QML) para procesar datos complejos y de alta dimensión. Desde el análisis de escáneres de resonancia magnética nuclear para la medicina, estudiando las aguas profundas para la industria petrolera, hasta la generación de música cuántica, desplegamos todo el potencial de la información cuántica.",
         keyPoints: ["Sonification & Visualization of Quantum Algorithms", "Brain Matter Classification with Quantum ML", "Deep-Water Image Segmentation with Quantum ML"],
         images: ["/images/investigacion/software01.png", "/images/investigacion/software02.png"]
       },
       {
         title: "Quantum Education Track",
         shortTitle: "Education Track",
-        description: "Analizamos el rendimiento académico de nuestros cursos mediante ML y NLP. Correlacionamos variables socioeconómicas y de género para generar evidencia cuantitativa sobre la formación cuántica en LATAM.",
+        description: "El mundo de la investigación gira en torno a los datos. En este track, tomamos la data intencionalmente adquirida en nuestros cursos de Computación Cuántica 2025-2 y 2026-1 como objeto de estudio. Aplicamos técnicas de machine learning (ML) y procesamiento de lenguaje natural (NLP) para analizar el rendimiento académico de nuestros estudiantes, correlacionándolo con variables socioeconómicas, geográficas y de género para producir evidencia cuantitativa sobre formación pionera en tecnologías cuánticas en América Latina.",
         keyPoints: ["Ecosistema cuántico en LATAM: Gobierno, Academia e Industria", "Integración curricular de computación cuántica", "QuantumHub Perú: Capital humano sostenible"],
         images: ["/images/investigacion/education01.jpg", "/images/investigacion/education02.png"]
       },
       {
         title: "Directed Reading Programs (DRPs)",
         shortTitle: "DRPs",
-        description: "Espacio de formación técnica intensiva previa a la investigación. Cada DRP profundiza en áreas específicas de hardware o software, preparando a los estudiantes para colaboraciones activas del Departamento.",
+        description: "Aprendiste computación cuántica, pero ¿será eso suficiente para adentrarte en investigación de ciencias y tecnologías cuánticas? En la mayoría de casos, la respuesta es no. Por eso, los DRP son nuestro espacio personalizado de formación técnica intensiva previa a la incorporación de nuestros estudiantes a proyectos de su interés. Cada DRP profundiza en áreas específicas de hardware o software cuántico, desde fundamentos teóricos hasta simulación e implementación, y prepara a los participantes para integrarse a colaboraciones activas del Departamento.",
         keyPoints: ["Quantum Mechanics & Quantum Optics", "Nonlinear Optics & Digital Signal Processing", "Quantum Machine Learning & Visualization with Fractals"],
         images: ["/images/investigacion/drp01.png", "/images/investigacion/drp02.png"]
       }
@@ -113,31 +88,20 @@ const deptData: Record<string, DeptPageData> = {
     name: "Departamento Académico",
     subtitle: "Diseño curricular y programas educativos en tecnologías cuánticas",
     icon: BookOpen,
-    colorClass: "text-[#AF52DE]", // dept-academic
-    borderColor: "border-[#AF52DE]/30",
-    glowClass: "shadow-[0_0_30px_hsl(270,70%,55%,0.2)]",
-    bgAccent: "from-[#AF52DE]/10 to-transparent",
     hslColor: "270 70% 55%",
     heroImages: ["https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2670&auto=format&fit=crop"],
     description: "El Departamento Académico diseña y ejecuta programas educativos que hacen accesible la computación cuántica para todos los niveles, desde principiantes hasta investigadores avanzados.",
     mission: "Democratizar la educación cuántica en toda Latinoamérica, eliminando barreras de acceso técnico y de lenguaje.",
-    initiatives: [
-      { title: "Curso Completo QC 2025", date: "Finalizado", icon: Trophy, description: "Culminación exitosa de la primera promoción de más de 300 estudiantes en fundamentos de información y computación cuántica." },
-      { title: "Nueva Malla Curricular 2026", date: "En Desarrollo", icon: BookOpen, description: "Rediseño completo del material educativo integrando Pennylane y Qiskit 1.0, enfocado en aprendizaje interactivo." },
-      { title: "Formación de Facilitadores", date: "Q2 2025", icon: Users, description: "Programa intensivo de 'train the trainers' para graduados del curso anterior, preparándolos para ser los profesores de la siguiente generación." },
-    ],
-    projects: ["Curso Introductorio QC 2026", "Talleres Presenciales", "Programa de certificación", "Libro de texto colaborativo"],
-    howToJoin: "Buscamos constantemente profesores, mentores y creadores de contenido técnico. Envíanos un correo a academico@quantumhub.pe.",
     bullets: [
       {
-        title: "Curriculum Abierto",
-        description: "Todo nuestro syllabus y materiales interactivos están en repositorios públicos. Creemos fielmente en el movimiento open-source para acelerar el aprendizaje cuántico en la región.",
+        title: "Formación temprana con estándares de excelencia",
+        description: "El curso desarrolla una base robusta en matemática, física y pensamiento computacional para preparar a sus estudiantes frente a una disciplina altamente demandante y profundamente interdisciplinaria. Esta etapa fundacional no opera como un simple curso de nivelación: funciona como un filtro formativo y una plataforma de despegue, permitiendo que jóvenes con alto potencial académico accedan a contenidos que normalmente se encuentran en últimos ciclos de la carrera o incluso en cursos de maestría. La formación temprana es entendida aquí como una decisión estratégica. QuantumHub no espera a que el talento llegue completamente formado: lo identifica, lo acompaña y lo fortalece desde etapas iniciales, reduciendo brechas de acceso y abriendo la posibilidad de una participación temprana en ciencia de frontera.",
         keyPoints: ["Material de libre acceso", "Actualizado con Qiskit 1.0/Pennylane", "Repositorios colaborativos"],
         images: ["https://images.unsplash.com/photo-1544648105-0219ca708705?q=80&w=2670&auto=format&fit=crop"]
       },
       {
-        title: "Clases Interactivas",
-        description: "No solo te brindamos pre-grabados; cada semana contamos con sesiones síncronas para resolver dudas algorítmicas de manera conversacional y directa.",
+        title: "Divulgación y Accesibilidad a la Computación Cuántica",
+        description: "El curso bandera de nuestro departamento ofrece una formación teórico-práctica en computación cuántica que conecta fundamentos con herramientas reales del campo. A lo largo de sus módulos, los estudiantes trabajan conceptos vinculados a modelos de cómputo cuántico, circuitos, algoritmos y simulaciones en la nube, desarrollando tanto comprensión conceptual como criterio técnico. La propuesta pedagógica está diseñada para evitar dos errores comunes: la simplificación vacía y el elitismo inaccesible. En lugar de ello, construye una curva de aprendizaje minuciosa, progresiva y cuidadosamente acompañada, capaz de traducir conceptos complejos en procesos formativos comprensibles, estimulantes e intelectualmente honestos. El resultado es una experiencia académica seria, moderna y en sintonía con la evolución real del sector.",
         keyPoints: ["Sesiones en vivo con expertos", "Resolución de dudas en tiempo real", "Dinámicas grupales de programación"],
         images: ["https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop"]
       },
@@ -164,21 +128,10 @@ const deptData: Record<string, DeptPageData> = {
     name: "Departamento de Innovación",
     subtitle: "Aplicaciones prácticas y startups cuánticas",
     icon: Lightbulb,
-    colorClass: "text-[#10E8D9]", // dept-innovation
-    borderColor: "border-[#10E8D9]/30",
-    glowClass: "shadow-[0_0_30px_hsl(175,80%,50%,0.2)]",
-    bgAccent: "from-[#10E8D9]/10 to-transparent",
     hslColor: "175 80% 50%",
     heroImages: ["https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop"],
     description: "Nuestro producto principal es una plataforma web abierta y beginner-friendly para enseñar computación cuántica en español. A través de 4 módulos de aprendizaje, simulaciones como la esfera de Bloch y el experimento de la doble rendija y retos gamificados, estructuramos un aprendizaje dinámico y progresivo.",
     mission: "Traducir la ventaja cuántica teórica en soluciones tangibles para problemas industriales contemporáneos en Latinoamérica.",
-    initiatives: [
-      { title: "Quantum LATAM Hackathon", date: "Octubre 2025", icon: Rocket, description: "Competencia de fin de semana resolviendo problemas de optimización logística y portafolios financieros de empresas locales usando solvers híbridos." },
-      { title: "Incubadora Q-Startups", date: "Fase Piloto", icon: Lightbulb, description: "Primera cohorte piloto apoyando a 3 equipos de estudiantes en el diseño de su modelo de negocio (spin-off) basado en tecnologías cuánticas." },
-      { title: "Alianzas Estratégicas B2B", date: "Continuo", icon: BrainCircuit, description: "Conversaciones abiertas con los sectores bancarios y de agro-industria locales para explicar y explorar pilotos POC cuánticos." },
-    ],
-    projects: ["Hackathon Quantum Series", "Quantum Finance Simulator", "Optimización agrologística QAA", "Reportes de Industria"],
-    howToJoin: "Desarrolladores, emprendedores, PMs de producto son bienvenidos. Postula tus ideas innovadoras a nuestro repositorio central de pitch.",
     bullets: [
       {
         title: "Divulgación Científica Accesible",
@@ -216,21 +169,10 @@ const deptData: Record<string, DeptPageData> = {
     name: "Relaciones Públicas",
     subtitle: "Comunicación, alianzas estratégicas y difusión",
     icon: Megaphone,
-    colorClass: "text-[#FFCC00]", // dept-relations
-    borderColor: "border-[#FFCC00]/30",
-    glowClass: "shadow-[0_0_30px_hsl(45,100%,55%,0.2)]",
-    bgAccent: "from-[#FFCC00]/10 to-transparent",
     hslColor: "45 100% 55%",
     heroImages: ["https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=2670&auto=format&fit=crop"],
     description: "Amplificamos la voz de la computación cuántica en LATAM mediante relaciones internacionales e institucionales. Construimos y mantenemos vínculos clave con universidades, patrocinadores y la prensa especializada.",
     mission: "Convertir a QuantumHub Peru en el representante principal del continente ante las grandes esferas cuánticas de IBM, Google, AWS y startups líderes mundiales.",
-    initiatives: [
-      { title: "Sponsorship Q-Summit", date: "Agosto 2025", icon: Award, description: "Campaña central levantando fondos y alianzas con los mayores provedores de hardware del mundo para subvencionar el gran evento Quantum AI." },
-      { title: "Lanzamiento del Podcast 'Superposición'", date: "Q1 2026", icon: Megaphone, description: "Programa de entrevistas en español con científicos latinoamericanos trabajando en corporaciones de primera línea en todo el globo." },
-      { title: "Expansión Universitaria", date: "Continuo", icon: Users, description: "Firma sistemática de Memorándums de Entendimiento (MoUs) con universidades en todo LATAM para convalidar créditos." },
-    ],
-    projects: ["Quantum AI Summit 2025", "Plan de Branding Internacional", "Podcast Superposición", "Programa Ambassadors"],
-    howToJoin: "Relacionistas públicos, marketers, abogados, diseñadores gráficos y comunicadores. ¡Ayúdanos a hacer que la cuántica sea pop y formal a la vez en LATAM!",
     bullets: [
       {
         title: "Presencia en Medios",
@@ -264,25 +206,14 @@ const deptData: Record<string, DeptPageData> = {
     name: "Departamento de Comunidad",
     subtitle: "La base humana, red de entusiastas y profesionales",
     icon: Users,
-    colorClass: "text-[#FF3399]", // dept-community
-    borderColor: "border-[#FF3399]/30",
-    glowClass: "shadow-[0_0_30px_hsl(330,70%,60%,0.2)]",
-    bgAccent: "from-[#FF3399]/10 to-transparent",
     hslColor: "330 70% 60%",
     heroImages: ["https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2670&auto=format&fit=crop"],
     description: "Nosotros somos los constructores de comunidad. Nos encargamos de que la red más grande de entusiastas cuánticos en Latinoamérica sea saludable, integradora y sinérgica. Mantenemos vivos los engranajes sociales de toda la organización.",
     mission: "Crear una comunidad vibrante asíncrona y presencial donde el conocimiento se distribuye democráticamente mediante pares (peer-to-peer).",
-    initiatives: [
-      { title: "Reestructuración Discord 2.0", date: "Febrero 2025", icon: BrainCircuit, description: "Apertura de nuevos canales de estudio, foros de papers orientados, gamificación (puntos Q) y sistema de roles automáticos para nuestros más de 600 miembros." },
-      { title: "Meetup Presencial Lima #1", date: "Verano 2025", icon: Calendar, description: "El primer gran reencuentro offline. Cerveza, pizzas, networking de primer nivel y chárla introductoria sobre el ecosistema." },
-      { title: "Sistema de Mentorías Estructuradas", date: "Plataforma Beta", icon: Users, description: "Emparejamiento de alumnos ingresantes 2026 con Egresados 2025 (Alumni) para asesoría técnica, emocional y metodológica 1-a-1." },
-    ],
-    projects: ["Plataforma Discord Q-Hub", "Eventos Offline Meetups", "Programa de Mentorías", "Wiki colaborativa LATAM"],
-    howToJoin: "Community Builders, moderadores de comunidades, gente muy empática y social. Ingresa al discord general, conócenos y pide acceso al squad organizador.",
     bullets: [
       {
-        title: "Cultura y Comunidad",
-        description: "Mantenemos una red saludable, integradora y sinérgica donde el conocimiento se distribuye democráticamente mediante procesos peer-to-peer.",
+        title: "Divulgación Científica Accesible",
+        description: "¿Cómo explicar la computación cuántica a personas que nunca han estudiado física o matemáticas avanzadas? El departamento trabaja para reducir las barreras de acceso al conocimiento cuántico, transformando conceptos técnicos en mensajes claros y comprensibles para audiencias diversas. Desarrollamos contenido divulgativo que explica los principios y aplicaciones de la computación cuántica de forma dinámica, visual y cercana. Nuestro enfoque combina claridad conceptual, recursos visuales y rigor científico, demostrando que estas tecnologías, aunque avanzadas, pueden entenderse cuando se comunican con herramientas pedagógicas adecuadas. De esta manera, buscamos despertar curiosidad científica y acercar la computación cuántica a estudiantes y personas interesadas incluso sin formación previa en el área.",
         keyPoints: ["Cultura de colaboración", "Distribución democrática del saber", "Sinergia entre miembros"],
         images: ["https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop"]
       },
@@ -312,7 +243,6 @@ const deptData: Record<string, DeptPageData> = {
 
 const DepartmentPage = ({ deptId }: { deptId: string }) => {
   const dept = deptData[deptId];
-  const [hoveredInit, setHoveredInit] = useState<number | null>(null);
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
 
   useEffect(() => {
