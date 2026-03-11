@@ -7,57 +7,66 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 95%;
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 95%;
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 95%;
-    --primary: 270 80% 60%;
+    --background: 232 59% 10%;
+    /* #0A0E27 Azul noche profundo */
+    --foreground: 0 0% 100%;
+    /* #FFFFFF Blanco puro */
+    --card: 244 38% 16%;
+    /* #1C1A3A Fondo ítem seleccionado */
+    --card-foreground: 0 0% 100%;
+    --popover: 232 59% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 37 90% 51%;
+    /* #F39C12 Amarillo/Naranja */
     --primary-foreground: 0 0% 100%;
-    --secondary: 222 30% 14%;
-    --secondary-foreground: 210 40% 90%;
-    --muted: 222 30% 12%;
-    --muted-foreground: 215 20% 55%;
-    --accent: 45 100% 55%;
-    --accent-foreground: 222 47% 6%;
+    --secondary: 256 37% 24%;
+    /* #322653 Morado oscuro */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 256 37% 24%;
+    --muted-foreground: 215 20% 70%;
+    --accent: 37 90% 51%;
+    /* #F39C12 */
+    --accent-foreground: 232 59% 10%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 270 80% 60%;
+    --border: 256 37% 24%;
+    --input: 256 37% 24%;
+    --ring: 37 90% 51%;
     --radius: 0.75rem;
 
     /* Quantum custom tokens */
     --quantum-blue: 220 90% 56%;
-    --quantum-purple: 270 80% 60%;
-    --quantum-pink: 330 80% 60%;
-    --quantum-yellow: 45 100% 55%;
+    --quantum-purple: 327 68% 62%;
+    /* #DE5CA3 Rosa */
+    --quantum-pink: 10 74% 63%;
+    /* #E4715B Salmón */
+    --quantum-yellow: 37 90% 51%;
+    /* #F39C12 Amarillo/Naranja */
     --quantum-turquoise: 175 80% 50%;
-    --quantum-dark: 222 47% 6%;
-    --quantum-dark-lighter: 222 35% 10%;
+    --quantum-dark: 232 59% 10%;
+    --quantum-dark-lighter: 244 38% 16%;
 
     /* Department colors */
     --dept-research: 210 100% 60%;
-    --dept-academic: 270 70% 55%;
+    --dept-academic: 327 68% 62%;
     --dept-innovation: 175 80% 50%;
-    --dept-relations: 45 100% 55%;
-    --dept-community: 330 70% 60%;
+    --dept-relations: 37 90% 51%;
+    --dept-community: 10 74% 63%;
 
     /* Gradients as custom properties */
-    --gradient-quantum: linear-gradient(135deg, hsl(270 80% 60%), hsl(330 80% 60%));
-    --gradient-hero: linear-gradient(180deg, hsl(222 47% 6% / 0.3), hsl(222 47% 6% / 0.9));
-    --gradient-card: linear-gradient(135deg, hsl(222 30% 12% / 0.8), hsl(222 47% 8% / 0.6));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(270 80% 60% / 0.15), transparent 70%);
+    --gradient-quantum: linear-gradient(135deg, hsl(327 68% 62%), hsl(10 74% 63%));
+    --gradient-hero: linear-gradient(180deg, hsl(232 59% 10% / 0.3), hsl(232 59% 10% / 0.9));
+    --gradient-card: linear-gradient(135deg, hsl(244 38% 16% / 0.8), hsl(256 37% 24% / 0.6));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(37 90% 51% / 0.15), transparent 70%);
 
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 95%;
-    --sidebar-primary: 270 80% 60%;
+    --sidebar-background: 232 59% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 37 90% 51%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 30% 14%;
-    --sidebar-accent-foreground: 210 40% 90%;
-    --sidebar-border: 222 30% 18%;
-    --sidebar-ring: 270 80% 60%;
+    --sidebar-accent: 256 37% 24%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 256 37% 24%;
+    --sidebar-ring: 37 90% 51%;
   }
 }
 
@@ -81,7 +90,9 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply text-foreground font-body antialiased;
+    background: radial-gradient(circle at top left, hsl(232 59% 10%), hsl(256 37% 24%) 100%);
+    background-attachment: fixed;
   }
 
   h1,
@@ -104,11 +115,11 @@
   }
 
   .glow-purple {
-    box-shadow: 0 0 30px hsl(270 80% 60% / 0.3), 0 0 60px hsl(270 80% 60% / 0.1);
+    box-shadow: 0 0 30px hsl(327 68% 62% / 0.3), 0 0 60px hsl(327 68% 62% / 0.1);
   }
 
   .glow-yellow {
-    box-shadow: 0 0 20px hsl(45 100% 55% / 0.3), 0 0 40px hsl(45 100% 55% / 0.1);
+    box-shadow: 0 0 20px hsl(37 90% 51% / 0.3), 0 0 40px hsl(37 90% 51% / 0.1);
   }
 
   .glow-blue {
@@ -117,36 +128,36 @@
 
   .text-gradient-quantum {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(270 80% 60%), hsl(330 80% 60%));
+    background-image: linear-gradient(135deg, #7B2CBF 0%, #F39C12 50%, #7B2CBF 100%);
   }
 
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(45 100% 55%), hsl(35 100% 65%));
+    background-image: linear-gradient(135deg, hsl(37 90% 51%), hsl(27 90% 61%));
   }
 
   .quantum-grid {
     background-image:
-      linear-gradient(hsl(270 80% 60% / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(270 80% 60% / 0.05) 1px, transparent 1px);
+      linear-gradient(hsl(327 68% 62% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(327 68% 62% / 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
   .circuit-lines {
     background-image:
-      linear-gradient(90deg, hsl(270 80% 60% / 0.08) 1px, transparent 1px),
-      linear-gradient(hsl(270 80% 60% / 0.08) 1px, transparent 1px);
+      linear-gradient(90deg, hsl(327 68% 62% / 0.08) 1px, transparent 1px),
+      linear-gradient(hsl(327 68% 62% / 0.08) 1px, transparent 1px);
     background-size: 80px 80px;
   }
 
   .btn-quantum {
     @apply px-10 py-4 rounded-lg font-sans font-medium text-base transition-all duration-300;
-    background: linear-gradient(135deg, hsl(270 80% 60%), hsl(330 80% 60%));
+    background: linear-gradient(135deg, hsl(327 68% 62%), hsl(10 74% 63%));
     color: white;
   }
 
   .btn-quantum:hover {
-    box-shadow: 0 0 30px hsl(270 80% 60% / 0.4);
+    box-shadow: 0 0 30px hsl(327 68% 62% / 0.4);
     transform: translateY(-2px);
   }
 
@@ -155,7 +166,7 @@
   }
 
   .btn-accent-cta:hover {
-    box-shadow: 0 0 25px hsl(45 100% 55% / 0.4);
+    box-shadow: 0 0 25px hsl(37 90% 51% / 0.4);
     transform: translateY(-2px);
   }
 
@@ -165,7 +176,7 @@
 
   .btn-outline-quantum:hover {
     @apply border-primary bg-primary/10;
-    box-shadow: 0 0 20px hsl(270 80% 60% / 0.2);
+    box-shadow: 0 0 20px hsl(37 90% 51% / 0.2);
   }
 
   .section-dark {
@@ -275,11 +286,11 @@
 
 @keyframes map-glow {
   0% {
-    filter: drop-shadow(0 0 1px hsl(270 80% 60% / 0.5));
+    filter: drop-shadow(0 0 1px hsl(327 68% 62% / 0.5));
   }
 
   100% {
-    filter: drop-shadow(0 0 12px hsl(270 80% 60% / 1));
+    filter: drop-shadow(0 0 12px hsl(327 68% 62% / 1));
   }
 }
 
@@ -299,14 +310,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(222 47% 6%);
+  background: hsl(232 59% 10%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(270 80% 60% / 0.4);
+  background: hsl(37 90% 51% / 0.4);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(270 80% 60% / 0.6);
+  background: hsl(37 90% 51% / 0.6);
 }

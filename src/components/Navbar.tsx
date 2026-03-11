@@ -60,17 +60,21 @@ const Navbar = () => {
             >
               <Link
                 to={item.path}
-                className="relative px-4 py-2 text-sm font-body font-medium tracking-wide transition-colors group flex items-center gap-1"
+                className="relative px-4 py-2 rounded-md text-sm font-body font-medium tracking-wide transition-colors group flex items-center gap-1"
+                style={{
+                  backgroundColor: location.pathname === item.path ? '#1C1A3A' : 'transparent',
+                  color: location.pathname === item.path ? '#FFFFFF' : 'hsl(var(--muted-foreground))'
+                }}
               >
-                <span className={location.pathname === item.path || (item.hasDropdown && location.pathname.match(/^\/(investigacion|academico|innovacion|relaciones-publicas|comunidad)/)) ? "text-foreground" : "text-muted-foreground group-hover:text-foreground"}>
+                <span className={location.pathname === item.path || (item.hasDropdown && location.pathname.match(/^\/(investigacion|academico|innovacion|relaciones-publicas|comunidad)/)) ? "text-white group-hover:text-white" : "group-hover:text-white"}>
                   {item.label}
                 </span>
-                {item.hasDropdown && <ChevronDown className={`w-3 h-3 text-muted-foreground transition-transform ${deptOpen ? "rotate-180" : ""}`} />}
+                {item.hasDropdown && <ChevronDown className={`w-3 h-3 text-white/50 transition-transform ${deptOpen ? "rotate-180" : ""}`} />}
                 {(location.pathname === item.path || (item.hasDropdown && location.pathname.match(/^\/(investigacion|academico|innovacion|relaciones-publicas|comunidad)/))) && (
                   <motion.div
                     layoutId="nav-underline"
                     className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full"
-                    style={{ background: "linear-gradient(90deg, hsl(270 80% 60%), hsl(330 80% 60%))" }}
+                    style={{ background: "#DE5CA3" }}
                   />
                 )}
               </Link>

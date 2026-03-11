@@ -11,6 +11,12 @@ import quantumBg1 from "@/assets/r2.jpg";
 import quantumBg2 from "@/assets/r5.jpg";
 import quantumBg3 from "@/assets/r3.jpg";
 import quantumBg4 from "@/assets/r4.jpg";
+import quantumBg5 from "@/assets/r6.jpg";
+import quantumBg6 from "@/assets/r7.jpg";
+import quantumBg7 from "@/assets/r8.jpg";
+import quantumBg8 from "@/assets/r9.jpg";
+import quantumBg9 from "@/assets/r10.jpg";
+import quantumBg10 from "@/assets/r5.jpg";
 import heroBgImage from "@/assets/hero-bg.png";
 import DepartmentsSection from "@/components/DepartmentsSection";
 import ParticleNetwork from "@/components/ParticleNetwork";
@@ -26,6 +32,7 @@ const principiosData = [
 ];
 
 const galleryImages = [quantumBg0, quantumBg1, quantumBg2, quantumBg3, quantumBg4, quantumBg0, quantumBg1, quantumBg2, quantumBg3, quantumBg4];
+const galleryImages2 = [quantumBg5, quantumBg6, quantumBg7, quantumBg8, quantumBg9, quantumBg10, quantumBg5, quantumBg6, quantumBg7, quantumBg8, quantumBg9, quantumBg10];
 
 /* ── hooks ── */
 function useInView(threshold = 0.15) {
@@ -130,61 +137,34 @@ export default function SobreNosotros() {
             {/* Dark gradient overlay mostly at the bottom for readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0F111A] via-[#0F111A]/40 to-transparent z-10" />
 
-            {/* Particle Network Overlay for "current" effect */}
-            <div className="absolute inset-0 z-10 opacity-60 mix-blend-screen pointer-events-none">
-              <ParticleNetwork />
-            </div>
-
-            {/* Radial glow for subtle background texture */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] z-10 pointer-events-none" />
+            {/* Radial glow instead of particles to keep it clean */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] z-10 pointer-events-none" />
           </motion.div>
 
-          <div className="relative z-20 w-full max-w-5xl mx-auto flex flex-col h-full items-center justify-center">
+          <div className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col h-full items-center justify-center">
             {/* Centered Content Area */}
             <motion.div
               style={{ y: textY, opacity: textOpacity }}
               className="w-full flex flex-col items-center justify-center text-center animate-[fadeSlideUp_1s_ease-out_both] pt-16 md:pt-0 relative"
             >
-              {/* Quantum spark particles around title */}
-              <div className="absolute -inset-10 pointer-events-none">
-                {Array.from({ length: 12 }).map((_, i) => (
-                  <motion.div
-                    key={i}
-                    animate={{
-                      y: [-20, -60],
-                      x: [0, (i % 2 === 0 ? 20 : -20)],
-                      opacity: [0, 0.8, 0],
-                      scale: [0.5, 1, 0.5]
-                    }}
-                    transition={{
-                      duration: 2 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 3,
-                      ease: "easeOut"
-                    }}
-                    className="absolute w-1 h-1 bg-accent rounded-full blur-[0.5px]"
-                    style={{
-                      left: `${20 + Math.random() * 60}%`,
-                      top: `${40 + Math.random() * 40}%`
-                    }}
-                  />
-                ))}
-              </div>
+              {/* Removed particle overlay per user request */}
 
-              <h1 className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-[70px] font-black leading-[1.1] tracking-tight mb-10 md:mb-10 lg:mb-12 relative z-10 flex flex-col items-center px-2 md:px-0">
-                <span className="text-white">Impulsamos la</span>
+              <h1 className="font-heading text-[3.25rem] sm:text-[4rem] md:text-[5rem] lg:text-[75px] xl:text-[95px] font-black leading-[1.05] tracking-normal mb-8 md:mb-10 lg:mb-12 relative z-10 text-center px-4 w-full">
+                <span className="text-white drop-shadow-md">Impulsamos la educación</span>
+                <br className="hidden md:block" />
+                <span className="md:hidden"> </span>
                 <motion.span
-                  className="inline-block bg-clip-text text-transparent pb-1"
+                  className="inline-block bg-clip-text text-transparent pb-1 md:pb-2 pt-1 md:pt-2"
                   style={{
-                    backgroundImage: "linear-gradient(90deg, hsl(270 80% 60%), hsl(330 80% 60%), hsl(175 80% 70%), hsl(330 80% 60%), hsl(270 80% 60%))",
+                    backgroundImage: "linear-gradient(90deg, #7B2CBF 0%, #F39C12 50%, #7B2CBF 100%)",
                     backgroundSize: "200% auto",
                   }}
                   animate={{
                     backgroundPosition: ["0% center", "-200% center"],
                     filter: [
-                      "drop-shadow(0 0 2px rgba(138,43,226,0.2))",
-                      "drop-shadow(0 0 15px rgba(20,184,166,0.6))",
-                      "drop-shadow(0 0 2px rgba(138,43,226,0.2))"
+                      "drop-shadow(0 0 2px rgba(123,44,191,0.2))",
+                      "drop-shadow(0 0 15px rgba(123,44,191,0.6))",
+                      "drop-shadow(0 0 2px rgba(123,44,191,0.2))"
                     ]
                   }}
                   transition={{
@@ -192,13 +172,14 @@ export default function SobreNosotros() {
                     filter: { duration: 1.75, repeat: Infinity, ease: "easeInOut" }
                   }}
                 >
-                  educación cuántica <br />inclusiva en Perú
+                  cuántica inclusiva en Perú
                 </motion.span>
               </h1>
 
-              <p className="text-lg sm:text-xl md:text-base lg:text-lg text-white/90 max-w-2xl leading-relaxed mb-16 md:mb-12 lg:mb-16 mx-2 md:mx-0 font-medium">
+              <p className="text-lg sm:text-xl md:text-xl lg:text-2xl text-white/90 max-w-3xl leading-relaxed mb-16 md:mb-12 lg:mb-16 mx-4 font-medium">
                 Desarrollamos competencias en tecnología cuántica con una propuesta pedagógica innovadora, accesible y rigurosa en colaboración con instituciones líderes.
               </p>
+
 
             </motion.div>
           </div>
@@ -244,9 +225,43 @@ export default function SobreNosotros() {
             </ScrollReveal>
           </div>
         </section>
+        {/* ═══ IMAGE GALLERY — infinite horizontal marquee (Bipsync style) ═══ */}
+        <section className="py-24 overflow-hidden relative z-10">
+          <ScrollReveal className="mb-12 px-6 md:px-12 max-w-7xl mx-auto">
+            <span className="text-[#F69D0E] text-sm font-semibold tracking-widest uppercase">Nuestro Impacto</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold mt-4 text-foreground">
+              Inspirando el futuro cuántico
+            </h2>
+          </ScrollReveal>
+
+
+
+          {/* Marquee row 1 */}
+          <div className="relative mb-6">
+            <div className="flex gap-6 animate-[marquee_30s_linear_infinite] w-max select-none">
+              {[...galleryImages, ...galleryImages].map((src, i) => (
+                <div key={i} className="flex-shrink-0 w-[320px] md:w-[420px] h-[220px] md:h-[280px] rounded-2xl overflow-hidden">
+                  <img src={src} alt={`Galería ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Marquee row 2 (reverse) */}
+          <div className="relative">
+            <div className="flex gap-6 animate-[marqueeReverse_30s_linear_infinite] w-max select-none">
+              {[...galleryImages2, ...galleryImages2].map((src, i) => (
+                <div key={`reverse-${i}`} className="flex-shrink-0 w-[320px] md:w-[420px] h-[220px] md:h-[280px] rounded-2xl overflow-hidden">
+                  <img src={src} alt={`Galería Inversa ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
 
         {/* ═══ MISIÓN & VISIÓN — side by side cards ═══ */}
-        <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+        <section className="pt-24 pb-4 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-8">
             <ScrollReveal>
               <div className="rounded-2xl border border-border bg-card p-10 h-full group hover:border-[#F69D0E]/30 transition-colors duration-500">
@@ -273,31 +288,8 @@ export default function SobreNosotros() {
           </div>
         </section>
 
-        {/* ═══ IMAGE GALLERY — infinite horizontal marquee (Bipsync style) ═══ */}
-        <section className="py-24 overflow-hidden relative z-10">
-          <ScrollReveal className="mb-12 px-6 md:px-12 max-w-7xl mx-auto">
-            <span className="text-[#F69D0E] text-sm font-semibold tracking-widest uppercase">Nuestro Impacto</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold mt-4 text-foreground">
-              Inspirando el futuro cuántico
-            </h2>
-          </ScrollReveal>
 
-
-
-          {/* Marquee row */}
-          <div className="relative">
-            <div className="flex gap-6 animate-[marquee_30s_linear_infinite] w-max select-none">
-              {[...galleryImages, ...galleryImages].map((src, i) => (
-                <div key={i} className="flex-shrink-0 w-[320px] md:w-[420px] h-[220px] md:h-[280px] rounded-2xl overflow-hidden">
-                  <img src={src} alt={`Galería ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-
+        <DepartmentsSection />
 
         {/* ═══ PRINCIPIOS — flip cards grid ═══ */}
         <section id="principios" className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
@@ -319,7 +311,7 @@ export default function SobreNosotros() {
           </div>
         </section>
 
-        <DepartmentsSection />
+
 
         {/* ═══ CTA FOOTER — Enhanced with Mascot & Particles ═══ */}
         <section className="py-32 px-6 md:px-12 text-center relative overflow-hidden bg-slate-950/20">
@@ -389,7 +381,7 @@ export default function SobreNosotros() {
                   className="group relative px-10 py-5 bg-primary text-primary-foreground rounded-full text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--primary),0.4)] overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-2">
-                    Explorar el Plan Académico <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                    Conoce más sobre nuestro Curso <br /> Edición 2026 - I <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </a>
@@ -423,6 +415,10 @@ export default function SobreNosotros() {
           @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+          }
+          @keyframes marqueeReverse {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
           }
         `}</style>
       </main>

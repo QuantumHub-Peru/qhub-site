@@ -545,15 +545,15 @@ const Curso = () => {
                   <motion.span
                     className="inline-block bg-clip-text text-transparent pb-1"
                     style={{
-                      backgroundImage: "linear-gradient(90deg, hsl(270 80% 60%), hsl(330 80% 60%), hsl(175 80% 70%), hsl(330 80% 60%), hsl(270 80% 60%))",
+                      backgroundImage: "linear-gradient(90deg, #7B2CBF 0%, #F39C12 50%, #7B2CBF 100%)",
                       backgroundSize: "200% auto",
                     }}
                     animate={{
                       backgroundPosition: ["0% center", "-200% center"],
                       filter: [
-                        "drop-shadow(0 0 2px rgba(138,43,226,0.2))",
-                        "drop-shadow(0 0 15px rgba(20,184,166,0.6))",
-                        "drop-shadow(0 0 2px rgba(138,43,226,0.2))"
+                        "drop-shadow(0 0 2px rgba(123,44,191,0.2))",
+                        "drop-shadow(0 0 15px rgba(123,44,191,0.6))",
+                        "drop-shadow(0 0 2px rgba(123,44,191,0.2))"
                       ]
                     }}
                     transition={{

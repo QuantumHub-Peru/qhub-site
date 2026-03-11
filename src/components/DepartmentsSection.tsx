@@ -6,6 +6,12 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Line, Billboard, Text } from "@react-three/drei";
 import * as THREE from "three";
 
+import deptImg1 from "@/assets/r1.jpg";
+import deptImg2 from "@/assets/r2.jpg";
+import deptImg3 from "@/assets/r3.jpg";
+import deptImg4 from "@/assets/r4.jpg";
+import deptImg5 from "@/assets/r5.jpg";
+
 interface Department {
   id: string;
   name: string;
@@ -18,6 +24,7 @@ interface Department {
   mission: string;
   highlights: string[];
   path: string;
+  image: string;
 }
 
 const departments: Department[] = [
@@ -29,6 +36,7 @@ const departments: Department[] = [
     mission: "Producir investigación de impacto global desde Latinoamérica.",
     highlights: ["Papers en arXiv", "Colaboración internacional", "Algoritmos variacionales"],
     path: "/investigacion",
+    image: deptImg1,
   },
   {
     id: "academico", name: "Académico", subtitle: "Education & Curriculum",
@@ -38,6 +46,7 @@ const departments: Department[] = [
     mission: "Democratizar la educación cuántica en toda Latinoamérica.",
     highlights: ["Cursos estructurados", "Contenido self-paced", "Mentorías"],
     path: "/academico",
+    image: deptImg2,
   },
   {
     id: "innovacion", name: "Innovación", subtitle: "Tech & Startups",
@@ -47,6 +56,7 @@ const departments: Department[] = [
     mission: "Conectar la investigación cuántica con soluciones reales.",
     highlights: ["Hackathons", "Proyectos aplicados", "Alianzas industria"],
     path: "/innovacion",
+    image: deptImg3,
   },
   {
     id: "relaciones", name: "Relaciones Públicas", subtitle: "Outreach & Alliances",
@@ -56,6 +66,7 @@ const departments: Department[] = [
     mission: "Amplificar la voz de la computación cuántica en la región.",
     highlights: ["Alianzas globales", "Media coverage", "Branding cuántico"],
     path: "/relaciones-publicas",
+    image: deptImg4,
   },
   {
     id: "comunidad", name: "Comunidad", subtitle: "Network & People",
@@ -65,6 +76,7 @@ const departments: Department[] = [
     mission: "Crear la comunidad cuántica más activa de LATAM.",
     highlights: ["Meetups presenciales", "Discord activo", "Mentoría peer-to-peer"],
     path: "/comunidad",
+    image: deptImg5,
   },
 ];
 
@@ -141,27 +153,37 @@ const Axes = () => {
 const DepartmentCard = ({ dept }: { dept: Department }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
-    className="glass-strong bg-background/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.5)] group w-[320px] min-h-[280px] flex flex-col relative z-20 pointer-events-auto"
+    className="glass-strong bg-background/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.5)] group h-full flex flex-col relative z-20 pointer-events-auto"
     style={{ boxShadow: `0 0 0 1px hsl(${dept.hslColor} / 0.2), 0 10px 40px -10px hsl(${dept.hslColor} / 0.15)` }}
   >
     <div className="absolute top-0 right-0 w-32 h-32 rounded-full blur-[50px] opacity-20 pointer-events-none" style={{ backgroundColor: `hsl(${dept.hslColor})` }} />
 
-    <div className="flex items-center gap-4 mb-4 relative z-10">
+    <div className="w-full h-40 mb-6 rounded-2xl overflow-hidden relative z-10 shrink-0 border border-white/10 group-hover:border-white/20 transition-colors">
+      <img src={dept.image} alt={dept.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+    </div>
+
+    <div className="flex items-center gap-4 mb-5 relative z-10">
       <div
-        className="w-12 h-12 shrink-0 rounded-2xl bg-black/40 flex items-center justify-center border border-white/5"
+        className="w-14 h-14 shrink-0 rounded-2xl bg-black/40 flex items-center justify-center border border-white/5"
         style={{ boxShadow: `inset 0 0 15px hsl(${dept.hslColor} / 0.3)` }}
       >
-        <dept.icon className="w-6 h-6" style={{ color: `hsl(${dept.hslColor})` }} />
+        <dept.icon className="w-7 h-7" style={{ color: `hsl(${dept.hslColor})` }} />
       </div>
       <div>
-        <h4 className="font-heading text-lg font-bold text-white tracking-wide">{dept.name}</h4>
-        <p className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">{dept.subtitle}</p>
+        <h4 className="font-heading text-2xl font-bold text-white tracking-wide">{dept.name}</h4>
+        <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">{dept.subtitle}</p>
       </div>
     </div>
 
-    <p className="font-body text-sm text-foreground/80 leading-relaxed mb-5 relative z-10 flex-grow">
-      {dept.description}
-    </p>
+    <div className="relative z-10 flex-grow mb-6 min-h-[72px] flex flex-col justify-between">
+      <p className="font-body text-sm text-foreground/80 leading-relaxed line-clamp-3">
+        {dept.description}
+      </p>
+      {dept.description.length > 90 && (
+        <span className="text-xs font-semibold mt-1 inline-block" style={{ color: `hsl(${dept.hslColor})` }}>ver más...</span>
+      )}
+    </div>
 
     <div className="flex flex-wrap gap-2 mb-6 relative z-10">
       {dept.highlights.slice(0, 2).map((h) => (
@@ -173,7 +195,7 @@ const DepartmentCard = ({ dept }: { dept: Department }) => (
 
     <Link
       to={dept.path}
-      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider transition-colors relative z-10 hover:brightness-125"
+      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider transition-colors relative z-10 hover:brightness-125 mt-auto pt-4 border-t border-white/5"
       style={{ color: `hsl(${dept.hslColor})` }}
     >
       <span>Explorar Departamento</span>
@@ -183,12 +205,8 @@ const DepartmentCard = ({ dept }: { dept: Department }) => (
 );
 
 const DepartmentsSection = () => {
-  const theta = (Math.PI * 3) / 10;
-  const phi = (Math.PI * 7) / 12;
-  const radius = 380; // Distance of cards from center on desktop
-
   return (
-    <section className="relative py-32 section-dark overflow-hidden">
+    <section className="relative pt-12 pb-32 section-dark overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 quantum-grid opacity-10 animate-grid-flow" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full bg-primary/5 blur-[150px] pointer-events-none" />
@@ -209,89 +227,20 @@ const DepartmentsSection = () => {
           </p>
         </motion.div>
 
-        {/* Desktop Orbital Layout (Hidden on small screens) */}
-        <div className="hidden xl:flex relative w-full h-[900px] items-center justify-center mt-24 pointer-events-none max-w-[1200px] mx-auto">
-
-          {/* The Sphere in the center */}
-          <div className="absolute inset-0 flex items-center justify-center z-10 w-[500px] h-[500px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Canvas camera={{ position: [4, 2, 6], up: [0, 1, 0] }}>
-              <ambientLight intensity={1} />
-              <spotLight position={[15, 20, 5]} angle={0.9} />
-              <Sphere color="lightblue" />
-              <Lines theta={theta} phi={phi} />
-              <Axes />
-              <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1.0} />
-            </Canvas>
-          </div>
-
-          {/* Connecting SVG Lines */}
-          <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-            <defs>
-              <radialGradient id="centerGlow">
-                <stop offset="0%" stopColor="rgba(133, 107, 255, 0.4)" />
-                <stop offset="100%" stopColor="transparent" />
-              </radialGradient>
-            </defs>
-            <circle cx="50%" cy="50%" r="200" fill="url(#centerGlow)" />
-            {departments.map((dept) => {
-              const rad = (dept.angle * Math.PI) / 180;
-              const x = Math.cos(rad) * radius;
-              const y = Math.sin(rad) * radius;
-              return (
-                <line
-                  key={`line-${dept.id}`}
-                  x1="50%" y1="50%"
-                  x2={`calc(50% + ${x}px)`} y2={`calc(50% + ${y}px)`}
-                  stroke={`hsl(${dept.hslColor} / 0.4)`}
-                  strokeWidth="2"
-                  strokeDasharray="5 5"
-                />
-              );
-            })}
-          </svg>
-
-          {/* Orbiting Cards */}
-          {departments.map((dept) => {
-            const rad = (dept.angle * Math.PI) / 180;
-            const x = Math.cos(rad) * radius;
-            const y = Math.sin(rad) * radius;
-            return (
-              <div
-                key={`card-${dept.id}`}
-                className="absolute z-20"
-                style={{
-                  left: `calc(50% + ${x}px)`,
-                  top: `calc(50% + ${y}px)`,
-                  transform: 'translate(-50%, -50%)'
-                }}
-              >
-                <DepartmentCard dept={dept} />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Tablet/Mobile Layout */}
-        <div className="xl:hidden flex flex-col items-center gap-10 mt-10">
-          {/* Sphere Visualization for Mobile */}
-          <div className="w-full h-[400px] relative pointer-events-auto">
-            <Canvas camera={{ position: [4, 2, 6], up: [0, 1, 0] }}>
-              <ambientLight intensity={1} />
-              <spotLight position={[15, 20, 5]} angle={0.9} />
-              <Sphere color="lightblue" />
-              <Lines theta={theta} phi={phi} />
-              <Axes />
-              <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1.5} />
-            </Canvas>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-6 w-full max-w-4xl mx-auto pb-10">
-            {departments.map((dept) => (
-              <div key={dept.id} className="flex justify-center w-full">
-                <DepartmentCard dept={dept} />
-              </div>
-            ))}
-          </div>
+        {/* Grid Layout for all screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-[1600px] mx-auto pb-10">
+          {departments.map((dept, index) => (
+            <motion.div
+              key={dept.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="flex justify-center w-full"
+            >
+              <DepartmentCard dept={dept} />
+            </motion.div>
+          ))}
         </div>
 
       </div>

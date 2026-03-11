@@ -57,7 +57,10 @@ const HeroSection = () => {
           FORMANDO UN{" "}
           <motion.div style={{ perspective: 1000 }} className="inline-block">
             <motion.span
-              className="text-gradient-quantum inline-block origin-center"
+              className="inline-block bg-clip-text text-transparent origin-center"
+              style={{
+                backgroundImage: "linear-gradient(135deg, #7B2CBF 0%, #F39C12 50%, #7B2CBF 100%)",
+              }}
               animate={{ rotateX: [0, 1080, 1080, 2340, 2340, 3600, 3600] }}
               transition={{
                 duration: 12,
