@@ -13,17 +13,26 @@ interface DeptPageData {
   icon: React.ElementType;
   hslColor: string;
   heroImages: string[];
+  heroVideo?: string;
   description: string;
   mission: string;
   bullets: { title: string; shortTitle?: string; description: string; keyPoints?: string[]; images?: string[] }[];
-  achievements: { title: string; description?: string; photo?: string; link?: string }[];
+  achievements: {
+    title: string;
+    titlePreview?: string;
+    description?: string;
+    photo?: string;
+    video?: string;
+    extraPhotos?: string[];
+    link?: string
+  }[];
   alliances: { name: string; logo?: string; isUpcoming?: boolean; country?: string }[];
 }
 
 const deptData: Record<string, DeptPageData> = {
   investigacion: {
     name: "Departamento de Investigación",
-    subtitle: "Proyectos técnicos en tecnologías cuánticas con enfoque aplicado",
+    subtitle: "",
     icon: Atom,
     hslColor: "210 100% 60%",
     heroImages: [
@@ -86,157 +95,214 @@ const deptData: Record<string, DeptPageData> = {
   },
   academico: {
     name: "Departamento Académico",
-    subtitle: "Diseño curricular y programas educativos en tecnologías cuánticas",
+    subtitle: "",
     icon: BookOpen,
     hslColor: "270 70% 55%",
-    heroImages: ["https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2670&auto=format&fit=crop"],
-    description: "El Departamento Académico diseña y ejecuta programas educativos que hacen accesible la computación cuántica para todos los niveles, desde principiantes hasta investigadores avanzados.",
-    mission: "Democratizar la educación cuántica en toda Latinoamérica, eliminando barreras de acceso técnico y de lenguaje.",
+    heroImages: [
+      "/images/academico/hero1.png",
+      "/images/academico/hero2.png"
+    ],
+    description: "¿Te interesa la computación cuántica y quieres formar parte de la próxima generación de talento científico en este campo? El Departamento Académico te ayuda a dar tu primer paso. Aquí diseñamos y ejecutamos el programa formativo insignia de la organización: una ruta rigurosa que introduce a estudiantes de secundaria, preuniversitarios y universitarios a los fundamentos de la computación cuántica, permitiéndoles después integrarse progresivamente a iniciativas de investigación, desarrollo e innovación dentro de la organización. De esta manera, el Departamento Académico no solo imparte formación especializada, sino también activa el pipeline de talento que alimenta y sostiene el crecimiento del ecosistema cuántico que QuantumHub está construyendo en el Perú.",
+    mission: "",
     bullets: [
       {
         title: "Formación temprana con estándares de excelencia",
+        shortTitle: "Formación temprana",
         description: "El curso desarrolla una base robusta en matemática, física y pensamiento computacional para preparar a sus estudiantes frente a una disciplina altamente demandante y profundamente interdisciplinaria. Esta etapa fundacional no opera como un simple curso de nivelación: funciona como un filtro formativo y una plataforma de despegue, permitiendo que jóvenes con alto potencial académico accedan a contenidos que normalmente se encuentran en últimos ciclos de la carrera o incluso en cursos de maestría. La formación temprana es entendida aquí como una decisión estratégica. QuantumHub no espera a que el talento llegue completamente formado: lo identifica, lo acompaña y lo fortalece desde etapas iniciales, reduciendo brechas de acceso y abriendo la posibilidad de una participación temprana en ciencia de frontera.",
-        keyPoints: ["Material de libre acceso", "Actualizado con Qiskit 1.0/Pennylane", "Repositorios colaborativos"],
-        images: ["https://images.unsplash.com/photo-1544648105-0219ca708705?q=80&w=2670&auto=format&fit=crop"]
+        keyPoints: [],
+        images: ["/images/academico/bullet1.png"]
       },
       {
         title: "Divulgación y Accesibilidad a la Computación Cuántica",
+        shortTitle: "Divulgación y Accesibilidad",
         description: "El curso bandera de nuestro departamento ofrece una formación teórico-práctica en computación cuántica que conecta fundamentos con herramientas reales del campo. A lo largo de sus módulos, los estudiantes trabajan conceptos vinculados a modelos de cómputo cuántico, circuitos, algoritmos y simulaciones en la nube, desarrollando tanto comprensión conceptual como criterio técnico. La propuesta pedagógica está diseñada para evitar dos errores comunes: la simplificación vacía y el elitismo inaccesible. En lugar de ello, construye una curva de aprendizaje minuciosa, progresiva y cuidadosamente acompañada, capaz de traducir conceptos complejos en procesos formativos comprensibles, estimulantes e intelectualmente honestos. El resultado es una experiencia académica seria, moderna y en sintonía con la evolución real del sector.",
-        keyPoints: ["Sesiones en vivo con expertos", "Resolución de dudas en tiempo real", "Dinámicas grupales de programación"],
-        images: ["https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop"]
+        keyPoints: [],
+        images: ["/images/academico/bullet2.png"]
       },
       {
-        title: "Certificación Rigurosa",
-        description: "Al culminar nuestros programas, obtendrás un reconocimiento avalado que demuestra un entendimiento matemático sólido y habilidades prácticas verificadas.",
-        keyPoints: ["Validación de conocimientos técnicos", "Proyectos finales supervisados", "Aval de nuestra red de partners"],
-        images: ["https://images.unsplash.com/photo-1589330694653-718227092305?q=80&w=2670&auto=format&fit=crop"]
+        title: "Visión y Sustentabilidad Académica",
+        description: "El Departamento Académico no concibe la educación como un punto de llegada, sino como el inicio de una trayectoria. Los estudiantes con desempeño sobresaliente tienen la posibilidad de continuar su desarrollo dentro de QuantumHub, integrándose a espacios de investigación, desarrollo, pedagogía, innovación, divulgación y liderazgo institucional. Este modelo convierte al curso en un verdadero pipeline de talento. La formación no queda aislada del resto de la organización: alimenta activamente sus siguientes capas de crecimiento. De esta manera, varios de los egresados más destacados continúan hoy su proceso en el Departamento de Investigación, fortaleciendo una base científica sólida junto a mentores, colaboradores y referentes vinculados a la vanguardia del sector cuántico internacional.",
+        keyPoints: [],
+        images: ["/images/academico/bullet3.jpg"]
       },
       {
-        title: "Mentoría 1:1",
-        description: "Asignamos a cada alumno un mentor Alumni del grupo de investigación que le guiará técnica y profesionalmente a través de sesiones cerradas dedicadas.",
-        keyPoints: ["Acompañamiento personalizado", "Guía técnica específica", "Networking con investigadores"],
-        images: ["https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=2670&auto=format&fit=crop"]
+        title: "Creación de capital humano para el ecosistema cuántico",
+        shortTitle: "Capital humano",
+        description: "El valor del Departamento Académico trasciende la formación individual de cada estudiante. Su diseño responde a una visión mayor: consolidar una comunidad capaz de renovarse desde adentro, crecer con consistencia y generar impacto real en el país. Cada cohorte no solo recibe conocimientos; también amplía la capacidad instalada de QuantumHub y fortalece un ecosistema emergente que necesita talento preparado, comprometido y con visión de largo plazo. Así, el departamento opera como una infraestructura de futuro. Forma estudiantes, sí, pero también forma mentores, investigadores en desarrollo, líderes de comunidad y agentes de cambio capaces de contribuir a la construcción de un Perú más conectado con la ciencia y la tecnología de frontera.",
+        keyPoints: [],
+        images: ["/images/academico/bullet4.jpg"]
       }
     ],
-    achievements: [{ title: "+300 Graduados" }, { title: "Certificación Qiskit Global" }],
+    achievements: [
+      {
+        title: "Lanzamiento de la primera edición del curso insignia en 2025",
+        description: "En agosto de 2025, QuantumHub Perú lanzó la primera edición de su curso de Computación Cuántica, marcando un hito en la formación temprana de talento cuántico en el país. Esta cohorte inaugural reunió a estudiantes de alto rendimiento de los últimos años de secundaria y a estudiantes destacados de los primeros años de universidad, consolidando una propuesta educativa selectiva, exigente y orientada a construir capital humano con proyección real.",
+        photo: "/images/academico/logro1.png"
+      },
+      {
+        title: "Graduación de la primera cohorte en una ceremonia de alto valor institucional",
+        description: "La culminación de esta primera edición se celebró en el Salón de los Espejos, gracias al respaldo de la Municipalidad de Lima, en una ceremonia que reunió al Colegio de Ingenieros, CEDDITEC, representantes del sector, líderes de transformación digital y panelistas invitados provenientes de empresas y academia. Más que un acto de cierre, esta graduación visibilizó públicamente la capacidad de QuantumHub para articular excelencia académica, legitimidad institucional y proyección nacional alrededor de la educación cuántica.",
+        photo: "/images/academico/logro2.jpg"
+      },
+
+    ],
     alliances: [
-      { name: "Universidad Nacional de Ingeniería", logo: "https://upload.wikimedia.org/wikipedia/commons/9/91/Uni_logo.png" },
-      { name: "IEEE UNI", logo: "https://upload.wikimedia.org/wikipedia/commons/2/21/IEEE_logo.svg" }
+      { name: "LEAD PUCP", logo: "/images/academico/alianza1.png" },
+      { name: "CIP Lima", logo: "/images/academico/alianza2.jpg" },
+      { name: "Universidad de Ingeniería y Tecnología (UTEC)", logo: "/images/academico/alianza3.png" },
+      { name: "IEEE Computer Society PUCP", logo: "/images/academico/alianza4.png" },
+      { name: "Universidad de Ciencias y Humanidades (UCH)", logo: "/images/academico/alianza5.jpg" }
     ]
   },
   innovacion: {
     name: "Departamento de Innovación",
-    subtitle: "Aplicaciones prácticas y startups cuánticas",
+    subtitle: "",
     icon: Lightbulb,
     hslColor: "175 80% 50%",
-    heroImages: ["https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop"],
-    description: "Nuestro producto principal es una plataforma web abierta y beginner-friendly para enseñar computación cuántica en español. A través de 4 módulos de aprendizaje, simulaciones como la esfera de Bloch y el experimento de la doble rendija y retos gamificados, estructuramos un aprendizaje dinámico y progresivo.",
-    mission: "Traducir la ventaja cuántica teórica en soluciones tangibles para problemas industriales contemporáneos en Latinoamérica.",
+    heroImages: ["/images/innovación/hero1.png"],
+    description: "¿Te intrigan términos como qubits, esfera de Bloch o entrelazamiento cuántico, pero no encuentras herramientas amigables para empezar tu formación en computación cuántica? El Departamento de Innovación de QuantumHub Perú trabaja para cerrar esa brecha. A través del desarrollo de productos EdTech, nuestro equipo de senior full-stack developers egresados de nuestro propio programa diseña y construye software y plataformas digitales de alta calidad pedagógica, pensadas para integrar a más entusiastas hispanohablantes al ecosistema cuántico.",
+    mission: "",
     bullets: [
       {
-        title: "Divulgación Científica Accesible",
-        description: "Transformamos conceptos técnicos en mensajes comprensibles para audiencias diversas, reduciendo barreras de acceso al conocimiento cuántico de manera dinámica y visual.",
-        keyPoints: ["Contenido para audiencias no técnicas", "Narrativa visual pedagógica", "Reducción de brechas de lenguaje"],
-        images: ["https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=2574&auto=format&fit=crop"]
+        title: "QHub Learning Platform",
+        description: "La QHub Learning Platform es el principal producto desarrollado por el Departamento de Innovación. Se trata de una plataforma web abierta, que introduce estructuradamente a estudiantes y autodidactas al mundo de la computación cuántica en español. A través de cuatro módulos progresivos, los usuarios aprenden desde matemática esencial como operaciones con vectores y matrices hasta conceptos fundamentales de la computación cuántica, incluyendo la normalización y la representación gráfica de los estados de un qubit en la esfera de Bloch. Buscamos marcar la diferencia promoviendo un aprendizaje dinámico y experimental; por ello, la plataforma incluye simulaciones como la esfera de Bloch, laboratorio de circuitos cuánticos, el experimento de la doble rendija y retos gamificados.",
+        keyPoints: [],
+        images: ["/images/innovación/bullet1_1.png"]
       },
       {
-        title: "Estrategia de Contenido Digital",
-        description: "Diseñamos y ejecutamos contenido para LinkedIn e Instagram con visión estratégica, orientada a visibilidad, posicionamiento y engagement institucional.",
-        keyPoints: ["Gestión de presencia en redes", "Campañas de impacto educativo", "Posicionamiento de marca QHub"],
-        images: ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"]
+        title: "Democratización del Acceso con Rigor Académico",
+        shortTitle: "Democratización del Acceso",
+        description: "En QuantumHub creemos que la educación en computación cuántica debe ser accesible para todos, sin barreras geográficas, económicas, técnicas o académicas. Nuestra Qhub Learning Platform ofrece acceso libre y flexible, respaldada por un equipo pedagógico formado por egresados de nuestra primera cohorte, que asegura que cada concepto, desde lo más básico hasta lo avanzado, se presente con coherencia académica y claridad conceptual.",
+        keyPoints: [],
+        images: ["/images/innovación/bullet2_1.png"]
       },
       {
-        title: "Conexión y Comunidad",
-        description: "Actuamos como el puente que conecta a los miembros del ecosistema QuantumHub, promoviendo interacción, reconocimiento y sentido de pertenencia.",
-        keyPoints: ["Visibilidad de logros internos", "Fomento de interacción peer-to-peer", "Identidad colectiva sólida"],
-        images: ["https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2684&auto=format&fit=crop"]
+        title: "Sistema de Interfaz Dinámica",
+        shortTitle: "Interfaz Dinámica",
+        description: "¿Y si pudieras tocar la computación cuántica con tus propios ojos? En la QHub Learning Platform, dejamos atrás los libros estáticos; nuestra interfaz UX/UI construida con React y Tailwind CSS combina claridad y dinamismo, guiando a los usuarios en un aprendizaje autónomo y visual. Simulaciones en tiempo real permiten manipular fases, puertas y circuitos cuánticos con retroalimentación inmediata, incluyendo rotaciones en la esfera de Bloch, el experimento de doble rendija y un constructor de circuitos drag-and-drop, haciendo que explorar la computación cuántica sea tan interactivo como formativo.",
+        keyPoints: [],
+        images: ["/images/innovación/bullet3_1.png"]
       },
       {
-        title: "Innovación Creativa",
-        description: "Integramos creatividad, iniciativa y aprendizaje continuo para acercar la computación cuántica a más personas a través de herramientas digitales contemporáneas.",
-        keyPoints: ["Diseño UX/UI para simuladores", "Desarrollo de herramientas interactivas", "Procesos de co-creación"],
-        images: ["https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2564&auto=format&fit=crop"]
+        title: "Software para Educación Cuántica",
+        description: "A medida que las tecnologías cuánticas avanzan, ¿cómo pueden universidades, colegios y centros de formación integrar la computación cuántica en sus programas? Más allá de nuestra plataforma abierta, el Departamento de Innovación proyecta el desarrollo de software educativo capaz de guiar grupos de estudiantes y apoyar a docentes en la planificación, seguimiento y evaluación del aprendizaje en computación cuántica, ofreciendo desde lecciones teóricas hasta simulaciones de circuitos cuánticos, con la opción de ejecutarlas en procesadores cuánticos reales en la nube, como los de IBM.",
+        images: ["/images/innovación/bullet4.png"]
       }
     ],
     achievements: [{
-      title: "QREATE Challenge Finalist",
-      description: "Nuestra plataforma QHub Learning Platform fue seleccionada como finalista en el QREATE Challenge, parte de la Q3 Initiative organizada por el Center for Quantum Networks (CQN) en colaboración con la University of Maryland (UMD). Esta iniciativa reconoce proyectos diseñados para enseñar conceptos de Quantum Information Science and Engineering (QISE) a audiencias no técnicas y semi-técnicas, integrando aplicaciones reales y fundamentos pedagógicos sólidos.",
-      photo: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2670&auto=format&fit=crop"
+      title: "QHub Learning Platform reconocida internacionalmente en el QREATE Challenge (NSF Center for Quantum Networks)",
+      titlePreview: "QREATE Challenge Finalist",
+      description: "Nuestra plataforma QHub Learning Platform fue seleccionada como finalista en el QREATE Challenge, parte de la Q3 Initiative (Quantum, Art, Ethics) organizada por el NSF Center for Quantum Networks (CQN) de los Estados Unidos.  El desafío convoca a equipos de todo el mundo a desarrollar herramientas pedagógicas capaces de introducir conceptos de Quantum Information Science and Engineering (QISE) a audiencias no técnicas y semitécnicas, buscando enfoques y propuestas que combinen rigor conceptual con una experiencia de aprendizaje interactiva. El reconocimiento destaca el enfoque innovador y accesible de la plataforma, que permite a un público amplio explorar conceptos de computación cuántica a través de simulaciones y experiencias prácticas, incluso sin conocimientos previos.",
+      photo: "/images/innovación/logro1_2.png",
+      video: "/images/innovación/logro1.mp4",
+      extraPhotos: ["/images/innovación/logro1_2.png"]
     }],
-    alliances: [{ name: "Wayra (Próximamente)", isUpcoming: true }]
+    alliances: []
   },
   "relaciones-publicas": {
     name: "Relaciones Públicas",
-    subtitle: "Comunicación, alianzas estratégicas y difusión",
+    subtitle: "",
     icon: Megaphone,
     hslColor: "45 100% 55%",
-    heroImages: ["https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=2670&auto=format&fit=crop"],
-    description: "Amplificamos la voz de la computación cuántica en LATAM mediante relaciones internacionales e institucionales. Construimos y mantenemos vínculos clave con universidades, patrocinadores y la prensa especializada.",
-    mission: "Convertir a QuantumHub Peru en el representante principal del continente ante las grandes esferas cuánticas de IBM, Google, AWS y startups líderes mundiales.",
+    heroImages: ["/images/rrpp/hero1.png"],
+    description: "¿Te apasiona ser el puente entre la computación cuántica y el ecosistema global? El Departamento de Relaciones Públicas es el corazón de nuestra proyección externa. Gestionamos alianzas de alto valor con instituciones como UTEC y el CIP de Lima, para potenciar el ecosistema cuántico del Perú. Nosotros te brindamos la oportunidad de liderar la narrativa del futuro.",
+    mission: "Construir y proteger la reputación de QuantumHub ante aliados estratégicos.",
     bullets: [
       {
-        title: "Presencia en Medios",
-        description: "Redactamos piezas de divulgación y opinión publicadas en medios locales y prensa especializada para asegurar visibilidad constante del ecosistema.",
-        keyPoints: ["Artículos en prensa local", "Reportajes en medios de nicho", "Piezas de opinión experta"],
-        images: ["https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2670&auto=format&fit=crop"]
+        title: "Alianzas Estratégicas",
+        description: "Establecemos y gestionamos relaciones con organizaciones académicas, comunidades e instituciones universitarias que comparten la visión de impulsar el desarrollo científico en el país. Estas alianzas permiten ampliar el alcance de nuestras iniciativas, generar colaboraciones de alto valor y consolidar una red institucional sólida y sostenible.",
+        keyPoints: [],
+        images: ["/images/rrpp/bullet1.png"]
+      },
+      {
+        title: "Posicionamiento Institucional",
+        description: "Diseñamos e implementamos estrategias que fortalecen la identidad y reputación de QuantumHub Perú dentro del entorno académico y tecnológico. El objetivo es proyectar liderazgo, innovación y rigor académico para ampliar una red de aliados estratégicos.",
+        keyPoints: [],
+        images: ["/images/rrpp/bullet2_1.jpg", "/images/rrpp/bullet2_2.png"]
+      },
+      {
+        title: "Representación del equipo",
+        description: "El departamento representa a QuantumHub en espacios académicos, eventos y colaboraciones, asegurando coherencia en el mensaje y alineación con la visión organizacional. Actuamos como canal formal de comunicación con aliados y actores clave del ecosistema.",
+        keyPoints: [],
+        images: ["/images/rrpp/bullet3_1.png", "/images/rrpp/bullet3_2.png"]
+      },
+      {
+        title: "Expansión y Proyección",
+        description: "Impulsamos la expansión estratégica de QuantumHub mediante la identificación de nuevas oportunidades de colaboración, divulgación y participación en eventos académicos que fortalezcan la presencia de QuantumHub en distintos entornos universitarios y tecnológicos.",
+        keyPoints: [],
+        images: ["/images/rrpp/bullet4_1.jpg", "/images/rrpp/bullet4_2.png"]
+      }
+    ],
+    achievements: [
+      {
+        title: "Quantum AI Summit 2025",
+        description: "El Quantum AI Summit 2025 se estableció como un punto de encuentro importante para la exploración de tecnologías de vanguardia. Celebrado en el Palacio Municipal gracias al auspicio de la Mesa de Jóvenes del Congreso de la República, el evento reunió a una comunidad multidisciplinaria de investigadores, ingenieros y líderes tecnológicos quienes ofrecieron su ponencia magistral con un objetivo claro: democratizar el acceso al conocimiento cuántico. El evento fue organizado por QuantumHub Perú y Cedditec, bajo el liderazgo del departamento de Relaciones Públicas y con una visión clara de fomentar un ecosistema científico sólido en Latinoamérica.",
+        photo: "/images/rrpp/logro1.jpg"
+      },
+      {
+        title: "Webinars Noviembre Cuántico",
+        description: "Los Webinars fueron charlas virtuales celebradas por el Año Internacional de la Ciencia y Tecnologías Cuánticas organizadas por el Colegio de Ingenieros del Perú (CIP) La Libertad. En estas cuatro sesiones cada jueves de Noviembre los experimentados profesores del curso profundizaron con sus conocimientos técnicos en el ecosistema, software y hardware cuántico dirigidos a profesionales, estudiantes y público interesado en comprender el impacto de las tecnologías cuánticas en la ciencia, la ingeniería y la innovación tecnológica. Este evento fue preparatorio y de introducción previo al Quantum AI Summit 2025.",
+        photo: "/images/rrpp/logro2.png"
       },
       {
         title: "Alianzas Estratégicas",
-        description: "Conversamos directamente con corporaciones clave y representantes globales para formalizar patrocinios y Memorándums de Entendimiento (MoUs).",
-        keyPoints: ["Lazos con Big Tech (IBM, AWS)", "Gestión de patrocinios", "Acuerdos institucionales"],
-        images: ["https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2574&auto=format&fit=crop"]
+        description: "El departamento ha establecido alianzas estratégicas con Universidad de Ingeniería y Tecnología (UTEC) y UCH que ofrecieron su campus para la sede del examen de universitarios del curso de 2025, CEDDITEC que fue un aliado estratégico para el Quantum AI Summit. Y recientemente con IEEE Computer Society PUCP y LEAD PUCP, fortaleciendo la red institucional universitaria que respalda el crecimiento y la proyección de la organización.",
+        photo: "/images/rrpp/logro3.png"
       },
       {
-        title: "Eventos de Alto Impacto",
-        description: "Planeamos la logística, marca y convocamos a exponentes internacionales para nuestras cumbres presenciales y conferencias magnas.",
-        keyPoints: ["Organización de cumbres (Q-Summit)", "Networking internacional", "Gestión de marca de evento"],
-        images: ["https://images.unsplash.com/photo-1475721027785-f74dea327912?q=80&w=2670&auto=format&fit=crop"]
-      },
-      {
-        title: "Contenido Audiovisual",
-        description: "Coordinamos series de entrevistas y podcasts como 'Superposición', charlando con expertos que hoy impulsan tecnologías disruptivas globales.",
-        keyPoints: ["Podcast 'Superposición'", "Entrevistas con científicos", "Material difusivo variado"],
-        images: ["https://images.unsplash.com/photo-1590602847861-f350a9339567?q=80&w=2574&auto=format&fit=crop"]
+        title: "Adriana Alvarado nos representa en el II Congreso Internacional de Investigación Científica Federico Villarreal",
+        titlePreview: "Representación y alcance en espacios académicos",
+        description: "El estudio “Quantum Readiness in Latin American High Schools: Curriculum Compatibility and Enabling Conditions” fue presentado durante el II Congreso Internacional de Investigación Científica Federico Villarreal, realizado en el Colegio de Ingenieros del Perú (CIP), uno de los espacios profesionales más importantes para la comunidad de ingeniería del país. La investigación fue desarrollada por Adriana Alvarado, Osmar Herrera, Rosario Morales, Daniella Vargas y Freddy Herrera, y presentada durante el congreso por nuestra fundadora, Adriana Alvarado, ante investigadores, docentes y estudiantes interesados en los desafíos del futuro de la educación científica. El trabajo analiza el nivel de preparación de los sistemas educativos de América Latina para integrar computación cuántica en la educación secundaria, un tema que ha comenzado a ganar relevancia a nivel global ante el crecimiento de las tecnologías cuánticas y la necesidad de formar nuevas generaciones de científicos y profesionales en este campo.",
+        photo: "/images/rrpp/logro4.png"
       }
     ],
-    achievements: [{ title: "Cierre Sponsor IBM" }, { title: "Entrevista a VQE Creator" }],
-    alliances: [{ name: "AWS Quantum", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" }]
+    alliances: [
+      { name: "Universidad de Ingeniería y Tecnología (UTEC)", logo: "/images/rrpp/alianza3.png" },
+      { name: "Universidad de Ciencias y Humanidades (UCH)", logo: "/images/rrpp/alianza5.jpg" },
+      { name: "IEEE Computer Society PUCP", logo: "/images/rrpp/alianza4.png" },
+      { name: "LEAD PUCP", logo: "/images/rrpp/alianza1.png" },
+      { name: "CIP Lima", logo: "/images/rrpp/alianza2.jpg" },
+    ]
   },
   comunidad: {
     name: "Departamento de Comunidad",
-    subtitle: "La base humana, red de entusiastas y profesionales",
+    subtitle: "",
     icon: Users,
     hslColor: "330 70% 60%",
-    heroImages: ["https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=2670&auto=format&fit=crop"],
-    description: "Nosotros somos los constructores de comunidad. Nos encargamos de que la red más grande de entusiastas cuánticos en Latinoamérica sea saludable, integradora y sinérgica. Mantenemos vivos los engranajes sociales de toda la organización.",
-    mission: "Crear una comunidad vibrante asíncrona y presencial donde el conocimiento se distribuye democráticamente mediante pares (peer-to-peer).",
+    heroImages: ["/images/comunidad/hero1.png"],
+    description: "¿Cómo acercamos la computación cuántica a más personas? El Departamento de Comunidad impulsa la visibilidad y el crecimiento del ecosistema cuántica a través de redes sociales y de la divulgación científica accesible. Nuestro objetivo es transformar conceptos complejos en contenidos claros, visuales y comprensibles, permitiendo que estudiantes, aliados y público general descubran el impacto de las tecnologías cuánticas. A través de publicaciones estratégicas, campañas digitales y contenidos educativos, fortalecemos la identidad institucional de QuantumHub y contribuimos a la construcción de un ecosistema cuántico en el Perú. Buscamos que estas tecnologías se perciban de forma más cercana y entendible, demostrando que es posible aprenderlas cuando se explican con claridad y con herramientas accesibles.",
+    mission: "",
     bullets: [
       {
         title: "Divulgación Científica Accesible",
         description: "¿Cómo explicar la computación cuántica a personas que nunca han estudiado física o matemáticas avanzadas? El departamento trabaja para reducir las barreras de acceso al conocimiento cuántico, transformando conceptos técnicos en mensajes claros y comprensibles para audiencias diversas. Desarrollamos contenido divulgativo que explica los principios y aplicaciones de la computación cuántica de forma dinámica, visual y cercana. Nuestro enfoque combina claridad conceptual, recursos visuales y rigor científico, demostrando que estas tecnologías, aunque avanzadas, pueden entenderse cuando se comunican con herramientas pedagógicas adecuadas. De esta manera, buscamos despertar curiosidad científica y acercar la computación cuántica a estudiantes y personas interesadas incluso sin formación previa en el área.",
-        keyPoints: ["Cultura de colaboración", "Distribución democrática del saber", "Sinergia entre miembros"],
-        images: ["https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop"]
+        shortTitle: "Divulgación Científica",
+        keyPoints: [],
+        images: ["/images/comunidad/bullet1_1.png", "/images/comunidad/bullet1_2.png"]
       },
       {
-        title: "Gestión de Ecosistemas",
-        description: "Administramos plataformas como Discord, integrando gamificación y foros de discusión técnica para mantener el compromiso de más de 600 miembros.",
-        keyPoints: ["Moderación de Discord 2.0", "Gamificación (Puntos Q)", "Foros de discusión técnica"],
-        images: ["https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=2574&auto=format&fit=crop"]
+        title: "Estrategia de Contenido y Presencia Digital",
+        description: "Diseñamos y gestionamos contenido para plataformas como LinkedIn e Instagram con el objetivo de fortalecer la visibilidad y presencia digital de QuantumHub. A través de publicaciones, campañas y reels, buscamos comunicar de forma clara y atractiva las iniciativas, actividades y oportunidades dentro del ecosistema cuántico. Cada contenido se crea considerando a la audiencia, el valor educativo y el impacto que puede generar, manteniendo coherencia con la identidad y los objetivos de la organización. Además, trabajamos en conjunto con el Departamento Académico y el Departamento de Relaciones Públicas para difundir nuestros cursos y eventos, ayudando a que más estudiantes e interesados conozcan y participen en las oportunidades que ofrecemos a la comunidad.",
+        shortTitle: "Estrategia de Contenido",
+        keyPoints: [],
+        images: ["/images/comunidad/bullet2_1.png", "/images/comunidad/bullet2_2.png"]
       },
       {
-        title: "Networking Offline",
-        description: "Organizamos meetups presenciales para fortalecer los vínculos humanos más allá de la pantalla, fomentando el networking de primer nivel.",
-        keyPoints: ["Meetups presenciales", "Networking presencial", "Cultura offline QHub"],
-        images: ["https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2670&auto=format&fit=crop"]
+        title: "Conexión y Sentido de Comunidad",
+        description: "El Departamento de Comunidad actúa como un puente entre los miembros del ecosistema QuantumHub, promoviendo la interacción, el reconocimiento y el sentido de pertenencia dentro de la comunidad. A través de contenido que visibiliza logros, experiencias, proyectos y actividades del equipo, buscamos fortalecer la identidad colectiva y motivar la participación activa. Nuestro objetivo no es solo informar, sino también inspirar, mostrando el crecimiento de las personas, el impacto de las iniciativas y las oportunidades que existen dentro del ecosistema. De esta manera, contribuimos a construir una comunidad basada en la colaboración, el aprendizaje continuo y el desarrollo compartido dentro del ámbito de la computación cuántica",
+        shortTitle: "Conexión y Comunidad",
+        keyPoints: [],
+        images: ["/images/comunidad/bullet3_1.png", "/images/comunidad/bullet3_2.png"]
       },
       {
-        title: "Programas de Mentoría",
-        description: "Emparejamos a nuevos miembros con egresados (Alumni) para asesoría técnica y emocional, asegurando una curva de aprendizaje óptima.",
-        keyPoints: ["Mentorías Alumni", "Soporte emocional y técnico", "Continuidad de aprendizaje"],
-        images: ["https://images.unsplash.com/photo-1521791136064-7986c295944b?q=80&w=2670&auto=format&fit=crop"]
+        title: "Creación Colaborativa e Innovación Creativa",
+        shortTitle: "Creación e Innovación",
+        description: "El contenido del departamento se desarrolla mediante un proceso de creación colaborativa, donde los miembros del equipo aportan creatividad, iniciativa y nuevas perspectivas en cada post. Utilizamos herramientas de diseño como Canva para crear contenido visual dinámico que combina diseño, comunicación y divulgación científica, con el objetivo de acercar la computación cuántica a más personas de forma clara y atractiva. Este proceso no solo fortalece la presencia institucional de QuantumHub, sino que también permite que los miembros del equipo desarrollen habilidades en comunicación científica, diseño digital y creación de contenido educativo, aprendiendo a divulgar y explicar conceptos complejos de manera más entendible para todo tipo de público",
+        keyPoints: [],
+        images: ["/images/comunidad/bullet4_1.png", "/images/comunidad/bullet4_2.png"]
       }
     ],
-    achievements: [{ title: "+600 Miembros en Discord" }],
+    achievements: [],
     alliances: []
   },
 };
@@ -268,18 +334,30 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
         <section className="lg:hidden relative min-h-screen w-full flex flex-col items-center justify-center px-6 py-20 text-center overflow-hidden">
           {/* Full-screen background carousel */}
           <div className="absolute inset-0 z-0">
-            <AnimatePresence>
-              <motion.img
-                key={currentHeroIndex}
-                src={dept.heroImages[currentHeroIndex]}
-                alt={dept.name}
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1.05 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
+            {dept.heroVideo ? (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="absolute inset-0 w-full h-full object-cover"
-              />
-            </AnimatePresence>
+              >
+                <source src={dept.heroVideo} type="video/mp4" />
+              </video>
+            ) : (
+              <AnimatePresence>
+                <motion.img
+                  key={currentHeroIndex}
+                  src={dept.heroImages[currentHeroIndex]}
+                  alt={dept.name}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1.05 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.2, ease: "easeInOut" }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </AnimatePresence>
+            )}
             {/* Blue-ish tint and dark overlay to make text readable */}
             <div
               className="absolute inset-0 z-10 mix-blend-color opacity-70"
@@ -307,42 +385,66 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
             </div>
 
             {/* Subtitle Badge */}
-            <div
-              className="inline-flex items-center px-6 py-2 rounded-full text-[11px] font-bold tracking-widest uppercase mb-8 border"
-              style={{
-                backgroundColor: `hsl(${dept.hslColor} / 0.1)`,
-                color: `white`,
-                borderColor: `hsl(${dept.hslColor} / 0.4)`,
-                backdropFilter: 'blur(8px)'
-              }}
-            >
-              {dept.subtitle}
-            </div>
+            {dept.subtitle && dept.subtitle.trim() !== "" && (
+              <div
+                className="inline-flex items-center px-6 py-2 rounded-full text-[11px] font-bold tracking-widest uppercase mb-8 border"
+                style={{
+                  backgroundColor: `hsl(${dept.hslColor} / 0.1)`,
+                  color: `white`,
+                  borderColor: `hsl(${dept.hslColor} / 0.4)`,
+                  backdropFilter: 'blur(8px)'
+                }}
+              >
+                {dept.subtitle}
+              </div>
+            )}
 
             {/* Title */}
             <h1 className="font-heading text-5xl font-bold leading-[1.1] text-white tracking-tight mb-8 drop-shadow-2xl uppercase">
               {dept.name}
             </h1>
 
-            {/* Description */}
-            <p className="font-body text-[17px] text-white/90 leading-relaxed font-light mb-10 text-justify">
-              {dept.description}
-            </p>
+            {/* Description Card/Question */}
+            {dept.description.includes('?') ? (
+              <>
+                <div
+                  className="w-full p-6 rounded-2xl mb-8 text-center border relative overflow-hidden"
+                  style={{
+                    backgroundColor: `hsl(${dept.hslColor} / 0.1)`,
+                    borderColor: `hsl(${dept.hslColor} / 0.3)`,
+                    backdropFilter: 'blur(10px)'
+                  }}
+                >
+                  <p className="font-heading text-lg font-semibold relative z-10 leading-snug" style={{ color: `hsl(${dept.hslColor})` }}>
+                    {dept.description.split('?')[0]}?
+                  </p>
+                </div>
+                <p className="font-body text-[17px] text-white/80 leading-relaxed font-light mb-10 text-justify">
+                  {dept.description.split('?').slice(1).join('?').trim()}
+                </p>
+              </>
+            ) : (
+              <p className="font-body text-[17px] text-white/90 leading-relaxed font-light mb-10 text-justify">
+                {dept.description}
+              </p>
+            )}
 
             {/* Mission Section */}
-            <div className="w-full flex flex-col items-start text-left mt-2">
-              <span className="font-heading text-xs font-black tracking-[0.2em] text-white/60 mb-3 uppercase">
-                MISIÓN
-              </span>
-              <div
-                className="pl-5 border-l-2 py-1"
-                style={{ borderColor: `hsl(${dept.hslColor})` }}
-              >
-                <p className="font-body text-base text-white/90 font-medium italic leading-relaxed">
-                  "{dept.mission}"
-                </p>
+            {dept.mission && dept.mission.trim() !== "" && (
+              <div className="w-full flex flex-col items-start text-left mt-2">
+                <span className="font-heading text-xs font-black tracking-[0.2em] text-white/60 mb-3 uppercase">
+                  MISIÓN
+                </span>
+                <div
+                  className="pl-5 border-l-2 py-1"
+                  style={{ borderColor: `hsl(${dept.hslColor})` }}
+                >
+                  <p className="font-body text-base text-white/90 font-medium italic leading-relaxed">
+                    "{dept.mission}"
+                  </p>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Scroll Indicator */}
             <div className="mt-16 animate-bounce opacity-40">
@@ -366,18 +468,30 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
                 style={{ backgroundColor: `hsl(${dept.hslColor} / 0.3)` }}
               />
               <div className="absolute inset-0 bg-gradient-to-l from-background to-transparent z-30" />
-              <AnimatePresence>
-                <motion.img
-                  key={currentHeroIndex}
-                  src={dept.heroImages[currentHeroIndex]}
-                  alt={dept.name}
-                  initial={{ opacity: 0, scale: 1.1 }}
-                  animate={{ opacity: 1, scale: 1.05 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1, ease: "easeInOut" }}
+              {dept.heroVideo ? (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="absolute inset-0 w-full h-full object-cover"
-                />
-              </AnimatePresence>
+                >
+                  <source src={dept.heroVideo} type="video/mp4" />
+                </video>
+              ) : (
+                <AnimatePresence>
+                  <motion.img
+                    key={currentHeroIndex}
+                    src={dept.heroImages[currentHeroIndex]}
+                    alt={dept.name}
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1.05 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </AnimatePresence>
+              )}
             </div>
 
             {/* The Overlapping Info Card (Left side on desktop) */}
@@ -408,37 +522,62 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
                   />
                 </div>
 
-                <div
-                  className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-5"
-                  style={{
-                    backgroundColor: `hsl(${dept.hslColor} / 0.15)`,
-                    color: `hsl(${dept.hslColor})`,
-                    border: `1px solid hsl(${dept.hslColor} / 0.3)`
-                  }}
-                >
-                  <Zap className="w-3 h-3 mr-2" />
-                  {dept.subtitle}
-                </div>
+                {dept.subtitle && dept.subtitle.trim() !== "" && (
+                  <div
+                    className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-5"
+                    style={{
+                      backgroundColor: `hsl(${dept.hslColor} / 0.15)`,
+                      color: `hsl(${dept.hslColor})`,
+                      border: `1px solid hsl(${dept.hslColor} / 0.3)`
+                    }}
+                  >
+                    <Zap className="w-3 h-3 mr-2" />
+                    {dept.subtitle}
+                  </div>
+                )}
 
                 <h1 className="font-heading text-6xl font-bold leading-[1.1] text-white tracking-tight mb-8">
                   {dept.name}
                 </h1>
 
-                <p className="font-body text-xl text-white/70 leading-relaxed font-light mb-10">
-                  {dept.description}
-                </p>
-
-                <div
-                  className="pl-6 border-l-4 py-2"
-                  style={{ borderColor: `hsl(${dept.hslColor})` }}
-                >
-                  <h4 className="font-heading text-xs uppercase tracking-[0.2em] font-bold text-white/50 mb-2">
-                    Misión del Departamento
-                  </h4>
-                  <p className="font-body text-[17px] text-white/90 font-medium italic leading-relaxed">
-                    "{dept.mission}"
+                {/* Description Card/Question */}
+                {dept.description.includes('?') ? (
+                  <>
+                    <div
+                      className="p-8 rounded-[2rem] mb-10 border-l-4 relative overflow-hidden shadow-lg"
+                      style={{
+                        backgroundColor: `hsl(${dept.hslColor} / 0.08)`,
+                        borderColor: `hsl(${dept.hslColor})`,
+                        backdropFilter: 'blur(10px)'
+                      }}
+                    >
+                      <p className="font-heading text-2xl font-bold leading-tight" style={{ color: `hsl(${dept.hslColor})` }}>
+                        {dept.description.split('?')[0]}?
+                      </p>
+                    </div>
+                    <p className="font-body text-xl text-white/70 leading-relaxed font-light mb-10 text-justify">
+                      {dept.description.split('?').slice(1).join('?').trim()}
+                    </p>
+                  </>
+                ) : (
+                  <p className="font-body text-xl text-white/70 leading-relaxed font-light mb-10 text-justify">
+                    {dept.description}
                   </p>
-                </div>
+                )}
+
+                {dept.mission && dept.mission.trim() !== "" && (
+                  <div
+                    className="pl-6 border-l-4 py-2"
+                    style={{ borderColor: `hsl(${dept.hslColor})` }}
+                  >
+                    <h4 className="font-heading text-xs uppercase tracking-[0.2em] font-bold text-white/50 mb-2">
+                      Misión del Departamento
+                    </h4>
+                    <p className="font-body text-[17px] text-white/90 font-medium italic leading-relaxed">
+                      "{dept.mission}"
+                    </p>
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>
@@ -452,7 +591,9 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
 
 
         {/* ACHIEVEMENTS CAROUSEL */}
-        <AchievementsCarousel achievements={dept.achievements} hslColor={dept.hslColor} />
+        {dept.achievements && dept.achievements.length > 0 && (
+          <AchievementsCarousel achievements={dept.achievements} hslColor={dept.hslColor} />
+        )}
 
         {/* ALLIANCES CAROUSEL */}
         <AlliancesCarousel alliances={dept.alliances} hslColor={dept.hslColor} />

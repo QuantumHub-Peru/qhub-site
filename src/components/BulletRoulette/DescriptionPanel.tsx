@@ -10,6 +10,7 @@ interface DescriptionPanelProps {
 
 export const DescriptionPanel = ({ bullets, activeIndex, hslColor }: DescriptionPanelProps) => {
     const activeBullet = bullets[activeIndex];
+    const hasKeyPoints = activeBullet?.keyPoints && activeBullet.keyPoints.length > 0;
 
     return (
         <div className="w-full flex-1 max-w-4xl shrink-0 relative z-40 flex lg:h-auto min-h-[400px]">
@@ -31,11 +32,11 @@ export const DescriptionPanel = ({ bullets, activeIndex, hslColor }: Description
                             {activeBullet?.title}
                         </h3>
 
-                        <p className="font-body text-white/90 text-sm sm:text-base leading-relaxed mb-8 font-medium tracking-wide">
+                        <p className={`font-body text-white/90 text-sm sm:text-base leading-relaxed font-medium tracking-wide text-justify ${hasKeyPoints ? 'mb-8' : 'mb-6'}`}>
                             {activeBullet?.description}
                         </p>
 
-                        {activeBullet?.keyPoints && (
+                        {hasKeyPoints && (
                             <div className="mb-10 space-y-4">
                                 <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 mb-4">Proyectos</h4>
                                 {activeBullet.keyPoints.map((point, i) => (
@@ -57,7 +58,7 @@ export const DescriptionPanel = ({ bullets, activeIndex, hslColor }: Description
 
                         {activeBullet?.images && activeBullet.images.length > 0 && (
                             <div className="mt-auto">
-                                <div className="flex gap-4 h-32 sm:h-40 overflow-hidden">
+                                <div className={`flex gap-4 overflow-hidden ${hasKeyPoints ? 'h-32 sm:h-40' : 'h-64 sm:h-80'}`}>
                                     {activeBullet.images.map((img, i) => (
                                         <motion.div
                                             key={i}

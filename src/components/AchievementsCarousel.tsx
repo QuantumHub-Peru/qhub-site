@@ -4,8 +4,11 @@ import { Trophy, ArrowLeft, ArrowRight, X } from "lucide-react";
 
 interface Achievement {
     title: string;
+    titlePreview?: string;
     description?: string;
     photo?: string;
+    video?: string;
+    extraPhotos?: string[];
     link?: string;
 }
 
@@ -166,7 +169,7 @@ export default function AchievementsCarousel({ achievements = [], hslColor }: Ac
                                                 textShadow: isActive ? '0 0 15px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.8)' : '0 2px 4px rgba(0,0,0,0.8)'
                                             }}
                                         >
-                                            {achievement.title}
+                                            {achievement.titlePreview || achievement.title}
                                         </h3>
 
                                         {/* Subtle hint that card is clickable */}
@@ -238,14 +241,25 @@ export default function AchievementsCarousel({ achievements = [], hslColor }: Ac
                                 <X className="w-5 h-5" />
                             </button>
 
-                            {/* Photo / Header Area */}
-                            {selectedAchievement.photo && (
+                            {/* Photo / Video / Header Area */}
+                            {(selectedAchievement.video || selectedAchievement.photo) && (
                                 <div className="w-full h-64 md:h-80 relative overflow-hidden shrink-0">
-                                    <img
-                                        src={selectedAchievement.photo}
-                                        alt={selectedAchievement.title}
-                                        className="w-full h-full object-cover"
-                                    />
+                                    {selectedAchievement.video ? (
+                                        <video
+                                            src={selectedAchievement.video}
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                            className="w-full h-full object-cover"
+                                        />
+                                    ) : (
+                                        <img
+                                            src={selectedAchievement.photo}
+                                            alt={selectedAchievement.title}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    )}
                                     {/* Gradient overlay to smoothly blend with text area */}
                                     <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-900 to-transparent pointer-events-none" />
                                 </div>
@@ -278,9 +292,22 @@ export default function AchievementsCarousel({ achievements = [], hslColor }: Ac
                                 )}
 
                                 {selectedAchievement.description && (
-                                    <p className="text-white/80 font-body text-sm md:text-base leading-relaxed whitespace-pre-line text-justify">
+                                    <p className="text-white/80 font-body text-sm md:text-base leading-relaxed whitespace-pre-line text-justify mb-8">
                                         {selectedAchievement.description}
                                     </p>
+                                )}
+
+                                {selectedAchievement.extraPhotos && selectedAchievement.extraPhotos.length > 0 && (
+                                    <div className={`mt-6 ${selectedAchievement.extraPhotos.length === 1 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 gap-4'}`}>
+                                        {selectedAchievement.extraPhotos.map((photo, i) => (
+                                            <div 
+                                                key={i} 
+                                                className={`rounded-2xl overflow-hidden border border-white/10 aspect-square ${selectedAchievement.extraPhotos.length === 1 ? 'w-full max-w-xs' : 'w-full'}`}
+                                            >
+                                                <img src={photo} alt="" className="w-full h-full object-cover" />
+                                            </div>
+                                        ))}
+                                    </div>
                                 )}
                             </div>
                         </motion.div>

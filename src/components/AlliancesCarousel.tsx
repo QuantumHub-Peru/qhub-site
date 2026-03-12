@@ -7,10 +7,8 @@ interface AlliancesCarouselProps {
 }
 
 export default function AlliancesCarousel({ alliances = [], hslColor }: AlliancesCarouselProps) {
+    if (alliances.length === 0) return null;
     const displayAlliances = [...alliances];
-    if (displayAlliances.length === 0) {
-        displayAlliances.push({ name: "Nuevas alianzas pronto...", isUpcoming: true });
-    }
 
     return (
         <section className="pt-8 pb-8 lg:pt-12 lg:pb-12 relative overflow-hidden">
