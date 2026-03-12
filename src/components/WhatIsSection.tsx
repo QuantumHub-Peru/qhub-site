@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import neuralBg from "@/assets/neural-bg.jpg"; // We'll use this as the placeholder image
+import r1Img from "@/assets/r1.jpg";
 import elisaImg from "@/gato/gato.png"; // Placeholder for the avatar
 
 const WhatIsSection = () => {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-background">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <section className="relative py-16 md:py-32 overflow-hidden bg-background">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
           {/* Left Column: Image with Pink Offset Backdrop */}
           <motion.div
@@ -14,15 +14,15 @@ const WhatIsSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative mx-auto lg:mx-0 w-full max-w-md lg:max-w-full"
+            className="relative mx-auto lg:mx-0 w-[90%] sm:w-full max-w-md lg:max-w-full mt-6 mb-8 lg:mt-0 lg:mb-0"
           >
             {/* The Pink Backdrop (Offset) */}
-            <div className="absolute -inset-4 sm:-inset-6 bg-[#f4a2d8] rounded-3xl sm:rounded-[2.5rem] transform translate-y-4 sm:translate-y-6 -translate-x-2 sm:-translate-x-4 z-0" />
+            <div className="absolute -inset-3 sm:-inset-6 bg-[#f4a2d8] rounded-2xl sm:rounded-[2.5rem] transform translate-y-3 sm:translate-y-6 -translate-x-2 sm:-translate-x-4 z-0" />
 
             {/* Main Image Container */}
-            <div className="relative z-10 aspect-square sm:aspect-[4/3] rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl bg-card border border-border/50">
+            <div className="relative z-10 aspect-square sm:aspect-[4/3] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl bg-card border border-border/50">
               <img
-                src={neuralBg}
+                src={r1Img}
                 alt="Quantum Education"
                 className="w-full h-full object-cover"
               />
@@ -54,7 +54,7 @@ const WhatIsSection = () => {
             </p>
 
             {/* Optional profile/founder plug (as seen in user's image) */}
-            <div className="flex items-center gap-4 border-t border-border/40 pt-6 sm:pt-8 w-max max-w-lg">
+            <div className="flex items-center gap-4 border-t border-border/40 pt-6 sm:pt-8 w-full max-w-lg">
               <div className="w-12 h-12 rounded-full overflow-hidden bg-primary/20 border-2 border-[#f4a2d8] shrink-0">
                 <img src={elisaImg} alt="Richard Feynman" className="w-full h-full object-cover" />
               </div>
