@@ -206,7 +206,7 @@ const DepartmentCard = ({ dept }: { dept: Department }) => (
 
 const DepartmentsSection = () => {
   return (
-    <section className="relative pt-12 pb-32 section-dark overflow-hidden">
+    <section className="relative pt-12 pb-1 section-dark overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 quantum-grid opacity-10 animate-grid-flow" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full bg-primary/5 blur-[150px] pointer-events-none" />
@@ -219,7 +219,7 @@ const DepartmentsSection = () => {
           className="text-center mb-16"
         >
           <p className="font-heading text-xs tracking-[0.3em] text-primary uppercase mb-4">Ecosistema</p>
-          <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">
+          <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl font-black mb-6">
             Nuestros <span className="text-gradient-quantum">Departamentos</span>
           </h2>
           <p className="font-body text-base text-muted-foreground max-w-2xl mx-auto">
@@ -227,8 +227,8 @@ const DepartmentsSection = () => {
           </p>
         </motion.div>
 
-        {/* Grid Layout for all screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-[1600px] mx-auto pb-10">
+        {/* Layout for all screens - max 3 per row */}
+        <div className="flex flex-wrap justify-center gap-6 max-w-[1200px] mx-auto pb-10">
           {departments.map((dept, index) => (
             <motion.div
               key={dept.id}
@@ -236,9 +236,11 @@ const DepartmentsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="flex justify-center w-full"
+              className="flex w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0"
             >
-              <DepartmentCard dept={dept} />
+              <div className="w-full h-full">
+                <DepartmentCard dept={dept} />
+              </div>
             </motion.div>
           ))}
         </div>

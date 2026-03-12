@@ -132,10 +132,9 @@ const admissionCalendarUrl = createGoogleCalendarUrl({
 const DocentesContent = () => (
   <div className="w-full h-full flex flex-col justify-center overflow-hidden pb-4 lg:pb-0">
 
-    {/* Título Grande y Llamativo */}
     <div className="w-full mb-4 lg:mb-5 shrink-0 mt-2">
-      <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-black text-foreground tracking-tighter text-center lg:text-left">
-        Nuestro <span className="text-gradient-quantum block md:inline">Equipo Docente</span>
+      <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-[-0.02em] uppercase text-center lg:text-left leading-none">
+        NUESTRO EQUIPO DOCENTE
       </h2>
     </div>
 
@@ -212,8 +211,8 @@ const IntroContent = () => (
   <div className="min-h-full flex flex-col lg:flex-row gap-8 lg:gap-12 pt-1">
     <div className="lg:w-1/2 flex flex-col gap-6">
       <div>
-        <h2 className="text-xl md:text-2xl xl:text-3xl font-bold tracking-tighter text-gradient-quantum">
-          Curso: Introducción a la Computación Cuántica
+        <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-[-0.02em] uppercase leading-none">
+          CURSO: INTRODUCCIÓN A LA COMPUTACIÓN CUÁNTICA
         </h2>
         <p className="text-muted-foreground text-xs xl:text-sm leading-relaxed mt-2">
           Este programa democratiza el acceso a tecnologías de frontera para estudiantes de secundaria y universitarios, replicando modelos de éxito internacional.
@@ -238,8 +237,8 @@ const IntroContent = () => (
         </div>
       </div>
       <div className="pt-2">
-        <h3 className="text-lg md:text-xl font-bold tracking-tighter text-foreground flex items-center gap-2 mb-4">
-          <Target className="w-5 h-5 text-primary" /> Rutas de Admisión
+        <h3 className="font-heading text-2xl md:text-3xl text-white tracking-[-0.02em] flex items-center gap-2 mb-4 uppercase">
+          <Target className="w-6 h-6 text-primary" /> RUTAS DE ADMISIÓN
         </h3>
         <div className="flex flex-col gap-4 relative">
           <div className="absolute left-[16px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-accent/60 to-primary/60 hidden sm:block" />
@@ -308,7 +307,7 @@ const ModuloDetail = ({ mod }: { mod: any }) => (
   <div className="grid xl:grid-cols-2 gap-8 items-start h-full">
     <div className="space-y-4">
       <span className="text-primary font-bold text-xs tracking-widest uppercase">{mod.period}</span>
-      <h3 className="text-2xl xl:text-4xl font-bold leading-tight">{mod.title}</h3>
+      <h3 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-[-0.02em] leading-none uppercase">{mod.title}</h3>
       <p className="text-accent text-sm font-medium italic border-l-2 border-accent pl-4">{mod.target}</p>
       <p className="text-muted-foreground text-sm xl:text-base leading-relaxed">{mod.description}</p>
       <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
@@ -350,9 +349,8 @@ const ModalidadContent = () => (
     </div>
     <motion.div aria-hidden className="pointer-events-none absolute -top-40 -right-16 w-96 h-96 rounded-full bg-gradient-to-br from-accent/10 via-quantum-blue/10 to-transparent blur-3xl opacity-50" animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -6, 0] }} transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }} />
     <div className="flex flex-col gap-3 md:gap-4 lg:gap-4 w-full max-w-5xl mx-auto relative z-10 px-2 md:px-0 pt-2 pb-1 md:pt-4 md:pb-2 lg:pb-3">
-      <div className="text-center space-y-1.5 md:space-y-2">
-        <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-primary/80">Modalidad del Programa</p>
-        <h3 className="text-xl md:text-2xl xl:text-3xl font-black tracking-tighter text-gradient-quantum">Modalidad y Frecuencia</h3>
+      <div className="text-center space-y-1.5 md:space-y-2 mb-6">
+        <h3 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-[-0.02em] uppercase leading-none">MODALIDAD Y FRECUENCIA</h3>
       </div>
       <div className="grid sm:grid-cols-2 gap-3 lg:gap-4 w-full">
         <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-primary/40 bg-gradient-to-br from-primary/10 via-background/60 to-background/80 p-3 md:p-4 flex flex-col items-center text-center shadow-[0_0_25px_rgba(138,43,226,0.15)] group hover:border-primary/60 transition-colors">
@@ -422,10 +420,10 @@ const EvaluacionContent = () => (
         <div className="absolute -bottom-24 right-8 w-64 h-64 bg-gradient-to-tl from-quantum-pink/40 via-accent/40 to-transparent blur-3xl" />
       </div>
       <div className="relative z-10 flex flex-col gap-6 h-full">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-2">
           <div>
-            <p className="text-[12px] md:text-xs uppercase tracking-[0.24em] text-primary/80">Sistema de evaluación</p>
-            <h3 className="mt-1 text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground">Así se calcula tu nota final</h3>
+            <p className="text-[12px] md:text-xs uppercase tracking-[0.24em] text-primary/80 mb-2">Sistema de evaluación</p>
+            <h3 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-[-0.02em] uppercase leading-none">ASÍ SE CALCULA TU NOTA FINAL</h3>
           </div>
         </div>
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] items-stretch flex-1 min-h-[320px] md:min-h-[360px]">
@@ -450,10 +448,10 @@ const EvaluacionContent = () => (
             <p className="text-xs md:text-sm text-muted-foreground/85 leading-relaxed">
               Todos los componentes se suman para tu calificación final. Mantén un buen ritmo semanal y evita acumular tareas para potenciar tu desempeño en el examen presencial.
             </p>
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-2">
               <div>
-                <p className="text-[12px] md:text-xs uppercase tracking-[0.24em] text-primary/80">Certificados</p>
-                <h3 className="mt-1 text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground">Obtén tu certificado</h3>
+                <p className="text-[12px] md:text-xs uppercase tracking-[0.24em] text-primary/80 mb-2">Certificados</p>
+                <h3 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-[-0.02em] uppercase leading-none">OBTÉN TU CERTIFICADO</h3>
               </div>
             </div>
             <div className="grid sm:grid-cols-2 gap-4 text-xs md:text-sm">
@@ -540,10 +538,10 @@ const Curso = () => {
                 </div>
 
                 {/* --- TÍTULO CON EFECTO DE CORRIENTE ELÉCTRICA --- */}
-                <h1 className="font-heading text-4xl sm:text-5xl lg:text-5xl xl:text-[3.5rem] 2xl:text-6xl font-black leading-[1.1] tracking-tight flex flex-col items-start">
+                <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-[4.5rem] 2xl:text-[5rem] font-black leading-[0.9] tracking-[-0.04em] flex flex-col items-start uppercase">
                   <span>Curso de</span>
                   <motion.span
-                    className="inline-block bg-clip-text text-transparent pb-1"
+                    className="inline-block bg-clip-text text-transparent pb-1 tracking-[-0.04em] uppercase leading-[0.9]"
                     style={{
                       backgroundImage: "linear-gradient(90deg, #7B2CBF 0%, #F39C12 50%, #7B2CBF 100%)",
                       backgroundSize: "200% auto",
@@ -715,8 +713,8 @@ const Curso = () => {
                 {/* 1. El Programa */}
                 <section className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 border-b border-primary/20 pb-2">
-                    <Target className="w-5 h-5 text-primary" />
-                    <h2 className="text-xl font-black text-gradient-quantum">El Programa</h2>
+                    <Target className="w-6 h-6 text-primary" />
+                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">EL PROGRAMA</h2>
                   </div>
                   <IntroContent />
                 </section>
@@ -726,8 +724,8 @@ const Curso = () => {
                 {/* 2. Plan Académico */}
                 <section className="flex flex-col gap-6">
                   <div className="flex items-center gap-2 border-b border-primary/20 pb-2">
-                    <Book className="w-5 h-5 text-primary" />
-                    <h2 className="text-xl font-black text-gradient-quantum">Plan Académico</h2>
+                    <Book className="w-6 h-6 text-primary" />
+                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">PLAN ACADÉMICO</h2>
                   </div>
                   <div className="flex flex-col gap-12">
                     {modules.map((mod) => (
@@ -746,8 +744,8 @@ const Curso = () => {
                 {/* 3. Modalidad */}
                 <section className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 border-b border-primary/20 pb-2">
-                    <Clock className="w-5 h-5 text-primary" />
-                    <h2 className="text-xl font-black text-gradient-quantum">Modalidad</h2>
+                    <Clock className="w-6 h-6 text-primary" />
+                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">MODALIDAD</h2>
                   </div>
                   <ModalidadContent />
                 </section>
@@ -757,8 +755,8 @@ const Curso = () => {
                 {/* 5. Docentes */}
                 <section className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 border-b border-accent/20 pb-2">
-                    <Users className="w-5 h-5 text-accent" />
-                    <h2 className="text-xl font-black text-gradient-quantum">Docentes</h2>
+                    <Users className="w-6 h-6 text-accent" />
+                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">DOCENTES</h2>
                   </div>
                   <DocentesContent />
                 </section>
@@ -766,8 +764,8 @@ const Curso = () => {
                 {/* 4. Evaluación */}
                 <section className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 border-b border-primary/20 pb-2">
-                    <Award className="w-5 h-5 text-primary" />
-                    <h2 className="text-xl font-black text-gradient-quantum">Evaluación</h2>
+                    <Award className="w-6 h-6 text-primary" />
+                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">EVALUACIÓN</h2>
                   </div>
                   <EvaluacionContent />
                 </section>

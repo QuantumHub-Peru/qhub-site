@@ -88,7 +88,7 @@ function FlipCard({ item, delay }: { item: typeof principiosData[0]; delay: numb
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F69D0E] to-primary/80 flex items-center justify-center mb-4">
               <Icon className="w-7 h-7 text-foreground" />
             </div>
-            <h3 className="text-lg font-bold text-foreground mb-3">{item.title}</h3>
+            <h3 className="font-heading text-xl font-black text-foreground mb-3">{item.title}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{item.qh}</p>
             <span className="mt-4 text-xs text-[#F69D0E]/60 font-medium">Toca para comparar →</span>
           </div>
@@ -98,7 +98,7 @@ function FlipCard({ item, delay }: { item: typeof principiosData[0]; delay: numb
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[#F69D0E] to-accent" />
           <div className="h-full p-6 flex flex-col items-center justify-center text-center">
             <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">Otros programas</span>
-            <h3 className="text-lg font-bold text-foreground mb-3">{item.title}</h3>
+            <h3 className="font-heading text-xl font-black text-foreground mb-3">{item.title}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{item.otros}</p>
             <span className="mt-4 text-xs text-accent/60 font-medium">← Volver</span>
           </div>
@@ -208,7 +208,7 @@ export default function SobreNosotros() {
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <ScrollReveal>
               <span className="text-[#F69D0E] text-sm font-semibold tracking-widest uppercase">Nuestra Historia</span>
-              <h2 className="text-3xl md:text-5xl font-extrabold mt-4 mb-6 text-foreground leading-tight">
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black mt-4 mb-6 text-foreground leading-tight">
                 Llevando la computación cuántica a cada rincón del Perú
               </h2>
               <a href="#principios" className="inline-flex items-center gap-2 text-[#F69D0E] font-semibold hover:underline text-sm">
@@ -229,7 +229,7 @@ export default function SobreNosotros() {
         <section className="py-24 overflow-hidden relative z-10">
           <ScrollReveal className="mb-12 px-6 md:px-12 max-w-7xl mx-auto">
             <span className="text-[#F69D0E] text-sm font-semibold tracking-widest uppercase">Nuestro Impacto</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold mt-4 text-foreground">
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black mt-4 text-foreground">
               Inspirando el futuro cuántico
             </h2>
           </ScrollReveal>
@@ -268,7 +268,7 @@ export default function SobreNosotros() {
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F69D0E] to-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                   <Target className="w-6 h-6 text-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-foreground">Misión</h3>
+                <h3 className="font-heading text-3xl font-black mb-4 text-foreground">Misión</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Formar a la primera generación de estudiantes peruanos en ciencia y tecnología cuánticas mediante una educación accesible, rigurosa y contextualizada en computación cuántica.
                 </p>
@@ -279,7 +279,7 @@ export default function SobreNosotros() {
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F69D0E] to-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                   <Eye className="w-6 h-6 text-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-foreground">Visión</h3>
+                <h3 className="font-heading text-3xl font-black mb-4 text-foreground">Visión</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Convertir al Perú en un país pionero en educación cuántica temprana, integrando esta disciplina a la currícula escolar y universitaria, y sentando las bases de un ecosistema regional que impulse una hoja de ruta latinoamericana en tecnologías cuánticas.
                 </p>
@@ -298,7 +298,7 @@ export default function SobreNosotros() {
               <Atom className="w-5 h-5 text-[#F69D0E] animate-[spin_8s_linear_infinite]" />
               <span className="text-sm font-semibold uppercase tracking-widest text-[#F69D0E]">Enfoque</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-foreground">Nuestros Principios</h2>
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-foreground">Nuestros Principios</h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
               Descubre qué nos diferencia. Haz hover o toca cada tarjeta para ver cómo se comparan otros programas.
             </p>
@@ -368,7 +368,7 @@ export default function SobreNosotros() {
             </ScrollReveal>
 
             <ScrollReveal>
-              <h2 className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground max-w-4xl mx-auto leading-tight mb-8">
+              <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl font-black text-foreground max-w-4xl mx-auto leading-tight mb-8">
                 El poder de muchos sobre el <span className="text-gradient-quantum">conocimiento de uno</span>
               </h2>
               <p className="text-muted-foreground mt-2 text-lg md:text-xl mb-12 max-w-2xl mx-auto">
@@ -376,15 +376,32 @@ export default function SobreNosotros() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a
+                <motion.a
                   href="/curso"
-                  className="group relative px-10 py-5 bg-primary text-primary-foreground rounded-full text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(var(--primary),0.4)] overflow-hidden"
+                  className="group relative px-10 py-5 text-white rounded-full text-xl font-bold transition-all duration-300 hover:scale-105 overflow-hidden focus:outline-none"
+                  style={{
+                    backgroundImage: "linear-gradient(90deg, #7B2CBF 0%, #F39C12 50%, #7B2CBF 100%)",
+                    backgroundSize: "200% auto",
+                  }}
+                  animate={{ 
+                    backgroundPosition: ["0% center", "-200% center"],
+                    boxShadow: [
+                      "0 0 20px rgba(123,44,191,0.5)",
+                      "0 0 40px rgba(243,156,18,0.6)",
+                      "0 0 20px rgba(123,44,191,0.5)"
+                    ]
+                  }}
+                  transition={{ 
+                    backgroundPosition: { duration: 3, repeat: Infinity, ease: "linear" },
+                    boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                  }}
                 >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Conoce más sobre nuestro Curso <br /> Edición 2026 - I <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10 flex items-center gap-2 text-center">
+                    Conoce más sobre nuestro Curso <br className="hidden sm:block" /> Edición 2026 - I <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </a>
+                  {/* Subtle inner border for depth */}
+                  <div className="absolute inset-0 rounded-full border border-white/20 pointer-events-none" />
+                </motion.a>
 
                 <a
                   href="https://forms.gle/9EhQgzZmTXJRtp4Q6"
