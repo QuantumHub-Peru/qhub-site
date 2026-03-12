@@ -14,10 +14,10 @@ const departments = [
 const navItems = [
   { label: "Inicio", path: "/" },
   { label: "Nosotros", path: "/nosotros", hasDropdown: true },
-  { label: "Curso", path: "/curso" },
   { label: "Equipo", path: "/equipo" },
   { label: "Noticias", path: "/noticias" },
   { label: "Blog", path: "/blog" },
+  { label: "Contacto", path: "/contacto" },
 ];
 
 const Navbar = () => {
@@ -33,6 +33,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMobileOpen(false);
+  };
+
   return (
     <motion.nav
       initial={{ y: -80 }}
@@ -42,7 +47,7 @@ const Navbar = () => {
         }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" onClick={handleLinkClick} className="flex items-center gap-3 group">
           <img src="/src/assets/img/logo.png" alt="QuantumHub Peru Logo" className="w-[28px] h-[28px] md:w-[35px] md:h-[35px] object-contain group-hover:scale-110 transition-transform" />
           <span className="font-heading text-sm font-bold tracking-widest text-foreground">
             QUANTUMHUB <span className="text-muted-foreground font-normal">PERU</span>
@@ -60,6 +65,7 @@ const Navbar = () => {
             >
               <Link
                 to={item.path}
+                onClick={handleLinkClick}
                 className="relative px-4 py-2 rounded-md text-sm font-body font-medium tracking-wide transition-colors group flex items-center gap-1"
                 style={{
                   backgroundColor: location.pathname === item.path ? '#1C1A3A' : 'transparent',
@@ -133,7 +139,10 @@ const Navbar = () => {
                   <div className="flex items-center">
                     <Link
                       to={item.path}
-                      onClick={() => !item.hasDropdown && setMobileOpen(false)}
+                      onClick={() => {
+                        handleLinkClick();
+                        if (item.hasDropdown) setMobileDeptOpen(!mobileDeptOpen);
+                      }}
                       className={`flex-1 text-sm font-body py-2 ${location.pathname === item.path ? "text-foreground" : "text-muted-foreground"
                         }`}
                     >

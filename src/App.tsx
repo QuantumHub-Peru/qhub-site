@@ -15,6 +15,7 @@ import PlataformaPage from "./pages/PlataformaPage";
 import DepartmentPage from "./pages/DepartmentPage";
 import NotFound from "./pages/NotFound";
 import Postulacion from "./pages/Postulacion";
+import Contacto from "./pages/Contacto";
 import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/curso" element={<Curso />} />
+          <Route path="/contacto" element={<Contacto />} />
           <Route path="/postulacion" element={<Postulacion />} />
           <Route path="/equipo" element={<Equipo />} />
           <Route path="/noticias" element={<Noticias />} />
