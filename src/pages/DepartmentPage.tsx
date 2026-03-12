@@ -19,6 +19,7 @@ interface DeptPageData {
   bullets: { title: string; shortTitle?: string; description: string; keyPoints?: string[]; images?: string[] }[];
   achievements: {
     title: string;
+    subtitle?: string;
     titlePreview?: string;
     description?: string;
     photo?: string;
@@ -74,13 +75,17 @@ const deptData: Record<string, DeptPageData> = {
     ],
     achievements: [
       {
+        titlePreview: "Curiosity Over Hype: Modeling Motivation Language to Understand Early Outcomes in a Selective Quantum Track",
         title: "IEEE Paper Publication",
+        subtitle: "Curiosity Over Hype: Modeling Motivation Language to Understand Early Outcomes in a Selective Quantum Track",
         description: "Publicación del paper “Curiosity Over Hype: Modeling Motivation Language to Understand Early Outcomes in a Selective Quantum Track” en IEEE Xplore (2025). El estudio analiza si las respuestas motivacionales escritas por estudiantes durante el proceso de admisión al curso de Computación Cuántica de QuantumHub Perú contienen señales latentes relacionadas con su compromiso y desempeño académico posterior. A partir de 241 aplicaciones revisadas, el trabajo aplica técnicas de procesamiento de lenguaje natural como Latent Dirichlet Allocation (LDA) y representaciones semánticas mediante small language models para identificar patrones entre distintos tipos de motivación, desde motivaciones intrínsecas basadas en curiosidad genuina hasta motivaciones instrumentales orientadas a intereses tecnológicos o profesionales. Los resultados muestran tendencias que asocian motivaciones intrínsecas con mayores niveles de asistencia y rendimiento académico, proponiendo además una metodología híbrida para analizar motivación estudiantil en programas emergentes de educación cuántica.",
         photo: "/images/investigacion/logro1.png",
         link: "https://ieeexplore.ieee.org/document/11355072"
       },
       {
-        title: "arXiv Research Publication",
+        titlePreview: "Quantum Readiness in Latin American High Schools: Curriculum Compatibility and Enabling Conditions",
+        title: "Quantum Education Paper",
+        subtitle: "Quantum Readiness in Latin American High Schools: Curriculum Compatibility and Enabling Conditions",
         description: "Publicación del paper “Quantum Readiness in Latin American High Schools: Curriculum Compatibility and Enabling Conditions” como preprint en arXiv (2025). Este trabajo introduce un marco comparativo para evaluar el nivel de preparación de los sistemas de educación secundaria en América Latina para incorporar contenidos de computación cuántica. El análisis examina la compatibilidad curricular en matemáticas, física y computación, junto con condiciones habilitantes como formación docente, infraestructura tecnológica e instituciones científicas en seis países: Perú, Bolivia, Chile, Argentina, Brasil y Colombia. Los resultados revelan importantes asimetrías regionales en términos de preparación institucional y ecosistemas educativos, identificando a Chile como el país con mayor nivel de preparación. A partir de este diagnóstico se propone una hoja de ruta regional para la integración progresiva de educación cuántica en el nivel secundario.",
         photo: "/images/investigacion/logro2.png",
         link: "https://arxiv.org/abs/2512.16257"
@@ -148,7 +153,6 @@ const deptData: Record<string, DeptPageData> = {
     ],
     alliances: [
       { name: "LEAD PUCP", logo: "/images/academico/alianza1.png" },
-      { name: "CIP Lima", logo: "/images/academico/alianza2.jpg" },
       { name: "Universidad de Ingeniería y Tecnología (UTEC)", logo: "/images/academico/alianza3.png" },
       { name: "IEEE Computer Society PUCP", logo: "/images/academico/alianza4.png" },
       { name: "Universidad de Ciencias y Humanidades (UCH)", logo: "/images/academico/alianza5.jpg" }
@@ -250,8 +254,8 @@ const deptData: Record<string, DeptPageData> = {
         photo: "/images/rrpp/logro3.png"
       },
       {
-        title: "Adriana Alvarado nos representa en el II Congreso Internacional de Investigación Científica Federico Villarreal",
-        titlePreview: "Representación y alcance en espacios académicos",
+        titlePreview: "Adriana Alvarado nos representa en el II Congreso Internacional de Investigación Científica Federico Villarreal",
+        title: "Representación y alcance en espacios académicos",
         description: "El estudio “Quantum Readiness in Latin American High Schools: Curriculum Compatibility and Enabling Conditions” fue presentado durante el II Congreso Internacional de Investigación Científica Federico Villarreal, realizado en el Colegio de Ingenieros del Perú (CIP), uno de los espacios profesionales más importantes para la comunidad de ingeniería del país. La investigación fue desarrollada por Adriana Alvarado, Osmar Herrera, Rosario Morales, Daniella Vargas y Freddy Herrera, y presentada durante el congreso por nuestra fundadora, Adriana Alvarado, ante investigadores, docentes y estudiantes interesados en los desafíos del futuro de la educación científica. El trabajo analiza el nivel de preparación de los sistemas educativos de América Latina para integrar computación cuántica en la educación secundaria, un tema que ha comenzado a ganar relevancia a nivel global ante el crecimiento de las tecnologías cuánticas y la necesidad de formar nuevas generaciones de científicos y profesionales en este campo.",
         photo: "/images/rrpp/logro4.png"
       }
@@ -312,6 +316,10 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
 
   useEffect(() => {
+    // Reset index and scroll on navigation
+    setCurrentHeroIndex(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     if (!dept || dept.heroImages.length <= 1) return;
 
     const interval = setInterval(() => {
@@ -319,7 +327,7 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [dept]);
+  }, [deptId, dept?.heroImages.length]);
 
   if (!dept) return null;
   const Icon = dept.icon;
@@ -347,13 +355,13 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
             ) : (
               <AnimatePresence>
                 <motion.img
-                  key={currentHeroIndex}
-                  src={dept.heroImages[currentHeroIndex]}
+                  key={`${deptId}-${currentHeroIndex}`}
+                  src={dept.heroImages[currentHeroIndex] || dept.heroImages[0]}
                   alt={dept.name}
                   initial={{ opacity: 0, scale: 1.1 }}
                   animate={{ opacity: 1, scale: 1.05 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 1.2, ease: "easeInOut" }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </AnimatePresence>
@@ -481,13 +489,13 @@ const DepartmentPage = ({ deptId }: { deptId: string }) => {
               ) : (
                 <AnimatePresence>
                   <motion.img
-                    key={currentHeroIndex}
-                    src={dept.heroImages[currentHeroIndex]}
+                    key={`${deptId}-${currentHeroIndex}`}
+                    src={dept.heroImages[currentHeroIndex] || dept.heroImages[0]}
                     alt={dept.name}
                     initial={{ opacity: 0, scale: 1.1 }}
                     animate={{ opacity: 1, scale: 1.05 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1, ease: "easeInOut" }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 </AnimatePresence>

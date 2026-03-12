@@ -19,7 +19,7 @@ export default function BulletRoulette({ bullets, hslColor }: BulletRouletteProp
     }, [bullets.length]);
 
     return (
-        <section className="relative w-full max-w-[90rem] mx-auto pt-[4rem] pb-[4rem] lg:pt-[6rem] lg:pb-[6rem] flex flex-col items-center justify-center overflow-hidden">
+        <section className="relative w-full max-w-[90rem] mx-auto pt-[2rem] pb-[1rem] lg:pt-[6rem] lg:pb-[6rem] flex flex-col items-center justify-center overflow-hidden">
 
             {/* Title - Fully Responsive Text */}
             <motion.div
