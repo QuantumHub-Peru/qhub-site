@@ -227,8 +227,8 @@ const DepartmentsSection = () => {
           </p>
         </motion.div>
 
-        {/* Grid Layout for all screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-[1600px] mx-auto pb-10">
+        {/* Responsive Flex Layout: 3 on top, 2 below on large screens */}
+        <div className="flex flex-wrap justify-center gap-6 max-w-[1400px] mx-auto pb-10">
           {departments.map((dept, index) => (
             <motion.div
               key={dept.id}
@@ -236,7 +236,7 @@ const DepartmentsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="flex justify-center w-full"
+              className="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)] max-w-[420px] flex justify-center"
             >
               <DepartmentCard dept={dept} />
             </motion.div>
