@@ -8,26 +8,26 @@ const WhatIsSection = () => {
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
-          {/* Left Column: Image with Pink Offset Backdrop */}
+          {/* Left Column: Image with Luminous Glow Backdrop */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative mx-auto lg:mx-0 w-[90%] sm:w-full max-w-md lg:max-w-full mt-6 mb-8 lg:mt-0 lg:mb-0"
+            className="relative mx-auto lg:mx-0 w-[90%] sm:w-full max-w-md lg:max-w-full mt-6 mb-8 lg:mt-0 lg:mb-0 group"
           >
-            {/* The Pink Backdrop (Offset) */}
-            <div className="absolute -inset-3 sm:-inset-6 bg-[#f4a2d8] rounded-2xl sm:rounded-[2.5rem] transform translate-y-3 sm:translate-y-6 -translate-x-2 sm:-translate-x-4 z-0" />
+            {/* The Luminous Glowing Backdrop */}
+            <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-[#F39C12] via-primary to-[#7B2CBF] rounded-2xl sm:rounded-[2.5rem] blur-3xl opacity-70 group-hover:opacity-100 transition-opacity duration-700 animate-pulse z-0" />
 
             {/* Main Image Container */}
-            <div className="relative z-10 aspect-square sm:aspect-[4/3] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl bg-card border border-border/50">
+            <div className="relative z-10 aspect-square sm:aspect-[4/3] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-[0_0_80px_rgba(123,44,191,0.6)] bg-card border-[6px] border-white/20 group-hover:border-primary/60 transition-colors duration-500">
               <img
                 src={r1Img}
                 alt="Quantum Education"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               {/* Optional overlay gradient for contrast if image is too bright */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
             </div>
           </motion.div>
 

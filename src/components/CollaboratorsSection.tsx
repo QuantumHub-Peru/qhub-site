@@ -13,6 +13,15 @@ const collaborators = [
   { name: "Microsoft Azure Quantum", img: azureLogo },
   { name: "AWS Braket", img: awsLogo },
   { name: "Qiskit Community", img: qiskitLogo },
+  { name: "QuMatrix", img: "/images/investigacion/alianza2.png" },
+  { name: "Université Libre de Bruxelles", img: "/images/investigacion/alianza1.png" },
+  { name: "Universidad Libre", img: "/images/investigacion/alianza3.png" },
+  { name: "Universidad Politécnica de Valencia", img: "/images/investigacion/alianza4.png" },
+  { name: "LEAD PUCP", img: "/images/academico/alianza1.png" },
+  { name: "Universidad de Ingeniería y Tecnología (UTEC)", img: "/images/academico/alianza3.png" },
+  { name: "IEEE Computer Society PUCP", img: "/images/academico/alianza4.png" },
+  { name: "Universidad de Ciencias y Humanidades (UCH)", img: "/images/academico/alianza5.jpg" },
+  { name: "CIP Lima", img: "/images/rrpp/alianza2.jpg" }
 ];
 
 const hslColor = "210 100% 60%"; // Reusing a default blue color similar to the image

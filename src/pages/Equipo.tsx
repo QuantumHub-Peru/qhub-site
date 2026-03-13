@@ -52,17 +52,19 @@ const Equipo = () => {
 
   const filtered = filter === "Todos" ? teamMembers : teamMembers.filter((m) => m.dept && m.dept.includes(filter));
   const sortedMembers = [...filtered].sort((a, b) => {
+    const roleWeightA = getRoleWeight(a.role);
+    const roleWeightB = getRoleWeight(b.role);
+    if (roleWeightA !== roleWeightB) {
+      return roleWeightA - roleWeightB;
+    }
+
     const highestDeptA = a.dept && a.dept.length > 0 ? Math.min(...a.dept.map(getDeptWeight)) : 99;
     const highestDeptB = b.dept && b.dept.length > 0 ? Math.min(...b.dept.map(getDeptWeight)) : 99;
 
     if (highestDeptA !== highestDeptB) {
       return highestDeptA - highestDeptB;
     }
-    const roleWeightA = getRoleWeight(a.role);
-    const roleWeightB = getRoleWeight(b.role);
-    if (roleWeightA !== roleWeightB) {
-      return roleWeightA - roleWeightB;
-    }
+
     return a.name.localeCompare(b.name);
   });
 
@@ -92,13 +94,13 @@ const Equipo = () => {
           <span className="font-body text-xs text-primary font-medium">Click para más info</span>
         </div>
       </div>
-      <div className="p-4 text-center">
-        <h3 className="font-heading text-xs font-bold tracking-wide">{m.name}</h3>
-        {m.role && <p className="font-body text-xs text-primary mt-1">{m.role}</p>}
+      <div className="p-3 sm:p-4 text-center">
+        <h3 className="font-heading text-[11px] sm:text-xs font-bold tracking-tight sm:tracking-wide leading-tight sm:leading-normal">{m.name}</h3>
+        {m.role && <p className="font-body text-[10px] sm:text-xs text-primary mt-1 leading-tight sm:leading-normal">{m.role}</p>}
         {m.dept && m.dept.length > 0 && (
-          <div className="mt-1.5 flex flex-wrap justify-center gap-1.5">
+          <div className="mt-1.5 flex flex-wrap justify-center gap-1 sm:gap-1.5">
             {m.dept.filter(d => d && d !== "Ejecutivo").map(d => (
-              <span key={d} className="font-body text-[9px] px-2 py-0.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/20 rounded-full text-white/80 shadow-sm">{d}</span>
+              <span key={d} className="font-body text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-[2px] sm:py-0.5 bg-gradient-to-r from-white/10 to-white/5 border border-white/20 rounded-full text-white/80 shadow-sm">{d}</span>
             ))}
           </div>
         )}
@@ -136,7 +138,7 @@ const Equipo = () => {
           </motion.div>
 
           {/* Grid */}
-          <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div layout className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             <AnimatePresence mode="popLayout">
               {sortedMembers.map((m, i) => renderCard(m, i))}
             </AnimatePresence>
