@@ -14,7 +14,7 @@ import { ArrowRight, Monitor, BookOpen, Zap } from "lucide-react";
 
 const HeroSection = () => {
   const plugin = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
+    Autoplay({ delay: 6000, stopOnInteraction: false })
   );
 
   return (
@@ -25,8 +25,6 @@ const HeroSection = () => {
         opts={{
           loop: true,
         }}
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
       >
         <CarouselContent className="h-screen m-0">
           {/* Slide 1: Original Hero */}
