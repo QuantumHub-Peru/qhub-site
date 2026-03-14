@@ -12,11 +12,11 @@ interface FaqCarouselProps {
 }
 
 const colors = [
-    '#8b5cf6', // quantum-purple
-    '#d946ef', // quantum-pink
-    '#3b82f6', // quantum-blue
-    '#f59e0b', // accent (yellow)
-    '#14b8a6'  // teal
+    '#F39C12', // primary yellow/orange
+    '#E67E22', // carrot orange
+    '#D35400', // pumpkin orange
+    '#F1C40F', // sunflower yellow
+    '#E67E22'  // carrot orange (repeated for variety)
 ];
 
 const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
@@ -66,19 +66,19 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
     };
 
     return (
-        <div className="relative w-full max-w-6xl mx-auto h-[450px] flex items-center justify-center perspective-[1000px]">
+        <div className="relative w-full h-[380px] md:h-[400px] flex items-center justify-center perspective-[1000px] overflow-visible">
 
             {/* Navigation Controls */}
             <button
                 onClick={prevSlide}
-                className="absolute left-0 md:left-4 z-50 w-12 h-12 rounded-full glass border-quantum-pink/50 flex items-center justify-center text-quantum-pink hover:bg-quantum-pink hover:text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(217,70,239,0.6)] transition-all duration-300"
+                className="absolute left-0 md:left-4 z-50 w-12 h-12 rounded-full glass border-primary/50 flex items-center justify-center text-primary hover:bg-primary/20 hover:text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(243,156,18,0.4)] transition-all duration-300"
             >
                 <ChevronLeft className="w-6 h-6" />
             </button>
 
             <button
                 onClick={nextSlide}
-                className="absolute right-0 md:right-4 z-50 w-12 h-12 rounded-full glass border-quantum-pink/50 flex items-center justify-center text-quantum-pink hover:bg-quantum-pink hover:text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(217,70,239,0.6)] transition-all duration-300"
+                className="absolute right-0 md:right-4 z-50 w-12 h-12 rounded-full glass border-primary/50 flex items-center justify-center text-primary hover:bg-primary/20 hover:text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(243,156,18,0.4)] transition-all duration-300"
             >
                 <ChevronRight className="w-6 h-6" />
             </button>
@@ -95,12 +95,16 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
                         return (
                             <motion.div
                                 key={index}
-                                className={`absolute w-[80%] md:w-[600px] h-[350px] rounded-3xl p-8 flex flex-col justify-center items-center text-center cursor-pointer transition-colors duration-500`}
+                                className={`absolute w-[85%] md:w-[550px] h-[300px] md:h-[320px] rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center text-center cursor-pointer transition-colors duration-500`}
                                 style={{
-                                    backgroundColor: isActive ? 'rgba(10, 10, 20, 0.95)' : 'rgba(10, 10, 20, 0.6)',
-                                    border: `1px solid ${isActive ? color : 'rgba(255,255,255,0.1)'}`,
-                                    boxShadow: isActive ? `0 0 40px ${color}40, inset 0 0 20px ${color}10` : 'none',
-                                    backdropFilter: 'blur(12px)',
+                                    background: isActive 
+                                        ? `linear-gradient(135deg, rgba(30, 10, 80, 0.95) 0%, rgba(60, 20, 120, 0.9) 100%)` 
+                                        : 'rgba(20, 10, 40, 0.6)',
+                                    border: `2px solid ${isActive ? color : 'rgba(255,255,255,0.1)'}`,
+                                    boxShadow: isActive 
+                                        ? `0 0 50px ${color}50, inset 0 0 30px ${color}20` 
+                                        : 'none',
+                                    backdropFilter: 'blur(20px)',
                                 }}
                                 initial={{
                                     opacity: 0,
@@ -139,7 +143,7 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
                             >
                                 {/* Glowing Icon */}
                                 <div
-                                    className="w-16 h-16 rounded-full flex items-center justify-center mb-6 transition-all duration-500"
+                                    className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6 transition-all duration-500"
                                     style={{
                                         backgroundColor: `${color}20`,
                                         color: color,
@@ -147,18 +151,21 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
                                         boxShadow: isActive ? `0 0 20px ${color}60` : 'none'
                                     }}
                                 >
-                                    <HelpCircle className="w-8 h-8" />
+                                    <HelpCircle className="w-8 h-8 drop-shadow-[0_0_10px_currentColor]" />
                                 </div>
 
                                 <h3
-                                    className="font-heading text-xl md:text-2xl font-bold mb-4 transition-colors duration-500"
-                                    style={{ color: isActive ? color : 'rgba(255,255,255,0.7)' }}
+                                    className="font-heading text-xl md:text-2xl font-black mb-4 transition-colors duration-500 tracking-tight"
+                                    style={{ 
+                                        color: isActive ? color : 'rgba(255,255,255,0.7)',
+                                        textShadow: isActive ? `0 0 20px ${color}40` : 'none'
+                                    }}
                                 >
                                     {faq.question}
                                 </h3>
 
-                                <p className={`text-muted-foreground md:text-lg transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
-                                    {faq.answer}
+                                <p className={`text-white text-base md:text-lg font-medium leading-relaxed transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+                                    {isActive ? faq.answer : ''}
                                 </p>
 
                                 {/* Laser scan line effect when active */}
@@ -180,7 +187,7 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
             </div>
 
             {/* Indicator dots */}
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
+            <div className="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
                 {faqs.map((_, idx) => (
                     <button
                         key={idx}
@@ -189,7 +196,7 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
                             setActiveIndex(idx);
                         }}
                         className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx
-                                ? 'bg-quantum-pink w-6 shadow-[0_0_10px_rgba(217,70,239,0.8)]'
+                                ? 'bg-primary w-6 shadow-[0_0_10px_rgba(243,156,18,0.6)]'
                                 : 'bg-white/20 hover:bg-white/50'
                             }`}
                     />

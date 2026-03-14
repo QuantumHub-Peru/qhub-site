@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import ParticleNetwork from "@/components/ParticleNetwork";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { motion, AnimatePresence } from "framer-motion";
-import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award, CheckCircle, ChevronRight, ChevronLeft, PlayCircle, CalendarPlus, MapPin } from "lucide-react";
+import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award, CheckCircle, ChevronRight, ChevronLeft, PlayCircle, CalendarPlus, MapPin, HelpCircle } from "lucide-react";
 import { useState, useRef } from "react";
 import aprendiendoImg from "@/gato/aprendiendo.png";
 import LatamGlobe from "@/components/LatamGlobe";
@@ -15,6 +15,7 @@ import teoriaImg from "@/gato/teoria.png";
 import laboratorioImg from "@/gato/laboratorio.png";
 import horasImg from "@/gato/74.png";
 import teacherImg from "@/gato/teacher.png";
+import FaqCarousel from "@/components/FaqCarousel";
 
 // Modules Data
 const modules = [
@@ -87,6 +88,35 @@ const tabs = [
   { id: "modalidad", label: "Modalidad", icon: <Clock className="w-5 h-5" /> },
   { id: "docentes", label: "Docentes", icon: <Users className="w-5 h-5" /> },
   { id: "evaluacion", label: "Evaluación", icon: <Award className="w-5 h-5" /> },
+  { id: "faq", label: "Preguntas Frecuentes", icon: <HelpCircle className="w-5 h-5" /> },
+];
+
+// FAQ Data (copiado desde la página de Postulación)
+const faqs = [
+  {
+    question: "¿Cuánto cuesta el curso?",
+    answer: "El curso es 100% gratis, por ello contamos con plazas limitadas.",
+  },
+  {
+    question: "¿Las clases son presenciales o virtuales?",
+    answer: "La modalidad de las clases es 100% virtual pues contamos con docentes que dictarán a larga distancia. Sin embargo, los exámenes son presenciales.",
+  },
+  {
+    question: "¿Necesito conocimientos previos de ...?",
+    answer: "Cada módulo tiene prerrequisitos específicos que se detallan en la sección del curso.",
+  },
+  {
+    question: "¿Qué certificación obtengo al completar el curso?",
+    answer: "Al completar el programa recibes un certificado de QuantumHub Perú.",
+  },
+  {
+    question: "¿Hay límite de edad para postular?",
+    answer: "Los estudiantes de secundaria (menores de edad) pueden postular al Módulo 1, y estudiantes universitarios de 1er a 4to ciclo o de academias preuniversitarias pueden postular a partir del Módulo 2.",
+  },
+  {
+    question: "¿Ofrecen apoyo para conseguir trabajo después del curso?",
+    answer: "Tenemos una red de empresas aliadas y profesionales en investigación y desarrollo en el área cuántica, pero no es parte del programa per se.",
+  },
 ];
 
 const createGoogleCalendarUrl = ({
@@ -481,6 +511,45 @@ const EvaluacionContent = () => (
   </div>
 );
 
+const PreguntasFrecuentesContent = () => (
+  <div className="h-full flex flex-col w-full relative overflow-visible">
+    <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-screen">
+      <ParticleNetwork particleCount={40} connectionDistance={140} speed={0.5} />
+    </div>
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+
+    <div className="relative z-10 w-full px-2 sm:px-4 md:px-6 lg:px-8 py-4 md:py-6 lg:py-8 flex flex-col gap-4 md:gap-6 overflow-visible">
+      <div className="text-center md:text-left space-y-2 max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border-primary/30 text-primary mb-1 bg-primary/10"
+        >
+          <HelpCircle className="w-4 h-4" />
+          <span className="text-xs md:text-sm font-bold tracking-wide uppercase">Resolviendo dudas</span>
+        </motion.div>
+        <h3 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-[-0.02em] leading-tight uppercase font-black">
+          Preguntas <span className="text-gradient-quantum">Frecuentes</span>
+        </h3>
+        <p className="text-muted-foreground text-sm md:text-base font-medium">
+          Encuentra respuestas rápidas sobre el programa, la modalidad y el proceso de admisión.
+        </p>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="w-full"
+      >
+        <div className="w-full">
+          <FaqCarousel faqs={faqs} />
+        </div>
+      </motion.div>
+    </div>
+  </div>
+);
+
 // --- COMPONENTE PRINCIPAL ---
 
 const Curso = () => {
@@ -646,7 +715,7 @@ const Curso = () => {
 
               {/* ----- VISTA ESCRITORIO (Sistema de Tabs con Framer Motion) ----- */}
               <div
-                className={`hidden lg:block h-full relative ${activeTab === 'evaluacion'
+                className={`hidden lg:block h-full relative ${activeTab === 'evaluacion' || activeTab === 'faq'
                   ? 'p-0 overflow-hidden rounded-r-3xl'
                   : activeTab === 'modalidad'
                     ? 'p-6 lg:p-4 xl:p-8 overflow-y-auto [&::-webkit-scrollbar]:hidden rounded-r-3xl'
@@ -704,6 +773,12 @@ const Curso = () => {
                       <DocentesContent />
                     </motion.div>
                   )}
+
+                  {activeTab === "faq" && (
+                    <motion.div key="faq" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }} className="h-full">
+                      <PreguntasFrecuentesContent />
+                    </motion.div>
+                  )}
                 </AnimatePresence>
               </div>
 
@@ -759,6 +834,17 @@ const Curso = () => {
                     <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">DOCENTES</h2>
                   </div>
                   <DocentesContent />
+                </section>
+
+                <div className="w-full h-px bg-border/40" />
+
+                {/* 6. Preguntas Frecuentes */}
+                <section className="flex flex-col gap-4">
+                  <div className="flex items-center gap-2 border-b border-quantum-pink/30 pb-2">
+                    <HelpCircle className="w-6 h-6 text-quantum-pink" />
+                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">PREGUNTAS FRECUENTES</h2>
+                  </div>
+                  <PreguntasFrecuentesContent />
                 </section>
 
                 {/* 4. Evaluación */}

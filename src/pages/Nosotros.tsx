@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import gatoImg from "@/gato/gato.png";
+import principiosCat from "@/gato/principios.png";
 import clubImg from "@/assets/r1.jpg";
 import logoImg from "@/assets/club.jpg";
 import quantumBg0 from "@/assets/r1.jpg";
@@ -70,37 +71,44 @@ function FlipCard({ item, delay }: { item: typeof principiosData[0]; delay: numb
   return (
     <div
       ref={ref}
-      className={`perspective-1000 h-72 cursor-pointer transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      className={`group perspective-1000 h-80 cursor-pointer transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+      style={{
+        transitionDelay: `${delay}ms`,
+        boxShadow: visible
+          ? "0 0 25px rgba(246,157,14,0.15)"
+          : "0 0 0 rgba(0,0,0,0)",
+      }}
       onClick={() => setFlipped(!flipped)}
       onMouseEnter={() => {
-        if (window.matchMedia('(hover: hover)').matches) setFlipped(true);
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) setFlipped(true);
       }}
       onMouseLeave={() => {
-        if (window.matchMedia('(hover: hover)').matches) setFlipped(false);
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) setFlipped(false);
       }}
     >
       <div className={`relative w-full h-full transition-transform duration-700 preserve-3d ${flipped ? "rotate-y-180" : ""}`}>
         {/* Front */}
-        <div className="absolute inset-0 backface-hidden rounded-2xl border border-border bg-card overflow-hidden group hover:border-[#F69D0E]/40 transition-colors duration-500">
+        <div className="absolute inset-0 backface-hidden rounded-2xl border border-border bg-card overflow-hidden group-hover:border-[#F69D0E]/60 transition-colors duration-500 shadow-[0_0_20px_rgba(15,23,42,0.5)] group-hover:shadow-[0_0_35px_rgba(246,157,14,0.55)]">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#F69D0E] via-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <div className="h-full p-6 flex flex-col items-center justify-center text-center">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F69D0E] to-primary/80 flex items-center justify-center mb-4">
+          <div className="h-full p-6 flex items-center gap-4 text-left">
+            <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#F69D0E] to-primary/80 flex items-center justify-center">
               <Icon className="w-7 h-7 text-foreground" />
             </div>
-            <h3 className="font-heading text-xl font-black text-foreground mb-3">{item.title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{item.qh}</p>
-            <span className="mt-4 text-xs text-[#F69D0E]/60 font-medium">Toca para comparar →</span>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-heading text-lg sm:text-xl lg:text-xl font-black text-foreground mb-1 leading-tight">{item.title}</h3>
+              <p className="text-sm sm:text-base lg:text-sm text-muted-foreground leading-snug">{item.qh}</p>
+              <span className="mt-2 block text-xs text-[#F69D0E]/60 font-medium">Comparar →</span>
+            </div>
           </div>
         </div>
         {/* Back */}
-        <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl border border-[#F69D0E]/30 bg-secondary overflow-hidden">
+        <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl border border-[#F69D0E]/40 bg-secondary overflow-hidden shadow-[0_0_20px_rgba(15,23,42,0.5)] group-hover:shadow-[0_0_35px_rgba(246,157,14,0.55)]">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[#F69D0E] to-accent" />
           <div className="h-full p-6 flex flex-col items-center justify-center text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">Otros programas</span>
-            <h3 className="font-heading text-xl font-black text-foreground mb-3">{item.title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{item.otros}</p>
-            <span className="mt-4 text-xs text-accent/60 font-medium">← Volver</span>
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#DE5CA3] mb-2">Diferente</span>
+            <h3 className="font-heading text-lg sm:text-xl lg:text-xl font-black text-foreground mb-2">{item.title}</h3>
+            <p className="text-sm sm:text-base lg:text-sm text-muted-foreground leading-relaxed">{item.otros}</p>
+            <span className="mt-3 text-xs text-accent/60 font-medium">← Volver</span>
           </div>
         </div>
       </div>
@@ -291,8 +299,8 @@ export default function SobreNosotros() {
 
         <DepartmentsSection />
 
-        {/* ═══ PRINCIPIOS — flip cards grid ═══ */}
-        <section id="principios" className="py-24 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+        {/* ═══ PRINCIPIOS — gato a la izquierda + grid 2x3 ═══ */}
+        <section id="principios" className="py-20 px-4 md:px-10 lg:px-14 relative z-10">
           <ScrollReveal className="text-center mb-14">
             <div className="inline-flex items-center gap-2 mb-4">
               <Atom className="w-5 h-5 text-[#F69D0E] animate-[spin_8s_linear_infinite]" />
@@ -300,14 +308,73 @@ export default function SobreNosotros() {
             </div>
             <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-foreground">Nuestros Principios</h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              Descubre qué nos diferencia. Haz hover o toca cada tarjeta para ver cómo se comparan otros programas.
+              Cada principio orbita alrededor de nuestra misión. Explora cómo se conectan con nuestro gato cuántico y con la propuesta de otros programas.
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {principiosData.map((item, i) => (
-              <FlipCard key={item.id} item={item} delay={i * 100} />
-            ))}
+          <div className="mt-10 grid lg:grid-cols-[minmax(240px,320px)_minmax(0,1.5fr)] gap-8 items-center">
+            {/* Columna izquierda: gato con moléculas */}
+            <div className="relative flex items-center justify-center lg:justify-start">
+              <div className="relative w-[280px] h-[280px] sm:w-[300px] sm:h-[300px] flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/35 via-[#F69D0E]/25 to-accent/35 blur-3xl opacity-70" />
+                <motion.div
+                  aria-hidden
+                  className="absolute inset-2 rounded-full border-2 border-[#F69D0E]/70 border-dashed"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+                />
+                <div className="absolute inset-6 rounded-full border-[3px] border-primary/60 shadow-[0_0_70px_rgba(129,140,248,0.6)]" />
+                <div className="absolute inset-12 rounded-full border border-[#F69D0E]/60 opacity-90" />
+
+                {/* Moléculas orbitando */}
+                {Array.from({ length: 10 }).map((_, i) => {
+                  const angle = (i / 10) * 2 * Math.PI;
+                  const radius = 150;
+                  const x = radius * Math.cos(angle);
+                  const y = radius * Math.sin(angle);
+                  return (
+                    <motion.div
+                      key={i}
+                      className="absolute w-2 h-2 rounded-full bg-quantum-pink/80 shadow-[0_0_12px_rgba(244,114,182,0.9)]"
+                      style={{
+                        left: "50%",
+                        top: "50%",
+                        transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`
+                      }}
+                      animate={{ opacity: [0.3, 1, 0.3], scale: [0.9, 1.2, 0.9] }}
+                      transition={{ duration: 3 + i * 0.2, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  );
+                })}
+
+                <motion.img
+                  src={principiosCat}
+                  alt="Gato QuantumHub principios"
+                  className="relative z-10 w-[88%] h-[88%] object-contain drop-shadow-[0_24px_60px_rgba(0,0,0,0.9)]"
+                  animate={{ y: [-12, 12, -12], scale: [1, 1.04, 1] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </div>
+            </div>
+
+            {/* Columna derecha: 6 principios en grilla 2x3 */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {principiosData.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  whileHover={{ scale: 1.04, y: -6 }}
+                  className="relative"
+                >
+                  {/* Pequeña línea de conexión hacia el gato */}
+                  <div className="hidden lg:block absolute left-[-24px] top-1/2 translate-y-[-50%] w-6 h-[2px] bg-gradient-to-l from-[#F69D0E] via-primary to-transparent opacity-70" />
+                  <FlipCard item={item} delay={index * 120} />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 

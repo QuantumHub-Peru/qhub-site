@@ -13,6 +13,7 @@ const departments = [
 
 const navItems = [
   { label: "Inicio", path: "/" },
+  { label: "Curso", path: "/curso" },
   { label: "Nosotros", path: "/nosotros", hasDropdown: true },
   { label: "Equipo", path: "/equipo" },
   { label: "Noticias", path: "/noticias" },
