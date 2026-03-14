@@ -212,14 +212,14 @@ const HeroSection = () => {
               <div className="flex flex-col md:flex-row gap-8 lg:gap-14 items-center justify-between w-full">
                 
                 {/* Left side text */}
-                <div className="md:w-1/2 lg:w-3/5 space-y-6 flex flex-col justify-center">
+                <div className="md:w-1/2 lg:w-[45%] space-y-6 flex flex-col justify-center">
                   <div className="self-start px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs tracking-widest font-bold shadow-sm uppercase">
                     Plataforma Educativa
                   </div>
 
-                  <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.95] tracking-[-0.04em] flex flex-col items-start uppercase drop-shadow-md">
-                    <span>Explora nuestra</span>
-                    <span className="text-gradient-quantum pb-1">Plataforma</span>
+                  <h1 className="font-heading text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black leading-[0.95] tracking-tight flex flex-col items-start uppercase drop-shadow-md">
+                    <span>QuantumHub Peru</span>
+                    <span className="text-gradient-quantum pb-1">QHub Learning Platform</span>
                   </h1>
 
                   <p className="text-base sm:text-lg text-muted-foreground/90 leading-relaxed max-w-2xl font-medium">
@@ -242,33 +242,30 @@ const HeroSection = () => {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="/plataforma" className="btn-accent-cta flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-black shadow-[0_0_20px_rgba(255,215,0,0.3)] uppercase tracking-widest hover:scale-105 transition-transform">
-                      Ver Plataforma <ArrowRight className="w-5 h-5" />
+                    <a 
+                      href="https://www.qhubperu.com/aprendizaje" 
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-accent-cta flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 text-[11px] font-black shadow-[0_0_20px_rgba(255,215,0,0.3)] uppercase tracking-widest hover:scale-105 transition-transform"
+                    >
+                      Explora nuestra plataforma <ArrowRight className="w-5 h-5" />
                     </a>
                   </div>
                 </div>
 
-                {/* Right side Platform Mockup */}
-                <div className="hidden md:flex md:w-1/2 lg:w-2/5 p-6 rounded-3xl bg-gradient-to-br from-accent/20 via-background/60 to-primary/20 border border-white/10 shadow-[0_0_40px_rgba(255,215,0,0.1)] overflow-hidden group relative items-center justify-center backdrop-blur-md">
-                  <div className="w-full h-full glass-strong rounded-xl p-6 glow-purple">
-                    <div className="rounded-lg bg-background/80 p-5 space-y-5 border border-white/5">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-3 h-3 rounded-full bg-primary/60" />
-                        <div className="w-3 h-3 rounded-full bg-accent/60" />
-                        <div className="w-3 h-3 rounded-full bg-quantum-turquoise/60" />
-                      </div>
-                      <div className="h-6 w-3/4 rounded bg-white/5" />
-                      <div className="grid grid-cols-3 gap-3">
-                        {[1, 2, 3].map((n) => (
-                          <div key={n} className="h-24 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 border border-white/5 flex items-center justify-center">
-                            <Zap className="w-6 h-6 text-primary/40" />
-                          </div>
-                        ))}
-                      </div>
-                      <div className="h-32 rounded-lg bg-gradient-to-tr from-[#DE5CA3]/10 to-primary/10 flex items-center justify-center relative overflow-hidden">
-                         <div className="absolute inset-0 bg-primary/5 animate-pulse" />
-                         <Monitor className="w-12 h-12 text-[#DE5CA3] relative z-10 opacity-70" />
-                      </div>
+                {/* Right side Platform Video */}
+                <div className="hidden md:flex md:w-1/2 lg:w-[55%] p-4 rounded-3xl bg-gradient-to-br from-accent/20 via-background/60 to-primary/20 border border-white/10 shadow-[0_0_40px_rgba(255,215,0,0.1)] overflow-hidden group relative items-center justify-center backdrop-blur-md">
+                  <div className="w-full h-full glass-strong rounded-xl p-1.5 glow-purple overflow-hidden">
+                    <div className="relative rounded-lg overflow-hidden aspect-video bg-background/40">
+                      <video 
+                        src="/plataformaqhub.mp4"
+                        autoPlay 
+                        muted 
+                        loop 
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                     </div>
                   </div>
                 </div>

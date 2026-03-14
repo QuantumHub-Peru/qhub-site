@@ -34,19 +34,7 @@ const Footer = () => {
               Construyendo el ecosistema cuántico de Latinoamérica a través de la educación, investigación e innovación.
             </p>
             {/* Newsletter */}
-            <div className="flex gap-2 max-w-sm">
-              <div className="flex-1 glass rounded-lg px-4 py-2 flex items-center gap-2">
-                <Mail className="w-4 h-4 text-muted-foreground" />
-                <input
-                  type="email"
-                  placeholder="tu@email.com"
-                  className="bg-transparent text-sm font-body text-foreground placeholder:text-muted-foreground outline-none w-full"
-                />
-              </div>
-              <button className="btn-quantum px-4 py-2 text-xs">
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
+
           </div>
 
           {/* Links */}
@@ -69,7 +57,7 @@ const Footer = () => {
         {/* Social + copyright */}
         <div className="border-t border-border/30 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-xs text-muted-foreground">
-            © 2025 QuantumHub Peru. Todos los derechos reservados.
+            © 2026 QuantumHub Peru. Todos los derechos reservados.
           </p>
           <div className="flex gap-4">
             {["LinkedIn", "Instagram", "YouTube", "Discord"].map((social) => (

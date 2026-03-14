@@ -91,38 +91,6 @@ const tabs = [
   { id: "faq", label: "Preguntas Frecuentes", icon: <HelpCircle className="w-5 h-5" /> },
 ];
 
-// FAQ Data (copiado desde la página de Postulación)
-const faqs = [
-  {
-    question: "¿Cuánto cuesta el curso?",
-    answer: "El curso es 100% gratis, por ello contamos con plazas limitadas.",
-  },
-  {
-    question: "¿Las clases son presenciales o virtuales?",
-    answer: "La modalidad de las clases es 100% virtual pues contamos con docentes que dictarán a larga distancia. Sin embargo, los exámenes son presenciales.",
-  },
-  {
-    question: "¿Necesito conocimientos previos de ...?",
-    answer: "Cada módulo tiene prerrequisitos específicos que se detallan en la sección del curso.",
-  },
-  {
-    question: "¿Qué certificación obtengo al completar el curso?",
-    answer: "Al completar el programa recibes un certificado de QuantumHub Perú.",
-  },
-  {
-    question: "¿Hay límite de edad para postular?",
-    answer: "Los estudiantes de secundaria (menores de edad) pueden postular al Módulo 1, y estudiantes universitarios de 1er a 4to ciclo o de academias preuniversitarias pueden postular a partir del Módulo 2.",
-  },
-  {
-    question: "¿Ofrecen apoyo para conseguir trabajo después del curso?",
-    answer: "Tenemos una red de empresas aliadas y profesionales en investigación y desarrollo en el área cuántica, pero no es parte del programa per se.",
-  },
-  {
-    question: "¿Qué es la plataforma educativa?",
-    answer: "Es nuestro entorno virtual exclusivo donde los estudiantes acceden a materiales, grabaciones de clases, laboratorios interactivos y realizan sus entregas semanales.",
-  },
-];
-
 const createGoogleCalendarUrl = ({
   title,
   details,
@@ -161,6 +129,87 @@ const admissionCalendarUrl = createGoogleCalendarUrl({
   startDate: "20260303",
   endDate: "20260323",
 });
+
+const resultsAnnouncementCalendarUrl = createGoogleCalendarUrl({
+  title: "Resultados Convocatoria Módulo 1 | QuantumHub Peru",
+  details: "Anuncio oficial de los resultados de la convocatoria para el Módulo 1 del curso de Computación Cuántica.",
+  location: "Plataforma QuantumHub / Redes Sociales",
+  startDate: "20260325",
+  endDate: "20260326",
+});
+
+// FAQ Data (copiado desde la página de Postulación)
+const faqs = [
+  {
+    question: "¿Cuándo se anunciarán los resultados de la convocatoria del Módulo 1?",
+    answer: (
+      <div className="flex flex-col items-center gap-4">
+        <span className="text-xl font-black text-accent drop-shadow-sm">25 de marzo</span>
+        <a
+          href={resultsAnnouncementCalendarUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent/20 border border-accent/40 text-accent font-bold text-sm hover:bg-accent/30 transition-all shadow-[0_0_15px_rgba(255,215,0,0.2)]"
+        >
+          <CalendarPlus className="w-4 h-4" />
+          Agendar en Google Calendar
+        </a>
+      </div>
+    ),
+  },
+  {
+    question: "¿Hay vacantes limitadas?",
+    answer: "Sí, el criterio principal de selección es la carta de motivación.",
+  },
+  {
+    question: "¿Tengo que haber llevado mecánica cuántica?",
+    answer: "No, no se requiere experiencia previa en computación o mecánica cuántica. Sin embargo, esperamos que al finalizar el Módulo 1 los estudiantes logren una buena base en álgebra lineal y programación.",
+  },
+  {
+    question: "Si no estoy en Lima, ¿puedo inscribirme al curso?",
+    answer: (
+      <span>
+        Escribe al correo <a href="mailto:contacto@qhubperu.org" className="text-primary font-bold hover:underline">contacto@qhubperu.org</a> explicando tu situación, contándonos tu motivación y, opcionalmente, adjuntando tu CV.
+      </span>
+    ),
+  },
+  {
+    question: "¿El certificado del curso es gratuito?",
+    answer: "Sí, tanto el curso como el certificado final son gratuitos.",
+  },
+  {
+    question: "¿Qué especificaciones necesita mi PC?",
+    answer: (
+      <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-left max-w-sm mx-auto">
+        <div className="flex gap-2">
+          <span className="text-accent font-bold">CPU:</span>
+          <span className="text-white/90">i5 / Ryzen 5</span>
+        </div>
+        <div className="flex gap-2">
+          <span className="text-accent font-bold">RAM:</span>
+          <span className="text-white/90">8 GB+</span>
+        </div>
+        <div className="flex gap-2">
+          <span className="text-accent font-bold">SSD:</span>
+          <span className="text-white/90">256 GB+</span>
+        </div>
+        <div className="flex gap-2">
+          <span className="text-accent font-bold">GPU:</span>
+          <span className="text-white/90">No necesaria</span>
+        </div>
+        <div className="flex gap-2 items-center col-span-2 mt-1">
+          <span className="text-accent font-bold">Sistemas:</span>
+          <span className="text-white/90">Linux, Windows, Mac</span>
+        </div>
+        <div className="flex gap-2 items-center col-span-2">
+          <span className="text-accent font-bold">Python:</span>
+          <span className="text-white/90">3.8 o superior</span>
+        </div>
+      </div>
+    ),
+  },
+];
+
 
 // --- DOCENTES CORREGIDO ---
 const DocentesContent = () => (
@@ -842,14 +891,7 @@ const Curso = () => {
 
                 <div className="w-full h-px bg-border/40" />
 
-                {/* 6. Preguntas Frecuentes */}
-                <section className="flex flex-col gap-4">
-                  <div className="flex items-center gap-2 border-b border-quantum-pink/30 pb-2">
-                    <HelpCircle className="w-6 h-6 text-quantum-pink" />
-                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">PREGUNTAS FRECUENTES</h2>
-                  </div>
-                  <PreguntasFrecuentesContent />
-                </section>
+
 
                 {/* 4. Evaluación */}
                 <section className="flex flex-col gap-4">
@@ -861,6 +903,15 @@ const Curso = () => {
                 </section>
 
                 <div className="w-full h-px bg-border/40" />
+
+                {/* 6. Preguntas Frecuentes */}
+                <section className="flex flex-col gap-4">
+                  <div className="flex items-center gap-2 border-b border-quantum-pink/30 pb-2">
+                    <HelpCircle className="w-6 h-6 text-quantum-pink" />
+                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">PREGUNTAS FRECUENTES</h2>
+                  </div>
+                  <PreguntasFrecuentesContent />
+                </section>
 
 
 

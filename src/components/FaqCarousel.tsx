@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react';
 
 interface FAQ {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 interface FaqCarouselProps {

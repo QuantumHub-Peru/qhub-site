@@ -6,11 +6,11 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Line, Billboard, Text } from "@react-three/drei";
 import * as THREE from "three";
 
-import deptImg1 from "@/assets/r1.jpg";
-import deptImg2 from "@/assets/r2.jpg";
-import deptImg3 from "@/assets/r3.jpg";
-import deptImg4 from "@/assets/r4.jpg";
-import deptImg5 from "@/assets/r5.jpg";
+import deptImg1 from "@/assets/investigación.png"; {/* investigación */}
+import deptImg2 from "@/assets/académico.png"; {/* académico */}
+import deptImg3 from "@/assets/innovación.png"; {/* innovación*/}
+import deptImg4 from "@/assets/relacionespublicas.png"; {/* relaciones */}
+import deptImg5 from "@/assets/comunidad.png"; {/* comunidad */}
 
 interface Department {
   id: string;
@@ -49,12 +49,12 @@ const departments: Department[] = [
     image: deptImg2,
   },
   {
-    id: "innovacion", name: "Innovación", subtitle: "Tech & Startups",
+    id: "innovacion", name: "Innovación", subtitle: "EDTECH & SOFTWARE",
     icon: Lightbulb, color: "text-dept-innovation", hslColor: "175 80% 50%",
     angle: 54,
-    description: "Exploración de aplicaciones prácticas, startups cuánticas y transferencia de tecnología al sector productivo.",
+    description: "Ampliación del acceso a la computación cuántica mediante productos digitales y software especializado",
     mission: "Conectar la investigación cuántica con soluciones reales.",
-    highlights: ["Hackathons", "Proyectos aplicados", "Alianzas industria"],
+    highlights: ["Software", "Edtech"],
     path: "/innovacion",
     image: deptImg3,
   },
