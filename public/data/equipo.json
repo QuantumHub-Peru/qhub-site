@@ -1,7 +1,11 @@
 [
   {
     "name": "Adriana Alvarado León",
-    "role": "Co-Fundadora • Directora",
+    "role": [
+      "Co-Founder",
+      "Chief Product Officer",
+      "Junior Research Assistant (Hybrid Quantum Computing)"
+    ],
     "dept": [
       "Ejecutivo",
       "Académico",
@@ -13,7 +17,11 @@
   },
   {
     "name": "Vania Pachas Acuña",
-    "role": "Co-Fundadora • Directora & Frontend UI Developer",
+    "role": [
+      "Co-Founder",
+      "Junior Research Assistant (Hybrid Quantum Computing)",
+      "Chief Technology Officer"
+    ],
     "dept": [
       "Ejecutivo",
       "Investigación",
@@ -25,7 +33,10 @@
   },
   {
     "name": "Freddy Herrera Cueva",
-    "role": "CEO & Co-Fundador",
+    "role": [
+      "Co-Founder",
+      "Chief Scientific Officer"
+    ],
     "dept": [
       "Ejecutivo",
       "Investigación"
@@ -36,7 +47,9 @@
   },
   {
     "name": "Rosario Morales Orvezo",
-    "role": "",
+    "role": [
+      "Co-Director & Junior Research Assistant (Quantum Memories)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -46,7 +59,10 @@
   },
   {
     "name": "Mariana Sisniegas Hinojosa",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Quantum Machine Learning)",
+      "Disñadora Senior"
+    ],
     "dept": [
       "Investigación",
       "Comunidad"
@@ -57,7 +73,9 @@
   },
   {
     "name": "Jeanpierre Bonilla Felipa",
-    "role": "",
+    "role": [
+      "Asesor Académico"
+    ],
     "dept": [
       "Académico"
     ],
@@ -67,7 +85,10 @@
   },
   {
     "name": "Valentino Gamboa Sánchez",
-    "role": "Director",
+    "role": [
+      "Director General",
+      "Junior Research Assistant (Hybrid Quantum Computing)"
+    ],
     "dept": [
       "Académico"
     ],
@@ -77,7 +98,9 @@
   },
   {
     "name": "Manuel Rojas Tuyen",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Quantum Optics)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -87,7 +110,9 @@
   },
   {
     "name": "Missael Rodriguez Bañez",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Hybrid Quantum Computing)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -97,7 +122,10 @@
   },
   {
     "name": "Dessiree Montenegro Arrasco",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Quantum Memories)",
+      "Directora General"
+    ],
     "dept": [
       "Investigación",
       "Relaciones Públicas"
@@ -108,7 +136,9 @@
   },
   {
     "name": "Sofía Oggier",
-    "role": "Especialista Pedagógica",
+    "role": [
+      "Asesora Pedagógica"
+    ],
     "dept": [
       "Académico",
       "Innovación"
@@ -119,7 +149,9 @@
   },
   {
     "name": "Melody Jara Fermin",
-    "role": "",
+    "role": [
+      "Disñadora Senior"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -129,7 +161,9 @@
   },
   {
     "name": "Alvaro De Tomas Sanchez",
-    "role": "",
+    "role": [
+      "Disñador Senior"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -139,7 +173,10 @@
   },
   {
     "name": "Rafael Chamayo Malaga",
-    "role": "",
+    "role": [
+      "Quantum Education Research Lead",
+      "Junior Research Associate (Quantum Optics)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -149,7 +186,9 @@
   },
   {
     "name": "Enrique Espinoza Dioses",
-    "role": "Junior Backend Developer",
+    "role": [
+      "Junior Backend Developer"
+    ],
     "dept": [
       "Innovación"
     ],
@@ -159,7 +198,9 @@
   },
   {
     "name": "Jharold Alvarez",
-    "role": "Co-Director de Operaciones",
+    "role": [
+      "Co-Director & Junior Research Assistant (Quantum Memories)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -169,7 +210,9 @@
   },
   {
     "name": "Diego Haro  Rosales",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Photonics)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -179,7 +222,10 @@
   },
   {
     "name": "Ariana Lopez Julcarima",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Machine Learning)",
+      "Senior Full-Stack Developer"
+    ],
     "dept": [
       "Investigación",
       "Innovación"
@@ -190,7 +236,9 @@
   },
   {
     "name": "Escarle Sánchez Luna",
-    "role": "",
+    "role": [
+      "Disñadora Senior"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -200,7 +248,9 @@
   },
   {
     "name": "Gabriela Granados Santos",
-    "role": "Directora R.R.H.H",
+    "role": [
+      "Directora de Gestión Humana"
+    ],
     "dept": [
       "Relaciones Públicas"
     ],
@@ -210,7 +260,9 @@
   },
   {
     "name": "Osmar Vilchez Aguirre",
-    "role": "",
+    "role": [
+      "Disñador Senior"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -220,7 +272,10 @@
   },
   {
     "name": "Javier Jara Fermin",
-    "role": "Coordinador de Operaciones",
+    "role": [
+      "Junior Research Assistant (Hybrid Quantum Computing)",
+      "Coordinador de Operaciones"
+    ],
     "dept": [
       "Investigación",
       "Relaciones Públicas"
@@ -230,8 +285,10 @@
     "foto": "/images/equipo/Retrato profesional de hombre joven (1) (1) - Quantum Hub Peru.png"
   },
   {
-    "name": "Jose Quispe Cabello",
-    "role": "Senior Backend Developer",
+    "name": "Jose Alessandro Quispe Cabello",
+    "role": [
+      "Senior Backend Developer"
+    ],
     "dept": [
       "Innovación"
     ],
@@ -241,7 +298,10 @@
   },
   {
     "name": "María Antezana De La Cruz",
-    "role": "Coordinadora de Comunicaciones",
+    "role": [
+      "Junior Research Assistant (Quantum Education)",
+      "Coordinadora de Comunicaciones"
+    ],
     "dept": [
       "Relaciones Públicas"
     ],
@@ -251,7 +311,9 @@
   },
   {
     "name": "Rocio Valentin Carhuancho",
-    "role": "",
+    "role": [
+      "Quantum Software Research Lead"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -261,7 +323,10 @@
   },
   {
     "name": "Gabriel Manayay Cadillo",
-    "role": "",
+    "role": [
+      "Director de Operaciones",
+      "Junior Research Assistant (Quantum Optics)"
+    ],
     "dept": [
       "Académico",
       "Investigación"
@@ -272,7 +337,10 @@
   },
   {
     "name": "Dayana Gomez Rodriguez",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Machine Learning)",
+      "Technical Product Manager"
+    ],
     "dept": [
       "Investigación",
       "Innovación"
@@ -283,7 +351,9 @@
   },
   {
     "name": "Cristopher Levano Garcia",
-    "role": "",
+    "role": [
+      "Asesor Pedagógico"
+    ],
     "dept": [
       "Académico"
     ],
@@ -293,7 +363,9 @@
   },
   {
     "name": "Alexander Choque Minaya",
-    "role": "Frontend Developer",
+    "role": [
+      "Junior Frontend Developer"
+    ],
     "dept": [
       "Innovación"
     ],
@@ -303,7 +375,9 @@
   },
   {
     "name": "Andrea Aguilar Orbegoso",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Hybrid Quantum Computing)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -313,7 +387,9 @@
   },
   {
     "name": "Gustavo Moreano Santi",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Photonics)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -323,7 +399,9 @@
   },
   {
     "name": "Daniella Vargas Saldaña",
-    "role": "",
+    "role": [
+      "Quantum Education Senior Research Advisor"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -333,7 +411,9 @@
   },
   {
     "name": "Manuel Cáceres Maldonado",
-    "role": "Director Logístico",
+    "role": [
+      "Director Logístico"
+    ],
     "dept": [
       "Relaciones Públicas"
     ],
@@ -343,7 +423,10 @@
   },
   {
     "name": "Sebastián Villanueva Flores",
-    "role": "Director General",
+    "role": [
+      "Junior Research Assistant (Quantum Machine Learning)",
+      "Director General"
+    ],
     "dept": [
       "Relaciones Públicas"
     ],
@@ -353,7 +436,9 @@
   },
   {
     "name": "Steffi Yurivilca Laureano",
-    "role": "",
+    "role": [
+      "Editora de Prensa"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -363,7 +448,9 @@
   },
   {
     "name": "Osmar Herrera Cueva",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Education)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -373,7 +460,10 @@
   },
   {
     "name": "Camila Gutiérrez Andrade",
-    "role": "Directora",
+    "role": [
+      "Directora General",
+      "Chief Legal Officer"
+    ],
     "dept": [
       "Comunidad"
     ],

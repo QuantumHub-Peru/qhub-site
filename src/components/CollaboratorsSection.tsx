@@ -1,18 +1,5 @@
 import { motion } from "framer-motion";
-const uniLogo = "/img/logo_uni.png";
-const ibmLogo = "/img/logo_IBM_Quantum.jpg";
-const googleLogo = "/img/logo_google_quantum_ai.jpg";
-const azureLogo = "/img/logo_azure.jpg";
-const awsLogo = "/img/logo_aws_braket.jpg";
-const qiskitLogo = "/img/logo_qiskit.png";
-
 const collaborators = [
-  { name: "IBM Quantum", img: ibmLogo },
-  { name: "Universidad Nacional de Ingeniería", img: uniLogo },
-  { name: "Google Quantum AI", img: googleLogo },
-  { name: "Microsoft Azure Quantum", img: azureLogo },
-  { name: "AWS Braket", img: awsLogo },
-  { name: "Qiskit Community", img: qiskitLogo },
   { name: "QuMatrix", img: "/images/investigacion/alianza2.png" },
   { name: "Université Libre de Bruxelles", img: "/images/investigacion/alianza1.png" },
   { name: "Universidad Libre", img: "/images/investigacion/alianza3.png" },

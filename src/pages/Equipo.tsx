@@ -6,7 +6,7 @@ import { Linkedin, X, Users } from "lucide-react";
 
 interface TeamMember {
   name: string;
-  role: string;
+  role: string[];
   dept: string[];
   bio: string;
   linkedin: string;
@@ -41,13 +41,19 @@ const Equipo = () => {
     return weights[dept] || 99;
   };
 
-  const getRoleWeight = (role: string) => {
-    if (!role) return 4;
-    const r = role.toLowerCase();
-    if (r.includes("ceo") || r.includes("fundador")) return 1;
-    if (r.includes("director") || r.includes("directora") || r.includes("head") || r.includes("manager")) return 2;
-    if (r.includes("coordinador") || r.includes("lead")) return 3;
-    return 4; // Miembros, interns, etc.
+  const getRoleWeight = (roles: string[]) => {
+    if (!roles || !Array.isArray(roles) || roles.length === 0) return 6;
+    let minWeight = 6;
+    for (const role of roles) {
+      if (!role) continue;
+      const r = role.toLowerCase();
+      if (r.includes("co-founder") || r.includes("co-fundador") || r.includes("co-fundadora")) minWeight = Math.min(minWeight, 1);
+      else if (r.includes("chief")) minWeight = Math.min(minWeight, 2);
+      else if (r.includes("director") || r.includes("directora") || r.includes("co-director") || r.includes("co-directora")) minWeight = Math.min(minWeight, 3);
+      else if (r.includes("senior")) minWeight = Math.min(minWeight, 4);
+      else if (r.includes("junior")) minWeight = Math.min(minWeight, 5);
+    }
+    return minWeight;
   };
 
   const filtered = filter === "Todos" ? teamMembers : teamMembers.filter((m) => m.dept && m.dept.includes(filter));
@@ -96,7 +102,11 @@ const Equipo = () => {
       </div>
       <div className="p-3 sm:p-4 text-center">
         <h3 className="font-heading text-[11px] sm:text-xs font-bold tracking-tight sm:tracking-wide leading-tight sm:leading-normal">{m.name}</h3>
-        {m.role && <p className="font-body text-[10px] sm:text-xs text-primary mt-1 leading-tight sm:leading-normal">{m.role}</p>}
+        {m.role && m.role.length > 0 && (
+          <p className="font-body text-[10px] sm:text-xs text-primary mt-1 leading-tight sm:leading-normal">
+            {m.role.join(" • ")}
+          </p>
+        )}
         {m.dept && m.dept.length > 0 && (
           <div className="mt-1.5 flex flex-wrap justify-center gap-1 sm:gap-1.5">
             {m.dept.filter(d => d && d !== "Ejecutivo").map(d => (
@@ -193,10 +203,14 @@ const Equipo = () => {
                   <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-1.5 leading-tight">
                     {selected.name}
                   </h3>
-                  {selected.role && (
-                    <p className="font-heading text-lg sm:text-xl text-primary font-semibold mb-3">
-                      {selected.role}
-                    </p>
+                  {selected.role && selected.role.length > 0 && (
+                    <div className="flex flex-col gap-0.5 mb-3">
+                      {selected.role.map((r, i) => (
+                        <p key={i} className="font-heading text-lg sm:text-xl text-primary font-semibold">
+                          {r}
+                        </p>
+                      ))}
+                    </div>
                   )}
                   {selected.dept && selected.dept.length > 0 && (
                     <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
