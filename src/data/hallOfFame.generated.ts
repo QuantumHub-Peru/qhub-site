@@ -138,36 +138,6 @@ export const hallOfFameItems = [
     ]
   },
   {
-    "id": "rocio-valentin-y-su-camino-hacia-la-computacion-cuantica",
-    "title": "Rocio Valentin y su camino hacia la computación cuántica",
-    "cat": "Hall of Fame",
-    "date": "Octubre 2025",
-    "desc": "Rocio Valentin ha colaborado con Proteus Supercomputing Center en Granada, utilizando recursos de computación de alto rendimiento (HPC) para ejecutar simulaciones de circuitos cuánticos aleatorios. Además, ha participado en conferencias internacionales en Madrid, donde ha presentado y discutido avances en tecnologías cuánticas.",
-    "content": [
-      "Rocio es actualmente mentora del área de Quantum Software Research en QuantumHub Perú, donde contribuye al desarrollo de iniciativas educativas y de investigación en computación cuántica. Su trayectoria refleja una transición interdisciplinaria que conecta la ciencia, la ingeniería de software y las tecnologías cuánticas emergentes.",
-      "Su camino académico comenzó en el campo de la química, con el tiempo, ese interés evolucionó hacia el mundo de la programación y la ingeniería de software, área en la que adquirió experiencia. Esta etapa le permitió fortalecer habilidades clave en programación, resolución de problemas y desarrollo de sistemas complejos, herramientas que más adelante serían fundamentales para su incursión en la computación cuántica.",
-      "Motivada por la convergencia entre la física cuántica y la informática, Rocio decidió especializarse en este campo y recientemente culminó un Máster en Tecnologías Cuánticas, consolidando su formación en áreas como algoritmos cuánticos, simulación de sistemas cuánticos y computación cuántica híbrida. Durante este periodo, participó activamente en proyectos de investigación y colaboraciones internacionales. Entre ellas destaca su trabajo con el Proteus Supercomputing Center en Granada, donde utilizó recursos de computación de alto rendimiento (HPC) para ejecutar simulaciones de circuitos cuánticos aleatorios. Asimismo, participó en conferencias internacionales en Madrid, donde tuvo la oportunidad de presentar y discutir avances en tecnologías cuánticas con investigadores de distintos países, en su presentación de póster en https://www.cuantica2025.es/qtyr-2025/",
-      "Dentro de QuantumHub, Rocío inició su participación como profesora del curso de computación cuántica, contribuyendo a la formación de estudiantes interesados en ingresar a este campo. Su rol ha evolucionado hasta convertirse en mentora del área de investigación en software cuántico, donde actualmente acompaña a estudiantes e investigadores jóvenes en el desarrollo de proyectos relacionados con algoritmos híbridos clásico - cuánticos y quantum machine learning.",
-      "Su trayectoria representa un ejemplo de cómo las carreras interdisciplinarias pueden abrir nuevas oportunidades en áreas tecnológicas emergentes. Para los estudiantes y miembros de la comunidad, su mensaje es claro: el camino hacia la computación cuántica no siempre es lineal, pero la curiosidad, la formación continua y la colaboración internacional pueden convertirse en herramientas clave para formar parte de esta nueva revolución científica y tecnológica"
-    ],
-    "readTime": "2 min read",
-    "featured": false,
-    "image": "/data/HALL%20OF%20FAME/HOF_Rocio_MasterCuantica/undefined",
-    "gallery": [],
-    "links": [
-      "https://www.linkedin.com/in/rocio-lizeth-valentin-carhuancho/",
-      "https://www.linkedin.com/posts/rocio-lizeth-valentin-carhuancho_quantumcomputing-physics-quantum-activity-7381988086970478592-XKfH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC3RI8IBr4l5QV8YnoakyGi3dKq7RaL5X2c"
-    ],
-    "author": "QuantumHub Team",
-    "authorRole": "Dirección",
-    "authorAvatar": "https://ui-avatars.com/api/?name=QH&background=7c3aed&color=fff",
-    "tags": [
-      "investigacion",
-      "internacional",
-      "desarrollo"
-    ]
-  },
-  {
     "id": "sofia-oggier-obtiene-dos-medallas-de-bronce-en-los-nacionales-de-fisica-y-quimica",
     "title": "Sofía Oggier obtiene dos medallas de bronce en los Nacionales de Física y Química",
     "cat": "Hall of Fame",

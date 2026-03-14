@@ -7,7 +7,7 @@ import { useState } from "react";
 // Importamos la data autogenerada
 import { hallOfFameItems } from "@/data/hallOfFame.generated";
 // A FUTURO: Cuando generes hitos, descomenta esto:
-// import { hitosItems } from "@/data/hitos.generated";
+import { hitosItems } from "@/data/hitos.generated";
 
 // Mapeo de íconos local (ya que eliminamos noticias-data)
 const catIcons: Record<string, any> = {
@@ -35,7 +35,7 @@ const NoticiaDetail = () => {
   // Unificamos toda la data generada
   const allItems = [
     ...hallOfFameItems,
-    // ...hitosItems // A futuro
+    ...hitosItems // A futuro
   ];
 
   // Buscamos el artículo en la data unificada
@@ -323,25 +323,26 @@ const NoticiaDetail = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-10 cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 md:p-8 cursor-zoom-out backdrop-blur-sm"
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-5xl max-h-full"
+              className="relative w-full h-full max-w-[95vw] max-h-[90vh] flex items-center justify-center p-2"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={selectedImage}
                 alt="Galería ampliada"
-                className="w-full h-full object-contain rounded-lg shadow-2xl"
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl border border-white/10"
               />
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute -top-4 -right-4 md:-top-2 md:-right-12 text-white hover:text-primary transition-colors glass p-2 rounded-full z-[110]"
+                className="absolute top-2 right-2 md:-top-4 md:-right-4 text-white hover:text-primary transition-colors glass p-2 rounded-full z-[110] border border-white/20 hover:scale-110 active:scale-95"
+                title="Cerrar"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 md:w-6 md:h-6" />
               </button>
             </motion.div>
           </motion.div>
