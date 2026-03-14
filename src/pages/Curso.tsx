@@ -117,6 +117,10 @@ const faqs = [
     question: "¿Ofrecen apoyo para conseguir trabajo después del curso?",
     answer: "Tenemos una red de empresas aliadas y profesionales en investigación y desarrollo en el área cuántica, pero no es parte del programa per se.",
   },
+  {
+    question: "¿Qué es la plataforma educativa?",
+    answer: "Es nuestro entorno virtual exclusivo donde los estudiantes acceden a materiales, grabaciones de clases, laboratorios interactivos y realizan sus entregas semanales.",
+  },
 ];
 
 const createGoogleCalendarUrl = ({

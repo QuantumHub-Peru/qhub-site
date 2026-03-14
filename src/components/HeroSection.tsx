@@ -10,11 +10,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Monitor, BookOpen, Zap } from "lucide-react";
 
 const HeroSection = () => {
   const plugin = useRef(
-    Autoplay({ delay: 6000, stopOnInteraction: true })
+    Autoplay({ delay: 3000, stopOnInteraction: false })
   );
 
   return (
@@ -195,6 +195,80 @@ const HeroSection = () => {
                       <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
                         Aprende con nosotros
                       </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CarouselItem>
+
+          {/* Slide 3: Plataforma view */}
+          <CarouselItem className="p-0 h-full relative flex items-center justify-center overflow-hidden bg-background">
+            {/* Background elements */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/10 via-background to-background pointer-events-none" />
+            <div className="absolute inset-0 quantum-grid animate-grid-flow-reverse opacity-10 pointer-events-none" />
+            
+            <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-center justify-center px-6 lg:px-20 mb-12">
+              <div className="flex flex-col md:flex-row gap-8 lg:gap-14 items-center justify-between w-full">
+                
+                {/* Left side text */}
+                <div className="md:w-1/2 lg:w-3/5 space-y-6 flex flex-col justify-center">
+                  <div className="self-start px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs tracking-widest font-bold shadow-sm uppercase">
+                    Plataforma Educativa
+                  </div>
+
+                  <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.95] tracking-[-0.04em] flex flex-col items-start uppercase drop-shadow-md">
+                    <span>Explora nuestra</span>
+                    <span className="text-gradient-quantum pb-1">Plataforma</span>
+                  </h1>
+
+                  <p className="text-base sm:text-lg text-muted-foreground/90 leading-relaxed max-w-2xl font-medium">
+                    Accede a recursos interactivos, simuladores cuánticos y laboratorios virtuales diseñados para democratizar el conocimiento.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    {[
+                      { icon: Monitor, text: "Simuladores Interactivos" },
+                      { icon: BookOpen, text: "Contenido Autogestionado" },
+                      { icon: Zap, text: "Laboratorios Prácticos" },
+                    ].map((item) => (
+                      <div key={item.text} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                        <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                          <item.icon className="w-4 h-4 text-primary" />
+                        </div>
+                        <span className="text-sm font-bold text-foreground/90">{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="/plataforma" className="btn-accent-cta flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-black shadow-[0_0_20px_rgba(255,215,0,0.3)] uppercase tracking-widest hover:scale-105 transition-transform">
+                      Ver Plataforma <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Right side Platform Mockup */}
+                <div className="hidden md:flex md:w-1/2 lg:w-2/5 p-6 rounded-3xl bg-gradient-to-br from-accent/20 via-background/60 to-primary/20 border border-white/10 shadow-[0_0_40px_rgba(255,215,0,0.1)] overflow-hidden group relative items-center justify-center backdrop-blur-md">
+                  <div className="w-full h-full glass-strong rounded-xl p-6 glow-purple">
+                    <div className="rounded-lg bg-background/80 p-5 space-y-5 border border-white/5">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-3 h-3 rounded-full bg-primary/60" />
+                        <div className="w-3 h-3 rounded-full bg-accent/60" />
+                        <div className="w-3 h-3 rounded-full bg-quantum-turquoise/60" />
+                      </div>
+                      <div className="h-6 w-3/4 rounded bg-white/5" />
+                      <div className="grid grid-cols-3 gap-3">
+                        {[1, 2, 3].map((n) => (
+                          <div key={n} className="h-24 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 border border-white/5 flex items-center justify-center">
+                            <Zap className="w-6 h-6 text-primary/40" />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="h-32 rounded-lg bg-gradient-to-tr from-[#DE5CA3]/10 to-primary/10 flex items-center justify-center relative overflow-hidden">
+                         <div className="absolute inset-0 bg-primary/5 animate-pulse" />
+                         <Monitor className="w-12 h-12 text-[#DE5CA3] relative z-10 opacity-70" />
+                      </div>
                     </div>
                   </div>
                 </div>
