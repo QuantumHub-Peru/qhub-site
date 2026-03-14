@@ -60,16 +60,20 @@ const Footer = () => {
             © 2026 QuantumHub Peru. Todos los derechos reservados.
           </p>
           <div className="flex gap-4">
-            {["LinkedIn", "Instagram", "YouTube", "Discord"].map((social) => (
-              <motion.a
-                key={social}
-                href="#"
-                whileHover={{ y: -2 }}
-                className="font-body text-xs text-muted-foreground hover:text-primary transition-colors"
-              >
-                {social}
-              </motion.a>
-            ))}
+            <motion.a
+              href="https://www.linkedin.com/company/quantumhub-per%C3%BA/"
+              whileHover={{ y: -2 }}
+              className="font-body text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              LinkedIn
+            </motion.a>
+            <motion.a
+              href="https://www.instagram.com/quantumhub.pe/"
+              whileHover={{ y: -2 }}
+              className="font-body text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              Instagram
+            </motion.a>
           </div>
         </div>
       </div>
