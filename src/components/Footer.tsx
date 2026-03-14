@@ -14,7 +14,7 @@ const Footer = () => {
       { label: "Inicio", href: "/" },
       { label: "Nosotros", href: "/nosotros" },
       { label: "Curso", href: "/curso" },
-      { label: "Plataforma", href: "/plataforma" },
+      { label: "Plataforma", href: "https://www.qhubperu.com/aprendizaje" },
       { label: "Noticias", href: "/noticias" },
     ],
   };

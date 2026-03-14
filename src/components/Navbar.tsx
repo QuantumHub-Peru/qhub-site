@@ -115,9 +115,9 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
           ))}
-          <Link to="/plataforma" className="ml-4 btn-accent-cta text-xs py-2 px-5">
+          <a href="https://www.qhubperu.com/aprendizaje" className="ml-4 btn-accent-cta text-xs py-2 px-5">
             Plataforma
-          </Link>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -172,9 +172,9 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <Link to="/plataforma" onClick={() => setMobileOpen(false)} className="btn-accent-cta text-xs py-2 px-5 text-center mt-2">
+              <a href="https://www.qhubperu.com/aprendizaje" onClick={() => setMobileOpen(false)} className="btn-accent-cta text-xs py-2 px-5 text-center mt-2">
                 Plataforma
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}
