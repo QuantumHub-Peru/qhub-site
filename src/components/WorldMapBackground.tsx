@@ -1,7 +1,6 @@
-import geoData from '../assets/countries.geo.json';
-import countryLevels from '../assets/countryLevels.json';
+import geoData from '@/data/countries.geo.json';
+import countryLevels from '@/data/countryLevels.json';
 import { motion } from 'framer-motion';
-
 const project = (lng: number, lat: number) => {
     // Using the exact linear projection as the centroid generator
     const x = lng * 0.265 + 48.5;

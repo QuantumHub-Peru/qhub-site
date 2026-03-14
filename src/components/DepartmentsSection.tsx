@@ -6,11 +6,11 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Line, Billboard, Text } from "@react-three/drei";
 import * as THREE from "three";
 
-import deptImg1 from "@/assets/investigación.png"; {/* investigación */}
-import deptImg2 from "@/assets/académico.png"; {/* académico */}
-import deptImg3 from "@/assets/innovación.png"; {/* innovación*/}
-import deptImg4 from "@/assets/relacionespublicas.png"; {/* relaciones */}
-import deptImg5 from "@/assets/comunidad.png"; {/* comunidad */}
+const deptImg1 = "/investigación.png"; {/* investigación */ }
+const deptImg2 = "/académico.png"; {/* académico */ }
+const deptImg3 = "/innovación.png"; {/* innovación*/ }
+const deptImg4 = "/relacionespublicas.png"; {/* relaciones */ }
+const deptImg5 = "/comunidad.png"; {/* comunidad */ }
 
 interface Department {
   id: string;

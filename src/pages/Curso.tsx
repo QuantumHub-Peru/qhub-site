@@ -5,16 +5,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { motion, AnimatePresence } from "framer-motion";
 import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award, CheckCircle, ChevronRight, ChevronLeft, PlayCircle, CalendarPlus, MapPin, HelpCircle } from "lucide-react";
 import { useState, useRef } from "react";
-import aprendiendoImg from "@/gato/aprendiendo.png";
+const aprendiendoImg = "gato/aprendiendo.png"
 import LatamGlobe from "@/components/LatamGlobe";
 import QuantumMolecule from '@/components/QuantumMolecule';
-import modulo1Img from "@/gato/modelo1.png";
-import modulo2Img from "@/gato/modulo2.png";
-import modulo3Img from "@/gato/modulo3.png";
-import teoriaImg from "@/gato/teoria.png";
-import laboratorioImg from "@/gato/laboratorio.png";
-import horasImg from "@/gato/74.png";
-import teacherImg from "@/gato/teacher.png";
+const modulo1Img = "gato/modelo1.png"
+const modulo2Img = "gato/modulo2.png"
+const modulo3Img = "gato/modulo3.png"
+const teoriaImg = "gato/teoria.png"
+const laboratorioImg = "gato/laboratorio.png"
+const horasImg = "gato/74.png"
+const teacherImg = "gato/teacher.png"
 import FaqCarousel from "@/components/FaqCarousel";
 
 // Modules Data
@@ -180,30 +180,30 @@ const faqs = [
   {
     question: "¿Qué especificaciones necesita mi PC?",
     answer: (
-      <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-left max-w-sm mx-auto">
-        <div className="flex gap-2">
+      <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-left max-w-[260px] md:max-w-sm mx-auto text-[11px] md:text-sm">
+        <div className="flex gap-1.5">
           <span className="text-accent font-bold">CPU:</span>
-          <span className="text-white/90">i5 / Ryzen 5</span>
+          <span className="text-white/90">i5 / R5</span>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-1.5">
           <span className="text-accent font-bold">RAM:</span>
           <span className="text-white/90">8 GB+</span>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-1.5">
           <span className="text-accent font-bold">SSD:</span>
           <span className="text-white/90">256 GB+</span>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-1.5">
           <span className="text-accent font-bold">GPU:</span>
-          <span className="text-white/90">No necesaria</span>
+          <span className="text-white/90">Básica</span>
         </div>
-        <div className="flex gap-2 items-center col-span-2 mt-1">
-          <span className="text-accent font-bold">Sistemas:</span>
-          <span className="text-white/90">Linux, Windows, Mac</span>
+        <div className="flex gap-1.5 items-center col-span-2">
+          <span className="text-accent font-bold">SO:</span>
+          <span className="text-white/90">Linux, Win, Mac</span>
         </div>
-        <div className="flex gap-2 items-center col-span-2">
+        <div className="flex gap-1.5 items-center col-span-2">
           <span className="text-accent font-bold">Python:</span>
-          <span className="text-white/90">3.8 o superior</span>
+          <span className="text-white/90">3.8+</span>
         </div>
       </div>
     ),

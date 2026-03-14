@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import r1Img from "@/assets/r1.jpg";
-import elisaImg from "@/gato/gato.png"; // Placeholder for the avatar
+
+const r1Img = "/r1.jpg";
+const elisaImg = "/gato/gato.png";
 
 const WhatIsSection = () => {
   return (

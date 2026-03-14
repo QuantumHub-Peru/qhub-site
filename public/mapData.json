@@ -1,0 +1,1642 @@
+[
+  {
+    "code": "af",
+    "name": "Afghanistan",
+    "x": 66.5,
+    "y": 40.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ao",
+    "name": "Angola",
+    "x": 53.2,
+    "y": 62.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "al",
+    "name": "Albania",
+    "x": 53.8,
+    "y": 37.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ae",
+    "name": "United Arab Emirates",
+    "x": 62.8,
+    "y": 45.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ar",
+    "name": "Argentina",
+    "x": 31.7,
+    "y": 75,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "am",
+    "name": "Armenia",
+    "x": 60.4,
+    "y": 38,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "aq",
+    "name": "Antarctica",
+    "x": 48.5,
+    "y": 92.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "au",
+    "name": "Australia",
+    "x": 83.9,
+    "y": 69.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "at",
+    "name": "Austria",
+    "x": 52,
+    "y": 34.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "az",
+    "name": "Azerbaijan",
+    "x": 61.1,
+    "y": 38,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bi",
+    "name": "Burundi",
+    "x": 56.4,
+    "y": 58.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "be",
+    "name": "Belgium",
+    "x": 49.6,
+    "y": 33,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bj",
+    "name": "Benin",
+    "x": 49.1,
+    "y": 52.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bf",
+    "name": "Burkina Faso",
+    "x": 48.1,
+    "y": 51.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bd",
+    "name": "Bangladesh",
+    "x": 72.5,
+    "y": 45.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bg",
+    "name": "Bulgaria",
+    "x": 55.2,
+    "y": 36.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bs",
+    "name": "Bahamas",
+    "x": 27.8,
+    "y": 45.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ba",
+    "name": "Bosnia and Herzegovina",
+    "x": 53.2,
+    "y": 36.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "by",
+    "name": "Belarus",
+    "x": 55.9,
+    "y": 31.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bz",
+    "name": "Belize",
+    "x": 25,
+    "y": 48.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bm",
+    "name": "Bermuda",
+    "x": 31.3,
+    "y": 41.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bo",
+    "name": "Bolivia, Plurinational State of",
+    "x": 31.7,
+    "y": 65,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "br",
+    "name": "Brazil",
+    "x": 34.1,
+    "y": 64,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bt",
+    "name": "Bhutan",
+    "x": 72.5,
+    "y": 44,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "bw",
+    "name": "Botswana",
+    "x": 55,
+    "y": 67.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "cf",
+    "name": "Central African Republic",
+    "x": 54,
+    "y": 54,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ca",
+    "name": "Canada",
+    "x": 22.4,
+    "y": 29.9,
+    "level": "medium",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ch",
+    "name": "Switzerland",
+    "x": 50.7,
+    "y": 34.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "cl",
+    "name": "Chile",
+    "x": 29.6,
+    "y": 74.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ci",
+    "name": "Côte d'Ivoire",
+    "x": 47,
+    "y": 53.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "cm",
+    "name": "Cameroon",
+    "x": 51.7,
+    "y": 53.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "cd",
+    "name": "Congo, the Democratic Republic of the",
+    "x": 54.2,
+    "y": 59.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "cg",
+    "name": "Republic of the Congo",
+    "x": 52.4,
+    "y": 57.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "co",
+    "name": "Colombia",
+    "x": 29.2,
+    "y": 55.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "cr",
+    "name": "Costa Rica",
+    "x": 26.2,
+    "y": 52.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "cu",
+    "name": "Cuba",
+    "x": 27.4,
+    "y": 46.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "cy",
+    "name": "Cyprus",
+    "x": 57.3,
+    "y": 40.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "cz",
+    "name": "Czech Republic",
+    "x": 52.6,
+    "y": 33.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "de",
+    "name": "Germany",
+    "x": 51.3,
+    "y": 32.7,
+    "level": "medium",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "dj",
+    "name": "Djibouti",
+    "x": 59.8,
+    "y": 51.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "dk",
+    "name": "Denmark",
+    "x": 51,
+    "y": 30.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "do",
+    "name": "Dominican Republic",
+    "x": 29.9,
+    "y": 48.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "dz",
+    "name": "Algeria",
+    "x": 48.9,
+    "y": 43.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ec",
+    "name": "Ecuador",
+    "x": 27.8,
+    "y": 58.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "eg",
+    "name": "Egypt",
+    "x": 56.7,
+    "y": 44.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "er",
+    "name": "Eritrea",
+    "x": 59,
+    "y": 49.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "es",
+    "name": "Spain",
+    "x": 47.7,
+    "y": 38.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ee",
+    "name": "Estonia",
+    "x": 55.3,
+    "y": 29.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "et",
+    "name": "Ethiopia",
+    "x": 59.2,
+    "y": 52.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "fi",
+    "name": "Finland",
+    "x": 55.4,
+    "y": 26,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "fj",
+    "name": "Fiji",
+    "x": 95.7,
+    "y": 65.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "fr",
+    "name": "France",
+    "x": 49,
+    "y": 34.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ga",
+    "name": "Gabon",
+    "x": 51.6,
+    "y": 57.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gb",
+    "name": "United Kingdom",
+    "x": 48,
+    "y": 31.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ge",
+    "name": "Georgia",
+    "x": 60,
+    "y": 36.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gh",
+    "name": "Ghana",
+    "x": 48.2,
+    "y": 53.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gn",
+    "name": "Guinea",
+    "x": 45.5,
+    "y": 52.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gm",
+    "name": "Gambia",
+    "x": 44.4,
+    "y": 50.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gq",
+    "name": "Equatorial Guinea",
+    "x": 51.2,
+    "y": 56.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gr",
+    "name": "Greece",
+    "x": 54.7,
+    "y": 38.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gl",
+    "name": "Greenland",
+    "x": 37.2,
+    "y": 22.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gt",
+    "name": "Guatemala",
+    "x": 24.6,
+    "y": 49.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gf",
+    "name": "French Guiana",
+    "x": 34.4,
+    "y": 55.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "gy",
+    "name": "Guyana",
+    "x": 32.9,
+    "y": 54.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "hn",
+    "name": "Honduras",
+    "x": 25.6,
+    "y": 50.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "hr",
+    "name": "Croatia",
+    "x": 52.9,
+    "y": 35.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ht",
+    "name": "Haiti",
+    "x": 29.1,
+    "y": 48.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "hu",
+    "name": "Hungary",
+    "x": 53.7,
+    "y": 34.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "id",
+    "name": "Indonesia",
+    "x": 75.2,
+    "y": 57.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "in",
+    "name": "India",
+    "x": 70.4,
+    "y": 46.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ie",
+    "name": "Ireland",
+    "x": 46.4,
+    "y": 31.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ir",
+    "name": "Iran, Islamic Republic of",
+    "x": 62.7,
+    "y": 41.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "iq",
+    "name": "Iraq",
+    "x": 60.1,
+    "y": 41.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "is",
+    "name": "Iceland",
+    "x": 43.5,
+    "y": 26,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "il",
+    "name": "Israel",
+    "x": 57.8,
+    "y": 42.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "it",
+    "name": "Italy",
+    "x": 51.8,
+    "y": 36.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "jm",
+    "name": "Jamaica",
+    "x": 28,
+    "y": 48.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "jo",
+    "name": "Jordan",
+    "x": 58.3,
+    "y": 42.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "jp",
+    "name": "Japan",
+    "x": 84.5,
+    "y": 39.8,
+    "level": "medium",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "kz",
+    "name": "Kazakhstan",
+    "x": 66.2,
+    "y": 34.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ke",
+    "name": "Kenya",
+    "x": 58.5,
+    "y": 57,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "kg",
+    "name": "Kyrgyzstan",
+    "x": 68.3,
+    "y": 37.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "kh",
+    "name": "Cambodia",
+    "x": 76.3,
+    "y": 51.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "kr",
+    "name": "Korea, Republic of",
+    "x": 82.4,
+    "y": 39.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "xk",
+    "name": "Kosovo",
+    "x": 54,
+    "y": 36.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "kw",
+    "name": "Kuwait",
+    "x": 61.1,
+    "y": 43.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "lb",
+    "name": "Lebanon",
+    "x": 58,
+    "y": 40.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "lr",
+    "name": "Liberia",
+    "x": 46,
+    "y": 54.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ly",
+    "name": "Libya",
+    "x": 53.1,
+    "y": 44.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "lk",
+    "name": "Sri Lanka",
+    "x": 69.9,
+    "y": 53.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ls",
+    "name": "Lesotho",
+    "x": 56,
+    "y": 71.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "lt",
+    "name": "Lithuania",
+    "x": 54.8,
+    "y": 30.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "lu",
+    "name": "Luxembourg",
+    "x": 50.1,
+    "y": 33.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "lv",
+    "name": "Latvia",
+    "x": 55,
+    "y": 29.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ma",
+    "name": "Morocco",
+    "x": 46.1,
+    "y": 43.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "mg",
+    "name": "Madagascar",
+    "x": 60.9,
+    "y": 66.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "mx",
+    "name": "Mexico",
+    "x": 21.5,
+    "y": 45.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ml",
+    "name": "Mali",
+    "x": 47.5,
+    "y": 48.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "mt",
+    "name": "Malta",
+    "x": 52.3,
+    "y": 40,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "mm",
+    "name": "Myanmar",
+    "x": 74.1,
+    "y": 48,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "me",
+    "name": "Montenegro",
+    "x": 53.6,
+    "y": 36.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "mn",
+    "name": "Mongolia",
+    "x": 76,
+    "y": 34.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "mz",
+    "name": "Mozambique",
+    "x": 57.9,
+    "y": 66.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "mr",
+    "name": "Mauritania",
+    "x": 45.6,
+    "y": 47.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "mw",
+    "name": "Malawi",
+    "x": 57.6,
+    "y": 63.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "my",
+    "name": "Malaysia",
+    "x": 78.8,
+    "y": 55.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "na",
+    "name": "Namibia",
+    "x": 53.4,
+    "y": 68.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "nc",
+    "name": "New Caledonia",
+    "x": 92.4,
+    "y": 67.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ne",
+    "name": "Niger",
+    "x": 50.6,
+    "y": 48.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ng",
+    "name": "Nigeria",
+    "x": 50.8,
+    "y": 52.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ni",
+    "name": "Nicaragua",
+    "x": 25.9,
+    "y": 51,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "nl",
+    "name": "Netherlands",
+    "x": 49.9,
+    "y": 32.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "no",
+    "name": "Norway",
+    "x": 53.3,
+    "y": 26.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "np",
+    "name": "Nepal",
+    "x": 70.8,
+    "y": 43.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "nz",
+    "name": "New Zealand",
+    "x": 93.7,
+    "y": 78.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "om",
+    "name": "Oman",
+    "x": 63.3,
+    "y": 47.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "pk",
+    "name": "Pakistan",
+    "x": 66.9,
+    "y": 42.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "pa",
+    "name": "Panama",
+    "x": 27.3,
+    "y": 53.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "pe",
+    "name": "Peru",
+    "x": 28.6,
+    "y": 62,
+    "level": "peru",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ph",
+    "name": "Philippines",
+    "x": 80.8,
+    "y": 49.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "pg",
+    "name": "Papua New Guinea",
+    "x": 87.2,
+    "y": 60.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "pl",
+    "name": "Poland",
+    "x": 53.5,
+    "y": 32.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "pr",
+    "name": "Puerto Rico",
+    "x": 30.9,
+    "y": 48.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "kp",
+    "name": "Korea, Democratic People's Republic of",
+    "x": 82.3,
+    "y": 37.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "pt",
+    "name": "Portugal",
+    "x": 46.4,
+    "y": 38.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "py",
+    "name": "Paraguay",
+    "x": 33,
+    "y": 68.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "qa",
+    "name": "Qatar",
+    "x": 62.1,
+    "y": 45,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ro",
+    "name": "Romania",
+    "x": 55.1,
+    "y": 35.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ru",
+    "name": "Russian Federation",
+    "x": 76,
+    "y": 28.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "rw",
+    "name": "Rwanda",
+    "x": 56.4,
+    "y": 58.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "eh",
+    "name": "Western Sahara",
+    "x": 45.1,
+    "y": 45.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "sa",
+    "name": "Saudi Arabia",
+    "x": 60.5,
+    "y": 45.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "sd",
+    "name": "Sudan",
+    "x": 56.5,
+    "y": 49.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ss",
+    "name": "South Sudan",
+    "x": 56.3,
+    "y": 53.4,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "sn",
+    "name": "Senegal",
+    "x": 44.6,
+    "y": 50.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "sb",
+    "name": "Solomon Islands",
+    "x": 90.7,
+    "y": 61,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "sl",
+    "name": "Sierra Leone",
+    "x": 45.4,
+    "y": 53.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "sv",
+    "name": "El Salvador",
+    "x": 24.9,
+    "y": 50.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "so",
+    "name": "Somalia",
+    "x": 60.7,
+    "y": 54.7,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "sr",
+    "name": "Suriname",
+    "x": 33.7,
+    "y": 55.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "sk",
+    "name": "Slovakia",
+    "x": 53.7,
+    "y": 33.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "si",
+    "name": "Slovenia",
+    "x": 52.5,
+    "y": 35,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "se",
+    "name": "Sweden",
+    "x": 53.1,
+    "y": 27.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "sy",
+    "name": "Syrian Arab Republic",
+    "x": 58.8,
+    "y": 40.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "td",
+    "name": "Chad",
+    "x": 53.5,
+    "y": 49.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "tg",
+    "name": "Togo",
+    "x": 48.7,
+    "y": 53.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "th",
+    "name": "Thailand",
+    "x": 75.4,
+    "y": 50.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "tj",
+    "name": "Tajikistan",
+    "x": 67.4,
+    "y": 38.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "tm",
+    "name": "Turkmenistan",
+    "x": 64.3,
+    "y": 38.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "tt",
+    "name": "Trinidad and Tobago",
+    "x": 32.2,
+    "y": 52.2,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "tn",
+    "name": "Tunisia",
+    "x": 51,
+    "y": 41,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "tw",
+    "name": "Taiwan (Republic of China)",
+    "x": 80.6,
+    "y": 45.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ug",
+    "name": "Uganda",
+    "x": 57.1,
+    "y": 56.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ua",
+    "name": "Ukraine",
+    "x": 56.7,
+    "y": 34,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "uy",
+    "name": "Uruguay",
+    "x": 33.7,
+    "y": 72.8,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "us",
+    "name": "United States",
+    "x": 23.3,
+    "y": 39,
+    "level": "high",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "uz",
+    "name": "Uzbekistan",
+    "x": 65.6,
+    "y": 37.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ve",
+    "name": "Venezuela, Bolivarian Republic of",
+    "x": 30.9,
+    "y": 54.1,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "vn",
+    "name": "Vietnam",
+    "x": 76.5,
+    "y": 49.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "vu",
+    "name": "Vanuatu",
+    "x": 92.7,
+    "y": 64.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "ye",
+    "name": "Yemen",
+    "x": 61.2,
+    "y": 49.6,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "za",
+    "name": "South Africa",
+    "x": 55,
+    "y": 70.9,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "zm",
+    "name": "Zambia",
+    "x": 55.8,
+    "y": 63.5,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  },
+  {
+    "code": "zw",
+    "name": "Zimbabwe",
+    "x": 56.2,
+    "y": 66.3,
+    "level": "low",
+    "info": [
+      "Quantum Research Hub"
+    ]
+  }
+]

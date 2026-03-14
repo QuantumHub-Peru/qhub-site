@@ -2,8 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, MapPin, Globe, ShieldCheck, X } from "lucide-react";
 // Import the background image provided by the user
-import contactoBg from "@/gato/contacto.png";
-
+const contactoBg = "gato/contacto.png";
 type InquiryType = "Admisión" | "General" | "Empresas" | "Auspicios" | "Otros";
 
 const inquiryTypes: InquiryType[] = ["Admisión", "General", "Empresas", "Auspicios", "Otros"];

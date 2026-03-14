@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
-import aprendiendoImg from "@/gato/aprendiendo.png";
+const heroBg = "/hero-bg.jpg";
+const aprendiendoImg = "/gato/aprendiendo.png";
 import {
   Carousel,
   CarouselContent,
@@ -125,10 +125,10 @@ const HeroSection = () => {
             {/* Background elements for second slide */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/15 via-background to-background pointer-events-none" />
             <div className="absolute inset-0 quantum-grid animate-grid-flow opacity-10 pointer-events-none" />
-            
+
             <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-center justify-center px-6 lg:px-20 mb-12">
               <div className="flex flex-col md:flex-row gap-8 lg:gap-14 items-center justify-between w-full">
-                
+
                 {/* Left side text */}
                 <div className="md:w-1/2 lg:w-3/5 space-y-6 flex flex-col justify-center">
                   <div className="self-start px-5 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs tracking-widest font-bold shadow-sm uppercase">
@@ -205,10 +205,10 @@ const HeroSection = () => {
             {/* Background elements */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/10 via-background to-background pointer-events-none" />
             <div className="absolute inset-0 quantum-grid animate-grid-flow-reverse opacity-10 pointer-events-none" />
-            
+
             <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-center justify-center px-6 lg:px-20 mb-12">
               <div className="flex flex-col md:flex-row gap-8 lg:gap-14 items-center justify-between w-full">
-                
+
                 {/* Left side text */}
                 <div className="md:w-1/2 lg:w-[45%] space-y-6 flex flex-col justify-center">
                   <div className="self-start px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs tracking-widest font-bold shadow-sm uppercase">
@@ -240,8 +240,8 @@ const HeroSection = () => {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a 
-                      href="https://www.qhubperu.com/aprendizaje" 
+                    <a
+                      href="https://www.qhubperu.com/aprendizaje"
                       target="_blank"
                       rel="noreferrer"
                       className="btn-accent-cta flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 text-[11px] font-black shadow-[0_0_20px_rgba(255,215,0,0.3)] uppercase tracking-widest hover:scale-105 transition-transform"
@@ -255,11 +255,11 @@ const HeroSection = () => {
                 <div className="hidden md:flex md:w-1/2 lg:w-[55%] p-4 rounded-3xl bg-gradient-to-br from-accent/20 via-background/60 to-primary/20 border border-white/10 shadow-[0_0_40px_rgba(255,215,0,0.1)] overflow-hidden group relative items-center justify-center backdrop-blur-md">
                   <div className="w-full h-full glass-strong rounded-xl p-1.5 glow-purple overflow-hidden">
                     <div className="relative rounded-lg overflow-hidden aspect-video bg-background/40">
-                      <video 
+                      <video
                         src="/plataformaqhub.mp4"
-                        autoPlay 
-                        muted 
-                        loop 
+                        autoPlay
+                        muted
+                        loop
                         playsInline
                         className="w-full h-full object-cover"
                       />
@@ -272,11 +272,11 @@ const HeroSection = () => {
           </CarouselItem>
 
         </CarouselContent>
-        
+
         {/* Carousel controls - placed absolutely on top of slides */}
         <CarouselPrevious className="hidden md:inline-flex left-6 lg:left-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-12 w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
         <CarouselNext className="hidden md:inline-flex right-6 lg:right-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-12 w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
-        
+
         {/* Animated wave at bottom of the entire carousel section so it stays consistent */}
         <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-20">
           <svg viewBox="0 0 1440 120" fill="none" className="w-full">

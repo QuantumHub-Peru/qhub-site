@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import uniLogo from "@/assets/img/logo_uni.png";
-import ibmLogo from "@/assets/img/logo_IBM_Quantum.jpg";
-import googleLogo from "@/assets/img/logo_google_quantum_ai.jpg";
-import azureLogo from "@/assets/img/logo_azure.jpg";
-import awsLogo from "@/assets/img/logo_aws_braket.jpg";
-import qiskitLogo from "@/assets/img/logo_qiskit.png";
+const uniLogo = "/img/logo_uni.png";
+const ibmLogo = "/img/logo_IBM_Quantum.jpg";
+const googleLogo = "/img/logo_google_quantum_ai.jpg";
+const azureLogo = "/img/logo_azure.jpg";
+const awsLogo = "/img/logo_aws_braket.jpg";
+const qiskitLogo = "/img/logo_qiskit.png";
 
 const collaborators = [
   { name: "IBM Quantum", img: ibmLogo },
@@ -32,81 +32,81 @@ const CollaboratorsSection = () => {
     <div className="flex items-center gap-8 md:gap-12 lg:gap-16 pr-8 md:pr-12 lg:pr-16">
       {collaborators.map((c, i) => (
         <div
-            key={`${c.name}-${i}`}
-            className="relative group perspective-[1000px] flex flex-col items-center gap-4 w-[200px] md:w-[240px] py-4"
+          key={`${c.name}-${i}`}
+          className="relative group perspective-[1000px] flex flex-col items-center gap-4 w-[200px] md:w-[240px] py-4"
         >
-            {/* The Atom / Bloch Sphere Container */}
-            <div className="relative w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-105">
+          {/* The Atom / Bloch Sphere Container */}
+          <div className="relative w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-105">
 
-                {/* Orbital Rings - Atom Shape */}
-                <div className="absolute inset-0 -m-8 md:-m-10 pointer-events-none">
-                    {/* Core Energy Glow */}
-                    <div
-                        className="absolute inset-0 m-auto w-16 h-16 md:w-20 md:h-20 rounded-full blur-[30px] opacity-40 group-hover:opacity-70 transition-opacity duration-700 mix-blend-screen z-0"
-                        style={{ backgroundColor: `hsl(${hslColor})` }}
-                    />
+            {/* Orbital Rings - Atom Shape */}
+            <div className="absolute inset-0 -m-8 md:-m-10 pointer-events-none">
+              {/* Core Energy Glow */}
+              <div
+                className="absolute inset-0 m-auto w-16 h-16 md:w-20 md:h-20 rounded-full blur-[30px] opacity-40 group-hover:opacity-70 transition-opacity duration-700 mix-blend-screen z-0"
+                style={{ backgroundColor: `hsl(${hslColor})` }}
+              />
 
-                    {/* Orbit 1 */}
-                    <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'rotateZ(0deg) rotateX(72deg)' }}>
-                        <div className="absolute w-full h-full border border-white/20 rounded-full opacity-60" />
-                        <div className="absolute w-full h-full animate-[spin_6s_linear_infinite]">
-                            <div
-                                className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full"
-                                style={{
-                                    backgroundColor: `hsl(${hslColor})`,
-                                    boxShadow: `0 0 10px 2px hsl(${hslColor} / 0.8)`
-                                }}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Orbit 2 */}
-                    <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'rotateZ(60deg) rotateX(72deg)' }}>
-                        <div className="absolute w-full h-full border border-white/20 rounded-full opacity-60" />
-                        <div className="absolute w-full h-full animate-[spin_8s_linear_infinite_reverse]">
-                            <div
-                                className="absolute top-1/2 -right-[3px] -translate-y-1/2 w-2 h-2 rounded-full"
-                                style={{
-                                    backgroundColor: `hsl(${hslColor})`,
-                                    boxShadow: `0 0 10px 2px hsl(${hslColor} / 0.8)`
-                                }}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Orbit 3 */}
-                    <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'rotateZ(120deg) rotateX(72deg)' }}>
-                        <div className="absolute w-full h-full border border-white/20 rounded-full opacity-60" />
-                        <div className="absolute w-full h-full animate-[spin_10s_linear_infinite]">
-                            <div
-                                className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full"
-                                style={{
-                                    backgroundColor: `hsl(${hslColor})`,
-                                    boxShadow: `0 0 10px 2px hsl(${hslColor} / 0.8)`
-                                }}
-                            />
-                        </div>
-                    </div>
+              {/* Orbit 1 */}
+              <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'rotateZ(0deg) rotateX(72deg)' }}>
+                <div className="absolute w-full h-full border border-white/20 rounded-full opacity-60" />
+                <div className="absolute w-full h-full animate-[spin_6s_linear_infinite]">
+                  <div
+                    className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full"
+                    style={{
+                      backgroundColor: `hsl(${hslColor})`,
+                      boxShadow: `0 0 10px 2px hsl(${hslColor} / 0.8)`
+                    }}
+                  />
                 </div>
+              </div>
 
-                {/* Central Logo Box */}
-                <div
-                    className="w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-2xl flex items-center justify-center relative z-10 transition-all duration-500 bg-background/80 backdrop-blur-xl border border-white/10"
-                    style={{ boxShadow: `0 0 20px hsl(${hslColor} / 0.3), inset 0 0 10px hsl(${hslColor} / 0.15)` }}
-                >
-                    <img src={c.img} alt={c.name} className="w-[80%] h-[80%] object-contain filter drop-shadow-lg" />
+              {/* Orbit 2 */}
+              <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'rotateZ(60deg) rotateX(72deg)' }}>
+                <div className="absolute w-full h-full border border-white/20 rounded-full opacity-60" />
+                <div className="absolute w-full h-full animate-[spin_8s_linear_infinite_reverse]">
+                  <div
+                    className="absolute top-1/2 -right-[3px] -translate-y-1/2 w-2 h-2 rounded-full"
+                    style={{
+                      backgroundColor: `hsl(${hslColor})`,
+                      boxShadow: `0 0 10px 2px hsl(${hslColor} / 0.8)`
+                    }}
+                  />
                 </div>
+              </div>
+
+              {/* Orbit 3 */}
+              <div className="absolute inset-0 flex items-center justify-center" style={{ transform: 'rotateZ(120deg) rotateX(72deg)' }}>
+                <div className="absolute w-full h-full border border-white/20 rounded-full opacity-60" />
+                <div className="absolute w-full h-full animate-[spin_10s_linear_infinite]">
+                  <div
+                    className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full"
+                    style={{
+                      backgroundColor: `hsl(${hslColor})`,
+                      boxShadow: `0 0 10px 2px hsl(${hslColor} / 0.8)`
+                    }}
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Alliance Name outside the sphere */}
-            <div className="text-center max-w-[180px] md:max-w-[200px] relative z-20 pt-2 md:pt-4">
-                <h3
-                    className="font-heading leading-tight tracking-wide text-white font-bold text-lg md:text-xl"
-                    style={{ textShadow: `0 0 15px rgba(255,255,255,0.4)` }}
-                >
-                    {c.name}
-                </h3>
+            {/* Central Logo Box */}
+            <div
+              className="w-20 h-20 md:w-24 md:h-24 shrink-0 rounded-2xl flex items-center justify-center relative z-10 transition-all duration-500 bg-background/80 backdrop-blur-xl border border-white/10"
+              style={{ boxShadow: `0 0 20px hsl(${hslColor} / 0.3), inset 0 0 10px hsl(${hslColor} / 0.15)` }}
+            >
+              <img src={c.img} alt={c.name} className="w-[80%] h-[80%] object-contain filter drop-shadow-lg" />
             </div>
+          </div>
+
+          {/* Alliance Name outside the sphere */}
+          <div className="text-center max-w-[180px] md:max-w-[200px] relative z-20 pt-2 md:pt-4">
+            <h3
+              className="font-heading leading-tight tracking-wide text-white font-bold text-lg md:text-xl"
+              style={{ textShadow: `0 0 15px rgba(255,255,255,0.4)` }}
+            >
+              {c.name}
+            </h3>
+          </div>
         </div>
       ))}
     </div>

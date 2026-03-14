@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Info } from "lucide-react";
-import countriesData from "../assets/mapData.json";
 import WorldMapBackground, { MapFeature } from "./WorldMapBackground";
 
 interface CountryData {
@@ -18,8 +17,6 @@ const flagModules = import.meta.glob('../assets/svg-flags/*.svg', { eager: true,
 const getFlagUrl = (code: string) => {
   return flagModules[`../assets/svg-flags/${code.toLowerCase()}.svg`] || '';
 };
-
-const countries = countriesData as CountryData[];
 
 const levelColors = {
   high: "bg-quantum-blue shadow-[0_0_15px_hsl(220,90%,56%,0.5)]",
@@ -66,6 +63,8 @@ const metricDescriptions: Record<string, string> = {
 };
 
 const WorldMapSection = () => {
+
+  const [countries, setCountries] = useState<CountryData[]>([]);
   const [active, setActive] = useState<{
     id: string;
     name: string;
@@ -74,9 +73,25 @@ const WorldMapSection = () => {
     cy: number;
   } | null>(null);
 
+  useEffect(() => {
+    fetch("/mapData.json")
+      .then((res) => res.json())
+      .then((data) => setCountries(data))
+      .catch((err) => console.error("Error loading mapData:", err));
+  }, []);
+
   const handleCountryClick = (feature: MapFeature, e: React.MouseEvent) => {
+
+    if (!countries.length) return;
+
     const fName = feature.properties.name.toLowerCase();
-    const dataMatch = countries.find(c => c.name.toLowerCase().includes(fName) || fName.includes(c.name.toLowerCase()));
+
+    const dataMatch = countries.find(
+      c =>
+        c.name.toLowerCase().includes(fName) ||
+        fName.includes(c.name.toLowerCase())
+    );
+
     const code = dataMatch ? dataMatch.code : "";
 
     const svgElement = (e.currentTarget as SVGGraphicsElement).ownerSVGElement;
@@ -97,8 +112,11 @@ const WorldMapSection = () => {
 
   return (
     <section className="relative py-28 overflow-hidden section-dark">
+
       <div className="absolute inset-0 circuit-lines opacity-10" />
+
       <div className="relative z-10 container mx-auto px-6">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -108,20 +126,22 @@ const WorldMapSection = () => {
           <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
             Mientras el mundo invierte en <span className="text-gradient-quantum">computación cuántica</span>...
           </h2>
-          <p className="font-body text-muted-foreground">Los ecosistemas cuánticos ya están tomando forma.</p>
+
+          <p className="font-body text-muted-foreground">
+            Los ecosistemas cuánticos ya están tomando forma.
+          </p>
         </motion.div>
 
         {/* Map area */}
+
         <div className="relative w-full max-w-5xl mx-auto aspect-[2/1] rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(70,188,174,0.3)]">
-          {/* SVG Map Background */}
+
           <WorldMapBackground
             onCountryClick={handleCountryClick}
             activeFeatureId={active?.id}
             activeCenter={active ? { cx: active.cx, cy: active.cy } : null}
             onBgClick={() => setActive(null)}
           />
-
-
 
           <div className="absolute left-4 bottom-10 md:left-6 md:bottom-12 z-20 pointer-events-none">
             <p className="font-heading text-white text-xl md:text-2xl font-bold max-w-xs drop-shadow-md leading-tight">
@@ -130,7 +150,9 @@ const WorldMapSection = () => {
           </div>
 
           <AnimatePresence>
+
             {active && (
+
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-40%" }}
                 animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
@@ -141,44 +163,78 @@ const WorldMapSection = () => {
                   top: `50%`,
                 }}
               >
+
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+
                   <p className="font-heading text-lg font-bold text-white flex items-center gap-3">
-                    {active.code && <img src={getFlagUrl(active.code)} alt={active.name} className="w-6 h-4 object-cover rounded-[2px] shadow-sm border border-white/20" />}
+
+                    {active.code && (
+                      <img
+                        src={getFlagUrl(active.code)}
+                        alt={active.name}
+                        className="w-6 h-4 object-cover rounded-[2px] shadow-sm border border-white/20"
+                      />
+                    )}
+
                     <span>{active.name}</span>
+
                   </p>
+
                 </div>
 
                 <div className="grid grid-cols-2 gap-y-5 gap-x-4 relative mt-2">
+
                   {Object.entries(metricLabels).map(([key, label]) => {
+
                     const countryData = countryMetrics[active.name] || {};
                     const value = countryData[key] || "null";
 
                     return (
+
                       <div key={key} className="flex flex-col items-start group/row">
+
                         <span className="text-xl font-bold text-quantum-blue leading-none mb-1 shadow-sm">
                           {value}
                         </span>
+
                         <div className="flex items-center gap-1 relative group/info cursor-help">
-                          <span className="text-[9px] text-white/60 uppercase font-bold tracking-wider">{label}</span>
+
+                          <span className="text-[9px] text-white/60 uppercase font-bold tracking-wider">
+                            {label}
+                          </span>
+
                           <div className="w-3 h-3 rounded-full bg-white/10 flex items-center justify-center text-[7px] font-bold text-white/60 hover:text-white hover:bg-white/20 transition-colors">
                             i
                           </div>
 
-                          {/* Tooltip Description */}
                           <div className="absolute left-0 bottom-full mb-2 w-48 bg-[#2B2252] text-white/90 text-[10px] sm:text-[11px] p-2.5 rounded-lg shadow-xl opacity-0 invisible group-hover/info:opacity-100 group-hover/info:visible transition-all duration-200 z-50 pointer-events-none border border-white/10">
+
                             <div className="absolute w-2 h-2 bg-[#2B2252] rotate-45 left-4 -bottom-1 border-r border-b border-white/10"></div>
+
                             {metricDescriptions[key]}
+
                           </div>
+
                         </div>
+
                       </div>
+
                     );
+
                   })}
+
                 </div>
+
               </motion.div>
+
             )}
+
           </AnimatePresence>
+
         </div>
+
       </div>
+
     </section>
   );
 };

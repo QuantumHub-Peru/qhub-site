@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
-import aprendiendoImg from "@/gato/aprendiendo.png";
-
+const aprendiendoImg = "gato/aprendiendo.png"
 const CourseSection = () => {
   return (
     <>

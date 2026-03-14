@@ -3,62 +3,63 @@ import { Users, BookOpen, GraduationCap, Heart, School, Search, Target, Eye, Ato
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import gatoImg from "@/gato/gato.png";
-import principiosCat from "@/gato/principios.png";
-import clubImg from "@/assets/r1.jpg";
-import logoImg from "@/assets/club.jpg";
-import quantumBg0 from "@/assets/r1.jpg";
-import quantumBg1 from "@/assets/r2.jpg";
-import quantumBg2 from "@/assets/r5.jpg";
-import quantumBg3 from "@/assets/r3.jpg";
-import quantumBg4 from "@/assets/r4.jpg";
-import quantumBg5 from "@/assets/r6.jpg";
-import quantumBg6 from "@/assets/r7.jpg";
-import quantumBg7 from "@/assets/r8.jpg";
-import quantumBg8 from "@/assets/r9.jpg";
-import quantumBg9 from "@/assets/r10.jpg";
-import quantumBg10 from "@/assets/r5.jpg";
-import heroBgImage from "@/assets/hero-bg.png";
 import DepartmentsSection from "@/components/DepartmentsSection";
 import ParticleNetwork from "@/components/ParticleNetwork";
 
+// Las imágenes ahora se referencian directamente como strings desde la carpeta public (raíz "/")
+const gatoImg = "/gato/gato.png";
+const principiosCat = "/gato/principios.png";
+const clubImg = "/r1.jpg";
+const logoImg = "/club.jpg";
+const quantumBg0 = "/r1.jpg";
+const quantumBg1 = "/r2.jpg";
+const quantumBg2 = "/r5.jpg";
+const quantumBg3 = "/r3.jpg";
+const quantumBg4 = "/r4.jpg";
+const quantumBg5 = "/r6.jpg";
+const quantumBg6 = "/r7.jpg";
+const quantumBg7 = "/r8.jpg";
+const quantumBg8 = "/r9.jpg";
+const quantumBg9 = "/r10.jpg";
+const quantumBg10 = "/r5.jpg";
+const heroBgImage = "/hero-bg.png";
 /* ── data ── */
 const principiosData = [
-  { 
-    id: 0, 
-    title: "Sostenibilidad", 
-    desc: "Construimos una comunidad capaz de autoproyectarse. Nuestros estudiantes graduados, con el tiempo, se convierten en investigadores, mentores, profesores y líderes dentro de QuantumHub.", 
-    icon: Leaf 
+  {
+    id: 0,
+    title: "Sostenibilidad",
+    desc: "Construimos una comunidad capaz de autoproyectarse. Nuestros estudiantes graduados, con el tiempo, se convierten en investigadores, mentores, profesores y líderes dentro de QuantumHub.",
+    icon: Leaf
   },
-  { 
-    id: 1, 
-    title: "Formación Rigurosa", 
-    desc: "Nuestros productos y programas educativos demandan una alta capacidad y disciplina académica. La exigencia inducida en nuestro curso y preparación para investigación requiere una gran motivación científica.", 
-    icon: BookOpen 
+  {
+    id: 1,
+    title: "Formación Rigurosa",
+    desc: "Nuestros productos y programas educativos demandan una alta capacidad y disciplina académica. La exigencia inducida en nuestro curso y preparación para investigación requiere una gran motivación científica.",
+    icon: BookOpen
   },
-  { 
-    id: 2, 
-    title: "Investigación Temprana", 
-    desc: "Nuestra red de estudiantes graduados se involucra en proyectos de investigación en hardware, software y educación cuántica, con la meta de publicar en revistas de alto impacto.", 
-    icon: Search 
+  {
+    id: 2,
+    title: "Investigación Temprana",
+    desc: "Nuestra red de estudiantes graduados se involucra en proyectos de investigación en hardware, software y educación cuántica, con la meta de publicar en revistas de alto impacto.",
+    icon: Search
   },
-  { 
-    id: 3, 
-    title: "Desarrollo Profesional", 
-    desc: "Promovemos el crecimiento académico de nuestros miembros. Tras el curso bandera, los graduados son invitados a formar parte de los 5 departamentos de QuantumHub Perú.", 
-    icon: Briefcase 
+  {
+    id: 3,
+    title: "Desarrollo Profesional",
+    desc: "Promovemos el crecimiento académico de nuestros miembros. Tras el curso bandera, los graduados son invitados a formar parte de los 5 departamentos de QuantumHub Perú.",
+    icon: Briefcase
   },
-  { 
-    id: 4, 
-    title: "Innovación", 
-    desc: "Impulsamos el desarrollo de herramientas, plataformas y proyectos que contribuyen a la accesibilidad educativa y al avance del software y hardware cuántico en la región.", 
-    icon: Lightbulb 
+  {
+    id: 4,
+    title: "Innovación",
+    desc: "Impulsamos el desarrollo de herramientas, plataformas y proyectos que contribuyen a la accesibilidad educativa y al avance del software y hardware cuántico en la región.",
+    icon: Lightbulb
   },
-  { 
-    id: 5, 
-    title: "Red de Colaboración", 
-    desc: "Articulamos proyectos de investigación y actividades formativas en alianza con universidades e instituciones nacionales e internacionales que fortalecen nuestro impacto.", 
-    icon: Globe 
+  {
+    id: 5,
+    title: "Red de Colaboración",
+    desc: "Articulamos proyectos de investigación y actividades formativas en alianza con universidades e instituciones nacionales e internacionales que fortalecen nuestro impacto.",
+    icon: Globe
   },
 ];
 
@@ -109,7 +110,7 @@ function PrincipleCard({ item, delay }: { item: typeof principiosData[0]; delay:
       }}
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#F69D0E] via-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
+
       <div className="flex items-start gap-4 text-left">
         <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#F69D0E] to-primary/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg">
           <Icon className="w-6 h-6 text-foreground" />
@@ -121,7 +122,7 @@ function PrincipleCard({ item, delay }: { item: typeof principiosData[0]; delay:
           </p>
         </div>
       </div>
-      
+
       {/* Subtle glow on hover */}
       <div className="absolute -inset-px bg-gradient-to-br from-[#F69D0E]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
     </div>
@@ -243,7 +244,7 @@ export default function SobreNosotros() {
                 Frente a la falta de sistemas y de representación latinoamericana en tecnologías cuánticas, durante el Año Internacional de Ciencias y Tecnologías Cuánticas, QuantumHub Perú surge como un espacio para abrir ese camino desde el Perú, acercando la computación cuántica a estudiantes jóvenes y creando una comunidad donde la curiosidad científica, el rigor académico y la colaboración se encuentren.
               </p>
               <p className="text-muted-foreground leading-relaxed text-base md:text-lg mt-6">
-               Estudiantes, investigadores, profesionales, educadores y entusiastas se unen para investigar, desarrollar productos, impartir conocimiento y democratizar la tecnología cuántica en la región.
+                Estudiantes, investigadores, profesionales, educadores y entusiastas se unen para investigar, desarrollar productos, impartir conocimiento y democratizar la tecnología cuántica en la región.
               </p>
             </ScrollReveal>
           </div>
@@ -304,7 +305,7 @@ export default function SobreNosotros() {
                 </div>
                 <h3 className="font-heading text-3xl font-black mb-4 text-foreground">Visión</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                   Convertir al Perú en un participante activo del ecosistema cuántico global, fortaleciendo la colaboración institucional a nivel nacional e internacional que potencie la investigación, educación y divulgación de ciencia y tecnología cuánticas en la región latinoamericana.
+                  Convertir al Perú en un participante activo del ecosistema cuántico global, fortaleciendo la colaboración institucional a nivel nacional e internacional que potencie la investigación, educación y divulgación de ciencia y tecnología cuánticas en la región latinoamericana.
                 </p>
               </div>
             </ScrollReveal>
@@ -329,7 +330,7 @@ export default function SobreNosotros() {
 
           <div className="mt-10 flex flex-col items-center">
             <div className="grid lg:grid-cols-3 gap-8 items-center w-full max-w-7xl mx-auto">
-              
+
               {/* Left Column: 3 principles */}
               <div className="flex flex-col gap-6 order-2 lg:order-1">
                 {principiosData.slice(0, 3).map((item, index) => (
@@ -348,7 +349,7 @@ export default function SobreNosotros() {
                     transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
                   />
                   <div className="absolute inset-6 rounded-full border-[3px] border-primary/40 shadow-[0_0_60px_rgba(129,140,248,0.4)]" />
-                  
+
                   <motion.img
                     src={principiosCat}
                     alt="Gato QuantumHub principios"
@@ -442,7 +443,7 @@ export default function SobreNosotros() {
                     backgroundImage: "linear-gradient(90deg, #7B2CBF 0%, #F39C12 50%, #7B2CBF 100%)",
                     backgroundSize: "200% auto",
                   }}
-                  animate={{ 
+                  animate={{
                     backgroundPosition: ["0% center", "-200% center"],
                     boxShadow: [
                       "0 0 20px rgba(123,44,191,0.5)",
@@ -450,7 +451,7 @@ export default function SobreNosotros() {
                       "0 0 20px rgba(123,44,191,0.5)"
                     ]
                   }}
-                  transition={{ 
+                  transition={{
                     backgroundPosition: { duration: 3, repeat: Infinity, ease: "linear" },
                     boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                   }}

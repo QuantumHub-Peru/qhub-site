@@ -49,7 +49,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" onClick={handleLinkClick} className="flex items-center gap-3 group">
-          <img src="/src/assets/img/logo.png" alt="QuantumHub Peru Logo" className="w-[28px] h-[28px] md:w-[35px] md:h-[35px] object-contain group-hover:scale-110 transition-transform" />
+          <img src="/img/logo.png" alt="QuantumHub Peru Logo" className="w-[28px] h-[28px] md:w-[35px] md:h-[35px] object-contain group-hover:scale-110 transition-transform" />
           <span className="font-heading text-sm font-bold tracking-widest text-foreground">
             QUANTUMHUB <span className="text-muted-foreground font-normal">PERU</span>
           </span>
