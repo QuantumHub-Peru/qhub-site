@@ -1,6 +1,7 @@
 import geoData from '@/data/countries.geo.json';
 import countryLevels from '@/data/countryLevels.json';
 import { motion } from 'framer-motion';
+import { CountryData } from './WorldMapSection';
 const project = (lng: number, lat: number) => {
     // Using the exact linear projection as the centroid generator
     const x = lng * 0.265 + 48.5;
@@ -41,9 +42,10 @@ interface WorldMapBackgroundProps {
     onBgClick?: () => void;
     activeFeatureId?: string | null;
     activeCenter?: { cx: number, cy: number } | null;
+    countriesData?: CountryData[];
 }
 
-const WorldMapBackground = ({ onCountryClick, onBgClick, activeFeatureId, activeCenter }: WorldMapBackgroundProps) => {
+const WorldMapBackground = ({ onCountryClick, onBgClick, activeFeatureId, activeCenter, countriesData }: WorldMapBackgroundProps) => {
     return (
         <svg
             viewBox="0 0 100 100"
@@ -75,24 +77,33 @@ const WorldMapBackground = ({ onCountryClick, onBgClick, activeFeatureId, active
                     if (!['Polygon', 'MultiPolygon'].includes(feature.geometry.type)) return null;
                     const d = renderPath(feature.geometry.coordinates, feature.geometry.type);
                     const isActive = activeFeatureId === feature.id;
-                    const level = (countryLevels as Record<string, string>)[feature.id];
-                    const activeLevel = activeFeatureId ? (countryLevels as Record<string, string>)[activeFeatureId] : null;
-                    const isLatamActive = activeLevel === 'Nivel_2' || activeLevel === 'Nivel_3';
 
-                    // Default (Nivel 3) is white
-                    let baseClasses = "text-white fill-white stroke-white/60 hover:brightness-125 hover:stroke-white/80 animate-map-glow-white";
+                    let matchedData = countriesData?.find(
+                        c => c.name.toLowerCase().includes(feature.properties.name.toLowerCase()) || 
+                             feature.properties.name.toLowerCase().includes(c.name.toLowerCase())
+                    );
+                    
+                    // We deduce if it's LATAM from the old countryLevels.json using Nivel_2 or Nivel_3
+                    const isLatam = ["Nivel_2", "Nivel_3"].includes((countryLevels as Record<string, string>)[feature.id]);
+                    const hasInfo = matchedData && Array.isArray(matchedData.info) && matchedData.info.length > 0;
+
+                    let baseClasses = "";
                     let activeClasses = "text-white fill-white stroke-white drop-shadow-[0_0_12px_rgba(255,255,255,1)] z-10";
 
-                    // If LATAM is active, Peru loses its white glow and blends in as Nivel 2, unless Peru itself is active
-                    let effectiveLevel = level;
-                    if (isLatamActive && effectiveLevel === 'Nivel_3' && !isActive) {
-                        effectiveLevel = 'Nivel_2';
-                    }
-
-                    if (effectiveLevel === 'Nivel_1') {
-                        baseClasses = "text-quantum-purple/45 fill-quantum-purple/45 stroke-quantum-purple/50 hover:brightness-125 hover:stroke-white/60";
-                    } else if (effectiveLevel === 'Nivel_2') {
+                    if (isLatam) {
+                        // LATAM ones -> bright pink/purple
                         baseClasses = "text-quantum-purple/80 fill-quantum-purple/80 stroke-white/40 hover:brightness-125 hover:stroke-white/80 animate-map-glow z-0";
+                        
+                        // If there is an active feature and this isn't it, dim it slightly to preserve focus
+                        if (activeFeatureId && !isActive) {
+                           baseClasses = "text-quantum-purple/60 fill-quantum-purple/60 stroke-white/20 hover:brightness-125";
+                        }
+                    } else if (hasInfo) {
+                        // Non-latam but has info content -> medium pink
+                        baseClasses = "text-quantum-purple/45 fill-quantum-purple/45 stroke-quantum-purple/50 hover:brightness-125 hover:stroke-white/60";
+                    } else {
+                        // Everything else (no info, not latam, or not even in JSON) -> very dark pink background
+                        baseClasses = "text-quantum-purple/15 fill-quantum-purple/15 stroke-quantum-purple/20 hover:brightness-125 hover:stroke-white/40";
                     }
 
                     return (

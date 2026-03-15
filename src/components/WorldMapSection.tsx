@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Info } from "lucide-react";
 import WorldMapBackground, { MapFeature } from "./WorldMapBackground";
 
-interface CountryData {
+export interface CountryData {
   name: string;
   code: string;
   x: number;
@@ -12,10 +12,9 @@ interface CountryData {
   info: string[];
 }
 
-const flagModules = import.meta.glob('../assets/svg-flags/*.svg', { eager: true, as: 'url' }) as Record<string, string>;
-
 const getFlagUrl = (code: string) => {
-  return flagModules[`../assets/svg-flags/${code.toLowerCase()}.svg`] || '';
+  if (!code) return '';
+  return `/svg-flags/${code.toLowerCase()}.svg`;
 };
 
 const levelColors = {
@@ -25,42 +24,7 @@ const levelColors = {
   peru: "bg-quantum-yellow shadow-[0_0_15px_hsl(45,100%,55%,0.5)]",
 };
 
-const countryMetrics: Record<string, Record<string, string>> = {
-  Canada: {
-    Total_Funding: "$1.6B",
-    Ecosystem: "120",
-    Core_Firms: "55",
-    PhD_Founders: "58%",
-    Patent_Share: "3%",
-    RTA_Index: "2.9"
-  },
-  China: {
-    Total_Funding: "$1B",
-    Ecosystem: "220",
-    Core_Firms: "35",
-    PhD_Founders: "No_Data",
-    Patent_Share: "11%",
-    RTA_Index: "0.8"
-  }
-};
 
-const metricLabels: Record<string, string> = {
-  Total_Funding: "Total Funding",
-  Ecosystem: "Ecosystem Size",
-  Core_Firms: "Core Firms",
-  PhD_Founders: "PhD Founders",
-  Patent_Share: "Patent Share",
-  RTA_Index: "RTA Index"
-};
-
-const metricDescriptions: Record<string, string> = {
-  Total_Funding: "Inversión total estimada",
-  Ecosystem: "Número total de organizaciones identificadas en el sector",
-  Core_Firms: "Cantidad de empresas cuya actividad principal es exclusivamente el desarrollo de tecnología cuántica",
-  PhD_Founders: "Porcentaje de fundadores que poseen un título de doctorado",
-  Patent_Share: "Porcentaje de Familias de Patentes Internacionales (IPF) que posee el país respecto al total mundial",
-  RTA_Index: "Índice de Ventaja Tecnológica Revelada"
-};
 
 const WorldMapSection = () => {
 
@@ -71,6 +35,7 @@ const WorldMapSection = () => {
     code: string;
     cx: number;
     cy: number;
+    info?: string[];
   } | null>(null);
 
   useEffect(() => {
@@ -93,9 +58,15 @@ const WorldMapSection = () => {
     );
 
     const code = dataMatch ? dataMatch.code : "";
+    const info = dataMatch ? dataMatch.info : [];
 
     const svgElement = (e.currentTarget as SVGGraphicsElement).ownerSVGElement;
     if (!svgElement) return;
+
+    if (active?.id === feature.id) {
+        setActive(null);
+        return;
+    }
 
     const bbox = (e.currentTarget as SVGGraphicsElement).getBBox();
     const cx = bbox.x + bbox.width / 2;
@@ -105,6 +76,7 @@ const WorldMapSection = () => {
       id: feature.id,
       name: feature.properties.name,
       code,
+      info,
       cx,
       cy
     });
@@ -141,6 +113,7 @@ const WorldMapSection = () => {
             activeFeatureId={active?.id}
             activeCenter={active ? { cx: active.cx, cy: active.cy } : null}
             onBgClick={() => setActive(null)}
+            countriesData={countries}
           />
 
           <div className="absolute left-4 bottom-10 md:left-6 md:bottom-12 z-20 pointer-events-none">
@@ -157,7 +130,7 @@ const WorldMapSection = () => {
                 initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-40%" }}
                 animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
                 exit={{ opacity: 0, scale: 0.9, x: "-50%", y: "-40%" }}
-                className="absolute z-30 bg-[#1A1433]/95 backdrop-blur-md rounded-xl p-5 w-60 md:w-64 shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-white/10 text-white"
+                className="absolute z-30 bg-[#1A1433]/95 backdrop-blur-md rounded-xl p-6 w-[288px] md:w-[304px] shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-white/10 text-white"
                 style={{
                   left: `75%`,
                   top: `50%`,
@@ -166,13 +139,13 @@ const WorldMapSection = () => {
 
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
 
-                  <p className="font-heading text-lg font-bold text-white flex items-center gap-3">
+                  <p className="font-heading text-xl font-bold text-white flex items-center gap-3">
 
                     {active.code && (
                       <img
                         src={getFlagUrl(active.code)}
                         alt={active.name}
-                        className="w-6 h-4 object-cover rounded-[2px] shadow-sm border border-white/20"
+                        className="w-8 h-[20px] object-cover rounded shadow-md border border-white/20"
                       />
                     )}
 
@@ -182,46 +155,32 @@ const WorldMapSection = () => {
 
                 </div>
 
-                <div className="grid grid-cols-2 gap-y-5 gap-x-4 relative mt-2">
+                <div className="flex flex-col gap-4 relative mt-3">
 
-                  {Object.entries(metricLabels).map(([key, label]) => {
-
-                    const countryData = countryMetrics[active.name] || {};
-                    const value = countryData[key] || "null";
-
-                    return (
-
-                      <div key={key} className="flex flex-col items-start group/row">
-
-                        <span className="text-xl font-bold text-quantum-blue leading-none mb-1 shadow-sm">
-                          {value}
-                        </span>
-
-                        <div className="flex items-center gap-1 relative group/info cursor-help">
-
-                          <span className="text-[9px] text-white/60 uppercase font-bold tracking-wider">
-                            {label}
-                          </span>
-
-                          <div className="w-3 h-3 rounded-full bg-white/10 flex items-center justify-center text-[7px] font-bold text-white/60 hover:text-white hover:bg-white/20 transition-colors">
-                            i
-                          </div>
-
-                          <div className="absolute left-0 bottom-full mb-2 w-48 bg-[#2B2252] text-white/90 text-[10px] sm:text-[11px] p-2.5 rounded-lg shadow-xl opacity-0 invisible group-hover/info:opacity-100 group-hover/info:visible transition-all duration-200 z-50 pointer-events-none border border-white/10">
-
-                            <div className="absolute w-2 h-2 bg-[#2B2252] rotate-45 left-4 -bottom-1 border-r border-b border-white/10"></div>
-
-                            {metricDescriptions[key]}
-
-                          </div>
-
+                  {active.info && active.info.length > 0 ? (
+                    active.info.map((text, idx) => {
+                      const parts = text.split(/(Fuente:\s*.*|\[cite:\s*\d+\])/);
+                      return (
+                        <div key={idx} className="flex gap-2.5 items-start text-[13px] sm:text-[14px] text-white/90">
+                          <div className="w-2 h-2 rounded-full bg-quantum-blue mt-1.5 shrink-0 shadow-[0_0_8px_rgba(70,188,174,0.8)]" />
+                          <p className="leading-snug">
+                            {parts.map((part, i) => {
+                              if (!part) return null;
+                              if (part.startsWith('Fuente:')) {
+                                return <span key={i} className="block mt-1 text-[11px] sm:text-[12px] text-quantum-blue/80 italic">{part}</span>;
+                              }
+                              if (part.startsWith('[cite:')) {
+                                return <span key={i} className="text-[11px] text-quantum-blue/80 ml-1">{part}</span>;
+                              }
+                              return <span key={i}>{part}</span>;
+                            })}
+                          </p>
                         </div>
-
-                      </div>
-
-                    );
-
-                  })}
+                      );
+                    })
+                  ) : (
+                    <p className="text-[14px] text-white/60 italic">No hay información específica disponible para esta región.</p>
+                  )}
 
                 </div>
 

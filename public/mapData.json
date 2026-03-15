@@ -5,9 +5,7 @@
     "x": 66.5,
     "y": 40.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ao",
@@ -15,9 +13,7 @@
     "x": 53.2,
     "y": 62.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "al",
@@ -25,9 +21,7 @@
     "x": 53.8,
     "y": 37.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ae",
@@ -35,18 +29,17 @@
     "x": 62.8,
     "y": 45.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ar",
     "name": "Argentina",
     "x": 31.7,
     "y": 75,
-    "level": "low",
+    "level": "medium",
     "info": [
-      "Quantum Research Hub"
+      "Entró al TOP500 en noviembre de 2023 con Clementina XXI, alojada en el Servicio Meteorológico Nacional. Fuente: RedCLARA / SCALAC - HPC Report",
+      "Clementina XXI figura con 6133.76 TFlops teóricos y 3973.12 TFlops medidos. Fuente: SCALAC HPC Observatory"
     ]
   },
   {
@@ -55,9 +48,7 @@
     "x": 60.4,
     "y": 38,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "aq",
@@ -65,18 +56,17 @@
     "x": 48.5,
     "y": 92.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "au",
     "name": "Australia",
     "x": 83.9,
     "y": 69.1,
-    "level": "low",
+    "level": "medium",
     "info": [
-      "Quantum Research Hub"
+      "Forma parte del grupo que reúne el 20% del financiamiento privado global después de EE. UU. Fuente: ECIPE - Benchmarking Quantum Technology Performance",
+      "La inversión pública total estimada asciende a AU$893 millones. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -85,9 +75,7 @@
     "x": 52,
     "y": 34.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "az",
@@ -95,9 +83,7 @@
     "x": 61.1,
     "y": 38,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bi",
@@ -105,9 +91,7 @@
     "x": 56.4,
     "y": 58.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "be",
@@ -115,9 +99,7 @@
     "x": 49.6,
     "y": 33,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bj",
@@ -125,9 +107,7 @@
     "x": 49.1,
     "y": 52.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bf",
@@ -135,9 +115,7 @@
     "x": 48.1,
     "y": 51.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bd",
@@ -145,9 +123,7 @@
     "x": 72.5,
     "y": 45.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bg",
@@ -155,9 +131,7 @@
     "x": 55.2,
     "y": 36.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bs",
@@ -165,9 +139,7 @@
     "x": 27.8,
     "y": 45.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ba",
@@ -175,9 +147,7 @@
     "x": 53.2,
     "y": 36.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "by",
@@ -185,9 +155,7 @@
     "x": 55.9,
     "y": 31.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bz",
@@ -195,9 +163,7 @@
     "x": 25,
     "y": 48.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bm",
@@ -205,9 +171,7 @@
     "x": 31.3,
     "y": 41.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bo",
@@ -215,18 +179,17 @@
     "x": 31.7,
     "y": 65,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "br",
     "name": "Brazil",
     "x": 34.1,
     "y": 64,
-    "level": "low",
+    "level": "medium",
     "info": [
-      "Quantum Research Hub"
+      "Acumula más de R$430 millones en programas nacionales de tecnologías cuánticas. Fuente: Qureca - Quantum Initiatives Worldwide 2025",
+      "En junio de 2024, colocó 8 supercomputadores en el TOP500, posición 12 mundial por país. Fuente: RedCLARA / SCALAC - HPC Report"
     ]
   },
   {
@@ -235,9 +198,7 @@
     "x": 72.5,
     "y": 44,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "bw",
@@ -245,9 +206,7 @@
     "x": 55,
     "y": 67.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "cf",
@@ -255,18 +214,17 @@
     "x": 54,
     "y": 54,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ca",
     "name": "Canada",
     "x": 22.4,
     "y": 29.9,
-    "level": "medium",
+    "level": "high",
     "info": [
-      "Quantum Research Hub"
+      "Ha invertido más de CA$1 billion en investigación cuántica durante la última década. Fuente: Qureca - Quantum Initiatives Worldwide 2025",
+      "El gobierno anunció CA$360 millones adicionales para su National Quantum Strategy. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -274,9 +232,10 @@
     "name": "Switzerland",
     "x": 50.7,
     "y": 34.7,
-    "level": "low",
+    "level": "medium",
     "info": [
-      "Quantum Research Hub"
+      "Aporta el 3% de los papers más citados en computación cuántica. Fuente: MIT Quantum Index Report - Academic Research",
+      "La Swiss Quantum Initiative contó con CHF 20 millones para 2023-2024. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -284,9 +243,10 @@
     "name": "Chile",
     "x": 29.6,
     "y": 74.3,
-    "level": "low",
+    "level": "medium",
     "info": [
-      "Quantum Research Hub"
+      "Lanzó su Estrategia Nacional de Tecnologías Cuánticas 2025-2035. Fuente: MinCiencia - Anuncio de la Estrategia Nacional",
+      "Desde 1983, el Estado chileno ha financiado más de 300 proyectos relacionados con tecnologías cuánticas. Fuente: MinCiencia - Anuncio de la Estrategia Nacional"
     ]
   },
   {
@@ -295,9 +255,7 @@
     "x": 47,
     "y": 53.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "cm",
@@ -305,9 +263,7 @@
     "x": 51.7,
     "y": 53.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "cd",
@@ -315,9 +271,7 @@
     "x": 54.2,
     "y": 59.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "cg",
@@ -325,9 +279,7 @@
     "x": 52.4,
     "y": 57.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "co",
@@ -335,9 +287,7 @@
     "x": 29.2,
     "y": 55.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "cr",
@@ -345,9 +295,7 @@
     "x": 26.2,
     "y": 52.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "cu",
@@ -355,9 +303,7 @@
     "x": 27.4,
     "y": 46.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "cy",
@@ -365,9 +311,7 @@
     "x": 57.3,
     "y": 40.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "cz",
@@ -375,18 +319,17 @@
     "x": 52.6,
     "y": 33.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "de",
     "name": "Germany",
     "x": 51.3,
     "y": 32.7,
-    "level": "medium",
+    "level": "high",
     "info": [
-      "Quantum Research Hub"
+      "Lidera globalmente en programas de maestría cuyo nombre incluye 'quantum'. Fuente: MIT Quantum Index Report 2025",
+      "El plan nacional alemán de tecnologías cuánticas alcanzó EUR 3 mil millones. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -395,9 +338,7 @@
     "x": 59.8,
     "y": 51.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "dk",
@@ -405,9 +346,7 @@
     "x": 51,
     "y": 30.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "do",
@@ -415,9 +354,7 @@
     "x": 29.9,
     "y": 48.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "dz",
@@ -425,9 +362,7 @@
     "x": 48.9,
     "y": 43.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ec",
@@ -435,9 +370,7 @@
     "x": 27.8,
     "y": 58.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "eg",
@@ -445,9 +378,7 @@
     "x": 56.7,
     "y": 44.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "er",
@@ -455,18 +386,17 @@
     "x": 59,
     "y": 49.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "es",
     "name": "Spain",
     "x": 47.7,
     "y": 38.1,
-    "level": "low",
+    "level": "medium",
     "info": [
-      "Quantum Research Hub"
+      "Aporta el 2% de las publicaciones globales en comunicaciones cuánticas. Fuente: MIT Quantum Index Report - Academic Research",
+      "Quantum Spain movilizó EUR 60 millones. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -475,9 +405,7 @@
     "x": 55.3,
     "y": 29.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "et",
@@ -485,9 +413,7 @@
     "x": 59.2,
     "y": 52.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "fi",
@@ -495,9 +421,7 @@
     "x": 55.4,
     "y": 26,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "fj",
@@ -505,18 +429,17 @@
     "x": 95.7,
     "y": 65.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "fr",
     "name": "France",
     "x": 49,
     "y": 34.8,
-    "level": "low",
+    "level": "high",
     "info": [
-      "Quantum Research Hub"
+      "Lanzó en 2021 un plan nacional de EUR 1.8 mil millones a cinco años para tecnologías cuánticas. Fuente: Qureca - Quantum Initiatives Worldwide 2025",
+      "El programa PROQCIMA puede movilizar hasta EUR 500 millones. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -525,18 +448,17 @@
     "x": 51.6,
     "y": 57.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gb",
     "name": "United Kingdom",
     "x": 48,
     "y": 31.8,
-    "level": "low",
+    "level": "high",
     "info": [
-      "Quantum Research Hub"
+      "Captó US$1.6 mil millones en financiamiento privado cuántico entre 2012 y 2024. Fuente: ECIPE - Benchmarking Quantum Technology Performance",
+      "Su estrategia nacional compromete GBP 2.5 mil millones a diez años. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -545,9 +467,7 @@
     "x": 60,
     "y": 36.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gh",
@@ -555,9 +475,7 @@
     "x": 48.2,
     "y": 53.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gn",
@@ -565,9 +483,7 @@
     "x": 45.5,
     "y": 52.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gm",
@@ -575,9 +491,7 @@
     "x": 44.4,
     "y": 50.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gq",
@@ -585,9 +499,7 @@
     "x": 51.2,
     "y": 56.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gr",
@@ -595,9 +507,7 @@
     "x": 54.7,
     "y": 38.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gl",
@@ -605,9 +515,7 @@
     "x": 37.2,
     "y": 22.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gt",
@@ -615,9 +523,7 @@
     "x": 24.6,
     "y": 49.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gf",
@@ -625,9 +531,7 @@
     "x": 34.4,
     "y": 55.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "gy",
@@ -635,9 +539,7 @@
     "x": 32.9,
     "y": 54.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "hn",
@@ -645,9 +547,7 @@
     "x": 25.6,
     "y": 50.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "hr",
@@ -655,9 +555,7 @@
     "x": 52.9,
     "y": 35.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ht",
@@ -665,9 +563,7 @@
     "x": 29.1,
     "y": 48.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "hu",
@@ -675,9 +571,7 @@
     "x": 53.7,
     "y": 34.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "id",
@@ -685,9 +579,7 @@
     "x": 75.2,
     "y": 57.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "in",
@@ -695,9 +587,7 @@
     "x": 70.4,
     "y": 46.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ie",
@@ -705,9 +595,7 @@
     "x": 46.4,
     "y": 31.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ir",
@@ -715,9 +603,7 @@
     "x": 62.7,
     "y": 41.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "iq",
@@ -725,9 +611,7 @@
     "x": 60.1,
     "y": 41.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "is",
@@ -735,9 +619,7 @@
     "x": 43.5,
     "y": 26,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "il",
@@ -745,9 +627,7 @@
     "x": 57.8,
     "y": 42.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "it",
@@ -755,9 +635,7 @@
     "x": 51.8,
     "y": 36.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "jm",
@@ -765,9 +643,7 @@
     "x": 28,
     "y": 48.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "jo",
@@ -775,18 +651,17 @@
     "x": 58.3,
     "y": 42.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "jp",
     "name": "Japan",
     "x": 84.5,
     "y": 39.8,
-    "level": "medium",
+    "level": "high",
     "info": [
-      "Quantum Research Hub"
+      "Registró 2,636 familias de patentes en tecnologías cuánticas entre 2005 y 2024. Fuente: OECD - Mapping the Global Quantum Ecosystem",
+      "Asignó JPY 1.05 billones para chips de próxima generación y computación cuántica. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -795,9 +670,7 @@
     "x": 66.2,
     "y": 34.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ke",
@@ -805,9 +678,7 @@
     "x": 58.5,
     "y": 57,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "kg",
@@ -815,9 +686,7 @@
     "x": 68.3,
     "y": 37.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "kh",
@@ -825,18 +694,17 @@
     "x": 76.3,
     "y": 51.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "kr",
     "name": "Korea, Republic of",
     "x": 82.4,
     "y": 39.7,
-    "level": "low",
+    "level": "medium",
     "info": [
-      "Quantum Research Hub"
+      "Registró 542 IPFs en comunicación cuántica entre 2005 y 2024. Fuente: OECD - Mapping the Global Quantum Ecosystem",
+      "Corea del Sur planea invertir más de KRW 3 billones para 2035. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -845,9 +713,7 @@
     "x": 54,
     "y": 36.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "kw",
@@ -855,9 +721,7 @@
     "x": 61.1,
     "y": 43.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "lb",
@@ -865,9 +729,7 @@
     "x": 58,
     "y": 40.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "lr",
@@ -875,9 +737,7 @@
     "x": 46,
     "y": 54.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ly",
@@ -885,9 +745,7 @@
     "x": 53.1,
     "y": 44.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "lk",
@@ -895,9 +753,7 @@
     "x": 69.9,
     "y": 53.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ls",
@@ -905,9 +761,7 @@
     "x": 56,
     "y": 71.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "lt",
@@ -915,9 +769,7 @@
     "x": 54.8,
     "y": 30.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "lu",
@@ -925,9 +777,7 @@
     "x": 50.1,
     "y": 33.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "lv",
@@ -935,9 +785,7 @@
     "x": 55,
     "y": 29.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ma",
@@ -945,9 +793,7 @@
     "x": 46.1,
     "y": 43.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "mg",
@@ -955,9 +801,7 @@
     "x": 60.9,
     "y": 66.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "mx",
@@ -966,7 +810,8 @@
     "y": 45.9,
     "level": "low",
     "info": [
-      "Quantum Research Hub"
+      "Entró al TOP500 en noviembre de 2012 con una infraestructura alojada en la UNAM. Fuente: RedCLARA / SCALAC - HPC Report",
+      "ABACUS I de CINVESTAV fue el primer supercomputador de nueva generación de la región en combinar CPU y GPU. Fuente: RedCLARA / SCALAC - HPC Report"
     ]
   },
   {
@@ -975,9 +820,7 @@
     "x": 47.5,
     "y": 48.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "mt",
@@ -985,9 +828,7 @@
     "x": 52.3,
     "y": 40,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "mm",
@@ -995,9 +836,7 @@
     "x": 74.1,
     "y": 48,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "me",
@@ -1005,9 +844,7 @@
     "x": 53.6,
     "y": 36.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "mn",
@@ -1015,9 +852,7 @@
     "x": 76,
     "y": 34.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "mz",
@@ -1025,9 +860,7 @@
     "x": 57.9,
     "y": 66.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "mr",
@@ -1035,9 +868,7 @@
     "x": 45.6,
     "y": 47.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "mw",
@@ -1045,9 +876,7 @@
     "x": 57.6,
     "y": 63.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "my",
@@ -1055,9 +884,7 @@
     "x": 78.8,
     "y": 55.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "na",
@@ -1065,9 +892,7 @@
     "x": 53.4,
     "y": 68.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "nc",
@@ -1075,9 +900,7 @@
     "x": 92.4,
     "y": 67.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ne",
@@ -1085,9 +908,7 @@
     "x": 50.6,
     "y": 48.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ng",
@@ -1095,9 +916,7 @@
     "x": 50.8,
     "y": 52.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ni",
@@ -1105,18 +924,17 @@
     "x": 25.9,
     "y": 51,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "nl",
     "name": "Netherlands",
     "x": 49.9,
     "y": 32.2,
-    "level": "low",
+    "level": "high",
     "info": [
-      "Quantum Research Hub"
+      "El gobierno neerlandés asignó EUR 615 millones a Quantum Delta NL. Fuente: Qureca - Quantum Initiatives Worldwide 2025",
+      "Países Bajos figura entre los países con alta inversión total en quantum en relación con su PIB. Fuente: ECIPE - Benchmarking Quantum Technology Performance"
     ]
   },
   {
@@ -1125,9 +943,7 @@
     "x": 53.3,
     "y": 26.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "np",
@@ -1135,9 +951,7 @@
     "x": 70.8,
     "y": 43.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "nz",
@@ -1145,9 +959,7 @@
     "x": 93.7,
     "y": 78.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "om",
@@ -1155,9 +967,7 @@
     "x": 63.3,
     "y": 47.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "pk",
@@ -1165,9 +975,7 @@
     "x": 66.9,
     "y": 42.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "pa",
@@ -1175,9 +983,7 @@
     "x": 27.3,
     "y": 53.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "pe",
@@ -1186,7 +992,8 @@
     "y": 62,
     "level": "peru",
     "info": [
-      "Quantum Research Hub"
+      "La PUCP fue sede de Quantum Latino 2023, el evento cuántico más importante de Latinoamérica. Fuente: PUCP - Quantum Latino 2023",
+      "El Quantum AI Summit Perú 2025 se realizó en el Palacio Municipal de Lima con auspicio de la Mesa de Jóvenes del Congreso de la República. Fuente: Luma - Quantum AI Summit Perú 2025"
     ]
   },
   {
@@ -1195,9 +1002,7 @@
     "x": 80.8,
     "y": 49.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "pg",
@@ -1205,9 +1010,7 @@
     "x": 87.2,
     "y": 60.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "pl",
@@ -1215,9 +1018,7 @@
     "x": 53.5,
     "y": 32.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "pr",
@@ -1225,9 +1026,7 @@
     "x": 30.9,
     "y": 48.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "kp",
@@ -1235,9 +1034,7 @@
     "x": 82.3,
     "y": 37.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "pt",
@@ -1245,9 +1042,7 @@
     "x": 46.4,
     "y": 38.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "py",
@@ -1255,9 +1050,7 @@
     "x": 33,
     "y": 68.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "qa",
@@ -1265,9 +1058,7 @@
     "x": 62.1,
     "y": 45,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ro",
@@ -1275,9 +1066,7 @@
     "x": 55.1,
     "y": 35.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ru",
@@ -1285,9 +1074,7 @@
     "x": 76,
     "y": 28.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "rw",
@@ -1295,9 +1082,7 @@
     "x": 56.4,
     "y": 58.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "eh",
@@ -1305,9 +1090,7 @@
     "x": 45.1,
     "y": 45.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "sa",
@@ -1315,9 +1098,7 @@
     "x": 60.5,
     "y": 45.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "sd",
@@ -1325,9 +1106,7 @@
     "x": 56.5,
     "y": 49.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ss",
@@ -1335,9 +1114,7 @@
     "x": 56.3,
     "y": 53.4,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "sn",
@@ -1345,9 +1122,7 @@
     "x": 44.6,
     "y": 50.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "sb",
@@ -1355,9 +1130,7 @@
     "x": 90.7,
     "y": 61,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "sl",
@@ -1365,9 +1138,7 @@
     "x": 45.4,
     "y": 53.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "sv",
@@ -1375,9 +1146,7 @@
     "x": 24.9,
     "y": 50.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "so",
@@ -1385,9 +1154,7 @@
     "x": 60.7,
     "y": 54.7,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "sr",
@@ -1395,9 +1162,7 @@
     "x": 33.7,
     "y": 55.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "sk",
@@ -1405,9 +1170,7 @@
     "x": 53.7,
     "y": 33.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "si",
@@ -1415,9 +1178,7 @@
     "x": 52.5,
     "y": 35,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "se",
@@ -1425,9 +1186,7 @@
     "x": 53.1,
     "y": 27.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "sy",
@@ -1435,9 +1194,7 @@
     "x": 58.8,
     "y": 40.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "td",
@@ -1445,9 +1202,7 @@
     "x": 53.5,
     "y": 49.8,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "tg",
@@ -1455,9 +1210,7 @@
     "x": 48.7,
     "y": 53.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "th",
@@ -1465,9 +1218,7 @@
     "x": 75.4,
     "y": 50.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "tj",
@@ -1475,9 +1226,7 @@
     "x": 67.4,
     "y": 38.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "tm",
@@ -1485,9 +1234,7 @@
     "x": 64.3,
     "y": 38.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "tt",
@@ -1495,9 +1242,7 @@
     "x": 32.2,
     "y": 52.2,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "tn",
@@ -1505,9 +1250,7 @@
     "x": 51,
     "y": 41,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "tw",
@@ -1515,9 +1258,7 @@
     "x": 80.6,
     "y": 45.9,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ug",
@@ -1525,9 +1266,7 @@
     "x": 57.1,
     "y": 56.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ua",
@@ -1535,18 +1274,17 @@
     "x": 56.7,
     "y": 34,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "uy",
     "name": "Uruguay",
     "x": 33.7,
     "y": 72.8,
-    "level": "low",
+    "level": "medium",
     "info": [
-      "Quantum Research Hub"
+      "Quantum-South nació en 2020 en la Universidad de Montevideo y es la primera startup de computación cuántica de América Latina. Fuente: Universidad de Montevideo",
+      "Montevideo fue sede del Quantum Hackathon LATAM 2025 del 1 al 3 de octubre de 2025. Fuente: QuantUM 2025 - Hackathon LATAM"
     ]
   },
   {
@@ -1556,7 +1294,8 @@
     "y": 39,
     "level": "high",
     "info": [
-      "Quantum Research Hub"
+      "Las empresas cuánticas con sede en EE. UU. captaron el 44% del financiamiento privado global en el sector. Fuente: ECIPE - Benchmarking Quantum Technology Performance",
+      "EE. UU. genera el 34% de los papers más citados en computación cuántica. Fuente: MIT Quantum Index Report - Academic Research"
     ]
   },
   {
@@ -1565,9 +1304,7 @@
     "x": 65.6,
     "y": 37.3,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ve",
@@ -1575,9 +1312,7 @@
     "x": 30.9,
     "y": 54.1,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "vn",
@@ -1585,9 +1320,7 @@
     "x": 76.5,
     "y": 49.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "vu",
@@ -1595,9 +1328,7 @@
     "x": 92.7,
     "y": 64.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "ye",
@@ -1605,18 +1336,17 @@
     "x": 61.2,
     "y": 49.6,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "za",
     "name": "South Africa",
     "x": 55,
     "y": 70.9,
-    "level": "low",
+    "level": "medium",
     "info": [
-      "Quantum Research Hub"
+      "Wits University recibió ZAR 54 millones para coordinar la South African Quantum Technologies Initiative (SA QuTI). Fuente: Qureca - Quantum Initiatives Worldwide 2025",
+      "La fase 2 de SA QuTI comenzó en 2025 con ZAR 142 millones para los siguientes cinco años. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   },
   {
@@ -1625,9 +1355,7 @@
     "x": 55.8,
     "y": 63.5,
     "level": "low",
-    "info": [
-      "Quantum Research Hub"
-    ]
+    "info": []
   },
   {
     "code": "zw",
@@ -1635,8 +1363,28 @@
     "x": 56.2,
     "y": 66.3,
     "level": "low",
+    "info": []
+  },
+  {
+    "code": "cn",
+    "name": "China",
+    "x": 76,
+    "y": 39.5,
+    "level": "high",
     "info": [
-      "Quantum Research Hub"
+      "China lidera la inversión pública cuántica con alrededor de US$15 mil millones. Fuente: ECIPE - Benchmarking Quantum Technology Performance",
+      "China produce el 39% de las publicaciones globales en comunicaciones cuánticas. Fuente: MIT Quantum Index Report - Academic Research"
+    ]
+  },
+  {
+    "code": "sg",
+    "name": "Singapur",
+    "x": 78.8,
+    "y": 55.4,
+    "level": "medium",
+    "info": [
+      "Singapur es el segundo mayor importador de equipment goods relevantes para la cadena de valor cuántica. Fuente: OECD - Mapping the Global Quantum Ecosystem",
+      "La nueva National Quantum Strategy de Singapur está respaldada por casi S$300 millones. Fuente: Qureca - Quantum Initiatives Worldwide 2025"
     ]
   }
 ]
