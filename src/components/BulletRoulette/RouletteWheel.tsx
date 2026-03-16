@@ -52,7 +52,7 @@ export const RouletteWheel = ({ bullets, activeIndex, hslColor, onWedgeClick }: 
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.8 }}
                                     transition={{ duration: 0.25 }}
-                                    src={`/src/gato/cat_0${(activeIndex % 4) + 1}.png`}
+                                    src={`/gato/cat_0${(activeIndex % 4) + 1}.png`}
                                     alt="Schordi"
                                     className="w-[90%] h-[90%] object-contain relative z-10"
                                     onError={(e: any) => { e.currentTarget.src = 'https://utfs.io/f/cd115fb3-90d5-45d2-a745-f00e93ca910d-c0w41p.png'; }}
