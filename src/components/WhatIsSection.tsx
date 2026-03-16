@@ -49,8 +49,7 @@ const WhatIsSection = () => {
             </h2>
 
             <p className="font-body text-base sm:text-lg text-muted-foreground leading-relaxed mb-10 sm:mb-12 max-w-xl">
-              QuantumHub Peru es una iniciativa que impulsa la educación, investigación e innovación
-              en computación cuántica desde Latinoamérica, con el objetivo de construir un ecosistema
+              QuantumHub Peru es una iniciativa que impulsa la educación, investigación e innovación en ciencias y tecnologías cuánticas desde Latinoamérica, con el objetivo de construir un ecosistema
               tecnológico donde hoy casi no existe infraestructura.
             </p>
 

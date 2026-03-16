@@ -29,7 +29,7 @@ interface Department {
 
 const departments: Department[] = [
   {
-    id: "investigacion", name: "Investigación", subtitle: "Research & Discovery",
+    id: "investigacion", name: "Investigación", subtitle: "Research & Training",
     icon: Atom, color: "text-dept-research", hslColor: "210 100% 60%",
     angle: -90,
     description: "Desarrollo de investigación de frontera en computación cuántica, algoritmos, simulación y aplicaciones para problemas reales de LATAM.",
@@ -181,7 +181,7 @@ const DepartmentCard = ({ dept }: { dept: Department }) => (
         {dept.description}
       </p>
       {dept.description.length > 90 && (
-        <span className="text-xs font-semibold mt-1 inline-block" style={{ color: `hsl(${dept.hslColor})` }}>ver más...</span>
+        <Link to={dept.path} className="text-xs font-semibold mt-1 inline-block hover:underline" style={{ color: `hsl(${dept.hslColor})` }}>ver más...</Link>
       )}
     </div>
 

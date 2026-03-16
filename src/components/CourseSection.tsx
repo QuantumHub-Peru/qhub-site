@@ -7,6 +7,17 @@ const CourseSection = () => {
       {/* Container 1: Curso Intro */}
       <section className="relative py-20 lg:py-28 overflow-hidden section-darker">
         <div className="absolute inset-0 circuit-lines opacity-10" />
+
+        {/* Mobile background image - FULL BLEED */}
+        <div
+          className="absolute inset-0 lg:hidden opacity-15 pointer-events-none z-[1]"
+          style={{
+            backgroundImage: 'url("/r3.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'top center',
+          }}
+        />
+
         <div className="relative z-10 container mx-auto px-4 sm:px-6 flex flex-col items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -16,12 +27,10 @@ const CourseSection = () => {
             className="w-full max-w-[1400px] flex-1 lg:glass-strong rounded-none lg:rounded-3xl px-6 sm:px-6 md:px-8 lg:px-10 xl:px-12 pb-6 sm:pb-6 md:pb-8 lg:pb-10 xl:pb-12 pt-8 lg:pt-10 relative overflow-hidden border-none lg:border lg:border-primary/20 bg-transparent lg:bg-card/60 backdrop-blur-none lg:backdrop-blur-xl shadow-none lg:shadow-[0_0_50px_rgba(138,43,226,0.15)] flex flex-col justify-center"
           >
             <div className="flex flex-col md:flex-row gap-8 lg:gap-10 xl:gap-12 items-center justify-between relative z-10 flex-1 py-4 lg:py-2">
-              <div className="md:w-1/2 lg:w-3/5 space-y-5 lg:space-y-5 xl:space-y-6 flex flex-col justify-center">
+              <div className="md:w-1/2 lg:w-3/5 space-y-5 lg:space-y-5 xl:space-y-6 flex flex-col justify-center relative">
                 <div className="self-start px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-bold mb-1 lg:mb-2 shadow-sm">
                   Edición 2026 - I
                 </div>
-
-                {/* --- TÍTULO CON EFECTO DE CORRIENTE ELÉCTRICA --- */}
                 <h2 className="font-heading text-4xl sm:text-5xl lg:text-5xl xl:text-[3.5rem] 2xl:text-6xl font-black leading-[1.1] tracking-tight flex flex-col items-start">
                   <span>Curso de</span>
                   <motion.span

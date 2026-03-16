@@ -126,6 +126,16 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/15 via-background to-background pointer-events-none" />
             <div className="absolute inset-0 quantum-grid animate-grid-flow opacity-10 pointer-events-none" />
 
+            {/* Mobile background image - FULL BLEED */}
+            <div
+              className="absolute inset-0 md:hidden opacity-15 pointer-events-none z-[1]"
+              style={{
+                backgroundImage: 'url("/r3.jpg")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'top center',
+              }}
+            />
+
             <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-center justify-center px-6 lg:px-20 mb-12">
               <div className="flex flex-col md:flex-row gap-8 lg:gap-14 items-center justify-between w-full">
 
@@ -205,6 +215,16 @@ const HeroSection = () => {
             {/* Background elements */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/10 via-background to-background pointer-events-none" />
             <div className="absolute inset-0 quantum-grid animate-grid-flow-reverse opacity-10 pointer-events-none" />
+
+            {/* Mobile background image - FULL BLEED */}
+            <div
+              className="absolute inset-0 md:hidden opacity-30 pointer-events-none z-[1]"
+              style={{
+                backgroundImage: 'url("/learning.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'top center',
+              }}
+            />
 
             <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-center justify-center px-6 lg:px-20 mb-12">
               <div className="flex flex-col md:flex-row gap-8 lg:gap-14 items-center justify-between w-full">

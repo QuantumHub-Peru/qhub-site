@@ -163,13 +163,22 @@ const faqs = [
   },
   {
     question: "¿Tengo que haber llevado mecánica cuántica?",
-    answer: "No, no se requiere experiencia previa en computación o mecánica cuántica. Sin embargo, esperamos que al finalizar el Módulo 1 los estudiantes logren una buena base en álgebra lineal y programación.",
+    answer:
+      "No, no se requiere experiencia previa en computación o mecánica cuántica. Sin embargo, esperamos que al finalizar el Módulo 1 los estudiantes logren una buena base en álgebra lineal y programación.",
   },
   {
     question: "Si no estoy en Lima, ¿puedo inscribirme al curso?",
     answer: (
       <span>
-        Escribe al correo <a href="mailto:contacto@qhubperu.org" className="text-primary font-bold hover:underline">contacto@qhubperu.org</a> explicando tu situación, contándonos tu motivación y, opcionalmente, adjuntando tu CV.
+        Escribe al correo
+        {" "}
+        <a
+          href="mailto:contacto@qhubperu.org"
+          className="text-primary font-bold hover:underline"
+        >
+          contacto@qhubperu.org
+        </a>{" "}
+        explicando tu situación, contándonos tu motivación y, opcionalmente, adjuntando tu CV.
       </span>
     ),
   },
@@ -640,21 +649,33 @@ const Curso = () => {
     <div className="min-h-screen bg-background text-foreground flex flex-col overflow-hidden">
       <Navbar />
 
-      <main className="flex-1 w-full h-screen pt-20 lg:pt-24 snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth">
-        <div className="fixed inset-0 pointer-events-none z-0 opacity-30 mt-20 lg:mt-24">
+      <main className="flex-1 w-full h-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth">
+        <div className="fixed inset-0 pointer-events-none z-0 opacity-30">
           <ParticleNetwork />
         </div>
 
         {/* Section 1: Hero Section */}
         <section className="w-full min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)] snap-start flex flex-col items-center justify-center relative z-10 lg:p-4 lg:px-6">
+          
+          {/* Mobile background image - FULL BLEED */}
+          <div 
+            className="absolute inset-0 lg:hidden opacity-30 pointer-events-none z-[1]"
+            style={{
+              backgroundImage: 'url("/r3.jpg")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'top center',
+            }}
+          />
+
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full max-w-[1400px] flex-1 lg:glass-strong rounded-none lg:rounded-3xl px-6 sm:px-6 md:px-8 lg:px-10 xl:px-12 pb-6 sm:pb-6 md:pb-8 lg:pb-10 xl:pb-12 pt-1 relative overflow-hidden border-none lg:border lg:border-primary/20 bg-transparent lg:bg-card/60 backdrop-blur-none lg:backdrop-blur-xl shadow-none lg:shadow-[0_0_50px_rgba(138,43,226,0.15)] flex flex-col justify-center"
           >
+
             <div className="flex flex-col md:flex-row gap-8 lg:gap-10 xl:gap-12 items-center justify-between relative z-10 flex-1 py-4 lg:py-2">
-              <div className="md:w-1/2 lg:w-3/5 space-y-5 lg:space-y-5 xl:space-y-6 flex flex-col justify-center">
+              <div className="md:w-1/2 lg:w-3/5 space-y-5 lg:space-y-5 xl:space-y-6 flex flex-col justify-center relative">
                 <div className="self-start px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-bold mb-1 lg:mb-2 shadow-sm">
                   Edición 2026 - I
                 </div>
