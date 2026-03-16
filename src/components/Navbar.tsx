@@ -114,7 +114,7 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
           ))}
-          <a href="https://www.qhubperu.com/aprendizaje" className="ml-4 btn-accent-cta text-xs py-2 px-5">
+          <a href="https://www.qhubperu.com/curso" className="ml-4 btn-accent-cta text-xs py-2 px-5">
             Plataforma
           </a>
         </div>
@@ -171,7 +171,7 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <a href="https://www.qhubperu.com/aprendizaje" onClick={() => setMobileOpen(false)} className="btn-accent-cta text-xs py-2 px-5 text-center mt-2">
+              <a href="https://www.qhubperu.com/curso" onClick={() => setMobileOpen(false)} className="btn-accent-cta text-xs py-2 px-5 text-center mt-2">
                 Plataforma
               </a>
             </div>

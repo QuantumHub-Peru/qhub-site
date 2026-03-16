@@ -50,7 +50,7 @@ const PlatformSection = () => {
               ))}
             </div>
             <a
-              href="https://www.qhubperu.com/aprendizaje"
+              href="https://www.qhubperu.com/curso"
               target="_blank"
               rel="noreferrer"
               className="btn-quantum inline-flex items-center gap-2 uppercase tracking-widest text-[11px] font-bold"

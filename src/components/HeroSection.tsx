@@ -115,7 +115,7 @@ const HeroSection = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
                 <a href="/curso" className="btn-accent-cta">Conocer el Curso</a>
-                <a href="https://www.qhubperu.com/aprendizaje" target="_blank" rel="noreferrer" className="btn-outline-quantum">Aprende Gratis</a>
+                <a href="/curso" className="btn-outline-quantum">Aprende Gratis</a>
               </motion.div>
             </div>
           </CarouselItem>
@@ -261,7 +261,7 @@ const HeroSection = () => {
 
                   <div className="flex flex-col sm:flex-row gap-4 pt-4">
                     <a
-                      href="https://www.qhubperu.com/aprendizaje"
+                      href="https://www.qhubperu.com/curso"
                       target="_blank"
                       rel="noreferrer"
                       className="btn-accent-cta flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 text-[11px] font-black shadow-[0_0_20px_rgba(255,215,0,0.3)] uppercase tracking-widest hover:scale-105 transition-transform"
