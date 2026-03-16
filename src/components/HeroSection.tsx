@@ -18,7 +18,7 @@ const HeroSection = () => {
   );
 
   return (
-    <section className="relative min-h-screen">
+    <section className="relative min-h-[100svh]">
       <Carousel
         plugins={[plugin.current]}
         className="w-full h-full"
@@ -26,9 +26,9 @@ const HeroSection = () => {
           loop: true,
         }}
       >
-        <CarouselContent className="h-screen m-0">
+        <CarouselContent className="m-0">
           {/* Slide 1: Original Hero */}
-          <CarouselItem className="p-0 h-full relative flex items-center justify-center overflow-hidden">
+          <CarouselItem className="p-0 min-h-[100svh] py-24 relative flex items-center justify-center overflow-hidden">
             {/* Background image */}
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -121,7 +121,7 @@ const HeroSection = () => {
           </CarouselItem>
 
           {/* Slide 2: Course Intro view (Gato) */}
-          <CarouselItem className="p-0 h-full relative flex items-center justify-center overflow-hidden bg-background">
+          <CarouselItem className="p-0 min-h-[100svh] py-24 relative flex items-center justify-center overflow-hidden bg-background">
             {/* Background elements for second slide */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/15 via-background to-background pointer-events-none" />
             <div className="absolute inset-0 quantum-grid animate-grid-flow opacity-10 pointer-events-none" />
@@ -201,7 +201,7 @@ const HeroSection = () => {
           </CarouselItem>
 
           {/* Slide 3: Plataforma view */}
-          <CarouselItem className="p-0 h-full relative flex items-center justify-center overflow-hidden bg-background">
+          <CarouselItem className="p-0 min-h-[100svh] py-24 relative flex items-center justify-center overflow-hidden bg-background">
             {/* Background elements */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/10 via-background to-background pointer-events-none" />
             <div className="absolute inset-0 quantum-grid animate-grid-flow-reverse opacity-10 pointer-events-none" />
