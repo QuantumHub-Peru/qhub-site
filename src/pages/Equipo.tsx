@@ -13,7 +13,7 @@ interface TeamMember {
   foto?: string;
 }
 
-const deptFilters = ["Todos", "Ejecutivo", "Académico", "Investigación", "Relaciones Públicas", "Innovación", "Comunidad", "Quantum Interns"];
+const deptFilters = ["Todos", "Ejecutivo", "Académico", "Investigación", "Relaciones Públicas", "Innovación", "Comunidad"];
 
 const Equipo = () => {
   const [filter, setFilter] = useState("Todos");
@@ -35,8 +35,7 @@ const Equipo = () => {
       "Investigación": 3,
       "Innovación": 4,
       "Comunidad": 5,
-      "Relaciones Públicas": 6,
-      "Quantum Interns": 7
+      "Relaciones Públicas": 6
     };
     return weights[dept] || 99;
   };
@@ -71,7 +70,7 @@ const Equipo = () => {
       if (n.includes("rocio")) return -3;
       if (n.includes("daniella")) return -2;
       if (n.includes("marcelo") || n.includes("marcello")) return -1;
-      
+
       // Last in the same role level
       if (n.includes("valentino")) return 100; // Second to last
       if (n.includes("gabriel")) return 101; // Last
