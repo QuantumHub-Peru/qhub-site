@@ -293,9 +293,9 @@ const HeroSection = () => {
 
         </CarouselContent>
 
-        {/* Carousel controls - placed absolutely on top of slides */}
-        <CarouselPrevious className="hidden md:inline-flex left-6 lg:left-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-12 w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
-        <CarouselNext className="hidden md:inline-flex right-6 lg:right-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-12 w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
+        {/* Carousel controls - visible on all screens */}
+        <CarouselPrevious className="inline-flex left-2 md:left-6 lg:left-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-9 w-9 md:h-12 md:w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
+        <CarouselNext className="inline-flex right-2 md:right-6 lg:right-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-9 w-9 md:h-12 md:w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
 
         {/* Animated wave at bottom of the entire carousel section so it stays consistent */}
         <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-20">
