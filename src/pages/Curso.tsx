@@ -671,7 +671,7 @@ const Curso = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full max-w-[1400px] flex-1 lg:glass-strong rounded-none lg:rounded-3xl px-6 sm:px-6 md:px-8 lg:px-10 xl:px-12 pb-6 sm:pb-6 md:pb-8 lg:pb-10 xl:pb-12 pt-1 relative overflow-hidden border-none lg:border lg:border-primary/20 bg-transparent lg:bg-card/60 backdrop-blur-none lg:backdrop-blur-xl shadow-none lg:shadow-[0_0_50px_rgba(138,43,226,0.15)] flex flex-col justify-center"
+            className="w-full max-w-[1400px] flex-1 lg:glass-strong rounded-none lg:rounded-3xl px-6 sm:px-6 md:px-8 lg:px-10 xl:px-12 pb-6 sm:pb-6 md:pb-8 lg:pb-10 xl:pb-12 pt-20 lg:pt-1 relative overflow-hidden border-none lg:border lg:border-primary/20 bg-transparent lg:bg-card/60 backdrop-blur-none lg:backdrop-blur-xl shadow-none lg:shadow-[0_0_50px_rgba(138,43,226,0.15)] flex flex-col justify-center"
           >
 
             <div className="flex flex-col md:flex-row gap-8 lg:gap-10 xl:gap-12 items-center justify-between relative z-10 flex-1 py-4 lg:py-2">
