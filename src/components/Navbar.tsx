@@ -17,7 +17,6 @@ const navItems = [
   { label: "Nosotros", path: "/nosotros", hasDropdown: true },
   { label: "Equipo", path: "/equipo" },
   { label: "Noticias", path: "/noticias" },
-  { label: "Blog", path: "/blog" },
   { label: "Contacto", path: "/contacto" },
 ];
 
