@@ -14,7 +14,7 @@ const Footer = () => {
       { label: "Inicio", href: "/" },
       { label: "Nosotros", href: "/nosotros" },
       { label: "Curso", href: "/curso" },
-      { label: "Plataforma", href: "/plataforma" },
+      { label: "Plataforma", href: "https://www.qhubperu.com/aprendizaje" },
       { label: "Noticias", href: "/noticias" },
     ],
   };
@@ -27,26 +27,14 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/src/assets/img/logo.png" alt="QuantumHub Peru Logo" className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] object-contain" />
+              <img src="/img/logo.png" alt="QuantumHub Peru Logo" className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] object-contain" />
               <span className="font-heading text-sm font-bold tracking-widest">QUANTUMHUB PERU</span>
             </div>
             <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6 max-w-sm">
               Construyendo el ecosistema cuántico de Latinoamérica a través de la educación, investigación e innovación.
             </p>
             {/* Newsletter */}
-            <div className="flex gap-2 max-w-sm">
-              <div className="flex-1 glass rounded-lg px-4 py-2 flex items-center gap-2">
-                <Mail className="w-4 h-4 text-muted-foreground" />
-                <input
-                  type="email"
-                  placeholder="tu@email.com"
-                  className="bg-transparent text-sm font-body text-foreground placeholder:text-muted-foreground outline-none w-full"
-                />
-              </div>
-              <button className="btn-quantum px-4 py-2 text-xs">
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
+
           </div>
 
           {/* Links */}
@@ -69,19 +57,23 @@ const Footer = () => {
         {/* Social + copyright */}
         <div className="border-t border-border/30 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-xs text-muted-foreground">
-            © 2025 QuantumHub Peru. Todos los derechos reservados.
+            © 2026 QuantumHub Peru. Todos los derechos reservados.
           </p>
           <div className="flex gap-4">
-            {["LinkedIn", "Instagram", "YouTube", "Discord"].map((social) => (
-              <motion.a
-                key={social}
-                href="#"
-                whileHover={{ y: -2 }}
-                className="font-body text-xs text-muted-foreground hover:text-primary transition-colors"
-              >
-                {social}
-              </motion.a>
-            ))}
+            <motion.a
+              href="https://www.linkedin.com/company/quantumhub-per%C3%BA/"
+              whileHover={{ y: -2 }}
+              className="font-body text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              LinkedIn
+            </motion.a>
+            <motion.a
+              href="https://www.instagram.com/quantumhub.pe/"
+              whileHover={{ y: -2 }}
+              className="font-body text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              Instagram
+            </motion.a>
           </div>
         </div>
       </div>

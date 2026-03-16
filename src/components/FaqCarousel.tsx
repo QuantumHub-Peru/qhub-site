@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react';
 
 interface FAQ {
     question: string;
-    answer: string;
+    answer: React.ReactNode;
 }
 
 interface FaqCarouselProps {
@@ -66,21 +66,21 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
     };
 
     return (
-        <div className="relative w-full h-[380px] md:h-[400px] flex items-center justify-center perspective-[1000px] overflow-visible">
+        <div className="relative w-full h-[340px] md:h-[400px] flex items-center justify-center perspective-[1000px] overflow-visible">
 
             {/* Navigation Controls */}
             <button
                 onClick={prevSlide}
-                className="absolute left-0 md:left-4 z-50 w-12 h-12 rounded-full glass border-primary/50 flex items-center justify-center text-primary hover:bg-primary/20 hover:text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(243,156,18,0.4)] transition-all duration-300"
+                className="absolute left-[-10px] sm:left-0 md:left-4 z-50 w-10 h-10 md:w-12 md:h-12 rounded-full glass border-primary/50 flex items-center justify-center text-primary hover:bg-primary/20 hover:text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(243,156,18,0.4)] transition-all duration-300"
             >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
             <button
                 onClick={nextSlide}
-                className="absolute right-0 md:right-4 z-50 w-12 h-12 rounded-full glass border-primary/50 flex items-center justify-center text-primary hover:bg-primary/20 hover:text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(243,156,18,0.4)] transition-all duration-300"
+                className="absolute right-[-10px] sm:right-0 md:right-4 z-50 w-10 h-10 md:w-12 md:h-12 rounded-full glass border-primary/50 flex items-center justify-center text-primary hover:bg-primary/20 hover:text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(243,156,18,0.4)] transition-all duration-300"
             >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
             {/* Carousel Track */}
@@ -95,7 +95,7 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
                         return (
                             <motion.div
                                 key={index}
-                                className={`absolute w-[85%] md:w-[550px] h-[300px] md:h-[320px] rounded-3xl p-6 md:p-8 flex flex-col justify-center items-center text-center cursor-pointer transition-colors duration-500`}
+                                className={`absolute w-[92%] sm:w-[85%] md:w-[550px] h-[280px] md:h-[320px] rounded-3xl p-5 md:p-8 flex flex-col justify-center items-center text-center cursor-pointer transition-colors duration-500`}
                                 style={{
                                     background: isActive 
                                         ? `linear-gradient(135deg, rgba(30, 10, 80, 0.95) 0%, rgba(60, 20, 120, 0.9) 100%)` 
@@ -116,7 +116,7 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
                                 animate={{
                                     opacity: isActive ? 1 : 1 - absOffset * 0.4,
                                     scale: isActive ? 1 : 1 - absOffset * 0.15,
-                                    x: `${offset * 120}px`,
+                                    x: isActive ? 0 : `${offset * (offset > 0 ? 80 : -80)}px`,
                                     z: isActive ? 0 : -absOffset * 100,
                                     rotateY: offset * -15,   // Coverflow effect
                                     zIndex: 20 - absOffset,
@@ -143,7 +143,7 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
                             >
                                 {/* Glowing Icon */}
                                 <div
-                                    className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-4 md:mb-6 transition-all duration-500"
+                                    className="w-10 h-10 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-3 md:mb-6 transition-all duration-500"
                                     style={{
                                         backgroundColor: `${color}20`,
                                         color: color,
@@ -151,11 +151,11 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
                                         boxShadow: isActive ? `0 0 20px ${color}60` : 'none'
                                     }}
                                 >
-                                    <HelpCircle className="w-8 h-8 drop-shadow-[0_0_10px_currentColor]" />
+                                    <HelpCircle className="w-5 h-5 md:w-8 md:h-8 drop-shadow-[0_0_10px_currentColor]" />
                                 </div>
 
                                 <h3
-                                    className="font-heading text-xl md:text-2xl font-black mb-4 transition-colors duration-500 tracking-tight"
+                                    className="font-heading text-lg md:text-2xl font-black mb-2 md:mb-4 transition-colors duration-500 tracking-tight"
                                     style={{ 
                                         color: isActive ? color : 'rgba(255,255,255,0.7)',
                                         textShadow: isActive ? `0 0 20px ${color}40` : 'none'
@@ -164,7 +164,7 @@ const FaqCarousel: React.FC<FaqCarouselProps> = ({ faqs }) => {
                                     {faq.question}
                                 </h3>
 
-                                <p className={`text-white text-base md:text-lg font-medium leading-relaxed transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+                                <p className={`text-white text-xs md:text-lg font-medium leading-relaxed transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
                                     {isActive ? faq.answer : ''}
                                 </p>
 

@@ -2,9 +2,20 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { ArrowLeft, Calendar, Clock, Tag, Heart, MessageCircle, Share2, Send, ChevronRight } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Tag, Heart, MessageCircle, Share2, Send, ChevronRight, Crown, Rocket, Link as LinkIcon, X } from "lucide-react";
 import { useState } from "react";
-import { newsItems, catIcons } from "@/data/noticias-data";
+// Importamos la data autogenerada
+import { hallOfFameItems } from "@/data/hallOfFame.generated";
+// A FUTURO: Cuando generes hitos, descomenta esto:
+import { hitosItems } from "@/data/hitos.generated";
+
+// Mapeo de íconos local (ya que eliminamos noticias-data)
+const catIcons: Record<string, any> = {
+  "Hall of Fame": Crown,
+  "Hitos": Rocket,
+};
+const logoQH = "/logo.png";
+
 
 interface Comment {
   id: string;
@@ -15,20 +26,26 @@ interface Comment {
   likes: number;
 }
 
-const initialComments: Comment[] = [
-  { id: "1", author: "Ana María R.", avatar: "https://ui-avatars.com/api/?name=AM&background=7c3aed&color=fff", date: "Hace 2 días", text: "¡Increíble artículo! La comunidad cuántica en LATAM está creciendo rápidamente. 🚀", likes: 12 },
-  { id: "2", author: "Carlos V.", avatar: "https://ui-avatars.com/api/?name=CV&background=3b82f6&color=fff", date: "Hace 1 día", text: "Excelente trabajo de QuantumHub. Es inspirador ver cómo se construye un ecosistema desde cero.", likes: 8 },
-  { id: "3", author: "Laura S.", avatar: "https://ui-avatars.com/api/?name=LS&background=ec4899&color=fff", date: "Hace 5 horas", text: "Me encanta la visión de democratizar la computación cuántica. ¿Habrá próximos workshops online?", likes: 15 },
-];
+const initialComments: Comment[] = [];
 
 const NoticiaDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const article = newsItems.find((n) => n.id === id);
+
+  // Unificamos toda la data generada
+  const allItems = [
+    ...hallOfFameItems,
+    ...hitosItems // A futuro
+  ];
+
+  // Buscamos el artículo en la data unificada
+  const article = allItems.find((n) => n.id === id);
+
   const [comments, setComments] = useState<Comment[]>(initialComments);
   const [newComment, setNewComment] = useState("");
   const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(42);
+  const [likeCount, setLikeCount] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   if (!article) {
     return (
@@ -43,15 +60,36 @@ const NoticiaDetail = () => {
   }
 
   const Icon = catIcons[article.cat] || Calendar;
-  const relatedArticles = newsItems.filter((n) => n.id !== article.id && n.cat === article.cat).slice(0, 3);
+
+  // Buscamos artículos relacionados en la data unificada
+  const relatedArticles = allItems.filter((n) => n.id !== article.id && n.cat === article.cat).slice(0, 3);
 
   const handleComment = () => {
     if (!newComment.trim()) return;
     setComments((prev) => [
-      { id: Date.now().toString(), author: "Tú", avatar: "https://ui-avatars.com/api/?name=TU&background=14b8a6&color=fff", date: "Ahora", text: newComment, likes: 0 },
+      { id: Date.now().toString(), author: "Tú", avatar: logoQH, date: "Ahora", text: newComment, likes: 0 },
       ...prev,
     ]);
     setNewComment("");
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: article.title,
+      text: article.desc,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Enlace copiado al portapapeles");
+      }
+    } catch (err) {
+      console.error("Error al compartir:", err);
+    }
   };
 
   return (
@@ -59,7 +97,7 @@ const NoticiaDetail = () => {
       <Navbar />
 
       {/* Hero Image */}
-      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative h-[65vh] md:h-[60vh] overflow-hidden">
         <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
         <div className="absolute inset-0 quantum-grid opacity-10" />
@@ -69,9 +107,9 @@ const NoticiaDetail = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
           onClick={() => navigate("/noticias")}
-          className="absolute top-28 left-6 md:left-12 glass rounded-full px-4 py-2 flex items-center gap-2 text-xs font-body text-foreground hover:border-primary/40 transition-all z-10"
+          className="absolute top-24 left-6 md:top-28 md:left-12 glass rounded-full px-4 py-2 flex items-center gap-2 text-xs font-body text-foreground hover:border-primary/40 transition-all z-10"
         >
-          <ArrowLeft className="w-3.5 h-3.5" /> Volver a Noticias
+          <ArrowLeft className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Volver a Noticias</span><span className="sm:hidden">Volver</span>
         </motion.button>
 
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
@@ -83,8 +121,8 @@ const NoticiaDetail = () => {
                 </span>
                 {article.featured && <span className="glass px-3 py-1.5 rounded-full font-body text-[10px] text-accent">⭐ Destacado</span>}
               </div>
-              <h1 className="font-heading text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">{article.title}</h1>
-              <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl">{article.desc}</p>
+              <h1 className="font-heading text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 line-clamp-3 md:line-clamp-none">{article.title}</h1>
+              <p className="font-body text-sm md:text-lg text-muted-foreground max-w-2xl line-clamp-2 md:line-clamp-none">{article.desc}</p>
             </motion.div>
           </div>
         </div>
@@ -110,7 +148,7 @@ const NoticiaDetail = () => {
 
           {/* Content */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="space-y-6 mb-12">
-            {article.content.map((p, i) => (
+            {article.content.map((p: string, i: number) => (
               <motion.p key={i} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + i * 0.1 }} className="font-body text-base md:text-lg text-foreground/80 leading-relaxed">
                 {p}
               </motion.p>
@@ -124,13 +162,65 @@ const NoticiaDetail = () => {
             </motion.blockquote>
           </motion.div>
 
+          {/* Galería Adicional (Si existe) */}
+          {article.gallery && article.gallery.length > 0 && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-12">
+              <h3 className="font-heading text-lg font-bold mb-4">Galería</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {article.gallery.map((img: string, i: number) => (
+                  <motion.div
+                    key={i}
+                    className="aspect-video rounded-xl overflow-hidden glass border border-border/20 cursor-pointer group"
+                    onClick={() => setSelectedImage(img)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <img src={img} alt={`${article.title} - imagen ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Enlaces de Interés (Si existen) */}
+          {article.links && article.links.length > 0 && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="mb-12 glass p-6 rounded-2xl border-l-4 border-accent">
+              <h3 className="font-heading text-lg font-bold mb-4 flex items-center gap-2">
+                <LinkIcon className="w-5 h-5 text-accent" /> Enlaces relacionados
+              </h3>
+              <div className="flex flex-col gap-3">
+                {article.links.map((link: string, i: number) => {
+                  // Pequeña lógica para darle un nombre más amigable según el dominio
+                  let linkName = "Ver más detalles";
+                  if (link.includes("linkedin.com")) linkName = "Ver publicación en LinkedIn";
+                  if (link.includes("instagram.com")) linkName = "Ver publicación en Instagram";
+                  if (link.includes("andina.pe")) linkName = "Leer artículo en Agencia Andina";
+
+                  return (
+                    <a
+                      key={i}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-body text-primary hover:text-accent transition-colors w-fit"
+                    >
+                      <ChevronRight className="w-4 h-4" /> {linkName}
+                    </a>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            <Tag className="w-4 h-4 text-muted-foreground" />
-            {article.tags.map((tag) => (
-              <span key={tag} className="px-3 py-1 rounded-full text-xs font-body bg-primary/10 text-primary/70">#{tag}</span>
-            ))}
-          </div>
+          {article.tags && article.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-8">
+              <Tag className="w-4 h-4 text-muted-foreground" />
+              {article.tags.map((tag: string) => (
+                <span key={tag} className="px-3 py-1 rounded-full text-xs font-body bg-primary/10 text-primary/70">#{tag}</span>
+              ))}
+            </div>
+          )}
 
           {/* Reactions */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }} className="flex items-center gap-4 p-4 glass rounded-xl mb-12">
@@ -143,7 +233,10 @@ const NoticiaDetail = () => {
             <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-body hover:bg-secondary text-muted-foreground transition-all">
               <MessageCircle className="w-4 h-4" /> {comments.length}
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-body hover:bg-secondary text-muted-foreground transition-all ml-auto">
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-body hover:bg-secondary text-muted-foreground transition-all ml-auto"
+            >
               <Share2 className="w-4 h-4" /> Compartir
             </button>
           </motion.div>
@@ -221,6 +314,40 @@ const NoticiaDetail = () => {
       </section>
 
       <Footer />
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 md:p-8 cursor-zoom-out backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full h-full max-w-[95vw] max-h-[90vh] flex items-center justify-center p-2"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedImage}
+                alt="Galería ampliada"
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl border border-white/10"
+              />
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-2 right-2 md:-top-4 md:-right-4 text-white hover:text-primary transition-colors glass p-2 rounded-full z-[110] border border-white/20 hover:scale-110 active:scale-95"
+                title="Cerrar"
+              >
+                <X className="w-5 h-5 md:w-6 md:h-6" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

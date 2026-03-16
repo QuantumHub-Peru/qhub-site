@@ -3,16 +3,16 @@ import Globe from "react-globe.gl";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Flags
-import flagPE from "../assets/svg-flags/pe.svg";
-import flagCO from "../assets/svg-flags/co.svg";
-import flagAR from "../assets/svg-flags/ar.svg";
-import flagMX from "../assets/svg-flags/mx.svg";
-import flagCL from "../assets/svg-flags/cl.svg";
-import flagBR from "../assets/svg-flags/br.svg";
-import flagEC from "../assets/svg-flags/ec.svg";
-import flagBO from "../assets/svg-flags/bo.svg";
-import flagUY from "../assets/svg-flags/uy.svg";
-import flagVE from "../assets/svg-flags/ve.svg";
+const flagPE = "/svg-flags/pe.svg";
+const flagCO = "/svg-flags/co.svg";
+const flagAR = "/svg-flags/ar.svg";
+const flagMX = "/svg-flags/mx.svg";
+const flagCL = "/svg-flags/cl.svg";
+const flagBR = "/svg-flags/br.svg";
+const flagEC = "/svg-flags/ec.svg";
+const flagBO = "/svg-flags/bo.svg";
+const flagUY = "/svg-flags/uy.svg";
+const flagVE = "/svg-flags/ve.svg";
 
 const LatamGlobe = () => {
     const globeEl = useRef<any>(null);

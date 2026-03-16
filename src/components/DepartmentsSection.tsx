@@ -6,11 +6,11 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Line, Billboard, Text } from "@react-three/drei";
 import * as THREE from "three";
 
-import deptImg1 from "@/assets/r1.jpg";
-import deptImg2 from "@/assets/r2.jpg";
-import deptImg3 from "@/assets/r3.jpg";
-import deptImg4 from "@/assets/r4.jpg";
-import deptImg5 from "@/assets/r5.jpg";
+const deptImg1 = "/investigación.png"; {/* investigación */ }
+const deptImg2 = "/académico.png"; {/* académico */ }
+const deptImg3 = "/innovación.png"; {/* innovación*/ }
+const deptImg4 = "/relacionespublicas.png"; {/* relaciones */ }
+const deptImg5 = "/comunidad.png"; {/* comunidad */ }
 
 interface Department {
   id: string;
@@ -29,7 +29,7 @@ interface Department {
 
 const departments: Department[] = [
   {
-    id: "investigacion", name: "Investigación", subtitle: "Research & Discovery",
+    id: "investigacion", name: "Investigación", subtitle: "Research & Training",
     icon: Atom, color: "text-dept-research", hslColor: "210 100% 60%",
     angle: -90,
     description: "Desarrollo de investigación de frontera en computación cuántica, algoritmos, simulación y aplicaciones para problemas reales de LATAM.",
@@ -49,12 +49,12 @@ const departments: Department[] = [
     image: deptImg2,
   },
   {
-    id: "innovacion", name: "Innovación", subtitle: "Tech & Startups",
+    id: "innovacion", name: "Innovación", subtitle: "EDTECH & SOFTWARE",
     icon: Lightbulb, color: "text-dept-innovation", hslColor: "175 80% 50%",
     angle: 54,
-    description: "Exploración de aplicaciones prácticas, startups cuánticas y transferencia de tecnología al sector productivo.",
+    description: "Ampliación del acceso a la computación cuántica mediante productos digitales y software especializado",
     mission: "Conectar la investigación cuántica con soluciones reales.",
-    highlights: ["Hackathons", "Proyectos aplicados", "Alianzas industria"],
+    highlights: ["Software", "Edtech"],
     path: "/innovacion",
     image: deptImg3,
   },
@@ -181,7 +181,7 @@ const DepartmentCard = ({ dept }: { dept: Department }) => (
         {dept.description}
       </p>
       {dept.description.length > 90 && (
-        <span className="text-xs font-semibold mt-1 inline-block" style={{ color: `hsl(${dept.hslColor})` }}>ver más...</span>
+        <Link to={dept.path} className="text-xs font-semibold mt-1 inline-block hover:underline" style={{ color: `hsl(${dept.hslColor})` }}>ver más...</Link>
       )}
     </div>
 

@@ -17,7 +17,6 @@ const navItems = [
   { label: "Nosotros", path: "/nosotros", hasDropdown: true },
   { label: "Equipo", path: "/equipo" },
   { label: "Noticias", path: "/noticias" },
-  { label: "Blog", path: "/blog" },
   { label: "Contacto", path: "/contacto" },
 ];
 
@@ -49,7 +48,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" onClick={handleLinkClick} className="flex items-center gap-3 group">
-          <img src="/src/assets/img/logo.png" alt="QuantumHub Peru Logo" className="w-[28px] h-[28px] md:w-[35px] md:h-[35px] object-contain group-hover:scale-110 transition-transform" />
+          <img src="/img/logo.png" alt="QuantumHub Peru Logo" className="w-[28px] h-[28px] md:w-[35px] md:h-[35px] object-contain group-hover:scale-110 transition-transform" />
           <span className="font-heading text-sm font-bold tracking-widest text-foreground">
             QUANTUMHUB <span className="text-muted-foreground font-normal">PERU</span>
           </span>
@@ -115,9 +114,9 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
           ))}
-          <Link to="/plataforma" className="ml-4 btn-accent-cta text-xs py-2 px-5">
+          <a href="https://www.qhubperu.com/aprendizaje" className="ml-4 btn-accent-cta text-xs py-2 px-5">
             Plataforma
-          </Link>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -172,9 +171,9 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <Link to="/plataforma" onClick={() => setMobileOpen(false)} className="btn-accent-cta text-xs py-2 px-5 text-center mt-2">
+              <a href="https://www.qhubperu.com/aprendizaje" onClick={() => setMobileOpen(false)} className="btn-accent-cta text-xs py-2 px-5 text-center mt-2">
                 Plataforma
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

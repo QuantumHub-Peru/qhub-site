@@ -19,9 +19,11 @@ import {
     HelpCircle
 } from "lucide-react";
 import FaqCarousel from "@/components/FaqCarousel";
-import clubLogo from "@/assets/club.jpg";
-import utecLogo from "@/assets/logoUTEC_horizontal.png";
 import ParticleNetwork from "@/components/ParticleNetwork";
+
+// Las imágenes ahora se referencian directamente como strings desde la carpeta public (raíz "/")
+const clubLogo = "/club.jpg";
+const utecLogo = "/logoUTEC_horizontal.png";
 
 // FAQ Data
 const faqs = [

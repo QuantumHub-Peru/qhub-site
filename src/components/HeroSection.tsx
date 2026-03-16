@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
-import aprendiendoImg from "@/gato/aprendiendo.png";
+const heroBg = "/hero-bg.jpg";
+const aprendiendoImg = "/gato/aprendiendo.png";
 import {
   Carousel,
   CarouselContent,
@@ -14,23 +14,21 @@ import { ArrowRight, Monitor, BookOpen, Zap } from "lucide-react";
 
 const HeroSection = () => {
   const plugin = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
+    Autoplay({ delay: 6000, stopOnInteraction: false })
   );
 
   return (
-    <section className="relative min-h-screen">
+    <section className="relative min-h-[100svh]">
       <Carousel
         plugins={[plugin.current]}
         className="w-full h-full"
         opts={{
           loop: true,
         }}
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
       >
-        <CarouselContent className="h-screen m-0">
+        <CarouselContent className="m-0">
           {/* Slide 1: Original Hero */}
-          <CarouselItem className="p-0 h-full relative flex items-center justify-center overflow-hidden">
+          <CarouselItem className="p-0 min-h-[100svh] py-24 relative flex items-center justify-center overflow-hidden">
             {/* Background image */}
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -117,20 +115,30 @@ const HeroSection = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
                 <a href="/curso" className="btn-accent-cta">Conocer el Curso</a>
-                <a href="/plataforma" className="btn-outline-quantum">Aprende Gratis</a>
+                <a href="https://www.qhubperu.com/aprendizaje" target="_blank" rel="noreferrer" className="btn-outline-quantum">Aprende Gratis</a>
               </motion.div>
             </div>
           </CarouselItem>
 
           {/* Slide 2: Course Intro view (Gato) */}
-          <CarouselItem className="p-0 h-full relative flex items-center justify-center overflow-hidden bg-background">
+          <CarouselItem className="p-0 min-h-[100svh] py-24 relative flex items-center justify-center overflow-hidden bg-background">
             {/* Background elements for second slide */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/15 via-background to-background pointer-events-none" />
             <div className="absolute inset-0 quantum-grid animate-grid-flow opacity-10 pointer-events-none" />
-            
+
+            {/* Mobile background image - FULL BLEED */}
+            <div
+              className="absolute inset-0 md:hidden opacity-15 pointer-events-none z-[1]"
+              style={{
+                backgroundImage: 'url("/r3.jpg")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'top center',
+              }}
+            />
+
             <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-center justify-center px-6 lg:px-20 mb-12">
               <div className="flex flex-col md:flex-row gap-8 lg:gap-14 items-center justify-between w-full">
-                
+
                 {/* Left side text */}
                 <div className="md:w-1/2 lg:w-3/5 space-y-6 flex flex-col justify-center">
                   <div className="self-start px-5 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs tracking-widest font-bold shadow-sm uppercase">
@@ -203,23 +211,33 @@ const HeroSection = () => {
           </CarouselItem>
 
           {/* Slide 3: Plataforma view */}
-          <CarouselItem className="p-0 h-full relative flex items-center justify-center overflow-hidden bg-background">
+          <CarouselItem className="p-0 min-h-[100svh] py-24 relative flex items-center justify-center overflow-hidden bg-background">
             {/* Background elements */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/10 via-background to-background pointer-events-none" />
             <div className="absolute inset-0 quantum-grid animate-grid-flow-reverse opacity-10 pointer-events-none" />
-            
+
+            {/* Mobile background image - FULL BLEED */}
+            <div
+              className="absolute inset-0 md:hidden opacity-30 pointer-events-none z-[1]"
+              style={{
+                backgroundImage: 'url("/learning.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'top center',
+              }}
+            />
+
             <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-center justify-center px-6 lg:px-20 mb-12">
               <div className="flex flex-col md:flex-row gap-8 lg:gap-14 items-center justify-between w-full">
-                
+
                 {/* Left side text */}
-                <div className="md:w-1/2 lg:w-3/5 space-y-6 flex flex-col justify-center">
+                <div className="md:w-1/2 lg:w-[45%] space-y-6 flex flex-col justify-center">
                   <div className="self-start px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs tracking-widest font-bold shadow-sm uppercase">
                     Plataforma Educativa
                   </div>
 
-                  <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.95] tracking-[-0.04em] flex flex-col items-start uppercase drop-shadow-md">
-                    <span>Explora nuestra</span>
-                    <span className="text-gradient-quantum pb-1">Plataforma</span>
+                  <h1 className="font-heading text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black leading-[0.95] tracking-tight flex flex-col items-start uppercase drop-shadow-md">
+                    <span>QuantumHub Peru</span>
+                    <span className="text-gradient-quantum pb-1">QHub Learning Platform</span>
                   </h1>
 
                   <p className="text-base sm:text-lg text-muted-foreground/90 leading-relaxed max-w-2xl font-medium">
@@ -242,33 +260,30 @@ const HeroSection = () => {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="/plataforma" className="btn-accent-cta flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-black shadow-[0_0_20px_rgba(255,215,0,0.3)] uppercase tracking-widest hover:scale-105 transition-transform">
-                      Ver Plataforma <ArrowRight className="w-5 h-5" />
+                    <a
+                      href="https://www.qhubperu.com/aprendizaje"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-accent-cta flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-8 py-4 text-[11px] font-black shadow-[0_0_20px_rgba(255,215,0,0.3)] uppercase tracking-widest hover:scale-105 transition-transform"
+                    >
+                      Explora nuestra plataforma <ArrowRight className="w-5 h-5" />
                     </a>
                   </div>
                 </div>
 
-                {/* Right side Platform Mockup */}
-                <div className="hidden md:flex md:w-1/2 lg:w-2/5 p-6 rounded-3xl bg-gradient-to-br from-accent/20 via-background/60 to-primary/20 border border-white/10 shadow-[0_0_40px_rgba(255,215,0,0.1)] overflow-hidden group relative items-center justify-center backdrop-blur-md">
-                  <div className="w-full h-full glass-strong rounded-xl p-6 glow-purple">
-                    <div className="rounded-lg bg-background/80 p-5 space-y-5 border border-white/5">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-3 h-3 rounded-full bg-primary/60" />
-                        <div className="w-3 h-3 rounded-full bg-accent/60" />
-                        <div className="w-3 h-3 rounded-full bg-quantum-turquoise/60" />
-                      </div>
-                      <div className="h-6 w-3/4 rounded bg-white/5" />
-                      <div className="grid grid-cols-3 gap-3">
-                        {[1, 2, 3].map((n) => (
-                          <div key={n} className="h-24 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 border border-white/5 flex items-center justify-center">
-                            <Zap className="w-6 h-6 text-primary/40" />
-                          </div>
-                        ))}
-                      </div>
-                      <div className="h-32 rounded-lg bg-gradient-to-tr from-[#DE5CA3]/10 to-primary/10 flex items-center justify-center relative overflow-hidden">
-                         <div className="absolute inset-0 bg-primary/5 animate-pulse" />
-                         <Monitor className="w-12 h-12 text-[#DE5CA3] relative z-10 opacity-70" />
-                      </div>
+                {/* Right side Platform Video */}
+                <div className="hidden md:flex md:w-1/2 lg:w-[55%] p-4 rounded-3xl bg-gradient-to-br from-accent/20 via-background/60 to-primary/20 border border-white/10 shadow-[0_0_40px_rgba(255,215,0,0.1)] overflow-hidden group relative items-center justify-center backdrop-blur-md">
+                  <div className="w-full h-full glass-strong rounded-xl p-1.5 glow-purple overflow-hidden">
+                    <div className="relative rounded-lg overflow-hidden aspect-video bg-background/40">
+                      <video
+                        src="/plataformaqhub.mp4"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                     </div>
                   </div>
                 </div>
@@ -277,11 +292,11 @@ const HeroSection = () => {
           </CarouselItem>
 
         </CarouselContent>
-        
-        {/* Carousel controls - placed absolutely on top of slides */}
-        <CarouselPrevious className="hidden md:inline-flex left-6 lg:left-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-12 w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
-        <CarouselNext className="hidden md:inline-flex right-6 lg:right-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-12 w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
-        
+
+        {/* Carousel controls - visible on all screens */}
+        <CarouselPrevious className="inline-flex left-2 md:left-6 lg:left-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-9 w-9 md:h-12 md:w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
+        <CarouselNext className="inline-flex right-2 md:right-6 lg:right-12 bg-background/40 backdrop-blur-xl border-white/20 text-white hover:bg-white/20 hover:text-white hover:scale-110 z-30 h-9 w-9 md:h-12 md:w-12 transition-all shadow-[0_0_15px_rgba(0,0,0,0.4)]" />
+
         {/* Animated wave at bottom of the entire carousel section so it stays consistent */}
         <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-20">
           <svg viewBox="0 0 1440 120" fill="none" className="w-full">

@@ -1,35 +1,66 @@
 import { useState, useEffect, useRef } from "react";
-import { Users, BookOpen, GraduationCap, Heart, School, Search, Target, Eye, Atom, ArrowRight, Play } from "lucide-react";
+import { Users, BookOpen, GraduationCap, Heart, School, Search, Target, Eye, Atom, ArrowRight, Play, Leaf, Lightbulb, Briefcase, Globe, CheckCircle } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import gatoImg from "@/gato/gato.png";
-import principiosCat from "@/gato/principios.png";
-import clubImg from "@/assets/r1.jpg";
-import logoImg from "@/assets/club.jpg";
-import quantumBg0 from "@/assets/r1.jpg";
-import quantumBg1 from "@/assets/r2.jpg";
-import quantumBg2 from "@/assets/r5.jpg";
-import quantumBg3 from "@/assets/r3.jpg";
-import quantumBg4 from "@/assets/r4.jpg";
-import quantumBg5 from "@/assets/r6.jpg";
-import quantumBg6 from "@/assets/r7.jpg";
-import quantumBg7 from "@/assets/r8.jpg";
-import quantumBg8 from "@/assets/r9.jpg";
-import quantumBg9 from "@/assets/r10.jpg";
-import quantumBg10 from "@/assets/r5.jpg";
-import heroBgImage from "@/assets/hero-bg.png";
 import DepartmentsSection from "@/components/DepartmentsSection";
 import ParticleNetwork from "@/components/ParticleNetwork";
 
+// Las imágenes ahora se referencian directamente como strings desde la carpeta public (raíz "/")
+const gatoImg = "/gato/gato.png";
+const principiosCat = "/gato/principios.png";
+const clubImg = "/r1.jpg";
+const logoImg = "/club.jpg";
+const quantumBg0 = "/r1.jpg";
+const quantumBg1 = "/r2.jpg";
+const quantumBg2 = "/r5.jpg";
+const quantumBg3 = "/r3.jpg";
+const quantumBg4 = "/r4.jpg";
+const quantumBg5 = "/r6.jpg";
+const quantumBg6 = "/r7.jpg";
+const quantumBg7 = "/r8.jpg";
+const quantumBg8 = "/r9.jpg";
+const quantumBg9 = "/r10.jpg";
+const quantumBg10 = "/r5.jpg";
+const heroBgImage = "/hero-bg.png";
 /* ── data ── */
 const principiosData = [
-  { id: 0, title: "Público objetivo", qh: "Secundaria y pregrado temprano.", otros: "Pregrado avanzado y posgrado.", icon: Users },
-  { id: 1, title: "Enfoque pedagógico", qh: "Modular, accesible y progresivo, con acompañamiento educativo.", otros: "Altamente técnico.", icon: BookOpen },
-  { id: 2, title: "Experiencia educativa", qh: "Curso estructurado de 4 meses con evaluación de ingreso y niveles personalizados.", otros: "Coloquios o bootcamps independientes.", icon: GraduationCap },
-  { id: 3, title: "Comunidad y seguimiento", qh: "Comunidad activa online, asesorías, mentores y seguimiento académico a lo largo del curso.", otros: "Generalmente sin continuidad estructural.", icon: Heart },
-  { id: 4, title: "Integración curricular", qh: "En diálogo con facultades universitarias y colegios para generar articulación real.", otros: "Enfocado en actividades extracurriculares.", icon: School },
-  { id: 5, title: "Investigación e impacto", qh: "Estudio y análisis de datos socioeconómicos, geográficos y académicos para detectar brechas y optimizar el acceso equitativo a la educación cuántica.", otros: "Sin componente investigativo formal ni estudio del impacto educativo.", icon: Search },
+  {
+    id: 0,
+    title: "Sostenibilidad",
+    desc: "Construimos una comunidad capaz de autoproyectarse. Nuestros estudiantes graduados, con el tiempo, se convierten en investigadores, mentores, profesores y líderes dentro de QuantumHub.",
+    icon: Leaf
+  },
+  {
+    id: 1,
+    title: "Formación Rigurosa",
+    desc: "Nuestros productos y programas educativos demandan una alta capacidad y disciplina académica. La exigencia inducida en nuestro curso y preparación para investigación requiere una gran motivación científica.",
+    icon: BookOpen
+  },
+  {
+    id: 2,
+    title: "Investigación Temprana",
+    desc: "Nuestra red de estudiantes graduados se involucra en proyectos de investigación en hardware, software y educación cuántica, con la meta de publicar en revistas de alto impacto.",
+    icon: Search
+  },
+  {
+    id: 3,
+    title: "Desarrollo Profesional",
+    desc: "Promovemos el crecimiento académico de nuestros miembros. Tras el curso bandera, los graduados son invitados a formar parte de los 5 departamentos de QuantumHub Perú.",
+    icon: Briefcase
+  },
+  {
+    id: 4,
+    title: "Innovación",
+    desc: "Impulsamos el desarrollo de herramientas, plataformas y proyectos que contribuyen a la accesibilidad educativa y al avance del software y hardware cuántico en la región.",
+    icon: Lightbulb
+  },
+  {
+    id: 5,
+    title: "Red de Colaboración",
+    desc: "Articulamos proyectos de investigación y actividades formativas en alianza con universidades e instituciones nacionales e internacionales que fortalecen nuestro impacto.",
+    icon: Globe
+  },
 ];
 
 const galleryImages = [quantumBg0, quantumBg1, quantumBg2, quantumBg3, quantumBg4, quantumBg0, quantumBg1, quantumBg2, quantumBg3, quantumBg4];
@@ -62,56 +93,38 @@ function ScrollReveal({ children, delay = 0, className = "" }: { children: React
   );
 }
 
-/* ── flip card ── */
-function FlipCard({ item, delay }: { item: typeof principiosData[0]; delay: number }) {
-  const [flipped, setFlipped] = useState(false);
+/* ── principle card ── */
+function PrincipleCard({ item, delay }: { item: typeof principiosData[0]; delay: number }) {
   const { ref, visible } = useInView(0.1);
   const Icon = item.icon;
 
   return (
     <div
       ref={ref}
-      className={`group perspective-1000 h-80 cursor-pointer transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+      className={`group relative h-auto min-h-[160px] md:min-h-[180px] p-6 rounded-2xl border border-border bg-card overflow-hidden transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       style={{
         transitionDelay: `${delay}ms`,
         boxShadow: visible
           ? "0 0 25px rgba(246,157,14,0.15)"
           : "0 0 0 rgba(0,0,0,0)",
       }}
-      onClick={() => setFlipped(!flipped)}
-      onMouseEnter={() => {
-        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) setFlipped(true);
-      }}
-      onMouseLeave={() => {
-        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) setFlipped(false);
-      }}
     >
-      <div className={`relative w-full h-full transition-transform duration-700 preserve-3d ${flipped ? "rotate-y-180" : ""}`}>
-        {/* Front */}
-        <div className="absolute inset-0 backface-hidden rounded-2xl border border-border bg-card overflow-hidden group-hover:border-[#F69D0E]/60 transition-colors duration-500 shadow-[0_0_20px_rgba(15,23,42,0.5)] group-hover:shadow-[0_0_35px_rgba(246,157,14,0.55)]">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#F69D0E] via-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <div className="h-full p-6 flex items-center gap-4 text-left">
-            <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#F69D0E] to-primary/80 flex items-center justify-center">
-              <Icon className="w-7 h-7 text-foreground" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-heading text-lg sm:text-xl lg:text-xl font-black text-foreground mb-1 leading-tight">{item.title}</h3>
-              <p className="text-sm sm:text-base lg:text-sm text-muted-foreground leading-snug">{item.qh}</p>
-              <span className="mt-2 block text-xs text-[#F69D0E]/60 font-medium">Comparar →</span>
-            </div>
-          </div>
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#F69D0E] via-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <div className="flex items-start gap-4 text-left">
+        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-[#F69D0E] to-primary/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg">
+          <Icon className="w-6 h-6 text-foreground" />
         </div>
-        {/* Back */}
-        <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl border border-[#F69D0E]/40 bg-secondary overflow-hidden shadow-[0_0_20px_rgba(15,23,42,0.5)] group-hover:shadow-[0_0_35px_rgba(246,157,14,0.55)]">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-[#F69D0E] to-accent" />
-          <div className="h-full p-6 flex flex-col items-center justify-center text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#DE5CA3] mb-2">Diferente</span>
-            <h3 className="font-heading text-lg sm:text-xl lg:text-xl font-black text-foreground mb-2">{item.title}</h3>
-            <p className="text-sm sm:text-base lg:text-sm text-muted-foreground leading-relaxed">{item.otros}</p>
-            <span className="mt-3 text-xs text-accent/60 font-medium">← Volver</span>
-          </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="font-heading text-lg font-black text-foreground mb-2 leading-tight group-hover:text-[#F69D0E] transition-colors">{item.title}</h3>
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            {item.desc}
+          </p>
         </div>
       </div>
+
+      {/* Subtle glow on hover */}
+      <div className="absolute -inset-px bg-gradient-to-br from-[#F69D0E]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
     </div>
   );
 }
@@ -158,7 +171,7 @@ export default function SobreNosotros() {
               {/* Removed particle overlay per user request */}
 
               <h1 className="font-heading text-[3.25rem] sm:text-[4rem] md:text-[5rem] lg:text-[75px] xl:text-[95px] font-black leading-[1.05] tracking-normal mb-8 md:mb-10 lg:mb-12 relative z-10 text-center px-4 w-full">
-                <span className="text-white drop-shadow-md">Impulsamos la educación</span>
+                <span className="text-white drop-shadow-md">Construyendo el primer</span>
                 <br className="hidden md:block" />
                 <span className="md:hidden"> </span>
                 <motion.span
@@ -180,12 +193,12 @@ export default function SobreNosotros() {
                     filter: { duration: 1.75, repeat: Infinity, ease: "easeInOut" }
                   }}
                 >
-                  cuántica inclusiva en Perú
+                  ecosistema cuántico del Perú
                 </motion.span>
               </h1>
 
               <p className="text-lg sm:text-xl md:text-xl lg:text-2xl text-white/90 max-w-3xl leading-relaxed mb-16 md:mb-12 lg:mb-16 mx-4 font-medium">
-                Desarrollamos competencias en tecnología cuántica con una propuesta pedagógica innovadora, accesible y rigurosa en colaboración con instituciones líderes.
+                Formamos, conectamos e impulsamos a la próxima generación hispanoamericana de talento en computación y tecnologías cuánticas.
               </p>
 
 
@@ -206,7 +219,7 @@ export default function SobreNosotros() {
         <section className="py-24 px-6 md:px-12 relative z-10">
           <ScrollReveal>
             <p className="max-w-4xl mx-auto text-center text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed font-light">
-              Impulsamos la <span className="text-foreground font-semibold">educación cuántica inclusiva</span> en Perú con una propuesta pedagógica innovadora, accesible y rigurosa, formando a la primera generación de estudiantes en ciencia y tecnología cuánticas.
+              Creamos un <span className="text-foreground font-semibold">ecosistema autosostenible de aprendizaje, investigación y cooperación entre gobierno, industria y academia</span> que permite a nuevos talentos explorar el espectro del mundo cuántico y proyectarse hacia carreras científicas y tecnológicas.
             </p>
           </ScrollReveal>
         </section>
@@ -217,7 +230,7 @@ export default function SobreNosotros() {
             <ScrollReveal>
               <span className="text-[#F69D0E] text-sm font-semibold tracking-widest uppercase">Nuestra Historia</span>
               <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black mt-4 mb-6 text-foreground leading-tight">
-                Llevando la computación cuántica a cada rincón del Perú
+                La ruta cuántica empieza aquí
               </h2>
               <a href="#principios" className="inline-flex items-center gap-2 text-[#F69D0E] font-semibold hover:underline text-sm">
                 Descubre nuestros principios <ArrowRight className="w-4 h-4" />
@@ -225,10 +238,13 @@ export default function SobreNosotros() {
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-                QuantumHub Perú nació con la visión de democratizar el acceso a la educación cuántica. Creemos que el futuro de la tecnología no debe estar reservado a unos pocos, sino abierto a todos los estudiantes con curiosidad y determinación.
+                QuantumHub Perú nace a partir de preguntas simples pero urgentes: ¿Y si los estudiantes más jóvenes también pudieran aprender ciencia de frontera? ¿Y si Latinoamérica fuera participante activo de una revolución tecnológica?
               </p>
               <p className="text-muted-foreground leading-relaxed text-base md:text-lg mt-6">
-                Nuestro programa ofrece un curso estructurado de 4 meses con evaluación de ingreso, niveles personalizados, mentores y una comunidad activa. Trabajamos en diálogo con facultades universitarias y colegios para integrar la computación cuántica en la currícula educativa.
+                Frente a la falta de sistemas y de representación latinoamericana en tecnologías cuánticas, durante el Año Internacional de Ciencias y Tecnologías Cuánticas, QuantumHub Perú surge como un espacio para abrir ese camino desde el Perú, acercando la computación cuántica a estudiantes jóvenes y creando una comunidad donde la curiosidad científica, el rigor académico y la colaboración se encuentren.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-base md:text-lg mt-6">
+                Estudiantes, investigadores, profesionales, educadores y entusiastas se unen para investigar, desarrollar productos, impartir conocimiento y democratizar la tecnología cuántica en la región.
               </p>
             </ScrollReveal>
           </div>
@@ -278,7 +294,7 @@ export default function SobreNosotros() {
                 </div>
                 <h3 className="font-heading text-3xl font-black mb-4 text-foreground">Misión</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Formar a la primera generación de estudiantes peruanos en ciencia y tecnología cuánticas mediante una educación accesible, rigurosa y contextualizada en computación cuántica.
+                  Construir el primer capital humano cuántico del Perú desde su formación integral técnica en computación cuántica hasta su completa inmersión en especialidades de hardware y software cuánticos con aplicaciones de impacto real.
                 </p>
               </div>
             </ScrollReveal>
@@ -289,7 +305,7 @@ export default function SobreNosotros() {
                 </div>
                 <h3 className="font-heading text-3xl font-black mb-4 text-foreground">Visión</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Convertir al Perú en un país pionero en educación cuántica temprana, integrando esta disciplina a la currícula escolar y universitaria, y sentando las bases de un ecosistema regional que impulse una hoja de ruta latinoamericana en tecnologías cuánticas.
+                  Convertir al Perú en un participante activo del ecosistema cuántico global, fortaleciendo la colaboración institucional a nivel nacional e internacional que potencie la investigación, educación y divulgación de ciencia y tecnología cuánticas en la región latinoamericana.
                 </p>
               </div>
             </ScrollReveal>
@@ -308,72 +324,49 @@ export default function SobreNosotros() {
             </div>
             <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-foreground">Nuestros Principios</h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              Cada principio orbita alrededor de nuestra misión. Explora cómo se conectan con nuestro gato cuántico y con la propuesta de otros programas.
+              Nuestros principios guían cada paso en la construcción del ecosistema cuántico.
             </p>
           </ScrollReveal>
 
-          <div className="mt-10 grid lg:grid-cols-[minmax(240px,320px)_minmax(0,1.5fr)] gap-8 items-center">
-            {/* Columna izquierda: gato con moléculas */}
-            <div className="relative flex items-center justify-center lg:justify-start">
-              <div className="relative w-[280px] h-[280px] sm:w-[300px] sm:h-[300px] flex items-center justify-center">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/35 via-[#F69D0E]/25 to-accent/35 blur-3xl opacity-70" />
-                <motion.div
-                  aria-hidden
-                  className="absolute inset-2 rounded-full border-2 border-[#F69D0E]/70 border-dashed"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-                />
-                <div className="absolute inset-6 rounded-full border-[3px] border-primary/60 shadow-[0_0_70px_rgba(129,140,248,0.6)]" />
-                <div className="absolute inset-12 rounded-full border border-[#F69D0E]/60 opacity-90" />
+          <div className="mt-10 flex flex-col items-center">
+            <div className="grid lg:grid-cols-3 gap-8 items-center w-full max-w-7xl mx-auto">
 
-                {/* Moléculas orbitando */}
-                {Array.from({ length: 10 }).map((_, i) => {
-                  const angle = (i / 10) * 2 * Math.PI;
-                  const radius = 150;
-                  const x = radius * Math.cos(angle);
-                  const y = radius * Math.sin(angle);
-                  return (
-                    <motion.div
-                      key={i}
-                      className="absolute w-2 h-2 rounded-full bg-quantum-pink/80 shadow-[0_0_12px_rgba(244,114,182,0.9)]"
-                      style={{
-                        left: "50%",
-                        top: "50%",
-                        transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`
-                      }}
-                      animate={{ opacity: [0.3, 1, 0.3], scale: [0.9, 1.2, 0.9] }}
-                      transition={{ duration: 3 + i * 0.2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                  );
-                })}
-
-                <motion.img
-                  src={principiosCat}
-                  alt="Gato QuantumHub principios"
-                  className="relative z-10 w-[88%] h-[88%] object-contain drop-shadow-[0_24px_60px_rgba(0,0,0,0.9)]"
-                  animate={{ y: [-12, 12, -12], scale: [1, 1.04, 1] }}
-                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                />
+              {/* Left Column: 3 principles */}
+              <div className="flex flex-col gap-6 order-2 lg:order-1">
+                {principiosData.slice(0, 3).map((item, index) => (
+                  <PrincipleCard key={item.id} item={item} delay={index * 150} />
+                ))}
               </div>
-            </div>
 
-            {/* Columna derecha: 6 principios en grilla 2x3 */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {principiosData.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ scale: 1.04, y: -6 }}
-                  className="relative"
-                >
-                  {/* Pequeña línea de conexión hacia el gato */}
-                  <div className="hidden lg:block absolute left-[-24px] top-1/2 translate-y-[-50%] w-6 h-[2px] bg-gradient-to-l from-[#F69D0E] via-primary to-transparent opacity-70" />
-                  <FlipCard item={item} delay={index * 120} />
-                </motion.div>
-              ))}
+              {/* Center Column: Gato mascot */}
+              <div className="relative flex items-center justify-center order-1 lg:order-2">
+                <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[380px] lg:h-[380px] flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/30 via-[#F69D0E]/20 to-accent/30 blur-3xl opacity-60" />
+                  <motion.div
+                    aria-hidden
+                    className="absolute inset-2 rounded-full border-2 border-[#F69D0E]/50 border-dashed"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+                  />
+                  <div className="absolute inset-6 rounded-full border-[3px] border-primary/40 shadow-[0_0_60px_rgba(129,140,248,0.4)]" />
+
+                  <motion.img
+                    src={principiosCat}
+                    alt="Gato QuantumHub principios"
+                    className="relative z-10 w-[90%] h-[90%] object-contain drop-shadow-[0_24px_50px_rgba(0,0,0,0.8)]"
+                    animate={{ y: [-10, 10, -10], scale: [1, 1.03, 1] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </div>
+              </div>
+
+              {/* Right Column: 3 principles */}
+              <div className="flex flex-col gap-6 order-3">
+                {principiosData.slice(3, 6).map((item, index) => (
+                  <PrincipleCard key={item.id} item={item} delay={(index + 3) * 150} />
+                ))}
+              </div>
+
             </div>
           </div>
         </section>
@@ -450,7 +443,7 @@ export default function SobreNosotros() {
                     backgroundImage: "linear-gradient(90deg, #7B2CBF 0%, #F39C12 50%, #7B2CBF 100%)",
                     backgroundSize: "200% auto",
                   }}
-                  animate={{ 
+                  animate={{
                     backgroundPosition: ["0% center", "-200% center"],
                     boxShadow: [
                       "0 0 20px rgba(123,44,191,0.5)",
@@ -458,7 +451,7 @@ export default function SobreNosotros() {
                       "0 0 20px rgba(123,44,191,0.5)"
                     ]
                   }}
-                  transition={{ 
+                  transition={{
                     backgroundPosition: { duration: 3, repeat: Infinity, ease: "linear" },
                     boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                   }}

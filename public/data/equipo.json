@@ -1,7 +1,11 @@
 [
   {
     "name": "Adriana Alvarado León",
-    "role": "Co-Fundadora • Directora",
+    "role": [
+      "Co-Founder",
+      "Chief Product Officer",
+      "Junior Research Assistant (Hybrid Quantum Computing)"
+    ],
     "dept": [
       "Ejecutivo",
       "Académico",
@@ -13,7 +17,11 @@
   },
   {
     "name": "Vania Pachas Acuña",
-    "role": "Co-Fundadora • Directora & Frontend UI Developer",
+    "role": [
+      "Co-Founder",
+      "Junior Research Assistant (Hybrid Quantum Computing)",
+      "Chief Technology Officer"
+    ],
     "dept": [
       "Ejecutivo",
       "Investigación",
@@ -25,7 +33,10 @@
   },
   {
     "name": "Freddy Herrera Cueva",
-    "role": "CEO & Co-Fundador",
+    "role": [
+      "Co-Founder",
+      "Chief Scientific Officer"
+    ],
     "dept": [
       "Ejecutivo",
       "Investigación"
@@ -36,7 +47,9 @@
   },
   {
     "name": "Rosario Morales Orvezo",
-    "role": "",
+    "role": [
+      "Co-Director & Junior Research Assistant (Quantum Memories)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -46,7 +59,10 @@
   },
   {
     "name": "Mariana Sisniegas Hinojosa",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Quantum Machine Learning)",
+      "Disñadora Senior"
+    ],
     "dept": [
       "Investigación",
       "Comunidad"
@@ -57,7 +73,9 @@
   },
   {
     "name": "Jeanpierre Bonilla Felipa",
-    "role": "",
+    "role": [
+      "Asesor Académico"
+    ],
     "dept": [
       "Académico"
     ],
@@ -66,18 +84,10 @@
     "foto": "/images/equipo/WhatsApp Image 2026-01-11 at 10.46.21 PM - Jean Pierre Bonilla Felipa.jpeg"
   },
   {
-    "name": "Valentino Gamboa Sánchez",
-    "role": "Director",
-    "dept": [
-      "Académico"
-    ],
-    "bio": "Valentino es estudiante de Sistemas de Información en UTEC, apasionado por resolver problemas complejos mediante el trabajo en equipos multidisciplinarios. Posee un fuerte interés en la investigación aplicada a problemáticas sociales. En el ámbito profesional, obtuvo el tercer puesto en la primera cohorte de computación cuántica de QuantumHub. Actualmente codirige el departamento académico a la par de ser investigador en Quantum Software. Además, destaca como desarrollador en Python y C++. En sus ratos libres disfruta de los videojuegos, la música, su libro favorito, El conde de Montecristo, y su película predilecta, V de Vendetta. Una de sus grandes metas es visitar el Santa Fe Institute, donde le gustaría aprender sobre sistemas computacionales complejos.",
-    "linkedin": "https://www.linkedin.com/in/guillermo-valentino-ceceu-gamboa-sanchez",
-    "foto": "/images/equipo/foto - Guillermo Valentino Ceceu Gamboa Sanchez.png"
-  },
-  {
     "name": "Manuel Rojas Tuyen",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Quantum Optics)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -87,7 +97,9 @@
   },
   {
     "name": "Missael Rodriguez Bañez",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Hybrid Quantum Computing)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -97,7 +109,10 @@
   },
   {
     "name": "Dessiree Montenegro Arrasco",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Quantum Memories)",
+      "Directora General"
+    ],
     "dept": [
       "Investigación",
       "Relaciones Públicas"
@@ -108,7 +123,9 @@
   },
   {
     "name": "Sofía Oggier",
-    "role": "Especialista Pedagógica",
+    "role": [
+      "Asesora Pedagógica"
+    ],
     "dept": [
       "Académico",
       "Innovación"
@@ -119,7 +136,9 @@
   },
   {
     "name": "Melody Jara Fermin",
-    "role": "",
+    "role": [
+      "Disñadora Senior"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -129,7 +148,9 @@
   },
   {
     "name": "Alvaro De Tomas Sanchez",
-    "role": "",
+    "role": [
+      "Disñador Senior"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -139,7 +160,10 @@
   },
   {
     "name": "Rafael Chamayo Malaga",
-    "role": "",
+    "role": [
+      "Quantum Education Research Lead",
+      "Junior Research Associate (Quantum Optics)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -149,7 +173,9 @@
   },
   {
     "name": "Enrique Espinoza Dioses",
-    "role": "Junior Backend Developer",
+    "role": [
+      "Junior Backend Developer"
+    ],
     "dept": [
       "Innovación"
     ],
@@ -159,7 +185,9 @@
   },
   {
     "name": "Jharold Alvarez",
-    "role": "Co-Director de Operaciones",
+    "role": [
+      "Co-Director & Junior Research Assistant (Quantum Memories)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -169,7 +197,9 @@
   },
   {
     "name": "Diego Haro  Rosales",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Photonics)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -179,7 +209,10 @@
   },
   {
     "name": "Ariana Lopez Julcarima",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Machine Learning)",
+      "Senior Full-Stack Developer"
+    ],
     "dept": [
       "Investigación",
       "Innovación"
@@ -190,7 +223,9 @@
   },
   {
     "name": "Escarle Sánchez Luna",
-    "role": "",
+    "role": [
+      "Disñadora Senior"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -200,7 +235,9 @@
   },
   {
     "name": "Gabriela Granados Santos",
-    "role": "Directora R.R.H.H",
+    "role": [
+      "Directora de Gestión Humana"
+    ],
     "dept": [
       "Relaciones Públicas"
     ],
@@ -210,7 +247,9 @@
   },
   {
     "name": "Osmar Vilchez Aguirre",
-    "role": "",
+    "role": [
+      "Disñador Senior"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -220,7 +259,10 @@
   },
   {
     "name": "Javier Jara Fermin",
-    "role": "Coordinador de Operaciones",
+    "role": [
+      "Junior Research Assistant (Hybrid Quantum Computing)",
+      "Coordinador de Operaciones"
+    ],
     "dept": [
       "Investigación",
       "Relaciones Públicas"
@@ -230,8 +272,10 @@
     "foto": "/images/equipo/Retrato profesional de hombre joven (1) (1) - Quantum Hub Peru.png"
   },
   {
-    "name": "Jose Quispe Cabello",
-    "role": "Senior Backend Developer",
+    "name": "Jose Alessandro Quispe Cabello",
+    "role": [
+      "Senior Backend Developer"
+    ],
     "dept": [
       "Innovación"
     ],
@@ -241,7 +285,10 @@
   },
   {
     "name": "María Antezana De La Cruz",
-    "role": "Coordinadora de Comunicaciones",
+    "role": [
+      "Junior Research Assistant (Quantum Education)",
+      "Coordinadora de Comunicaciones"
+    ],
     "dept": [
       "Relaciones Públicas"
     ],
@@ -251,7 +298,9 @@
   },
   {
     "name": "Rocio Valentin Carhuancho",
-    "role": "",
+    "role": [
+      "Quantum Software Research Lead"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -260,19 +309,11 @@
     "foto": "/images/equipo/PHOTO-2025-07-12-17-00-04 - Rocio Valentin.jpg"
   },
   {
-    "name": "Gabriel Manayay Cadillo",
-    "role": "",
-    "dept": [
-      "Académico",
-      "Investigación"
-    ],
-    "bio": "Gabriel Isaac Manayay Cadillo es un egresado del Bachillerato Internacional del COAR Lima que actualmente se encuentra en gap year (2026). Mantiene un fuerte enfoque en física de partículas, computación cuántica e investigación científica aplicada. Actualmente participa en un proyecto para Beamline for Schools (BL4S) y colabora con INTINAUTA en el laboratorio Pacha Lab en una investigación sobre entornos análogos. Ha representado activamente a su comunidad en iniciativas STEM y de liderazgo, incluyendo el Parlamento Escolar 2025. Como ex estudiante de Quantum Hub, y ahora investigador junior continúa impulsando el desarrollo de la computación cuántica y la investigación científica en el Perú con proyección internacional.",
-    "linkedin": "https://www.linkedin.com/in/gabriel-isaac-manayay-cadillo-418535389/",
-    "foto": "/images/equipo/GABRIEL.png"
-  },
-  {
     "name": "Dayana Gomez Rodriguez",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Machine Learning)",
+      "Technical Product Manager"
+    ],
     "dept": [
       "Investigación",
       "Innovación"
@@ -283,7 +324,9 @@
   },
   {
     "name": "Cristopher Levano Garcia",
-    "role": "",
+    "role": [
+      "Asesor Pedagógico"
+    ],
     "dept": [
       "Académico"
     ],
@@ -293,7 +336,9 @@
   },
   {
     "name": "Alexander Choque Minaya",
-    "role": "Frontend Developer",
+    "role": [
+      "Junior Frontend Developer"
+    ],
     "dept": [
       "Innovación"
     ],
@@ -303,7 +348,9 @@
   },
   {
     "name": "Andrea Aguilar Orbegoso",
-    "role": "",
+    "role": [
+      "Junior Research Assistant (Hybrid Quantum Computing)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -313,7 +360,9 @@
   },
   {
     "name": "Gustavo Moreano Santi",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Photonics)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -323,7 +372,9 @@
   },
   {
     "name": "Daniella Vargas Saldaña",
-    "role": "",
+    "role": [
+      "Quantum Education Senior Research Advisor"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -333,7 +384,9 @@
   },
   {
     "name": "Manuel Cáceres Maldonado",
-    "role": "Director Logístico",
+    "role": [
+      "Director Logístico"
+    ],
     "dept": [
       "Relaciones Públicas"
     ],
@@ -343,7 +396,10 @@
   },
   {
     "name": "Sebastián Villanueva Flores",
-    "role": "Director General",
+    "role": [
+      "Junior Research Assistant (Quantum Machine Learning)",
+      "Director General"
+    ],
     "dept": [
       "Relaciones Públicas"
     ],
@@ -353,7 +409,9 @@
   },
   {
     "name": "Steffi Yurivilca Laureano",
-    "role": "",
+    "role": [
+      "Editora de Prensa"
+    ],
     "dept": [
       "Comunidad"
     ],
@@ -363,7 +421,9 @@
   },
   {
     "name": "Osmar Herrera Cueva",
-    "role": "",
+    "role": [
+      "Senior Research Assistant (Quantum Education)"
+    ],
     "dept": [
       "Investigación"
     ],
@@ -373,12 +433,42 @@
   },
   {
     "name": "Camila Gutiérrez Andrade",
-    "role": "Directora",
+    "role": [
+      "Directora General",
+      "Chief Legal Officer"
+    ],
     "dept": [
       "Comunidad"
     ],
     "bio": "Practicante de Derecho Laboral en Rodríguez Angobaldo Abogados. Estudiante de Derecho en la Universidad Jesuita Antonio Ruiz de Montoya, con experiencia en contrataciones públicas y en análisis de resoluciones en INDECOPI. Actualmente es directora de operaciones en Quantum Hub. Se desempeña como coordinadora senior en Students for Liberty, voluntaria activa en Make-A-Wish Perú y cofundadora de Helpy, una iniciativa social y animalista enfocada en la educación y la defensa de los más vulnerables.",
     "linkedin": "https://www.linkedin.com/in/camilagutierrezandrade/",
     "foto": "/images/equipo/CAMILA - Quantum Hub Peru.png"
+  },
+  {
+    "name": "Valentino Gamboa Sánchez",
+    "role": [
+      "Director General",
+      "Junior Research Assistant (Hybrid Quantum Computing)"
+    ],
+    "dept": [
+      "Académico"
+    ],
+    "bio": "Valentino es estudiante de Sistemas de Información en UTEC, apasionado por resolver problemas complejos mediante el trabajo en equipos multidisciplinarios. Posee un fuerte interés en la investigación aplicada a problemáticas sociales. En el ámbito profesional, obtuvo el tercer puesto en la primera cohorte de computación cuántica de QuantumHub. Actualmente codirige el departamento académico a la par de ser investigador en Quantum Software. Además, destaca como desarrollador en Python y C++. En sus ratos libres disfruta de los videojuegos, la música, su libro favorito, El conde de Montecristo, y su película predilecta, V de Vendetta. Una de sus grandes metas es visitar el Santa Fe Institute, donde le gustaría aprender sobre sistemas computacionales complejos.",
+    "linkedin": "https://www.linkedin.com/in/guillermo-valentino-ceceu-gamboa-sanchez",
+    "foto": "/images/equipo/foto - Guillermo Valentino Ceceu Gamboa Sanchez.png"
+  },
+  {
+    "name": "Gabriel Manayay Cadillo",
+    "role": [
+      "Director de Operaciones",
+      "Junior Research Assistant (Quantum Optics)"
+    ],
+    "dept": [
+      "Académico",
+      "Investigación"
+    ],
+    "bio": "Gabriel Isaac Manayay Cadillo es un egresado del Bachillerato Internacional del COAR Lima que actualmente se encuentra en gap year (2026). Mantiene un fuerte enfoque en física de partículas, computación cuántica e investigación científica aplicada. Actualmente participa en un proyecto para Beamline for Schools (BL4S) y colabora con INTINAUTA en el laboratorio Pacha Lab en una investigación sobre entornos análogos. Ha representado activamente a su comunidad en iniciativas STEM y de liderazgo, incluyendo el Parlamento Escolar 2025. Como ex estudiante de Quantum Hub, y ahora investigador junior continúa impulsando el desarrollo de la computación cuántica y la investigación científica en el Perú con proyección internacional.",
+    "linkedin": "https://www.linkedin.com/in/gabriel-isaac-manayay-cadillo-418535389/",
+    "foto": "/images/equipo/GABRIEL.png"
   }
 ]

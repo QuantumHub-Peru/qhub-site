@@ -5,16 +5,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { motion, AnimatePresence } from "framer-motion";
 import { Book, Clock, Users, ArrowRight, Download, GraduationCap, Target, Award, CheckCircle, ChevronRight, ChevronLeft, PlayCircle, CalendarPlus, MapPin, HelpCircle } from "lucide-react";
 import { useState, useRef } from "react";
-import aprendiendoImg from "@/gato/aprendiendo.png";
+const aprendiendoImg = "gato/aprendiendo.png"
 import LatamGlobe from "@/components/LatamGlobe";
 import QuantumMolecule from '@/components/QuantumMolecule';
-import modulo1Img from "@/gato/modelo1.png";
-import modulo2Img from "@/gato/modulo2.png";
-import modulo3Img from "@/gato/modulo3.png";
-import teoriaImg from "@/gato/teoria.png";
-import laboratorioImg from "@/gato/laboratorio.png";
-import horasImg from "@/gato/74.png";
-import teacherImg from "@/gato/teacher.png";
+const modulo1Img = "gato/modelo1.png"
+const modulo2Img = "gato/modulo2.png"
+const modulo3Img = "gato/modulo3.png"
+const teoriaImg = "gato/teoria.png"
+const laboratorioImg = "gato/laboratorio.png"
+const horasImg = "gato/74.png"
+const teacherImg = "gato/teacher.png"
 import FaqCarousel from "@/components/FaqCarousel";
 
 // Modules Data
@@ -91,38 +91,6 @@ const tabs = [
   { id: "faq", label: "Preguntas Frecuentes", icon: <HelpCircle className="w-5 h-5" /> },
 ];
 
-// FAQ Data (copiado desde la página de Postulación)
-const faqs = [
-  {
-    question: "¿Cuánto cuesta el curso?",
-    answer: "El curso es 100% gratis, por ello contamos con plazas limitadas.",
-  },
-  {
-    question: "¿Las clases son presenciales o virtuales?",
-    answer: "La modalidad de las clases es 100% virtual pues contamos con docentes que dictarán a larga distancia. Sin embargo, los exámenes son presenciales.",
-  },
-  {
-    question: "¿Necesito conocimientos previos de ...?",
-    answer: "Cada módulo tiene prerrequisitos específicos que se detallan en la sección del curso.",
-  },
-  {
-    question: "¿Qué certificación obtengo al completar el curso?",
-    answer: "Al completar el programa recibes un certificado de QuantumHub Perú.",
-  },
-  {
-    question: "¿Hay límite de edad para postular?",
-    answer: "Los estudiantes de secundaria (menores de edad) pueden postular al Módulo 1, y estudiantes universitarios de 1er a 4to ciclo o de academias preuniversitarias pueden postular a partir del Módulo 2.",
-  },
-  {
-    question: "¿Ofrecen apoyo para conseguir trabajo después del curso?",
-    answer: "Tenemos una red de empresas aliadas y profesionales en investigación y desarrollo en el área cuántica, pero no es parte del programa per se.",
-  },
-  {
-    question: "¿Qué es la plataforma educativa?",
-    answer: "Es nuestro entorno virtual exclusivo donde los estudiantes acceden a materiales, grabaciones de clases, laboratorios interactivos y realizan sus entregas semanales.",
-  },
-];
-
 const createGoogleCalendarUrl = ({
   title,
   details,
@@ -161,6 +129,96 @@ const admissionCalendarUrl = createGoogleCalendarUrl({
   startDate: "20260303",
   endDate: "20260323",
 });
+
+const resultsAnnouncementCalendarUrl = createGoogleCalendarUrl({
+  title: "Resultados Convocatoria Módulo 1 | QuantumHub Peru",
+  details: "Anuncio oficial de los resultados de la convocatoria para el Módulo 1 del curso de Computación Cuántica.",
+  location: "Plataforma QuantumHub / Redes Sociales",
+  startDate: "20260325",
+  endDate: "20260326",
+});
+
+// FAQ Data (copiado desde la página de Postulación)
+const faqs = [
+  {
+    question: "¿Cuándo se anunciarán los resultados de la convocatoria del Módulo 1?",
+    answer: (
+      <div className="flex flex-col items-center gap-4">
+        <span className="text-xl font-black text-accent drop-shadow-sm">25 de marzo</span>
+        <a
+          href={resultsAnnouncementCalendarUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent/20 border border-accent/40 text-accent font-bold text-sm hover:bg-accent/30 transition-all shadow-[0_0_15px_rgba(255,215,0,0.2)]"
+        >
+          <CalendarPlus className="w-4 h-4" />
+          Agendar en Google Calendar
+        </a>
+      </div>
+    ),
+  },
+  {
+    question: "¿Hay vacantes limitadas?",
+    answer: "Sí, el criterio principal de selección es la carta de motivación.",
+  },
+  {
+    question: "¿Tengo que haber llevado mecánica cuántica?",
+    answer:
+      "No, no se requiere experiencia previa en computación o mecánica cuántica. Sin embargo, esperamos que al finalizar el Módulo 1 los estudiantes logren una buena base en álgebra lineal y programación.",
+  },
+  {
+    question: "Si no estoy en Lima, ¿puedo inscribirme al curso?",
+    answer: (
+      <span>
+        Escribe al correo
+        {" "}
+        <a
+          href="mailto:contacto@qhubperu.org"
+          className="text-primary font-bold hover:underline"
+        >
+          contacto@qhubperu.org
+        </a>{" "}
+        explicando tu situación, contándonos tu motivación y, opcionalmente, adjuntando tu CV.
+      </span>
+    ),
+  },
+  {
+    question: "¿El certificado del curso es gratuito?",
+    answer: "Sí, tanto el curso como el certificado final son gratuitos.",
+  },
+  {
+    question: "¿Qué especificaciones necesita mi PC?",
+    answer: (
+      <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-left max-w-[260px] md:max-w-sm mx-auto text-[11px] md:text-sm">
+        <div className="flex gap-1.5">
+          <span className="text-accent font-bold">CPU:</span>
+          <span className="text-white/90">i5 / R5</span>
+        </div>
+        <div className="flex gap-1.5">
+          <span className="text-accent font-bold">RAM:</span>
+          <span className="text-white/90">8 GB+</span>
+        </div>
+        <div className="flex gap-1.5">
+          <span className="text-accent font-bold">SSD:</span>
+          <span className="text-white/90">256 GB+</span>
+        </div>
+        <div className="flex gap-1.5">
+          <span className="text-accent font-bold">GPU:</span>
+          <span className="text-white/90">Básica</span>
+        </div>
+        <div className="flex gap-1.5 items-center col-span-2">
+          <span className="text-accent font-bold">SO:</span>
+          <span className="text-white/90">Linux, Win, Mac</span>
+        </div>
+        <div className="flex gap-1.5 items-center col-span-2">
+          <span className="text-accent font-bold">Python:</span>
+          <span className="text-white/90">3.8+</span>
+        </div>
+      </div>
+    ),
+  },
+];
+
 
 // --- DOCENTES CORREGIDO ---
 const DocentesContent = () => (
@@ -591,21 +649,33 @@ const Curso = () => {
     <div className="min-h-screen bg-background text-foreground flex flex-col overflow-hidden">
       <Navbar />
 
-      <main className="flex-1 w-full h-screen pt-20 lg:pt-24 snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth">
-        <div className="fixed inset-0 pointer-events-none z-0 opacity-30 mt-20 lg:mt-24">
+      <main className="flex-1 w-full h-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth">
+        <div className="fixed inset-0 pointer-events-none z-0 opacity-30">
           <ParticleNetwork />
         </div>
 
         {/* Section 1: Hero Section */}
         <section className="w-full min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-6rem)] snap-start flex flex-col items-center justify-center relative z-10 lg:p-4 lg:px-6">
+          
+          {/* Mobile background image - FULL BLEED */}
+          <div 
+            className="absolute inset-0 lg:hidden opacity-30 pointer-events-none z-[1]"
+            style={{
+              backgroundImage: 'url("/r3.jpg")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'top center',
+            }}
+          />
+
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full max-w-[1400px] flex-1 lg:glass-strong rounded-none lg:rounded-3xl px-6 sm:px-6 md:px-8 lg:px-10 xl:px-12 pb-6 sm:pb-6 md:pb-8 lg:pb-10 xl:pb-12 pt-1 relative overflow-hidden border-none lg:border lg:border-primary/20 bg-transparent lg:bg-card/60 backdrop-blur-none lg:backdrop-blur-xl shadow-none lg:shadow-[0_0_50px_rgba(138,43,226,0.15)] flex flex-col justify-center"
           >
+
             <div className="flex flex-col md:flex-row gap-8 lg:gap-10 xl:gap-12 items-center justify-between relative z-10 flex-1 py-4 lg:py-2">
-              <div className="md:w-1/2 lg:w-3/5 space-y-5 lg:space-y-5 xl:space-y-6 flex flex-col justify-center">
+              <div className="md:w-1/2 lg:w-3/5 space-y-5 lg:space-y-5 xl:space-y-6 flex flex-col justify-center relative">
                 <div className="self-start px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-bold mb-1 lg:mb-2 shadow-sm">
                   Edición 2026 - I
                 </div>
@@ -842,14 +912,7 @@ const Curso = () => {
 
                 <div className="w-full h-px bg-border/40" />
 
-                {/* 6. Preguntas Frecuentes */}
-                <section className="flex flex-col gap-4">
-                  <div className="flex items-center gap-2 border-b border-quantum-pink/30 pb-2">
-                    <HelpCircle className="w-6 h-6 text-quantum-pink" />
-                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">PREGUNTAS FRECUENTES</h2>
-                  </div>
-                  <PreguntasFrecuentesContent />
-                </section>
+
 
                 {/* 4. Evaluación */}
                 <section className="flex flex-col gap-4">
@@ -861,6 +924,15 @@ const Curso = () => {
                 </section>
 
                 <div className="w-full h-px bg-border/40" />
+
+                {/* 6. Preguntas Frecuentes */}
+                <section className="flex flex-col gap-4">
+                  <div className="flex items-center gap-2 border-b border-quantum-pink/30 pb-2">
+                    <HelpCircle className="w-6 h-6 text-quantum-pink" />
+                    <h2 className="font-heading text-4xl sm:text-5xl text-white tracking-[-0.02em] uppercase leading-none">PREGUNTAS FRECUENTES</h2>
+                  </div>
+                  <PreguntasFrecuentesContent />
+                </section>
 
 
 
