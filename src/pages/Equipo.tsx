@@ -49,7 +49,7 @@ const Equipo = () => {
       const r = role.toLowerCase();
       if (r.includes("co-founder") || r.includes("co-fundador") || r.includes("co-fundadora")) minWeight = Math.min(minWeight, 1);
       else if (r.includes("chief")) minWeight = Math.min(minWeight, 2);
-      else if (r.includes("director") || r.includes("directora") || r.includes("co-director") || r.includes("co-directora")) minWeight = Math.min(minWeight, 3);
+      else if (r.includes("director") || r.includes("directora") || r.includes("co-director") || r.includes("co-directora") || r.includes("lead")) minWeight = Math.min(minWeight, 3);
       else if (r.includes("senior")) minWeight = Math.min(minWeight, 4);
       else if (r.includes("junior")) minWeight = Math.min(minWeight, 5);
     }
@@ -62,6 +62,27 @@ const Equipo = () => {
     const roleWeightB = getRoleWeight(b.role);
     if (roleWeightA !== roleWeightB) {
       return roleWeightA - roleWeightB;
+    }
+
+    // Custom name priorities WITHIN same role
+    const customPriority = (name: string) => {
+      const n = name.toLowerCase();
+      // First in the same role level
+      if (n.includes("rocio")) return -3;
+      if (n.includes("daniella")) return -2;
+      if (n.includes("marcelo") || n.includes("marcello")) return -1;
+      
+      // Last in the same role level
+      if (n.includes("valentino")) return 100; // Second to last
+      if (n.includes("gabriel")) return 101; // Last
+      return 0; // Default
+    };
+
+    const priorityA = customPriority(a.name);
+    const priorityB = customPriority(b.name);
+
+    if (priorityA !== priorityB) {
+      return priorityA - priorityB;
     }
 
     const highestDeptA = a.dept && a.dept.length > 0 ? Math.min(...a.dept.map(getDeptWeight)) : 99;

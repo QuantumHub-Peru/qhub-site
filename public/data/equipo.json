@@ -84,19 +84,6 @@
     "foto": "/images/equipo/WhatsApp Image 2026-01-11 at 10.46.21 PM - Jean Pierre Bonilla Felipa.jpeg"
   },
   {
-    "name": "Valentino Gamboa Sánchez",
-    "role": [
-      "Director General",
-      "Junior Research Assistant (Hybrid Quantum Computing)"
-    ],
-    "dept": [
-      "Académico"
-    ],
-    "bio": "Valentino es estudiante de Sistemas de Información en UTEC, apasionado por resolver problemas complejos mediante el trabajo en equipos multidisciplinarios. Posee un fuerte interés en la investigación aplicada a problemáticas sociales. En el ámbito profesional, obtuvo el tercer puesto en la primera cohorte de computación cuántica de QuantumHub. Actualmente codirige el departamento académico a la par de ser investigador en Quantum Software. Además, destaca como desarrollador en Python y C++. En sus ratos libres disfruta de los videojuegos, la música, su libro favorito, El conde de Montecristo, y su película predilecta, V de Vendetta. Una de sus grandes metas es visitar el Santa Fe Institute, donde le gustaría aprender sobre sistemas computacionales complejos.",
-    "linkedin": "https://www.linkedin.com/in/guillermo-valentino-ceceu-gamboa-sanchez",
-    "foto": "/images/equipo/foto - Guillermo Valentino Ceceu Gamboa Sanchez.png"
-  },
-  {
     "name": "Manuel Rojas Tuyen",
     "role": [
       "Junior Research Assistant (Quantum Optics)"
@@ -322,20 +309,6 @@
     "foto": "/images/equipo/PHOTO-2025-07-12-17-00-04 - Rocio Valentin.jpg"
   },
   {
-    "name": "Gabriel Manayay Cadillo",
-    "role": [
-      "Director de Operaciones",
-      "Junior Research Assistant (Quantum Optics)"
-    ],
-    "dept": [
-      "Académico",
-      "Investigación"
-    ],
-    "bio": "Gabriel Isaac Manayay Cadillo es un egresado del Bachillerato Internacional del COAR Lima que actualmente se encuentra en gap year (2026). Mantiene un fuerte enfoque en física de partículas, computación cuántica e investigación científica aplicada. Actualmente participa en un proyecto para Beamline for Schools (BL4S) y colabora con INTINAUTA en el laboratorio Pacha Lab en una investigación sobre entornos análogos. Ha representado activamente a su comunidad en iniciativas STEM y de liderazgo, incluyendo el Parlamento Escolar 2025. Como ex estudiante de Quantum Hub, y ahora investigador junior continúa impulsando el desarrollo de la computación cuántica y la investigación científica en el Perú con proyección internacional.",
-    "linkedin": "https://www.linkedin.com/in/gabriel-isaac-manayay-cadillo-418535389/",
-    "foto": "/images/equipo/GABRIEL.png"
-  },
-  {
     "name": "Dayana Gomez Rodriguez",
     "role": [
       "Senior Research Assistant (Quantum Machine Learning)",
@@ -470,5 +443,32 @@
     "bio": "Practicante de Derecho Laboral en Rodríguez Angobaldo Abogados. Estudiante de Derecho en la Universidad Jesuita Antonio Ruiz de Montoya, con experiencia en contrataciones públicas y en análisis de resoluciones en INDECOPI. Actualmente es directora de operaciones en Quantum Hub. Se desempeña como coordinadora senior en Students for Liberty, voluntaria activa en Make-A-Wish Perú y cofundadora de Helpy, una iniciativa social y animalista enfocada en la educación y la defensa de los más vulnerables.",
     "linkedin": "https://www.linkedin.com/in/camilagutierrezandrade/",
     "foto": "/images/equipo/CAMILA - Quantum Hub Peru.png"
+  },
+  {
+    "name": "Valentino Gamboa Sánchez",
+    "role": [
+      "Director General",
+      "Junior Research Assistant (Hybrid Quantum Computing)"
+    ],
+    "dept": [
+      "Académico"
+    ],
+    "bio": "Valentino es estudiante de Sistemas de Información en UTEC, apasionado por resolver problemas complejos mediante el trabajo en equipos multidisciplinarios. Posee un fuerte interés en la investigación aplicada a problemáticas sociales. En el ámbito profesional, obtuvo el tercer puesto en la primera cohorte de computación cuántica de QuantumHub. Actualmente codirige el departamento académico a la par de ser investigador en Quantum Software. Además, destaca como desarrollador en Python y C++. En sus ratos libres disfruta de los videojuegos, la música, su libro favorito, El conde de Montecristo, y su película predilecta, V de Vendetta. Una de sus grandes metas es visitar el Santa Fe Institute, donde le gustaría aprender sobre sistemas computacionales complejos.",
+    "linkedin": "https://www.linkedin.com/in/guillermo-valentino-ceceu-gamboa-sanchez",
+    "foto": "/images/equipo/foto - Guillermo Valentino Ceceu Gamboa Sanchez.png"
+  },
+  {
+    "name": "Gabriel Manayay Cadillo",
+    "role": [
+      "Director de Operaciones",
+      "Junior Research Assistant (Quantum Optics)"
+    ],
+    "dept": [
+      "Académico",
+      "Investigación"
+    ],
+    "bio": "Gabriel Isaac Manayay Cadillo es un egresado del Bachillerato Internacional del COAR Lima que actualmente se encuentra en gap year (2026). Mantiene un fuerte enfoque en física de partículas, computación cuántica e investigación científica aplicada. Actualmente participa en un proyecto para Beamline for Schools (BL4S) y colabora con INTINAUTA en el laboratorio Pacha Lab en una investigación sobre entornos análogos. Ha representado activamente a su comunidad en iniciativas STEM y de liderazgo, incluyendo el Parlamento Escolar 2025. Como ex estudiante de Quantum Hub, y ahora investigador junior continúa impulsando el desarrollo de la computación cuántica y la investigación científica en el Perú con proyección internacional.",
+    "linkedin": "https://www.linkedin.com/in/gabriel-isaac-manayay-cadillo-418535389/",
+    "foto": "/images/equipo/GABRIEL.png"
   }
 ]
